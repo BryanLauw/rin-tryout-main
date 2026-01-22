@@ -204,7 +204,7 @@ function Sidebar({
     setActiveQuestionIndex,
     maxQuestionIndex,
   } = useExam();
-  const sessionNames = exam.items.map((session) => session.name);
+  const sessionNames = exam.items.map((session: any) => session.name);
 
   return (
     <>
@@ -223,7 +223,7 @@ function Sidebar({
       >
         <h1 className="mb-3">Sub Test:</h1>
         <div className="flex flex-col gap-4 text-sm max-h-[calc(50vh-6rem)] overflow-y-auto overflow-x-hidden">
-          {sessionNames.map((name, index) => (
+          {sessionNames.map((name: string, index: number) => (
             <div
               key={index}
               className={cn(

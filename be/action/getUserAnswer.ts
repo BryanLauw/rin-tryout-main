@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/be/db/prisma-init";
+import { JsonValue } from "@prisma/client/runtime/library";
 import { writeFileSync } from "node:fs";
 
 export async function getAllUserAnswer() {
@@ -17,7 +18,7 @@ export async function getAllUserAnswer() {
     // Convert users data to CSV format
     const csvHeader = "ID,Phone,Name,Answers\n";
     const csvRows = users
-      .map((user) => {
+      .map((user: {id: string, answers: JsonValue, phone: string | null, name: string | null}) => {
         const answersString = JSON.stringify(user.answers || []);
         return `${user.id},${user.phone},${user.name},${answersString}`;
       })

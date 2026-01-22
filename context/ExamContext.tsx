@@ -97,7 +97,7 @@ function useContextValue(exam: ExamType, userId: string) {
       dayjs().add(activeSessionData.duration, "seconds").valueOf()
     );
     setTimeLeft(activeSessionData.duration);
-    setAnswerLS(exam.items.map((session) => session.questions.map(() => [])));
+    setAnswerLS(exam.items.map((session: any) => session.questions.map(() => [])));
   };
 
   const finishExam = () => {
@@ -138,11 +138,11 @@ function useContextValue(exam: ExamType, userId: string) {
 
   function getFinishAnswer(answer: string[][][]) {
     return answer
-      ? answer.map((sessionAnswers, sessionIndex) =>
-          sessionAnswers.map((answer, questionIndex) => {
+      ? answer.map((sessionAnswers: string[][], sessionIndex: number) =>
+          sessionAnswers.map((answer: string[], questionIndex: number) => {
             const kunciJawaban =
               exam.items[sessionIndex].questions[questionIndex].answerIndex;
-            const mappedKunciJawaban = kunciJawaban.map((k) => {
+            const mappedKunciJawaban = kunciJawaban.map((k: string) => {
               if (typeof Number(k) === "number" && !isNaN(Number(k)))
                 return exam.items[sessionIndex].questions[questionIndex]
                   .options[Number(k)];

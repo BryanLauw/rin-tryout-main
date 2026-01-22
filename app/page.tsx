@@ -97,7 +97,7 @@ export default function Home() {
             Kenapa Memilih Rin Education?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
+            {features.map((feature: {icon: JSX.Element, title: string, description: string}, index: number) => (
               <div 
                 key={index}
                 className="p-6 rounded-xl bg-blue-50 hover:bg-blue-100 transition-colors"

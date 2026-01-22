@@ -27,12 +27,12 @@ async function main() {
         name: ujian.name,
         description: ujian.description,
         items: {
-          create: ujian.items.map(session => ({
+          create: ujian.items.map((session: any) => ({
             name: session.name,
             description: session.description,
             duration: session.duration ?? 1800, // 30 menit // 1800
             questions: {
-              create: session.questions.map(q => ({
+              create: session.questions.map((q: any) => ({
                 type: q.type,
                 imageUrl: q.imageUrl,
                 txtField: q.txtField,
