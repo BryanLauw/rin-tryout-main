@@ -1,0 +1,60 @@
+// This is your Prisma schema file
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // or your preferred database
+  url      = env("DATABASE_URL")
+}
+
+enum QuestionType {
+  MULTIPLE_CHOICE
+  MULTIPLE_SELECTION
+  ESSAY
+}
+
+model Question {
+  id          Int          @id @default(autoincrement())
+  type        QuestionType @default(MULTIPLE_CHOICE)
+  imageUrl    String?
+  txtField    String?
+  question    String
+  options     String[]
+  answerIndex String[]
+  session     ExamSession? @relation(fields: [sessionId], references: [id])
+  sessionId   Int?
+}
+
+model ExamSession {
+  id          Int        @id @default(autoincrement())
+  name        String
+  description String?
+  duration    Int //seconds  
+  questions   Question[]
+  exam        Exam?      @relation(fields: [examId], references: [id])
+  examId      Int?
+}
+
+model Exam {
+  id           Int           @id @default(autoincrement())
+  name         String
+  description  String?
+  items        ExamSession[]
+  startedAt    DateTime?
+  finishedAt   DateTime?
+  users        User[]
+  showResultAt DateTime?
+}
+
+model User {
+  id     String  @id @default(cuid())
+  phone  String?
+  name   String?
+  exam   Exam?   @relation(fields: [examId], references: [id])
+  examId Int?
+  score  Int?
+  answers Json?
+  clientId String?
+}
