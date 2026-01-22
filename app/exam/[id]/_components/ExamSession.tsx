@@ -204,7 +204,7 @@ function Sidebar({
     setActiveQuestionIndex,
     maxQuestionIndex,
   } = useExam();
-  const sessionNames = exam.items.map((session: any) => session.name);
+  const sessionNames = exam.items.map((session: {name: string}) => session.name);
 
   return (
     <>

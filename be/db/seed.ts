@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client'
 import { data } from './data-seed/exam'
+import { ujianSession, Question } from './data-seed/exam'
 
 const prisma = new PrismaClient()
 
@@ -27,12 +28,12 @@ async function main() {
         name: ujian.name,
         description: ujian.description,
         items: {
-          create: ujian.items.map((session: any) => ({
+          create: ujian.items.map((session: ujianSession) => ({
             name: session.name,
             description: session.description,
             duration: session.duration ?? 1800, // 30 menit // 1800
             questions: {
-              create: session.questions.map((q: any) => ({
+              create: session.questions.map((q: Question) => ({
                 type: q.type,
                 imageUrl: q.imageUrl,
                 txtField: q.txtField,

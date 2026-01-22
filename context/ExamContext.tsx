@@ -9,11 +9,9 @@ import {
   useState,
 } from "react";
 import { ExamType } from "@/be/fetch/question";
-import { useDebounceValue, useLocalStorage } from "usehooks-ts";
-import { formatTimeLeft, getNow } from "@/lib/time";
+import { useLocalStorage } from "usehooks-ts";
+import { getNow } from "@/lib/time";
 import dayjs from "dayjs";
-import { useDebounce } from "ahooks";
-import { serialize } from "v8";
 import { areArrayHaveSameValue } from "@/lib/areArrayHaveSameValue";
 import { postAnswer } from "@/be/action/exam";
 
@@ -97,7 +95,7 @@ function useContextValue(exam: ExamType, userId: string) {
       dayjs().add(activeSessionData.duration, "seconds").valueOf()
     );
     setTimeLeft(activeSessionData.duration);
-    setAnswerLS(exam.items.map((session: any) => session.questions.map(() => [])));
+    setAnswerLS(exam.items.map((session: { questions: any[] }) => session.questions.map(() => [])));
   };
 
   const finishExam = () => {
