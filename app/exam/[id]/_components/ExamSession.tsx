@@ -101,7 +101,7 @@ function MultipleChoice() {
       value={answerInput[0]}
       className="flex flex-col gap-3"
     >
-      {q.options.map((option, index) => (
+      {q.options.map((option: string, index: number) => (
         <div
           className="flex items-center rounded-lg hover:bg-gray-50 transition-colors pl-3"
           key={index}
