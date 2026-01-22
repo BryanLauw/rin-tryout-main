@@ -120,7 +120,7 @@ function MultipleSelection() {
   const { activeQuestionData: q, setAnswerInput, answerInput } = useExam();
   return (
     <div className="flex flex-col gap-3">
-      {q.options.map((option, index) => (
+      {q.options.map((option: string, index: number) => (
         <div
           className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors"
           key={index}
