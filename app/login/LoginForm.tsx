@@ -10,12 +10,11 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { getFormData } from "@/lib/getFormData";
 import { FormEvent } from "react";
 import { useLoading } from "@/context/LoadingContext";
 import { login } from "@/be/action/user";
-import { getErrorMessage } from "@/lib/getErrorMessage";
 
 export function LoginForm() {
   const router = useRouter();
@@ -34,6 +33,7 @@ export function LoginForm() {
     );
     if (success) router.push(`/exam/${data["kode_ujian"]}`);
     else {
+      console.error("Login error:", error);
       alert("Akun ini sudah digunakan");
       setLoading(false)
     }

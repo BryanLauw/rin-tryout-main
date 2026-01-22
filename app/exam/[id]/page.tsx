@@ -4,7 +4,7 @@ import { getErrorMessage } from "@/lib/getErrorMessage";
 import DomLoaded from "@/components/DomLoaded";
 import Exam from "./_components/Exam";
 import { ExamProvider } from "../../../context/ExamContext";
-import { getUser, isUserHasAnswer } from "@/be/action/user";
+import { isUserHasAnswer } from "@/be/action/user";
 import EndExam from "./_components/EndExam";
 import CheckClientId from "./_components/CheckClientId";
 

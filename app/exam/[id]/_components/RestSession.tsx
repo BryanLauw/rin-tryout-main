@@ -1,11 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { useExam } from "../../../../context/ExamContext";
-import { Timer } from "./ExamSession";
 import { useEffect, useMemo } from "react";
 import { formatTimeLeft } from "@/lib/time";
 
 export default function RestSession() {
-  const { nextSession, activeSessionIndex, maxSessionIndex, timeLeft, exam } =
+  const { nextSession, activeSessionIndex, timeLeft, exam } =
     useExam();
 
   const nextSessionName = useMemo(() => {
@@ -16,6 +15,7 @@ export default function RestSession() {
     if (timeLeft <= 0) {
       nextSession();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft]);
 
   return (

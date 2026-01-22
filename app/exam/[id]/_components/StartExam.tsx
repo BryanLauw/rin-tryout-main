@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useExam } from "@/context/ExamContext";
 
 export default function StartExam() {
-  const { exam, startExam } = useExam();
+  const { startExam } = useExam();
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 p-8">

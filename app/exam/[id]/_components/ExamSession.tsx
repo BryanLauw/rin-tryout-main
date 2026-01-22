@@ -19,7 +19,6 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { useEffect, useState } from "react";
-import dayjs from "dayjs";
 import { formatTimeLeft } from "@/lib/time";
 
 export default function ExamSession() {
@@ -58,6 +57,7 @@ function Question() {
             )}
             {q.imageUrl && (
               <div className="mb-4 md:mb-6">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={q.imageUrl}
                   alt="img"
@@ -163,9 +163,6 @@ function NextButton() {
   const {
     activeQuestionIndex,
     maxQuestionIndex,
-    activeSessionIndex,
-    maxSessionIndex,
-    prevQuestion,
     nextQuestion,
     nextSession,
   } = useExam();
@@ -180,6 +177,7 @@ function NextButton() {
         }
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className="flex gap-2 mt-2">
@@ -306,6 +304,7 @@ export function Timer() {
     if (timeLeft <= 0) {
       nextSession();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft]);
 
   return (

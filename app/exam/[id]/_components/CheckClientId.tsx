@@ -4,7 +4,6 @@ import { checkClientId } from "@/be/action/user";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import EndExam from "./EndExam";
-import Loading from "@/components/Loading";
 import { useLoading } from "@/context/LoadingContext";
 
 export default function CheckClientId({
@@ -37,6 +36,7 @@ export default function CheckClientId({
     }
 
     fetchCheckClientId();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!isAllowed) return <EndExam />;
