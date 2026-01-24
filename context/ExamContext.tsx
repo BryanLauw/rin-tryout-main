@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 import { areArrayHaveSameValue } from "@/lib/areArrayHaveSameValue";
 import { postAnswer } from "@/be/action/exam";
 
-const REST_DURATION = 300;
+const REST_DURATION = 30;
 
 function useContextValue(exam: ExamType, userId: string) {
   const [startedAt, setStartedAt] = useLocalStorage<string | null>(
