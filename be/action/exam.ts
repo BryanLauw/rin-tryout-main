@@ -3,7 +3,7 @@
 import prisma from "@/be/db/prisma-init";
 import { revalidatePath } from "next/cache";
 
-export async function postAnswer(userId: string, answer: boolean[][]) {
+export async function postAnswer(userId: string, answer: (1 | 0)[][]) {
   try {
     await prisma.user.update({
       where: {
