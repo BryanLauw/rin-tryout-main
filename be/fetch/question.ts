@@ -1,30 +1,33 @@
 import prisma from "../db/prisma-init";
 
 export const fetchExamByUserId = async (userId: string) => {
-  const user = await prisma.user.findUniqueOrThrow({
-    where: { id: userId },
-    include: {
-      exam: {
+    const user = await prisma.user.findUniqueOrThrow({
+        where: { id: userId },
         include: {
-          items: {
-            include: {
-              questions: {
-                orderBy: {
-                  id: "asc",
+            exam: {
+                include: {
+                    items: {
+                        orderBy: {
+                            id: "asc",
+                        },
+                        include: {
+                            questions: {
+                                orderBy: {
+                                    id: "asc",
+                                },
+                            },
+                        },
+                    },
                 },
-              },
             },
-          },
         },
-      },
-    },
-  });
+    });
 
-  if (!user.exam) {
-    throw new Error("User has no assigned exam");
-  }
+    if (!user.exam) {
+        throw new Error("User has no assigned exam");
+    }
 
-  return user.exam;
+    return user.exam;
 };
 
 export type ExamType = Awaited<ReturnType<typeof fetchExamByUserId>>;

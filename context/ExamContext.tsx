@@ -15,7 +15,7 @@ import dayjs from "dayjs";
 import { areArrayHaveSameValue } from "@/lib/areArrayHaveSameValue";
 import { postAnswer } from "@/be/action/exam";
 
-const REST_DURATION = 30;
+const REST_DURATION = 60;
 
 function useContextValue(exam: ExamType, userId: string) {
   const [startedAt, setStartedAt] = useLocalStorage<string | null>(
@@ -145,7 +145,7 @@ function useContextValue(exam: ExamType, userId: string) {
                 return exam.items[sessionIndex].questions[questionIndex]
                   .options[Number(k)];
             });
-            return areArrayHaveSameValue(answer, mappedKunciJawaban);
+            return areArrayHaveSameValue(answer, mappedKunciJawaban) ? 1 : 0;
           })
         )
       : [];

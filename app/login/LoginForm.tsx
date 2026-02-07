@@ -34,7 +34,7 @@ export function LoginForm() {
     if (success) router.push(`/exam/${data["kode_ujian"]}`);
     else {
       console.error("Login error:", error);
-      alert("Akun ini sudah digunakan");
+      alert("Kode ujian tidak valid atau sudah digunakan.");
       setLoading(false)
     }
   }
