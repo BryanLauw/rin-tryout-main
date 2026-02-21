@@ -48,13 +48,6 @@ function Question() {
       <div className="max-w-4xl mx-auto flex flex-col gap-4 md:gap-6 p-3 md:p-6">
         <div className="bg-white rounded-xl shadow-lg border p-2 md:p-4 hover:shadow-xl transition-shadow">
           <div className="p-2">
-            {q.txtField && (
-              <div className="font-light pl-4 border-l-2 border-blue-400 mb-6 min-h-[30px]">
-                <div className="prose prose-lg prose-gray max-w-none leading-relaxed text-gray-700 text-justify">
-                  <MD text={q.txtField} />
-                </div>
-              </div>
-            )}
             {q.imageUrl && (
               <div className="mb-4 md:mb-6">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -63,6 +56,13 @@ function Question() {
                   alt="img"
                   className="w-2/3 md:w-1/2 mx-auto rounded-lg shadow-md"
                 />
+              </div>
+            )}
+            {q.txtField && (
+              <div className="font-light pl-4 border-l-2 border-blue-400 mb-6 min-h-[30px]">
+                <div className="prose prose-lg prose-gray max-w-none leading-relaxed text-gray-700 text-justify">
+                  <MD text={q.txtField} />
+                </div>
               </div>
             )}
             <div className="prose prose-gray max-w-none">

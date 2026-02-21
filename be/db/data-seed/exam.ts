@@ -23,1169 +23,996 @@ export type Ujian = {
   items: ujianSession[]
 }
 
+// NOTE
+// 1. Untuk membuat soal essay atau multiple selection, tambahkan properti type pada pertanyaan
+// const soal: ujianSession = {
+//   name: "",
+//   description: "",
+//   questions: [
+//     {
+//       type: "ESSAY", ---> // contoh soal essay (untuk multiple selection, ganti "ESSAY" menjadi "MULTIPLE_SELECTION")
+//       txtField: `Panggung kesenian tradisional, seperti lenong atau ludruk, merupakan wadah untuk menanamkan nilai-nilai etika dan moral. Apabila panggung kesenian tradisional punah, orang-orang mencari hiburan melalui panggung-panggung modern dan tidak terjadi regenerasi karena anak-anak muda tidak lagi mengenalnya. Di sisi lain, gedung-gedung kesenian tradisional satu per satu mulai tutup dan para pelaku seninya beralih profesi.`,
+//       question: `Berdasarkan paragraf di atas, apabila gedung-gedung kesenian tradisional satu per satu mulai tutup dan para pelaku seninya beralih profesi, manakah di bawah ini simpulan yang PALING MUNGKIN BENAR?`,
+//       options: [
+//           `Panggung kesenian tradisional telah punah.`,
+//           `Panggung kesenian tradisional pernah punah.`,
+//           `Panggung kesenian tradisional sudah pasti punah.`,
+//           `Panggung kesenian tradisional pada akhirnya punah.`,
+//           `Panggung kesenian tradisional mungkin akan punah.`,
+//           ],
+//       answerIndex: [3] ---> // a = 0, b = 1, dst. Untuk essay, isi jawaban langsung saja, misalnya ["jawaban soal essay"]
+//     },
+//   ]
 
 // Tes Potensi Skolastik (TPS)
-const soalPU: ujianSession = {
-  name: "Penalaran Umum",
-  description: "Ada 30 soal yang akan dikerjakan dalam 30 menit, dengan komposisi: Penalaran Induktif 10 soal 10 menit, Penalaran Deduktif 10 soal 10 menit, Penalaran Kuantitaf 10 soal 10 menit",
+const soalPUInduktif: ujianSession = {
+  name: "Penalaran Umum - Penalaran Induktif",
+  description: "Ada 10 soal yang akan dikerjakan dalam 10 menit",
+  duration: 10 * 60,
   questions: [
-    // Penalaran Induktif
-    {
-      txtField: `Panggung kesenian tradisional, seperti lenong atau ludruk, merupakan wadah untuk menanamkan nilai-nilai etika dan moral. Apabila panggung kesenian tradisional punah, orang-orang mencari hiburan melalui panggung-panggung modern dan tidak terjadi regenerasi karena anak-anak muda tidak lagi mengenalnya. Di sisi lain, gedung-gedung kesenian tradisional satu per satu mulai tutup dan para pelaku seninya beralih profesi.`,
-      question: `Berdasarkan paragraf di atas, apabila gedung-gedung kesenian tradisional satu per satu mulai tutup dan para pelaku seninya beralih profesi, manakah di bawah ini simpulan yang PALING MUNGKIN BENAR?`,
+    { //Soal 1
+      txtField: "Tanaman hidroponik semakin populer di perkotaan karena tidak memerlukan lahan luas dan dapat dilakukan di halaman rumah. Selain itu, hidroponik juga menghasilkan sayuran yang lebih sehat karena bebas pestisida. Namun, sistem hidroponik membutuhkan listrik untuk pompa air dan pencahayaan buatan, sehingga meningkatkan biaya operasional.",
+      question: "Berdasarkan informasi tersebut, manakah pernyataan berikut yang PASTI SALAH?",
       options: [
-          `Panggung kesenian tradisional telah punah.`,
-          `Panggung kesenian tradisional pernah punah.`,
-          `Panggung kesenian tradisional sudah pasti punah.`,
-          `Panggung kesenian tradisional pada akhirnya punah.`,
-          `Panggung kesenian tradisional mungkin akan punah.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `Kendaraan ojek online makin menjamur akhir-akhir ini karena dirasakan lebih murah dalam memberikan tarif. Selain itu, respons yang cepat membuat perjalanan menjadi lebih singkat dan waktu perjalanan dapat diprediksi. Akan tetapi, banyaknya kendaraan ojek online menimbulkan kepadatan di jalan raya sehingga kemacetan tidak dapat dihindari.`,
-      question: `Berdasarkan informasi tersebut, manakah pertanyaan yang PASTI BENAR?`,
-      options: [
-          `Kemacetan di jalan terjadi karena tarif ojek online yang murah.`,
-          `Semua orang yang menggunakan ojek online tiba ditujuan tepat waktu.`,
-          `Moda transportasi lain memberikan tarif yang lebih mahal dibandingkan kendaraan ojek online.`,
-          `Waktu perjalanan moda transportasi lain tidak dapat diprediksi.`,
-          `Beberapa permasalahan lalu lintas terjadi karena menjamurnya kendaraan ojek online.`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      txtField: `Tingkat kematian yang disebabkan serangan jantung makin meningkat akhir-akhir ini. Dokter menyebutkan saat ini banyak masyarakat yang mengonsumsi makanan berkolesterol tinggi sebagai pemicu serangan jantung.`,
-      question: `Manakah pernyataan berikut yang akan MEMPERLEMAH pendapat dokter tersebut?`,
-      options: [
-          `Penyakit jantung bukan merupakan penyakit yang paling membahayakan.`,
-          `Masyarakat tidak menyadari pentingnya gaya hidup sehat.`,
-          `Makanan yang mengandung kolesterol tinggi meningkatkan risiko kematian.`,
-          `Produk-produk makanan saat ini digemari oleh masyarakat.`,
-          `Masyarakat tidak memperhatikan kandungan gizi dalam makanannya.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `Dalam beberapa bulan terakhir diberlakukan syarat bagi penumpang kereta api untuk menunjukkan tiket, KTP, dan surat keterangan sehat kepada petugas stasiun, Riki telah membeli tiket kereta api dan merasa dirinya sehat.`,
-      question: `Simpulan berdasarkan informasi dalam teks tersebut adalah Riki dapat melakukan perjalanan dengan menggunakan kereta api. Manakah pernyataan berikut yang menggambarkan kualitas simpulan tersebut?`,
-      options: [
-          `Simpulan tersebut pasti benar.`,
-          `Simpulan tersebut mungkin benar.`,
-          `Simpulan tersebut pasti salah.`,
-          `Simpulan tidak relevan dengan informasi yang diberikan.`,
-          `Simpulan tidak dapat dinilai karena informasi tidak cukup.`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      type: "MULTIPLE_SELECTION",
-      txtField: `Pakar meteorologi menyebutkan bahwa wilayah Z sering mengalami banjir bandang karena tingginya curah hujan dan kurangnya penanganan limbah.`,
-      question: `Pilih pernyataan yang MEMPERLEMAH pendapat pakar meteorologi tersebut. (Jawaban bisa lebih dari satu)`,
-      options: [
-          `Pemerintah telah membangun bendungan di wilayah Z untuk mengendalikan debit air saat hujan`,
-          `Warga di wilayah Z menanam banyak pohon di sekitar sungai untuk mengurangi banjir.`,
-          `Industri di wilayah Z lebih memilih membuang limbah ke sungai daripada ke tempat pembuangan sampah yang sesuai.`,
-          `Pemerintah telah memperbaiki sistem drainase di wilayah Z untuk mengurangi genangan air saat hujan.`,
-          `Warga di wilayah Z mengubah pola tanam mereka dengan mengurangi tanaman yang membutuhkan banyak air.`,
-          ],
-      answerIndex: [0,3]
-    },
-    {
-      txtField: `Seorang ekonom menyebutkan bahwa nilai ekspor negara W menurun karena kurangnya diversifikasi produk dan ketergantungan pada satu pasar ekspor.`,
-      question: `Penyataan-pernyataan berikut yang mendukung pendapat pakar ekonomi tersebut adalah....`,
-      options: [
-          `Pemerintah telah mempromosikan produk-produk unggulan negara W di pasar ekspor lainnya.`,
-          `Perusahaan di negara W memilih untuk memproduksi barang yang laku di satu pasar ekspor pada tahun sebelumnya.`,
-          `Pemerintah telah menambah tarif impor untuk barang sejenis yang diproduksi di dalam negeri.`,
-          `Industri di negara W telah memperluas pasar domestik mereka.`,
-          `Inflasi mengakibatkan nilal ekspor negara W menurun.`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `Ahli kesehatan A mengatakan, "Seseorang yang makan makanan cepat saji lebih rentan mengalami obesitas daripada seseorang yang makan makanan sehat."
-      \nAhli kesehatan B mengatakan, "Seseorang yang jarang berolahraga lebih rentan mengalami obesitas daripada seseorang yang rutin berolahraga."
-      \nData menunjukkan bahwa sebagian besar orang yang mengalami obesitas makan makanan cepat saji dan tidur kurang dari 6 jam per hari.`,
-      question: `Manakah kesimpulan berikut yang berkaitan dengan data tersebut?`,
-      options: [
-          `Memperkuat pernyataan ahli kesehatan A.`,
-          `Memperkuat pernyataan ahli kesehatan B.`,
-          `Memperlemah pernyataan ahli kesehatan A.`,
-          `Memperlemah pernyataan ahli kesehatan B.`,
-          `Tidak relevan dengan pernyataan ahli kesehatan A dan ahli kesehatan B.`,
-          ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `Sebuah artikel menyatakan bahwa daerah yang rawan terkena gempa bumi telah dipasangi sensor gempa yang dapat memberikan peringatan dini saat gempa bumi terjadi.`,
-      question: `Simpulan berdasarkan informasi dalam artikel tersebut adalah bahwa daerah tersebut tidak akan terkena gempa bumi lagi karena sudah dipasang sensor gempa. Manakah pernyataan berikut yang menggambarkan kualitas simpulan tersebut?`,
-      options: [
-          `Simpulan tersebut pasti salah.`,
-          `Simpulan tersebut mungkin benar.`,
-          `Simpulan tersebut pasti benar.`,
-          `Simpulan tidak relevan dengan informasi yang diberikan.`,
-          `Simpulan tidak dapat dinilai karena informasi tidak cukup.`,
-          ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `Akhir-akhir ini, banyak kasus begal yang meresahkan warga Yogyakarta. Seorang warga menyatakan bahwa kasus begal terjadi karena korban memiliki yang mencolok sehingga mengundang perhatian.`,
-      question: `Manakah pernyataan berikut yang memperkuat pendapat warga tersebut?`,
-      options: [
-          `Begal biasa dilakukan pada malam hari di tempat yang minim penerangan.`,
-          `Biasanya, begal memilih pengendara secara acak untuk dijadikan korbannya.`,
-          `Korban begal sebenarnya adalah musuh geng mereka yang sudah diincar sebelumnya.`,
-          `Kebanyakan korban begal merupakan ibu-ibu yang berkendara sendiri dan mengenakan tas branded yang berharga mahal.`,
-          `Selain begal, di Yogyakarta juga marak terjadi klitih yang mengincar anak usia sekolah.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      type: "MULTIPLE_SELECTION",
-      txtField: `Staf keuangan Swalayan X menyatakan bahwa angka penjualan di Swalayan X mengalami peningkatan sekitar 25% dibandingkan tahun lalu, karena diterapkannya program member, yaitu jika pembeli menjadi member maka akan mendapatkan voucher diskon yang dapat digunakan saat belanja selanjutnya.`,
-      question: `Manakah pernyataan-pernyataan di bawah ini yang jika benar akan MEMPERLEMAH pernyataan dari Staf keuangan Swalayan X tersebut? (Jawaban bisa lebih dari satu)`,
-      options: [
-          `Keberhasilan program member di Swalayan X sudah dapat dilihat pada tahun sebelumnya.`,
-          `Kenaikan penjualan di Swalayan X tidak hanya karena diterapkannya program member.`,
-          `Swalayan X belum pernah menerapkan program member sebelumnya.`,
-          `Harga kebutuhan di Swalayan X sangat tinggi dibanding swalayan yang lainnya.`,
-          `Voucher diskon yang diperoleh member adalah potongan harga hingga 50% jika total belanja mencapai satu juta rupiah.`,
-          ],
-      answerIndex: [0,1,3]
-    },
-    // Penalaran Deduktif
-    {
-      txtField: `Kegiatan ekstrakulikuler dilakukan di luar ruangan jika diadakan pada hari Minggu. Jika kegiatan ekstrakulikuler dilakukan di luar ruangan, siswa mengenakan pakaian dinas lapangan.`,
-      question: `Simpulan yang paling tepat adalah ....`,
-      options: [
-          `Jika kegiatan tidak diadakan pada hari Minggu, siswa tidak mengenakan pakaian dinas lapangan.`,
-          `Jika siswa tidak mengenakan pakaian dinas lapangan, kegiatan ekstrakulikuler tidak diadakan pada hari Minggu.`,
-          `Jika kegiatan ekstrakulikuler tidak dilakukan di luar ruangan, siswa tidak mengenakan pakaian dinas lapangan.`,
-          `Jika siswa mengenakan pakaian dinas lapangan, kegiatan diadakan pada hari Minggu.`,
-          `Jika kegiatan ekstrakulikuler dilakukan di luar ruangan, kegiatan tersebut tidak diadakan pada hari Minggu.`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `Pada saat menjelang liburan, Santi berencana pergi ke luar kota. Jika Santi pergi ke Yogyakarta, ia akan mengajak adiknya. Jika Santi pergi ke Bali, ia akan mengajak temannya. Pada saat liburan, ia tidak mengajak adik atau temannya.`,
-      question: `Simpulan yang paling tepat adalah ....`,
-      options: [
-          `Santi tidak pergi ke Bali, tetapi pergi ke Yogyakarta.`,
-          `Santi tidak pergi ke Yogyakarta, tetapi pergi ke Bali.`,
-          `Santu tidak pergi ke Bali tau ke Yogyakarta.`,
-          `Santi memutuskan liburan ke kota lain.`,
-          `Santi pergi ke Bali atau ke Yogyakarta`,
-          ],
+        "Hidroponik dapat menjadi solusi bercocok tanam di lahan terbatas.",
+        "Sayuran hidroponik lebih sehat karena bebas pestisida.",
+        "Biaya listrik tidak berpengaruh terhadap biaya operasional hidroponik.",
+        "Hidroponik membutuhkan pompa air untuk sirkulasi nutrisi.",
+        "Tanaman hidroponik dapat ditanam di perkotaan."
+      ],
       answerIndex: [2]
     },
-    {
-      txtField: `Jika guru Matematika menambah jam pelajaran di hari Rabu, nilai siswa banyak yang meningkat. Jika nilai siswa banyak yang meningkat, siswa dapat mengikuti kegiatan ekstrakulikuler.`,
-      question: `Simpulan yang tepat adalah ...`,
+    { //Soal 2
+      txtField: "Kopi merupakan minuman yang banyak dikonsumsi masyarakat. Kandungan kafein dalam kopi dapat meningkatkan kewaspadaan dan konsentrasi. Namun, konsumsi kopi berlebihan dapat menyebabkan gangguan tidur dan kecemasan. Sebagai alternatif, teh hijau juga mengandung kafein dalam jumlah lebih rendah serta antioksidan yang baik bagi tubuh.",
+      question: "Berdasarkan paragraf tersebut, manakah yang PALING MUNGKIN menjadi asumsi yang mendasari argumen di atas?",
       options: [
-          `Jika guru Matematika manambah jam pelajaran, nilai siswa banyak yang meningkat`,
-          `Guru Matematika menambah jam pelajaran di hari Rabu jika siswa tidak mengikuti kegiatan eksrakulikuler`,
-          `Jika guru Matematika menambah jam pelajaran di hari Rabu, ekstrakulikuler ditiadakan`,
-          `Siswa dapat mengikuti kegiatan ekstrakulikuler jika guru Matematika menambah jam pelajaran di hari Rabu`,
-          `Nilai siswa banyak yang meningkat jika tidak mengikuti kegiatan ekstrakulikuler`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `Jika pantai di daerah X ramai dikunjungi wisatawan, perekonomian masyarakat daerah tersebut meningkat.
-      \nJika ekosistem di pantai daerah X tidak dijaga dengan baik, hasil tangkapan nelayan daerah tersebut akan tercemar. Saat ini perekonomian masyarakat daerah X tidak mengalami peningkatan atau hasil tangkapan nelayan daerah x tidak tercemar.`,
-      question: `Simpulan yang tepat adalah ...`,
-      options: [
-          `Pantai daerah X belum ramai dikunjungi wisatawan, tetapi ekosistem pantai di daerah tersebut tidak dijaga dengan baik.`,
-          `Pantai daerah X ramai dikunjungi wisatawan, tetapi ekosistem pantai di daerah tersebut dijaga dengan baik.`,
-          `Ekosistem pantai di daerah tersebut dijaga dengan baik karena belum ramai dikunjungi wisatawan.`,
-          `Pantai daerah X tidak ramai dikunjungi wisatawan atau ekosistem di pantai daerah tersebut dijaga dengan baik.`,
-          `Pantai X belum ramai dikunjungi wisatawan atau ekosistem pantai di daerah tersebut tidak dijaga dengan baik.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `Jerawat bukan penyakit. Semua penyakit ada obatnya.`,
-      question: `Simpulan yang tepat adalah ....`,
-      options: [
-          `Beberapa penyakit ada obatnya`,
-          `Semua jerawat tidak ada obatnya`,
-          `Sesuatu yang ada obatnya adalah bukan penyakit`,
-          `Sesuatu yang ada obatnya bukan jerawat`,
-          `Kebanyakan jerawat ada obatnya`,
-          ],
+        "Teh hijau tidak mengandung kafein.",
+        "Orang yang ingin menghindari kafein dapat beralih ke teh hijau.",
+        "Teh hijau memiliki kafein lebih tinggi daripada kopi.",
+        "Kopi tidak memiliki antioksidan.",
+        "Konsumsi kopi selalu menyebabkan gangguan tidur."
+      ],
       answerIndex: [1]
     },
-    {
-      txtField: `Semua Negara yang termasuk dalam 10 negara yang paling bahagia di dunia versi World Happiness Report mempunyai pendapatan perkapita yang besar dan tingkat korupsinya yang rendah.
-      \nDenmark termasuk dalam 10 negara paling bahagia di dunia versi World Happiness Report.`,
-      question: `Simpulan yang tepat adalah ....`,
+    { //Soal 3
+      txtField: "Sejarawan A berpendapat bahwa Kerajaan Majapahit mencapai puncak kejayaan pada masa pemerintahan Hayam Wuruk. Sejarawan B menyatakan bahwa Patih Gajah Mada adalah tokoh di balik kebesaran Majapahit. Fakta sejarah mencatat bahwa Gajah Mada adalah mahapatih yang mengucapkan Sumpah Palapa, namun Hayam Wuruk adalah raja yang memerintah saat itu.",
+      question: "Manakah pernyataan yang PALING TEPAT berdasarkan fakta tersebut?",
       options: [
-          `Bisa jadi Denmark mempunyai pendapatan per kapita yang besar`,
-          `Denmark mempunyai pendapatan per kapita dan tingkat korupsi yang tinggi`,
-          `Denmark tidak termasuk dalam 10 negara paling berbahagia di dunia versi World Happiness Report`,
-          `Denmark mempunyai pendapatan per kapita yang besar dan tingkat korupsinya yang rendah`,
-          `Denmark mempunyai tingkat korupsi dan pendapatan per kapita yang rendah`,
-          ],
-      answerIndex: [3]
+        "Memperkuat pendapat Sejarawan A.",
+        "Memperlemah pendapat Sejarawan A.",
+        "Memperkuat pendapat Sejarawan B.",
+        "Memperlemah pendapat Sejarawan B.",
+        "Tidak relevan dengan kedua pendapat."
+      ],
+      answerIndex: [4]
     },
-    {
-      txtField: `Semua karyawan menghadiri acara family gathering. Acara family gathering dilaksanakan hari Sabtu.`,
-      question: `Simpulan yang tepat adalah ....`,
+    { //Soal 4
+      txtField: "Seorang mahasiswa ingin membeli laptop untuk keperluan kuliah. Laptop X menawarkan spesifikasi tinggi dengan harga mahal, namun baterainya tahan lama. Laptop Y memiliki spesifikasi standar dengan harga terjangkau, tetapi baterainya cepat habis. Mahasiswa tersebut akhirnya memilih laptop X.",
+      question: "Manakah yang PALING MEMPERKUAT keputusan mahasiswa tersebut?",
       options: [
-          `Semua karyawan hadir di hari Sabtu`,
-          `Semua karyawan lama tidak hadir di hari Sabtu`,
-          `Semua karyawan baru tidak hadir di hari Sabtu`,
-          `Semua karyawan hadir kecuali di hari Sabtu`,
-          `Tak semua karyawan hadir di hari Sabtu`,
-          ],
+        "Mahasiswa sering bekerja di luar ruangan tanpa akses listrik.",
+        "Mahasiswa menginginkan laptop dengan harga murah.",
+        "Mahasiswa hanya menggunakan laptop di rumah.",
+        "Mahasiswa tidak membutuhkan spesifikasi tinggi.",
+        "Mahasiswa lebih suka laptop dengan desain menarik."
+      ],
       answerIndex: [0]
     },
-    {
-      txtField: `Tidak satu pun badak di Ujung Kulon bercula dua. Kebanyakan badak di Ujung kulon bertubuh kecil.`,
-      question: `Simpulan yang tepat adalah ....`,
+    { //Soal 5
+      txtField: "Ketersediaan fasilitas olahraga di suatu daerah diyakini dapat meningkatkan tingkat kebugaran masyarakat. Seorang peneliti berpendapat bahwa masyarakat di Kota P memiliki tingkat kebugaran lebih tinggi daripada masyarakat di Kota Q.",
+      question: "Manakah pernyataan di bawah ini yang PALING MEMPERLEMAH pendapat peneliti tersebut?",
       options: [
-          `Semua badak bercula dua`,
-          `Sedikit badak bertumbuh kecil`,
-          `Beberapa badak bertubuh kecil tidak bercula dua`,
-          `Beberapa badak tinggal di Ujung Kulon`,
-          `Beberapa badak bercula Satu`,
-          ],
-      answerIndex: [2]
+        "Di Kota P terdapat banyak taman kota yang dilengkapi jalur lari.",
+        "Di Kota Q hanya ada satu pusat kebugaran yang buka 24 jam.",
+        "Sebagian besar warga Kota P lebih memilih berolahraga di rumah.",
+        "Pemerintah Kota Q gencar mengadakan event olahraga mingguan.",
+        "Jumlah fasilitas olahraga di Kota P sama banyaknya dengan di Kota Q."
+      ],
+      answerIndex: [4]
     },
-    {
-      txtField: `Semua perusahaan otomotif sering melakukan inovasi. Perusahaan otomotif yang sering melakukan inovasi, suka mengikuti pameran. Sebagian perusahaan otomotif yang mengikuti pameran, tidak mempunyai pangsa pasar yang besar.`,
-      question: `Simpulan yang tepat adalah ....`,
+    { //Soal 6
+      txtField: "Membaca buku dapat meningkatkan wawasan dan kemampuan berpikir kritis. Selain itu, membaca juga dapat mengurangi stres dan meningkatkan empati. Namun, membaca terlalu lama tanpa istirahat dapat menyebabkan mata lelah dan gangguan penglihatan.",
+      question: "Berdasarkan informasi di atas, manakah pernyataan yang BENAR?",
       options: [
-          `Sebagian perusahaan otomotif mempunyai pangsa pasar yang besar`,
-          `Sebagian perusahaan otomotif suka mengikuti pameran dan tidak suka melakukan Inovasi`,
-          `Semua perusahaan otomotif tidak mempunyai pangsa pasar yang besar tetapi sering melakukan inovasi`,
-          `Semua perusahaan otomotif tidak mempunyai pangsa pasar yang besar tetapi suka melakukan promosi`,
-          `Semua perusahhan otomatis sering melakukan inovasi tetapi tidak suka mengikuti pameran`,
-          ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `Semua guru berangkat ke sekolah pada pagi hari dan pulang pada petang hari. Sebagian orang lulusan Fakultas Keguruan dan Ilmu pendidikan (FKIP) berprofesi sebagai guru. Intan adalah lulusan FKIP Universitas Tanjungpura Pontianak. Intan berangkat kerja di pagi hari dan pulang pada petang hari`,
-      question: `Simpulan yang tepat adalah ....`,
-      options: [
-          `Intan bukan guru`,
-          `Tidak dapat ditarik kesimpulan`,
-          `Intan pulang kerja pada pagi hari`,
-          `Intan adalah pegawai negeri`,
-          `Intan adalah guru`,
-          ],
+        "Membaca buku pasti menyebabkan mata lelah.",
+        "Stres dapat dikurangi dengan membaca buku.",
+        "Kemampuan berpikir kritis hanya diperoleh dari membaca.",
+        "Gangguan penglihatan pasti terjadi jika membaca terlalu lama.",
+        "Membaca buku selalu meningkatkan empati."
+      ],
       answerIndex: [1]
     },
-    // Penalaran Kuantitatif
-    {
-      //txtField: ``,
-      question: `Komposisi detergen dan pewangi untuk mencuci pakaian adalah 4:3. Jika 6 takaran detergen dapat digunakan untuk mencuci 3 kg pakaian, takaran pewangi yang dibutuhkan untuk mencuci 12 kg pakaian adalah ....`,
+    { //Soal 7
+      txtField: "Akhir-akhir ini, toko buku sepi pengunjung. Biasanya, saat ada peluncuran buku baru dari penulis terkenal, banyak orang datang untuk membeli.",
+      question: "Berdasarkan pernyataan tersebut, manakah simpulan yang BENAR?",
       options: [
-          `6 takar`,
-          `9 takar`,
-          `12 takar`,
-          `18 takar`,
-          `24 takar`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      //txtField: ``,
-      question: `Pendapatan A lebih rendah 30% daripada pendapatan B, berapa pendapatan B jika pendapatan A adalah Rp2.100.000,00?`,
-      options: [
-          `Rp900.000,00`,
-          `Rp1.470.000,00`,
-          `Rp2.370.000,00`,
-          `Rp2.570.000,00`,
-          `Rp3.000.000,00`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      //txtField: ``,
-      question: `Manakah di antara bilangan berikut ini yang nilainya PALING MENDEKATI hasil pengurangan $1,92 - \\frac{50}{47}$?`,
-      options: [
-          `45%`,
-          `54%`,
-          `85%`,
-          `65%`,
-          `64%`,
-          ],
-      answerIndex: [2]
-    },
-    {
-      //txtField: ``,
-      question: `Berat angkatan atlet angkat besi pada latihan kesatu sampai kedua secara berturut-turut adalah 98, 107 kilogram, sedangkan pada latihan keempat sampai ketujuh adalah 114, 112, 121, 119 kilogram. Jika tren berat angkatan tersebut bersifat konstan, berapa kilogram berat angkatan pada latihan ketiga?`,
-      options: [
-          `105`,
-          `107`,
-          `109`,
-          `113`,
-          `116`,
-          ],
+        "Saat ini tidak ada peluncuran buku baru dari penulis terkenal.",
+        "Harga buku saat ini terlalu mahal.",
+        "Buku-buku baru yang diluncurkan kurang menarik.",
+        "Toko buku sedang tutup untuk renovasi.",
+        "Penulis terkenal sedang tidak menulis buku baru."
+      ],
       answerIndex: [0]
     },
-    {
-      //txtField: ``,
-      question: `Hasil perhitungan yang lebih besar dari $7,77+\\frac{5}{6}$ adalah ....`,
+    { //Soal 8
+      txtField: "Sebuah restoran cepat saji yang dulu selalu ramai dikunjungi, setelah berganti pemilik, pelayanannya menjadi lambat dan sering terjadi kesalahan pesanan.",
+      question: "Manakah pernyataan yang PALING MUNGKIN menjelaskan perbedaan kedua kondisi tersebut?",
       options: [
-          `$\\frac{9}{12} + 7,75$`,
-          `$\\frac{12}{13} + 7,79$`,
-          `$\\frac{13}{17} + 7,78$`,
-          `$\\frac{15}{19} + 7,76$`,
-          `$\\frac{19}{23} + 7,71$`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      //txtField: ``,
-      question: `Untuk mengecat sebuah dinding dibutuhkan perbandingan cat dan air sebesar 3:1. Jika dinding seluas $600$ $m^2$ membutuhkan 2 liter air, volume cat yang dibutuhkan untuk dinding seluas $2400$ $m^2$ adalah ....`,
-      options: [
-          `8 liter`,
-          `12 liter`,
-          `16 liter`,
-          `18 liter`,
-          `24 liter`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      //txtField: ``,
-      question: `Jumlah produksi guci dari sebuah pabrik gerabah selama lima hari berturut-turut adalah sebanyak 24, 27, 22, 25, dan 20. Sementara itu, jumlah produksi pot pada hari yang sama adalah 13, 9, 11, 7, dan 9. Jika tren dari kedua produksi bersifat konstan, berapa banyak produksi guci dan pot pada hari keenam?`,
-      options: [
-          `15 guci dan 5 buah pot.`,
-          `15 guci dan 13 buah pot.`,
-          `17 guci dan 11 buah pot.`,
-          `23 guci dan 5 buah pot.`,
-          `23 guci dan 13 buah pot.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      //txtField: ``,
-      question: `Setiap hari, A selalu berhasil menjual 18 suvenir yang dibuatnya dengan harga satuan Rp10.000,00. Pendapatan B dari hasil berjualan minuman adalah Rp125.000,00 hingga Rp175.000,00 per hari. Sementara itu, pendapatan C sebagai penjaga toko adalah Rp1.050.000,00 per minggu. Berdasarkan informasi tersebut, manakah pernyataan yang paling tepat mengenai pendapat ketiga orang tersebut?`,
-      options: [
-          `Pendapatan B paling rendah.`,
-          `Pendapatan C paling tinggi.`,
-          `Pendapatan C lebih besar daripada pendapatan A.`,
-          `Pendapatan B lebih besar daripada pendapatan C.`,
-          `Pendapat A dan C tidak mungkin setara.`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      //txtField: ``,
-      question: `Karyawan A mendapatkan gaji minimal Rp840.000,00 per minggu. Karyawan B mendapatkan gaji antara Rp110.000,00 hingga Rp125.000,00 per hari, tergantung dari beban kerjanya. Sementara itu, karyawan C mendapatkan penghasilan harian dari pengangkutan 10 orang per hari, dengan tarif Rp12.000,00 per orang. Jika diasumsikan mereka bekerja 7 hari seminggu, manakah mernyataan yang PALING TEPAT?`,
-      options: [
-          `Gaji karyawan C paling tinggi.`,
-          `Gaji karyawan B paling rendah.`,
-          `Gaji karyawan A dapat setara dengan gaji karyawan C.`,
-          `Gaji karyawan C lebih tinggi daripada karyawan A.`,
-          `Gaji karyawan C lebih tinggi daripada karyawan B.`,
-          ],
-      answerIndex: [2]
-    },
-    {
-      //txtField: ``,
-      question: `Jumlah penjualan bunga mawar di sebuah toko selama lima hari berturut-turut adalah 30, 35, 37, 42, dan 44. Sementara itu jumlah penjualan bunga melati untuk lima hari yang sama adalah 13, 14, 16, 19, dan 23. Jika tren penjualan tersebut bersifat konstan, berapa jumlah penjualan bunga mawar dan melati pada hari keenam?`,
-      options: [
-          `49 bunga mawar dan 28 bunga melati`,
-          `49 bunga mawar dan 29 bunga Melati`,
-          `49 bunga mawar dan 30 bunga Melati`,
-          `52 bunga mawar dan 28 bunga Melati`,
-          `42 bunga mawar dan 29 bunga Melati`,
-          ],
+        "Pemilik baru kurang berpengalaman dalam mengelola restoran.",
+        "Setelah berganti pemilik, banyak restoran baru bermunculan.",
+        "Pemilik baru justru meningkatkan kualitas makanan.",
+        "Pemilik baru mengadakan promo diskon besar-besaran.",
+        "Restoran tersebut tidak pernah mendapat sertifikat halal."
+      ],
       answerIndex: [0]
     },
+    { //Soal 9
+      txtField: "Perusahaan X setiap tahun mengadakan pelatihan kepemimpinan bagi karyawannya. Karyawan yang mengikuti pelatihan tersebut berkesempatan mendapatkan promosi jabatan. Catatan menunjukkan bahwa setiap tahun hanya 5 orang yang dipromosikan.",
+      question: "Berdasarkan paragraf di atas, manakah pernyataan yang PALING MUNGKIN BENAR mengenai Perusahaan X?",
+      options: [
+        "Perusahaan X selalu mengadakan pelatihan setiap tahun.",
+        "Jumlah karyawan yang dipromosikan meningkat setiap tahun.",
+        "Semua karyawan yang mengikuti pelatihan pasti dipromosikan.",
+        "Pelatihan kepemimpinan hanya diikuti oleh calon manajer.",
+        "Promosi jabatan hanya diberikan kepada peserta pelatihan."
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 10
+      txtField: "Pemilik butik \"Cantik\" mengatakan bahwa penjualan meningkat drastis dalam sebulan terakhir setelah bekerja sama dengan seorang selebriti lokal yang mempromosikan produknya.",
+      question: "Manakah pernyataan berikut yang jika benar akan MEMPERKUAT pernyataan pemilik butik?",
+      options: [
+        "Selebriti tersebut baru saja terlibat skandal.",
+        "Butik \"Cantik\" menaikkan harga semua produk.",
+        "Selebriti tersebut memiliki banyak pengikut di media sosial.",
+        "Selebriti tersebut menghapus semua unggahan tentang butik.",
+        "Butik \"Cantik\" mengurangi jumlah stok barang."
+      ],
+      answerIndex: [2]
+    }
   ],
+}
+
+const soalPUDeduktif: ujianSession = {
+  name: "Penalaran Umum - Penalaran Deduktif",
+  description: "Ada 10 soal yang akan dikerjakan dalam 10 menit",
+  duration: 10 * 60,
+  questions: [
+    { //Soal 1
+      txtField: "Kualitas udara di perkotaan dapat membaik jika jumlah kendaraan bermotor dikurangi. Upaya efektif untuk mengurangi kendaraan adalah dengan memperbaiki transportasi umum.",
+      question: "Berdasarkan informasi tersebut, manakah simpulan yang BENAR?",
+      options: [
+        "Perbaikan transportasi umum adalah satu-satunya cara untuk memperbaiki kualitas udara.",
+        "Jika transportasi umum diperbaiki, kualitas udara pasti membaik.",
+        "Selain perbaikan transportasi umum, pembatasan kendaraan juga dapat mengurangi polusi.",
+        "Jika transportasi umum diperbaiki, kendaraan bermotor akan hilang.",
+        "Kualitas udara membaik jika transportasi umum diperbaiki."
+      ],
+      answerIndex: [4]
+    },
+    { //Soal 2
+      txtField: "Jika Dina lulus ujian, ia akan dibelikan sepeda baru. Jika Dina mendapat beasiswa, ia akan melanjutkan studi ke luar negeri. Jika Dina lulus ujian atau mendapat beasiswa, manakah simpulan berikut yang PALING BENAR?",
+      question: "Manakah simpulan yang paling benar?",
+      options: [
+        "Dina akan dibelikan sepeda baru dan melanjutkan studi.",
+        "Dina akan dibelikan sepeda baru atau melanjutkan studi.",
+        "Dina tidak akan melanjutkan studi karena dibelikan sepeda.",
+        "Dina tidak akan dibelikan sepeda dan tidak ke luar negeri.",
+        "Jika Dina tidak lulus ujian, ia tidak akan mendapat beasiswa."
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 3
+      txtField: "Rina berencana pergi ke mal untuk membeli sepatu atau menonton film. Temannya, Sari, mengajak Rina untuk makan di restoran baru. Namun, saat tiba di mal, bioskop sedang tutup karena perbaikan.",
+      question: "Apa yang PALING MUNGKIN dilakukan Rina di mal?",
+      options: [
+        "Membeli sepatu saja.",
+        "Menonton film di bioskop lain.",
+        "Makan di restoran baru bersama Sari.",
+        "Pulang karena bioskop tutup.",
+        "Membeli sepatu atau makan di restoran."
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 4
+      txtField: "Ketika toko online memberikan gratis ongkir, jumlah pesanan meningkat dibanding hari biasa. Hal serupa terjadi saat toko mengadakan cashback. Namun, ketika toko hanya mengganti tampilan website, jumlah pesanan tidak berubah.",
+      question: "Berdasarkan informasi di atas, manakah dari pernyataan berikut yang PALING MUNGKIN BENAR?",
+      options: [
+        "Jumlah pesanan meningkat saat gratis ongkir dan cashback diberikan bersamaan.",
+        "Gratis ongkir atau cashback dapat meningkatkan jumlah pesanan.",
+        "Mengganti tampilan website secara rutin dapat meningkatkan pesanan.",
+        "Diskon produk tidak mempengaruhi jumlah pesanan.",
+        "Peningkatan pesanan saat cashback lebih besar daripada gratis ongkir."
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 5
+      txtField: "Andi rajin berolahraga setiap pagi. Kebiasaan ini membuat tubuhnya bugar dan daya tahan tubuhnya kuat. Meskipun terkadang merasa lelah setelah olahraga, Andi jarang sakit.",
+      question: "Berdasarkan informasi di atas, manakah pernyataan yang BENAR?",
+      options: [
+        "Andi hanya berolahraga di pagi hari.",
+        "Andi tidak pernah sakit karena olahraga.",
+        "Kelelahan setelah olahraga selalu membuat Andi sakit.",
+        "Kebiasaan olahraga membantu Andi jarang sakit.",
+        "Andi akan sakit jika tidak berolahraga."
+      ],
+      answerIndex: [3]
+    },
+    { //Soal 6
+      txtField: "Film bergenre dokumenter biasanya kurang diminati karena dianggap membosankan oleh penonton awam. Namun, film dokumenter \"Keindahan Bawah Laut\" berhasil menarik perhatian berkat sinematografi yang memukau dan narasi yang menarik.",
+      question: "Berdasarkan pernyataan tersebut, manakah simpulan yang PALING TEPAT?",
+      options: [
+        "Semua film dokumenter membosankan.",
+        "Film dokumenter selalu memiliki sinematografi memukau.",
+        "Hanya film \"Keindahan Bawah Laut\" yang menarik.",
+        "Penonton awam tidak menyukai film dokumenter apapun.",
+        "Sebagian penonton tertarik pada film tersebut karena sinematografinya."
+      ],
+      answerIndex: [4]
+    },
+    { //Soal 7
+      txtField: "Program vaksinasi di Desa Sehat telah dilaksanakan untuk balita. Selama setahun terakhir, terdapat 50 balita yang divaksin, masing-masing pada hari yang berbeda. Setiap kali petugas kesehatan datang, ibu-ibu memberikan makanan ringan sebagai ucapan terima kasih. Petugas yang datang hanya satu orang.",
+      question: "Berdasarkan paragraf tersebut, manakah peristiwa yang PALING MUNGKIN BENAR mengenai Desa Sehat?",
+      options: [
+        "Hanya ada 50 balita di desa itu.",
+        "Sebagian besar balita di desa itu sudah divaksin.",
+        "Ibu-ibu memberikan setidaknya 50 bingkisan selama setahun.",
+        "Petugas kesehatan datang setiap minggu.",
+        "Vaksinasi dilakukan secara serentak."
+      ],
+      answerIndex: [2]
+    },
+    { //Soal 8
+      txtField: "Sebuah restoran dapat direkomendasikan sebagai tempat nongkrong yang nyaman jika menyediakan area outdoor dan live music. Area outdoor ditandai dengan adanya taman atau teras. Live music biasanya diadakan setiap akhir pekan. Restoran R memiliki area outdoor yang luas.",
+      question: "Manakah simpulan di bawah ini yang PALING MUNGKIN BENAR?",
+      options: [
+        "Restoran R memiliki area outdoor.",
+        "Restoran R memiliki live music setiap akhir pekan.",
+        "Restoran R nyaman untuk nongkrong.",
+        "Restoran R tidak memiliki live music.",
+        "Restoran R lebih ramai pada akhir pekan."
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 9
+      txtField: "Lina ingin membeli buah untuk diet. Ia mempertimbangkan apel dan pisang. Apel mengandung serat tinggi dan rendah kalori, sedangkan pisang mengandung kalium dan vitamin B6. Lina hanya bisa membeli satu jenis buah karena uang terbatas.",
+      question: "Berdasarkan bacaan tersebut, manakah pernyataan yang PALING TEPAT menggambarkan pilihan Lina?",
+      options: [
+        "Lina bisa membeli apel untuk mendapatkan kalium.",
+        "Lina bisa membeli pisang untuk mendapatkan serat tinggi.",
+        "Apel adalah satu-satunya buah rendah kalori.",
+        "Jika Lina membeli apel, ia mendapat serat; jika pisang, ia mendapat kalium.",
+        "Lina pasti membeli apel karena ingin diet."
+      ],
+      answerIndex: [3]
+    },
+    { //Soal 10
+      txtField: "Untuk menjadi anggota klub sepak bola, seseorang harus berusia antara 15-20 tahun, memiliki kemampuan dasar sepak bola, dan bersedia latihan setiap sore. Roni berusia 17 tahun, belum pernah bermain sepak bola, tetapi bersedia latihan. Simpulan: Roni diterima menjadi anggota klub.",
+      question: "Manakah pernyataan berikut yang menggambarkan kualitas simpulan tersebut?",
+      options: [
+        "Simpulan tersebut pasti benar.",
+        "Simpulan tersebut mungkin benar.",
+        "Simpulan tersebut pasti salah.",
+        "Simpulan tidak relevan dengan informasi yang diberikan.",
+        "Simpulan tidak dapat dinilai karena informasi tidak cukup."
+      ],
+      answerIndex: [2]
+    }
+  ]
+}
+
+const soalPUKuantitatif: ujianSession = {
+  name: "Penalaran Umum - Penalaran Kuantitatif",
+  description: "Ada 10 soal yang akan dikerjakan dalam 10 menit",
+  duration: 10 * 60,
+  questions: [
+    { //Soal 1
+      txtField: "Sebuah aplikasi pengiriman makanan mencatat jumlah pesanan setiap hari. Data pesanan pada hari Selasa hingga Sabtu berturut-turut adalah 120, 117, 122, 119, dan 124. Jika pola perubahan jumlah pesanan bersifat konstan (berulang) sejak hari Senin, maka jumlah pesanan pada hari Senin adalah ....",
+      question: "Berapa jumlah pesanan pada hari Senin?",
+      options: ["115", "117", "118", "119", "121"],
+      answerIndex: [0]
+    },
+    { //Soal 2
+      txtField: "Di sebuah peternakan, perbandingan jumlah sapi, kambing, dan domba adalah 5 : 3 : 2. Jika total jumlah hewan ternak tersebut adalah 150 ekor, maka jumlah kambing dan domba adalah ... ekor.",
+      question: "Berapa jumlah kambing dan domba?",
+      options: ["45", "60", "75", "90", "105"],
+      answerIndex: [2]
+    },
+    { //Soal 3
+      txtField: "Bilangan yang PALING MENDEKATI hasil penjumlahan 2,75 + 45,2% adalah ....",
+      question: "Hasil penjumlahan tersebut mendekati?",
+      options: ["3,02", "3,20", "3,21", "3,22", "3,23"],
+      answerIndex: [1]
+    },
+    { //Soal 4
+      txtField: "Berikut adalah data penjualan minuman di Kafe Segar dari hari Senin hingga Jumat.\n\nHari: Senin, Selasa, Rabu, Kamis, Jumat\nKopi: 30, 32, 34, 36, 38\nTeh: 25, 24, 23, 22, 21\nJus: 20, 22, 24, 26, 28",
+      question: "Berdasarkan data tersebut, manakah pernyataan yang PALING TEPAT untuk menggambarkan kondisi penjualan minuman pada hari Sabtu?",
+      options: [
+        "Penjualan kopi akan menurun.",
+        "Penjualan teh akan menurun.",
+        "Penjualan jus akan menurun.",
+        "Penjualan kopi akan lebih banyak daripada teh.",
+        "Penjualan jus akan lebih banyak daripada kopi."
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 5
+      txtField: "Berdasarkan data pada soal nomor 24, pada hari apakah Kafe Segar memiliki persentase penjualan kopi PALING BESAR?",
+      question: "Hari dengan persentase penjualan kopi terbesar?",
+      options: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"],
+      answerIndex: [4]
+    },
+    { //Soal 6
+      txtField: "Tabel berikut menunjukkan data jumlah pelamar divisi keuangan di PT Sukses Selalu selama lima tahun.\n\nTahun 1: 40, Tahun 2: 45, Tahun 3: 55, Tahun 4: 60, Tahun 5: 70.\nJika total pelamar selama lima tahun tersebut adalah 270 orang, jumlah pelamar pada tahun-tahun yang tidak melebihi 20% dari total pelamar adalah ... orang.",
+      question: "Jumlah pelamar pada tahun-tahun yang tidak melebihi 20% total?",
+      options: ["80", "85", "90", "95", "100"],
+      answerIndex: [1]
+    },
+    { //Soal 7
+      txtField: "Sebuah toko roti mencatat stok roti selama 5 hari berturut-turut: 50, 53, 58, 65, 74. Pada periode yang sama, jumlah roti terjual adalah 30, 34, 39, 45, 52. Jika tren perubahan stok dan penjualan bersifat konstan, berapa sisa stok setelah penjualan pada hari ke-6?",
+      question: "Sisa stok hari ke-6?",
+      options: ["23", "24", "25", "26", "27"],
+      answerIndex: [2]
+    },
+    { //Soal 8
+      txtField: "Jumlah pengunjung museum pada hari Minggu 40% lebih tinggi daripada hari Sabtu. Jika pengunjung hari Minggu sebanyak 56 orang, maka pengunjung hari Sabtu adalah ... orang.",
+      question: "Pengunjung hari Sabtu?",
+      options: ["35", "38", "40", "42", "45"],
+      answerIndex: [2]
+    },
+    { //Soal 9
+      txtField: "Bacalah dua informasi berikut.\n(1) Rata-rata nilai ujian 15 siswa adalah 80.\n(2) Rata-rata nilai ujian seluruh siswa adalah 75.\nPilihlah informasi yang dapat digunakan untuk menjawab pertanyaan, \"Berapa jumlah nilai seluruh siswa?\"",
+      question: "Informasi mana yang cukup?",
+      options: [
+        "Cukup (1) saja.",
+        "Cukup (2) saja.",
+        "Informasi (1) dan (2) bersama-sama.",
+        "Menggunakan (1) saja atau (2) saja.",
+        "Kedua informasi tidak cukup."
+      ],
+      answerIndex: [4]
+    },
+    { //Soal 10
+      txtField: "Lima orang pedagang menjual dua jenis buah: mangga dan jeruk. Keuntungan jeruk adalah 1/3 dari keuntungan mangga. Berikut data penjualan masing-masing pedagang:\nPedagang: Ani, Budi, Cici, Dedi, Eka\nMangga (kg): 40, 45, 50, 55, 60\nJeruk (kg): 80, 70, 60, 50, 40\nPedagang manakah yang memperoleh keuntungan TERBESAR KEDUA?",
+      question: "Pedagang dengan keuntungan terbesar kedua?",
+      options: ["Ani", "Budi", "Cici", "Dedi", "Eka"],
+      answerIndex: [3]
+    }
+  ]
 }
 
 const soalPPU: ujianSession = {
   name: "Pengetahuan dan Pemahaman Umum",
-  description: "Ada 20 soal yang akan dikerjakan dalam 15 menit",
+  description: "Ada 20 soal yang akan dikerjakan dalam 10 menit",
+  duration: 10 * 60,
   questions: [
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Literasi adalah istilah umum yang merujuk kepada seperangkat kemampuan dan keterampilan individu dalam membaca, menulis, berbicara, menghitung, dan memecahkan masalah pada tingkat keahlian tertentu yang diperlukan dalam kehidupan sehari-hari.(2) Dari definisi itu, literasi tidak bisa dilepaskan dari kemampuan berbahasa.(3) Namun, tingkat literasi di Indonesia masih sangat rendah.(4) Berdasarkan survei yang dilakukan tahun 2016 literasi menempatkaan Indonesia berada di posisi ke-61 dari 62 negara.(5) Data ini menunjukkan bahwa tingkat literasi di Indonesia sangat rendah.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(6) Keluarga merupakan lembaga pendidikan informal yang berperan paling penting dalam pengembangan literasi karena keluarga, terutama ibu, adalah sekolah pertama bagi anak dan sangat berpengaruh terhadap perilaku dan perkembangan anak.(7) Keluarga di rumah adalah wadah efektif yang memiliki kuantitas waktu lebih banyak dibandingkan Pendidikan formal sehingga diharapkan mampu menjadi penggerak literasi bagi anak.(8) Oleh karena itu, literasi pertama kali harus dimulai dari keluarga sebagai pilar utama penggerak literasi, selanjutnya akan menukar kepada masyarakat, dan berakhir dengan terbentuknya budaya literasi tinggi.`,
-      question: "Dari bacaan di atas, frasa yang berpola makna sama dengan frasa wawasan budaya adalah ....",
-      options: [
-        "istilah umum", 
-        "perilaku literasi", 
-        "pendidikan formal", 
-        "sekolah pertama", 
-        "wadah efektif"
-      ],
-      answerIndex: [1],
+    { //Soal 1
+      txtField: "(1) Peraturan Presiden Nomor 4 Tahun 2026 tentang Lahan Sawah Dilindungi diteken sebagai bentuk komitmen pemerintah menjaga kedaulatan pangan. (2) Regulasi ini bagaikan pisau bermata dua bagi industri properti. (3) Di satu sisi, kebijakan tersebut melindungi lahan pertanian produktif dari alih fungsi. (4) Di sisi lain, aturan ini berpotensi memperlebar backlog perumahan yang mencapai jutaan unit. (5) Para pengembang menilai pemetaan lahan sawah dilindungi kerap hanya berdasarkan citra satelit, tanpa verifikasi di lapangan. (6) Akibatnya, lahan yang sebenarnya tidak lagi produktif ikut terkunci dan tidak bisa dimanfaatkan untuk pembangunan perumahan rakyat. (7) Kondisi ini memicu perdebatan sengit antara kementerian terkait dan asosiasi pengembang.",
+      question: "Kalimat yang tidak logis dalam bacaan tersebut adalah kalimat ....",
+      options: ["(2)", "(3)", "(4)", "(5)", "(7)"],
+      answerIndex: [2]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Literasi adalah istilah umum yang merujuk kepada seperangkat kemampuan dan keterampilan individu dalam membaca, menulis, berbicara, menghitung, dan memecahkan masalah pada tingkat keahlian tertentu yang diperlukan dalam kehidupan sehari-hari.(2) Dari definisi itu, literasi tidak bisa dilepaskan dari kemampuan berbahasa.(3) Namun, tingkat literasi di Indonesia masih sangat rendah.(4) Berdasarkan survei yang dilakukan tahun 2016 literasi menempatkaan Indonesia berada di posisi ke-61 dari 62 negara.(5) Data ini menunjukkan bahwa tingkat literasi di Indonesia sangat rendah.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(6) Keluarga merupakan lembaga pendidikan informal yang berperan paling penting dalam pengembangan literasi karena keluarga, terutama ibu, adalah sekolah pertama bagi anak dan sangat berpengaruh terhadap perilaku dan perkembangan anak.(7) Keluarga di rumah adalah wadah efektif yang memiliki kuantitas waktu lebih banyak dibandingkan Pendidikan formal sehingga diharapkan mampu menjadi penggerak literasi bagi anak.(8) Oleh karena itu, literasi pertama kali harus dimulai dari keluarga sebagai pilar utama penggerak literasi, selanjutnya akan menukar kepada masyarakat, dan berakhir dengan terbentuknya budaya literasi tinggi.`,
-      question: `Bentuk *ke-an* pada kata *kemampuan* pada kalimat ke 2 mempunyai kesamaan makna dengan bentuk *ke-an* dalam kalimat ....`,
-      options: [
-        "Harga benda tidak menjamin *kebahagian* hidup.",
-        "Siswa itu memiliki celana yang *kebesaran*.",
-        "Dengan belajar rajin, kita memperoleh banyak *keuntungan*.",
-        "Banyak warga *kedinginan* di perkampungan kumuh ketika musim hujan.",
-        "Siswa itu *ketiduran* ketika sedang pelajaran matematika.",
-      ],
-      answerIndex: [2],
+    { //Soal 2
+      txtField: "(1) Peraturan Presiden Nomor 4 Tahun 2026 tentang Lahan Sawah Dilindungi diteken sebagai bentuk komitmen pemerintah menjaga kedaulatan pangan. (2) Regulasi ini bagaikan pisau bermata dua bagi industri properti. (3) Di satu sisi, kebijakan tersebut melindungi lahan pertanian produktif dari alih fungsi. (4) Di sisi lain, aturan ini berpotensi memperlebar backlog perumahan yang mencapai jutaan unit. (5) Para pengembang menilai pemetaan lahan sawah dilindungi kerap hanya berdasarkan citra satelit, tanpa verifikasi di lapangan. (6) Akibatnya, lahan yang sebenarnya tidak lagi produktif ikut terkunci dan tidak bisa dimanfaatkan untuk pembangunan perumahan rakyat. (7) Kondisi ini memicu perdebatan sengit antara kementerian terkait dan asosiasi pengembang.",
+      question: "Kata yang memiliki makna lebih luas dari kata properti dalam kalimat (2) adalah ….",
+      options: ["rumah", "gedung", "real estat", "aset", "bangunan"],
+      answerIndex: [3]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Minum air putih atau air mineral merupakan hal yang paling penting dilakukan untuk menjaga kesehatan tubuh. (2) .... (3) Dengan minum air putih, tubuh akan terbebas dari segala bentuk toksin yang berbahaya. (4) Air putih juga mampu memberikan nutrisi penting bagi sel-sel tubuh. (5) Dengan demikian, tubuh akan terus terhidrasi dan saluran pencernaan akan terbantu.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(6) Tubuh kita membutuhkan rata-rata delapan gelas air per hari. (7) Tidak hanya membersihkan tubuh dari berbagai unsur pencemar, tetapi air putih juga mampu mengisi daya tubuh tanpa harus menambah kalori. (8) Oleh karena itu, air putih sangat penting bagi tubuh manusia. (9) Menjaga tubuh tetap terhidrasi dan minum air putih dengan delapan gelas per hari secara rutin adalah sebuah keharusan. (9) Dengan demikian, pastikan Anda selalu menyediakan sebotol air minum, baik saat menonton televisi, membaca buku, bermain bersama teman-teman, maupun saat berkendara.`,
-      question: "Ungkapan yang tepat untuk menyimpulkan situasi bacaan tersebut ....",
-      options: [
-        "air putih sehat",
-        "air putih segar",
-        "air putih baik",
-        "air putih higienis",
-        "air putih penting",
-      ],
-      answerIndex: [4],
+    { //Soal 3
+      txtField: "(1) Peraturan Presiden Nomor 4 Tahun 2026 tentang Lahan Sawah Dilindungi diteken sebagai bentuk komitmen pemerintah menjaga kedaulatan pangan. (2) Regulasi ini bagaikan pisau bermata dua bagi industri properti. (3) Di satu sisi, kebijakan tersebut melindungi lahan pertanian produktif dari alih fungsi. (4) Di sisi lain, aturan ini berpotensi memperlebar backlog perumahan yang mencapai jutaan unit. (5) Para pengembang menilai pemetaan lahan sawah dilindungi kerap hanya berdasarkan citra satelit, tanpa verifikasi di lapangan. (6) Akibatnya, lahan yang sebenarnya tidak lagi produktif ikut terkunci dan tidak bisa dimanfaatkan untuk pembangunan perumahan rakyat. (7) Kondisi ini memicu perdebatan sengit antara kementerian terkait dan asosiasi pengembang.",
+      question: "Majas pada bacaan tersebut dapat ditemukan pada frasa kalimat….",
+      options: ["(1)", "(2)", "(3)", "(4)", "(5)"],
+      answerIndex: [1]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Minum air putih atau air mineral merupakan hal yang paling penting dilakukan untuk menjaga kesehatan tubuh. (2) .... (3) Dengan minum air putih, tubuh akan terbebas dari segala bentuk toksin yang berbahaya. (4) Air putih juga mampu memberikan nutrisi penting bagi sel-sel tubuh. (5) Dengan demikian, tubuh akan terus terhidrasi dan saluran pencernaan akan terbantu.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(6) Tubuh kita membutuhkan rata-rata delapan gelas air per hari. (7) Tidak hanya membersihkan tubuh dari berbagai unsur pencemar, tetapi air putih juga mampu mengisi daya tubuh tanpa harus menambah kalori. (8) Oleh karena itu, air putih sangat penting bagi tubuh manusia. (9) Menjaga tubuh tetap terhidrasi dan minum air putih dengan delapan gelas per hari secara rutin adalah sebuah keharusan. (9) Dengan demikian, pastikan Anda selalu menyediakan sebotol air minum, baik saat menonton televisi, membaca buku, bermain bersama teman-teman, maupun saat berkendara.`,
-      question: `Kalimat 6 dan 7 dalam bacaan tersebut mengandung hubungan ....`,
+    { //Soal 4
+      txtField: "(1) Peraturan Presiden Nomor 4 Tahun 2026 tentang Lahan Sawah Dilindungi diteken sebagai bentuk komitmen pemerintah menjaga kedaulatan pangan. (2) Regulasi ini bagaikan pisau bermata dua bagi industri properti. (3) Di satu sisi, kebijakan tersebut melindungi lahan pertanian produktif dari alih fungsi. (4) Di sisi lain, aturan ini berpotensi memperlebar backlog perumahan yang mencapai jutaan unit. (5) Para pengembang menilai pemetaan lahan sawah dilindungi kerap hanya berdasarkan citra satelit, tanpa verifikasi di lapangan. (6) Akibatnya, lahan yang sebenarnya tidak lagi produktif ikut terkunci dan tidak bisa dimanfaatkan untuk pembangunan perumahan rakyat. (7) Kondisi ini memicu perdebatan sengit antara kementerian terkait dan asosiasi pengembang.",
+      question: "Manakah kalimat dengan bentuk ber- berikut yang memiliki kesamaan makna dengan bentuk ber- pada kata berkembang dalam kalimat (7)?",
       options: [
-        "perujukan",
-        "peluasan",
-        "pemerian",
-        "sebab-akibat",
-        "penguat",
-      ],
-      answerIndex: [4],
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Kebudayaan yang dimiliki suatu kelompok tidak akan terhindar dari pengaruh kebudayaan kelompok lain dengan adanya kontak antarkelompok lain atau melalui proses difusi. (2) Suatu kelompok sosial akan mengadopsi suatu kebudayaan tertentu apabila kebudayaan tersebut berguna untuk mengatasi atau memenuhi tuntutan yang dihadapinya. (3) Adopsi tersebut dipengaruhi oleh faktor-faktor fisikal, seperti iklim, topografi sumber daya alam, dan sejenisnya.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(4) Perkembangan zaman juga mendorong terjadinya perubahan-perubahan di segala bidang termasuk dalam kebudayaan. (5) Mau tidak mau kebudayaan yang dianut semua kelompok akan bergeser, baik secara lambat maupun cepat, yang akan menimbulkan konflik antarkelompok yang menghendaki perubahan dan yang tidak menghendaki perubahan. (6) Hal yang terpenting dalam proses pengembangan suatu kebudayaan adalah adanya kontrol atau kendali terhadap perilaku regular yang ditampilkan oleh para penganutnya. (7) Tidak jarang perilaku yang ditampilkan kelompok tertentu bertolak belakang dengan perilaku yang dianut di dalam kelompok sosialnya. (8) Oleh karena itu, kontrol sosial diperlukan untuk memfilter nilai-nilai yang sesuai dengan kebudayaan suatu kelompok.`,
-      question: "Frasa tidak menghendaki perubahan kalimat (5) memiliki makna asosiatif dengan kata ....",
-      options: [
-        "tradisional",
-        "fanatik",
-        "ortodoks",
-        "konservatif",
-        "pemanfaatan",
-      ],
-      answerIndex: [0],
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Kebudayaan yang dimiliki suatu kelompok tidak akan terhindar dari pengaruh kebudayaan kelompok lain dengan adanya kontak antarkelompok lain atau melalui proses difusi. (2) Suatu kelompok sosial akan mengadopsi suatu kebudayaan tertentu apabila kebudayaan tersebut berguna untuk mengatasi atau memenuhi tuntutan yang dihadapinya. (3) Adopsi tersebut dipengaruhi oleh faktor-faktor fisikal, seperti iklim, topografi sumber daya alam, dan sejenisnya.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(4) Perkembangan zaman juga mendorong terjadinya perubahan-perubahan di segala bidang termasuk dalam kebudayaan. (5) Mau tidak mau kebudayaan yang dianut semua kelompok akan bergeser, baik secara lambat maupun cepat, yang akan menimbulkan konflik antarkelompok yang menghendaki perubahan dan yang tidak menghendaki perubahan. (6) Hal yang terpenting dalam proses pengembangan suatu kebudayaan adalah adanya kontrol atau kendali terhadap perilaku regular yang ditampilkan oleh para penganutnya. (7) Tidak jarang perilaku yang ditampilkan kelompok tertentu bertolak belakang dengan perilaku yang dianut di dalam kelompok sosialnya. (8) Oleh karena itu, kontrol sosial diperlukan untuk memfilter nilai-nilai yang sesuai dengan kebudayaan suatu kelompok.`,
-      question: "Sinonim kata difusi dalam kalimat (1) adalah ....",
-      options: [
-        "pertukaran",
-        "penyatuan",
-        "pembauran",
-        "pemerataan",
-        "pemanfaatan",
-      ],
-      answerIndex: [2],
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Dibandingkan negara-negara lain di dunia, tingkat literasi anak-anak dan orang dewasa di Indonesia sangat rendah. (2) Kemampuan membaca, berhitung, dan pengetahuan sains anak-anak Indonesia berada di bawah Singapura, Vietnam, Malaysia, dan Thailand berdasarkan hasil tes PISA yang diujarkan OECD pada 2016. (3) Data ini disimpulkan dari hasil penilaian PIAAC, yaitu tes kompetensi sukarela untuk orang dewasa yang berusia 16 tahun ke atas. (4) Rendahnya literasi merupakan masalah mendasar yang memiliki dampak sangat luas bagi kemajuan bangsa. (5) Literasi rendah berkontribusi terhadap rendahnya produktivitas bangsa. (6) Ini berujung pada rendahnya pertumbuhan dan akhirnya berdampak terhadap rendahnya tingkat kesejahteraan yang ....(7) Literasi rendah juga berkontribusi secara signifikan terhadap kemiskinan, pengangguran, dan kesenjangan.`,
-      question: `Kalimat manakah yang paling tepat sebagai kalimat inti nomor (3)?`,
-      options: [
-        "Data disimpulkan",
-        "Data dari penilaian",
-        "Data hasil dari penilaian",
-        "Data dari penilaian PIAAC",
-        "Data disimpulkan dari tes",
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Dibandingkan negara-negara lain di dunia, tingkat literasi anak-anak dan orang dewasa di Indonesia sangat rendah. (2) Kemampuan membaca, berhitung, dan pengetahuan sains anak-anak Indonesia berada di bawah Singapura, Vietnam, Malaysia, dan Thailand berdasarkan hasil tes PISA yang diujarkan OECD pada 2016. (3) Data ini disimpulkan dari hasil penilaian PIAAC, yaitu tes kompetensi sukarela untuk orang dewasa yang berusia 16 tahun ke atas. (4) Rendahnya literasi merupakan masalah mendasar yang memiliki dampak sangat luas bagi kemajuan bangsa. (5) Literasi rendah berkontribusi terhadap rendahnya produktivitas bangsa. (6) Ini berujung pada rendahnya pertumbuhan dan akhirnya berdampak terhadap rendahnya tingkat kesejahteraan yang ....(7) Literasi rendah juga berkontribusi secara signifikan terhadap kemiskinan, pengangguran, dan kesenjangan.`,
-      question: `Kalimat manakah yang paling cocok sebagai penggabungan kalimat 4 dan 5?`,
-      options: [
-        `Rendahnya literasi merupakan masalah mendasar yang memiliki dampak sangat luas bagi kemajuan bangsa sehingga literasi rendah berkontribusi terhadap rendahnya produktivitas bangsa.`,
-        `Rendahnya literasi merupakan masalah mendasar yang memiliki dampak sangat luas bagi kemajuan bangsa sehingga berkontribusi terhadap rendahnya produktivitas bangsa.`,
-        `Rendahnya literasi merupakan masalah mendasar yang memiliki dampak sangat luas bagi kemajuan bangsa dan berkontribusi terhadap rendahnya produktivitas bangsa.`,
-        `Rendahnya literasi merupakan masalah mendasar yang memiliki dampak sangat luas bagi kemajuan bangsa karena literasi rendah berkontribusi terhadap rendahnya produktivitas bangsa.`,
-        `Rendahnya literasi merupakan masalah mendasar yang memiliki dampak sangat luas bagi kemajuan bangsa sebab berkontribusi terhadap rendahnya produktivitas bangsa.`
+        "Para petani itu berladang di lereng gunung.",
+        "Ibu sedang berdandan di kamar.",
+        "Paman bekerja sebagai kontraktor properti.",
+        "Anak-anak bermain bola di lapangan.",
+        "Mereka berunding untuk mencapai kesepakatan."
       ],
       answerIndex: [4]
     },
-    {
-      txtField: `(1) Ambon turun hujan meskipun Indonesia masih dalam masa musim kemarau dan kekeringan panjang. (2) Menurut BMKG, Ambon memang sedang berada di puncak hujan. (3) Indonesia merupakan wilayah yang unik karena terbagi menjadi dua wilayah Lintang Utara dan Lintang Selatan oleh adanya garis khatulistiwa atau ekuator mengalami curah hujan yang tinggi sepanjang tahun dan Lintang Selatan oleh adanya garis khatulistiwa. (4) Kasubid Analisis Informasi Iklan BMKG, Adi Ripaldi, menjelaskan bahwa wilayah yang dekat khatulistiwa atau ekuator mengalami curah hujan yang tinggi di sepanjang tahun. (5) Wilayah-wilayah ini tidak mengenal musim hujan dan musim kemarau. (6) "Artinya, mau ini bulan apa pun memang (daerah dekat ekuator) curah hujannya tinggi terus", Kata Adi. (7) Adapun daerah Jawa, Bali, Sulawesi Selatan disebut dengan tipe monsunal.`,
-      question: `Simpulan yang tepat dari bacaan di atas adalah ....`,
-      options: [
-          `Indonesia terbagi menjadi dua wilayah lintang Utara dan Lintang Selatan.`,
-          `Ambon merupakan salah satu wilayah di Indonesia yang mempunyai curah hujan yang tinggi.`,
-          `Ambon sedang berada pada puncak musim hujan.`,
-          `Indonesia masih dalam masa musim kemarau dan kekeringan panjang.`,
-          `Wilayah di Indonesia mengalami musim hujan dan kemarau.`,
-      ],
-      answerIndex: [4]
+    { //Soal 5
+      txtField: "(1) Pemerintah menargetkan pertumbuhan ekonomi Indonesia mencapai 8 persen dalam dua tahun ke depan. (2) Target ini disampaikan Menko Perekonomian Airlangga Hartarto dalam acara Indonesia Economic Outlook 2026. (3) Ia menganalogikan ekonomi seperti pesawat yang sejak 1998 selalu tertahan berbagai gangguan, namun kini siap lepas landas. (4) Mesin pertumbuhan akan terus digenjot melalui belanja pemerintah, investasi, serta Danantara sebagai sovereign wealth fund. (5) Dari sisi permintaan, konsumsi masyarakat dan ekspor menjadi penggerak utama. (6) Capaian ekonomi kuartal IV-2025 tumbuh 5,11 persen secara tahunan, menempatkan Indonesia di posisi kedua G20 setelah India. (7) Capaian ini ditopang konsumsi rumah tangga yang tumbuh 4,98 persen dan investasi 5,09 persen.",
+      question: "Hubungan kata ekonomi dan kata investasi dalam bacaan ini sama dengan hubungan kata pesawat dan kata …",
+      options: ["pilot", "sayap", "mesin", "bandara", "bahan bakar"],
+      answerIndex: [2]
     },
-    {
-      txtField: `Rambut adalah mahkota. Ungkapan itu menunjukan bahwa begitu pentingnya rambut bagi seseorang. Tak berlebihan jika merawat rambut akhirnya menjadi sangat penting untuk penampilan. Jumlah penduduk Indonesia yang sangat besar membuat tempat-tempat cukur rambut dan *barbershop* tumbuh di berbagai kota.`,
-      question: `Kata berimbuhan berikut yang salah adalah ....`,
+    { //Soal 6
+      txtField: "(1) Pemerintah menargetkan pertumbuhan ekonomi Indonesia mencapai 8 persen dalam dua tahun ke depan. (2) Target ini disampaikan Menko Perekonomian Airlangga Hartarto dalam acara Indonesia Economic Outlook 2026. (3) Ia menganalogikan ekonomi seperti pesawat yang sejak 1998 selalu tertahan berbagai gangguan, namun kini siap lepas landas. (4) Mesin pertumbuhan akan terus digenjot melalui belanja pemerintah, investasi, serta Danantara sebagai sovereign wealth fund. (5) Dari sisi permintaan, konsumsi masyarakat dan ekspor menjadi penggerak utama. (6) Capaian ekonomi kuartal IV-2025 tumbuh 5,11 persen secara tahunan, menempatkan Indonesia di posisi kedua G20 setelah India. (7) Capaian ini ditopang konsumsi rumah tangga yang tumbuh 4,98 persen dan investasi 5,09 persen.",
+      question: "Frasa menempatkan Indonesia di posisi kedua G20 setelah India pada kalimat (6) dapat diperbaiki menjadi ….",
       options: [
-          `berlebihan`,
-          `menjadi`,
-          `pentingnya`,
-          `menunjukan`,
-          `penampilan`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Literasi media bertujuan agar generasi muda dapat melek teknologi. (2) Dengan literasi media, diharapkan generasi muda dapat memahami bagaimana pemanfaatan media digital. (3) Literasi media membantu generasi muda mengemabangkan pemahaman yang lebih baik. (4) Literasi media juga membantu generasi muda untuk dapat mengendalikan pengaruh media dalam kehidupan sehari-hari. (5) Adanya internet untuk media sosial menyebabkan penyebaran hoax yang sangat mudah. (6) Inilah yang membuat pentingnya literasi media bagi generasi muda yang sedang berkembang dan mencari segala hal yang ingin diketahui. (7) Media yang digunakan oleh anak-anak harus ada pengawasan dari orang tua. (8) Edukasi (....) orang tua dan guru sangat penting (....) generasi muda dikenal sebagia generasi yang suka kebebasan. (9) Untuk itu, tugas orang tua, guru, dan orang-orang di sekitarnya adalah memantau penggunaan media sosial anak.`,
-      question: `Kata diharapkan dalam kalimat (2) harusnya ....`,
-      options: [
-          `dibiarkan saja (sudah benar)`,
-          `diganti *harapannya*`,
-          `diganti *diharap*`,
-          `didahului kata *yang*`,
-          `dihilangkan karena mubazir`,
+        "kata menempatkan seharusnya ditempatkan",
+        "kata posisi seharusnya memposisikan",
+        "kata kedua seharusnya ke-dua",
+        "kata setelah seharusnya sesudah",
+        "kata India seharusnya negara India"
       ],
       answerIndex: [0]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Literasi media bertujuan agar generasi muda dapat melek teknologi. (2) Dengan literasi media, diharapkan generasi muda dapat memahami bagaimana pemanfaatan media digital. (3) Literasi media membantu generasi muda mengemabangkan pemahaman yang lebih baik. (4) Literasi media juga membantu generasi muda untuk dapat mengendalikan pengaruh media dalam kehidupan sehari-hari. (5) Adanya internet untuk media sosial menyebabkan penyebaran hoax yang sangat mudah. (6) Inilah yang membuat pentingnya literasi media bagi generasi muda yang sedang berkembang dan mencari segala hal yang ingin diketahui. (7) Media yang digunakan oleh anak-anak harus ada pengawasan dari orang tua. (8) Edukasi (....) orang tua dan guru sangat penting (....) generasi muda dikenal sebagia generasi yang suka kebebasan. (9) Untuk itu, tugas orang tua, guru, dan orang-orang di sekitarnya adalah memantau penggunaan media sosial anak.`,
-      question: `Judul yang paling tepat untuk teks tersebut adalah ....`,
-      options: [
-          `Tujuan Literasi Media`,
-          `Tugas Literasi Media`,
-          `Peranan Literasi Media`,
-          `Pentingnya Literasi Media`,
-          `Dampak Literasi Media`,
-      ],
+    { //Soal 7
+      txtField: "(1) Pemerintah menargetkan pertumbuhan ekonomi Indonesia mencapai 8 persen dalam dua tahun ke depan. (2) Target ini disampaikan Menko Perekonomian Airlangga Hartarto dalam acara Indonesia Economic Outlook 2026. (3) Ia menganalogikan ekonomi seperti pesawat yang sejak 1998 selalu tertahan berbagai gangguan, namun kini siap lepas landas. (4) Mesin pertumbuhan akan terus digenjot melalui belanja pemerintah, investasi, serta Danantara sebagai sovereign wealth fund. (5) Dari sisi permintaan, konsumsi masyarakat dan ekspor menjadi penggerak utama. (6) Capaian ekonomi kuartal IV-2025 tumbuh 5,11 persen secara tahunan, menempatkan Indonesia di posisi kedua G20 setelah India. (7) Capaian ini ditopang konsumsi rumah tangga yang tumbuh 4,98 persen dan investasi 5,09 persen.",
+      question: "Kata lepas landas pada kalimat (3) dalam bacaan tersebut paling dekat maknanya dengan kata ….",
+      options: ["terbang", "melambung", "berkembang", "tumbuh pesat", "meninggi"],
+      answerIndex: [3]
+    },
+    { //Soal 8
+      txtField: "(1) Pemerintah menargetkan pertumbuhan ekonomi Indonesia mencapai 8 persen dalam dua tahun ke depan. (2) Target ini disampaikan Menko Perekonomian Airlangga Hartarto dalam acara Indonesia Economic Outlook 2026. (3) Ia menganalogikan ekonomi seperti pesawat yang sejak 1998 selalu tertahan berbagai gangguan, namun kini siap lepas landas. (4) Mesin pertumbuhan akan terus digenjot melalui belanja pemerintah, investasi, serta Danantara sebagai sovereign wealth fund. (5) Dari sisi permintaan, konsumsi masyarakat dan ekspor menjadi penggerak utama. (6) Capaian ekonomi kuartal IV-2025 tumbuh 5,11 persen secara tahunan, menempatkan Indonesia di posisi kedua G20 setelah India. (7) Capaian ini ditopang konsumsi rumah tangga yang tumbuh 4,98 persen dan investasi 5,09 persen.",
+      question: "Kalimat Pemerintah menggenjot belanja negara pada kuartal pertama memiliki pola kalimat yang sama dengan kalimat ....",
+      options: ["(1)", "(2)", "(3)", "(4)", "(5)"],
       answerIndex: [0]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Literasi media bertujuan agar generasi muda dapat melek teknologi. (2) Dengan literasi media, diharapkan generasi muda dapat memahami bagaimana pemanfaatan media digital. (3) Literasi media membantu generasi muda mengemabangkan pemahaman yang lebih baik. (4) Literasi media juga membantu generasi muda untuk dapat mengendalikan pengaruh media dalam kehidupan sehari-hari. (5) Adanya internet untuk media sosial menyebabkan penyebaran hoax yang sangat mudah. (6) Inilah yang membuat pentingnya literasi media bagi generasi muda yang sedang berkembang dan mencari segala hal yang ingin diketahui. (7) Media yang digunakan oleh anak-anak harus ada pengawasan dari orang tua. (8) Edukasi (....) orang tua dan guru sangat penting (....) generasi muda dikenal sebagia generasi yang suka kebebasan. (9) Untuk itu, tugas orang tua, guru, dan orang-orang di sekitarnya adalah memantau penggunaan media sosial anak.`,
-      question: `Kalimat manakah yang isinya sama dengan kalimat (7)?`,
+    { //Soal 9
+      txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
+      question: "Kata dalam bacaan tersebut yang mengacu pada makna yang sebenarnya adalah ….",
       options: [
-          `Pengawasan media digunakan oleh anak-anak harus ada dari orang tua.`,
-          `Pengawasan media digunakan oleh anak-anak dari orang tua harus ada.`,
-          `Pengawasan dari orang tua untuk media yang digunakan oleh anak-anak harus ada.`,
-          `Harus ada pengawasan dari orang tua untuk media yang digunakan oleh anak-anak.`,
-          `Harus ada pengawasan untuk media yang digunakan oleh anak-anak dari orang tua.`,
+        "berimbas (kalimat 1)",
+        "memicu (kalimat 3)",
+        "memprioritaskan (kalimat 4)",
+        "menurun (kalimat 5)",
+        "memburuk (kalimat 6)"
       ],
       answerIndex: [3]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Literasi media bertujuan agar generasi muda dapat melek teknologi. (2) Dengan literasi media, diharapkan generasi muda dapat memahami bagaimana pemanfaatan media digital. (3) Literasi media membantu generasi muda mengemabangkan pemahaman yang lebih baik. (4) Literasi media juga membantu generasi muda untuk dapat mengendalikan pengaruh media dalam kehidupan sehari-hari. (5) Adanya internet untuk media sosial menyebabkan penyebaran hoax yang sangat mudah. (6) Inilah yang membuat pentingnya literasi media bagi generasi muda yang sedang berkembang dan mencari segala hal yang ingin diketahui. (7) Media yang digunakan oleh anak-anak harus ada pengawasan dari orang tua. (8) Edukasi (....) orang tua dan guru sangat penting (....) generasi muda dikenal sebagia generasi yang suka kebebasan. (9) Untuk itu, tugas orang tua, guru, dan orang-orang di sekitarnya adalah memantau penggunaan media sosial anak.`,
-      question: `Kata yang paling tepat untuk melengkapi kalimat (8) adalah ....`,
+    { //Soal 10
+      txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
+      question: "Kata rentan dalam teks sebelumnya memiliki makna yang mirip dengan frasa dalam bacaan ini, yaitu ….",
       options: [
-          `*oleh* dan *disebabkan*`,
-          `*oleh* dan *mengingat*`,
-          `*oleh* dan *dikarenakan*`,
-          `*dari* dan *mengingat*`,
-          `*dari* dan *dikarenakan*`,
+        "berimbas (kalimat 1)",
+        "margin keuntungan (kalimat 4)",
+        "terus menurun (kalimat 5)",
+        "bakal memburuk (kalimat 6)",
+        "semakin panjang (kalimat 7)"
       ],
       answerIndex: [3]
     },
-    {
-      txtField: `(1) Putung rokok adalah salah satu bentuk sampah yang paling umum di dunia yang menyebabkan kerusakan lingkungan yang parah. (2) Analisis distribusi sampah putung rokok di lingkungan perkotaan dapat menghasilkan wawasan yang berguna untuk intervensi lebih lanjut mengurangi sampah ini. (3) Informasi tentang putung rokok yang dibuang di ruang publik dikumpulkan melalui pengamatan sosial sistematis di berbagai sampel daerah di Madrid, Spanyol. (...) (4) Analisis data dilakukan secara kualitatif dengan menggunakan lokasi sebagai parameter utama.
-
-      \n(5) Ditemukan bahwa lokasi perhotelan dan perhentian angkutan umum merupakan tempat dengan konsentrasi putung rokok tertinggi. (6) Lokasi selanjutnya adalah pintu masuk lokasi pendidikan dan taman bermain. (7) Daerah (....) kota menunjukkan jumlah putung rokok tertinggi dibandingkan dengan daerah pinggiran kota. (8) Penelitian ini merupakan studi yang memperkirakan dan memetakan sampah putung rokok di wilayah perkotaan besar. (9) Temuan dalam penelitian ini menunjukkan sifat putung rokok yang ada di mana-mana di lingkungan perkotaan. (10) Oleh karena itu, diperlukan adanya intervensi kesehatan masyarakat dan lingkungan.`,
-      question: `Kalimat pasif yang tepat untuk mengisi rumpang pada paragraf 1 adalah ....`,
+    { //Soal 11
+      txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
+      question: "Fungsi kata penghubung akibatnya dalam kalimat (7) adalah ....",
       options: [
-          `Diperkirakan kepadatan putung rokok di ruang publik di seluruh kota mudah terkumpul. puntung rokok di ruang publik seluruh kota adalah data yang harus dikumpulkan.`,
-          `Perkiraan kepadatan puntung rokok di ruang publik seluruh kota adalah data yang harus dikumpulkan.`,
-          `Data yang terkumpul digunakan untuk memperkirakan kepadatan putung rokok di ruang publik di seluruh kota.`,
-          `Pengumpulan data dilakukan untuk mengukur kepadatan putung rokok di ruang publik di seluruh kota.`,
-          `Informasi tentang kepadatan putung rokok di ruang publik terkumpul sebagai data primer.`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `(1) Putung rokok adalah salah satu bentuk sampah yang paling umum di dunia yang menyebabkan kerusakan lingkungan yang parah. (2) Analisis distribusi sampah putung rokok di lingkungan perkotaan dapat menghasilkan wawasan yang berguna untuk intervensi lebih lanjut mengurangi sampah ini. (3) Informasi tentang putung rokok yang dibuang di ruang publik dikumpulkan melalui pengamatan sosial sistematis di berbagai sampel daerah di Madrid, Spanyol. (...) (4) Analisis data dilakukan secara kualitatif dengan menggunakan lokasi sebagai parameter utama.
-
-      \n(5) Ditemukan bahwa lokasi perhotelan dan perhentian angkutan umum merupakan tempat dengan konsentrasi putung rokok tertinggi. (6) Lokasi selanjutnya adalah pintu masuk lokasi pendidikan dan taman bermain. (7) Daerah (....) kota menunjukkan jumlah putung rokok tertinggi dibandingkan dengan daerah pinggiran kota. (8) Penelitian ini merupakan studi yang memperkirakan dan memetakan sampah putung rokok di wilayah perkotaan besar. (9) Temuan dalam penelitian ini menunjukkan sifat putung rokok yang ada di mana-mana di lingkungan perkotaan. (10) Oleh karena itu, diperlukan adanya intervensi kesehatan masyarakat dan lingkungan.`,
-      question: `Kata yang tepat untuk mengisi rumpang pada frasa (....) kota dalam kalimat (7) adalah ....`,
-      options: [
-          `inti`,
-          `sisi`,
-          `fokus`,
-          `untuk`,
-          `pusat`,
+        "menyatakan pertentangan dengan informasi sebelumnya",
+        "menyatakan kebalikan dari informasi sebelumnya",
+        "menjelaskan hubungan sebab-akibat",
+        "menyatakan kelanjutan dari informasi sebelumnya",
+        "menyatakan konsekuensi logis dari informasi sebelumnya"
       ],
       answerIndex: [4]
     },
-    {
-      txtField: `(1) Putung rokok adalah salah satu bentuk sampah yang paling umum di dunia yang menyebabkan kerusakan lingkungan yang parah. (2) Analisis distribusi sampah putung rokok di lingkungan perkotaan dapat menghasilkan wawasan yang berguna untuk intervensi lebih lanjut mengurangi sampah ini. (3) Informasi tentang putung rokok yang dibuang di ruang publik dikumpulkan melalui pengamatan sosial sistematis di berbagai sampel daerah di Madrid, Spanyol. (...) (4) Analisis data dilakukan secara kualitatif dengan menggunakan lokasi sebagai parameter utama.
-
-      \n(5) Ditemukan bahwa lokasi perhotelan dan perhentian angkutan umum merupakan tempat dengan konsentrasi putung rokok tertinggi. (6) Lokasi selanjutnya adalah pintu masuk lokasi pendidikan dan taman bermain. (7) Daerah (....) kota menunjukkan jumlah putung rokok tertinggi dibandingkan dengan daerah pinggiran kota. (8) Penelitian ini merupakan studi yang memperkirakan dan memetakan sampah putung rokok di wilayah perkotaan besar. (9) Temuan dalam penelitian ini menunjukkan sifat putung rokok yang ada di mana-mana di lingkungan perkotaan. (10) Oleh karena itu, diperlukan adanya intervensi kesehatan masyarakat dan lingkungan.`,
-      question: `Gagasan pada kalimat (8) dapat diungkapkan melalui kalimat ....`,
+    { //Soal 12
+      txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
+      question: "Pandangan penulis terhadap dampak lonjakan harga cip memori adalah …",
       options: [
-          `Konsentrasi putung rokok tertinggi membuat lokasi perhotelan dan perhentian angkutan umum menjadi pusat temuan penelitian.`,
-          `Jumlah putung rokok terkonsentrasi di tempat-tempat tertentu, misalnya lokasi perhotelan dan per- hentian angkutan umum.`,
-          `Para ahli menemukan bahwa hotel dan perhentian angkutan umum adalah tempat favorit para perokok.`,
-          `Penelitian ini dilakukan khusus terkonsentrasi pada lokasi perhotelan dan perhentian angkutan umum yang banyak dikunjungi orang.`,
-          `Hasil penelitian menunjukkan bahwa konsentrasi di lokasi perhotelan dan terminal angkutan umum.`,
+        "sangat optimistis",
+        "sangat pesimistis",
+        "cukup khawatir",
+        "tidak berpihak",
+        "kurang peduli"
+      ],
+      answerIndex: [3]
+    },
+    { //Soal 13
+      txtField: "(1) Masyarakat adat Kasepuhan di Banten hidup dengan kearifan lokal dalam mengelola hutan dan lahan pertanian. (2) Rumah panggung mereka mencerminkan kearifan tersebut, dengan konstruksi kayu tanpa paku dan pembagian ruang berdasarkan fungsi sosial. (3) Secara etnografis, rumah tradisional Kasepuhan merepresentasikan hubungan harmonis antara manusia dan alam. (4) Secara vertikal, [...] rumah [...] memiliki tiang utama, lantai papan, dinding anyaman bambu, dan atap daun nipah. (5) Bagian-bagian tersebut dikategorikan menjadi tiga zona, yaitu kolong, ruang hunian, dan loteng. (6) Relasi antarzona ini diasosiasikan dengan strata ekologis, yaitu dunia bawah, dunia tengah, dan dunia atas. (7) Sementara itu, secara horizontal, ruang dalam rumah terbagi atas area menerima tamu, area tidur, dan area dapur.",
+      question: "Kelompok kata berpasangan tetap dalam bacaan tersebut adalah …",
+      options: [
+        "masyarakat adat (kalimat 1)",
+        "kearifan lokal (kalimat 1)",
+        "rumah panggung (kalimat 2)",
+        "tiang utama (kalimat 4)",
+        "dunia tengah (kalimat 6)"
       ],
       answerIndex: [1]
     },
-    {
-      txtField: `(1) Bumi saat ini berputar dengan arah rotasinya bergerak dari barat ke timur. (2) Matahari kelihatan terbit dari timur. (3) Jika bumi dilihat dari atas Kutub Utara, arah rotasinya berlawanan dengan arah jarum jam. (4) Apa yang terjadi jika matahari terbit dari barat? (5) Bumi akan mengalami perubahan, mulai dari perubahan pada lanskap alam di beberapa benua hingga perubahan iklim.
-      
-      \n(6) Jika arah matahari terbit berubah, bukit pasir yang gersang akan menggantikan hamparan hutan hujan Amazon di Amerika Selatan. (7) Gurun akan menutupi Amerika Utara. (8) Sebaliknya, lanskap kering di Amerika Tengah, Gurun Sahara di Afrika Barat, dan Arab Saudi akan berubah menjadi hijau.
-      
-      \n(9) Dampak lain, setelah mempresentasikan hasil simulasi komputer tahun 2018 di Austria, Eropa Barat disimpulkan akan beku akibat musim dingin dahsyat oleh para ahli. (10) Namun, simulasi tersebut tidak menunjukkan apakah daerah tropis akan mengalami perubahan drastis seperti yang dialami Eropa.`,
-      question: `Dari bacaan tersebut, frasa yang berpola makna sama dengan frasa *makanan enak* adalah ....`,
+    { //Soal 14
+      txtField: "(1) Masyarakat adat Kasepuhan di Banten hidup dengan kearifan lokal dalam mengelola hutan dan lahan pertanian. (2) Rumah panggung mereka mencerminkan kearifan tersebut, dengan konstruksi kayu tanpa paku dan pembagian ruang berdasarkan fungsi sosial. (3) Secara etnografis, rumah tradisional Kasepuhan merepresentasikan hubungan harmonis antara manusia dan alam. (4) Secara vertikal, [...] rumah [...] memiliki tiang utama, lantai papan, dinding anyaman bambu, dan atap daun nipah. (5) Bagian-bagian tersebut dikategorikan menjadi tiga zona, yaitu kolong, ruang hunian, dan loteng. (6) Relasi antarzona ini diasosiasikan dengan strata ekologis, yaitu dunia bawah, dunia tengah, dan dunia atas. (7) Sementara itu, secara horizontal, ruang dalam rumah terbagi atas area menerima tamu, area tidur, dan area dapur.",
+      question: "Kalimat (4) dalam bacaan tersebut akan menjadi bermakna apabila dilengkapi dengan kata-kata ….",
       options: [
-          `jarum jam`,
-          `perubahan iklim`,
-          `lanskap kering`,
-          `simulasi komputer`,
-          `persamaan geosains`,
+        "konstruksi; dengan",
+        "bangunan; pada",
+        "bagian; dari",
+        "tiang; sebagai",
+        "ruang; oleh"
       ],
       answerIndex: [2]
     },
-    {
-      txtField: `(1) Bumi saat ini berputar dengan arah rotasinya bergerak dari barat ke timur. (2) Matahari kelihatan terbit dari timur. (3) Jika bumi dilihat dari atas Kutub Utara, arah rotasinya berlawanan dengan arah jarum jam. (4) Apa yang terjadi jika matahari terbit dari barat? (5) Bumi akan mengalami perubahan, mulai dari perubahan pada lanskap alam di beberapa benua hingga perubahan iklim.
-      
-      \n(6) Jika arah matahari terbit berubah, bukit pasir yang gersang akan menggantikan hamparan hutan hujan Amazon di Amerika Selatan. (7) Gurun akan menutupi Amerika Utara. (8) Sebaliknya, lanskap kering di Amerika Tengah, Gurun Sahara di Afrika Barat, dan Arab Saudi akan berubah menjadi hijau.
-      
-      \n(9) Dampak lain, setelah mempresentasikan hasil simulasi komputer tahun 2018 di Austria, Eropa Barat disimpulkan akan beku akibat musim dingin dahsyat oleh para ahli. (10) Namun, simulasi tersebut tidak menunjukkan apakah daerah tropis akan mengalami perubahan drastis seperti yang dialami Eropa.`,
-      question: `Dari bacaan tersebut, kalimat yang berpola dasar sama dengan pola dasar kalimat *Karena Budi tekun belajar, prestasi belajarnya meningkat dengan pesat* adalah ....`,
-      options: [
-          `Jika bumi dilihat dari atas Kutub Utara, arah rotasinya berlawanan dengan arah jarum jam.`,
-          `Bumi akan mengalami perubahan, mulai dari perubahan pada lanskap alam di beberapa benua hingga perubahan iklim.`,
-          `Jika arah matahari terbit berubah, bukit pasir yang gersang akan menggantikan hamparan hutan hujan Amazon di Amerika Selatan.`,
-          `Sebaliknya, lanskap kering di Amerika Tengah, Gurun Sahara di Afrika Barat, dan Arab Saudi akan berubah menjadi hijau.`,
-          `Namun, simulasi tersebut tidak menunjukkan apakah daerah tropis akan mengalami perubahan drastis seperti yang dialami Eropa.`,
-      ],
-      answerIndex: [0]
+    { //Soal 15
+      txtField: "(1) Masyarakat adat Kasepuhan di Banten hidup dengan kearifan lokal dalam mengelola hutan dan lahan pertanian. (2) Rumah panggung mereka mencerminkan kearifan tersebut, dengan konstruksi kayu tanpa paku dan pembagian ruang berdasarkan fungsi sosial. (3) Secara etnografis, rumah tradisional Kasepuhan merepresentasikan hubungan harmonis antara manusia dan alam. (4) Secara vertikal, [...] rumah [...] memiliki tiang utama, lantai papan, dinding anyaman bambu, dan atap daun nipah. (5) Bagian-bagian tersebut dikategorikan menjadi tiga zona, yaitu kolong, ruang hunian, dan loteng. (6) Relasi antarzona ini diasosiasikan dengan strata ekologis, yaitu dunia bawah, dunia tengah, dan dunia atas. (7) Sementara itu, secara horizontal, ruang dalam rumah terbagi atas area menerima tamu, area tidur, dan area dapur.",
+      question: "Sesuai dengan konteks dalam bacaan tersebut, kata harmonis dalam kalimat (3) memiliki makna yang berlawanan dengan kata ....",
+      options: ["selaras", "serasi", "timpang", "seimbang", "cocok"],
+      answerIndex: [2]
     },
-    {
-      txtField: `(1) Bumi saat ini berputar dengan arah rotasinya bergerak dari barat ke timur. (2) Matahari kelihatan terbit dari timur. (3) Jika bumi dilihat dari atas Kutub Utara, arah rotasinya berlawanan dengan arah jarum jam. (4) Apa yang terjadi jika matahari terbit dari barat? (5) Bumi akan mengalami perubahan, mulai dari perubahan pada lanskap alam di beberapa benua hingga perubahan iklim.
-      
-      \n(6) Jika arah matahari terbit berubah, bukit pasir yang gersang akan menggantikan hamparan hutan hujan Amazon di Amerika Selatan. (7) Gurun akan menutupi Amerika Utara. (8) Sebaliknya, lanskap kering di Amerika Tengah, Gurun Sahara di Afrika Barat, dan Arab Saudi akan berubah menjadi hijau.
-      
-      \n(9) Dampak lain, setelah mempresentasikan hasil simulasi komputer tahun 2018 di Austria, Eropa Barat disimpulkan akan beku akibat musim dingin dahsyat oleh para ahli. (10) Namun, simulasi tersebut tidak menunjukkan apakah daerah tropis akan mengalami perubahan drastis seperti yang dialami Eropa.`,
-      question: `Ungkapan, *Eropa Barat disimpulkan akan beku akibat musim dingin dahsyat oleh para ahli* dapat disempurnakan menjadi kalimat aktif ....`,
+    { //Soal 16
+      txtField: "(1) Masyarakat adat Kasepuhan di Banten hidup dengan kearifan lokal dalam mengelola hutan dan lahan pertanian. (2) Rumah panggung mereka mencerminkan kearifan tersebut, dengan konstruksi kayu tanpa paku dan pembagian ruang berdasarkan fungsi sosial. (3) Secara etnografis, rumah tradisional Kasepuhan merepresentasikan hubungan harmonis antara manusia dan alam. (4) Secara vertikal, [...] rumah [...] memiliki tiang utama, lantai papan, dinding anyaman bambu, dan atap daun nipah. (5) Bagian-bagian tersebut dikategorikan menjadi tiga zona, yaitu kolong, ruang hunian, dan loteng. (6) Relasi antarzona ini diasosiasikan dengan strata ekologis, yaitu dunia bawah, dunia tengah, dan dunia atas. (7) Sementara itu, secara horizontal, ruang dalam rumah terbagi atas area menerima tamu, area tidur, dan area dapur.",
+      question: "Kalimat manakah yang dapat mengungkapkan kembali gagasan dalam kalimat (3)?",
       options: [
-          `Dahsyatnya musim dingin disimpulkan para ahli akan membekukan Eropa Barat.`,
-          `Para ahli menyimpulkan bahwa Eropa Barat akan beku akibat musim dingin dahsyat.`,
-          `Disimpulkan para ahli bahwa Eropa Barat akan beku akibat musim dingin dahsyat.`,
-          `Eropa Barat akan membeku akibat musim dingin dahsyat menurut kesimpulan para ahli.`,
-          `Kesimpulan para ahli menunjukkan bahwa Eropa Barat akan beku akibat musim dingin dahsyat.`,
+        "Secara etnografis, hubungan harmonis manusia dan alam digambarkan oleh rumah tradisional Kesepuhan.",
+        "Rumah tradisional Kesepuhan dan hubungan harmonis tecermin secara etnografis.",
+        "Rumah tradisional Kesepuhan direpresentasikan secara etnografis oleh hubungan harmonis.",
+        "Hubungan harmonis manusia dan alam secara etnografis terlihat sama dengan rumah Kasepuhan.",
+        "Rumah tradisional Kesepuhan secara etnografis menggambarkan hubungan harmonis manusia dan alam."
+      ],
+      answerIndex: [4]
+    },
+    { //Soal 17
+      txtField: "(1) Kebun Raya Itera di Lampung menjadi benteng pelestarian flora khas Sumatera. (2) Dua di antaranya adalah gaharu dan kantong semar yang kini langka di habitat aslinya. (3) Sebelum kebun raya hadir, kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal. (4) Kini, gaharu dan kantong semar mulai terawat dan dikembangbiakkan oleh para peneliti. (5) Gaharu hanya bisa tumbuh di dataran rendah, sedangkan kantong semar lebih adaptif di berbagai ketinggian. (6) Tidak jarang, pengunjung kebun raya baru pertama kali melihat langsung bentuk tanaman tersebut. (7) Kondisi ini menunjukkan betapa pentingnya peran kebun raya dalam edukasi konservasi. (8) Beberapa penelitian menunjukkan bahwa manfaat gaharu dan kantong semar tidak hanya sebagai tanaman hias. (9) Keduanya sama-sama berpotensi sebagai bahan obat tradisional. (10) Gaharu mengandung senyawa aromatik yang digunakan dalam industri wewangian dan (11) kantong semar dimanfaatkan sebagai obat mata.",
+      question: "Kelompok kata dalam bacaan tersebut yang memiliki pola makna sama dengan tanaman hias adalah ....",
+      options: [
+        "habitat asli (kalimat 2)",
+        "tanaman langka (kalimat 2)",
+        "bahan obat (kalimat 9)",
+        "wewangian (kalimat 10)",
+        "obat mata (kalimat 11)"
+      ],
+      answerIndex: [2]
+    },
+    { //Soal 18
+      txtField: "(1) Kebun Raya Itera di Lampung menjadi benteng pelestarian flora khas Sumatera. (2) Dua di antaranya adalah gaharu dan kantong semar yang kini langka di habitat aslinya. (3) Sebelum kebun raya hadir, kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal. (4) Kini, gaharu dan kantong semar mulai terawat dan dikembangbiakkan oleh para peneliti. (5) Gaharu hanya bisa tumbuh di dataran rendah, sedangkan kantong semar lebih adaptif di berbagai ketinggian. (6) Tidak jarang, pengunjung kebun raya baru pertama kali melihat langsung bentuk tanaman tersebut. (7) Kondisi ini menunjukkan betapa pentingnya peran kebun raya dalam edukasi konservasi. (8) Beberapa penelitian menunjukkan bahwa manfaat gaharu dan kantong semar tidak hanya sebagai tanaman hias. (9) Keduanya sama-sama berpotensi sebagai bahan obat tradisional. (10) Gaharu mengandung senyawa aromatik yang digunakan dalam industri wewangian dan (11) kantong semar dimanfaatkan sebagai obat mata.",
+      question: "Kata yang tepat di awal paragraf dua untuk menghubungkan kedua paragraf pada bacaan adalah ….",
+      options: [
+        "oleh karena itu",
+        "di samping itu",
+        "namun demikian",
+        "dengan kata lain",
+        "sehubungan dengan hal tersebut"
       ],
       answerIndex: [1]
+    },
+    { //Soal 19
+      txtField: "(1) Kebun Raya Itera di Lampung menjadi benteng pelestarian flora khas Sumatera. (2) Dua di antaranya adalah gaharu dan kantong semar yang kini langka di habitat aslinya. (3) Sebelum kebun raya hadir, kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal. (4) Kini, gaharu dan kantong semar mulai terawat dan dikembangbiakkan oleh para peneliti. (5) Gaharu hanya bisa tumbuh di dataran rendah, sedangkan kantong semar lebih adaptif di berbagai ketinggian. (6) Tidak jarang, pengunjung kebun raya baru pertama kali melihat langsung bentuk tanaman tersebut. (7) Kondisi ini menunjukkan betapa pentingnya peran kebun raya dalam edukasi konservasi. (8) Beberapa penelitian menunjukkan bahwa manfaat gaharu dan kantong semar tidak hanya sebagai tanaman hias. (9) Keduanya sama-sama berpotensi sebagai bahan obat tradisional. (10) Gaharu mengandung senyawa aromatik yang digunakan dalam industri wewangian dan (11) kantong semar dimanfaatkan sebagai obat mata.",
+      question: "Ungkapan kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal pada kalimat (3) dapat disempurnakan menjadi ….",
+      options: [
+        "gaharu dan kantong semar banyak diburu untuk diperdagangkan secara ilegal",
+        "para pemburu memperdagangkan gaharu dan kantong semar secara ilegal",
+        "tanaman itu banyak diburu oleh pedagang ilegal",
+        "gaharu dan kantong semar yang banyak diburu untuk diperdagangkan secara ilegal",
+        "kedua tanaman itu banyak diburu dan diperdagangkan secara ilegal"
+      ],
+      answerIndex: [4]
+    },
+    { //Soal 20
+      txtField: "Nenek memasak nasi \"Sega kukus bumbung\". Kakek menanam jagung \"Jagung tandur cangkul\". Nasi dimasak Kakek \"Sega cangkul kukus\". Bagaimana mengatakan \"Jagung ditanam Nenek\" dengan bahasa tersebut?",
+      question: "Ungkapan yang tepat adalah?",
+      options: [
+        "Jagung bumbung tandur.",
+        "Jagung kukus tandur.",
+        "Jagung tandur kukus.",
+        "Sega kukus tandur.",
+        "Tandur bumbung jagung"
+      ],
+      answerIndex: [0]
     }
   ],
 }
 
 const soalPBM: ujianSession = {
   name: "Kemampuan Memahami Bacaan dan Menulis",
-  description: "Ada 20 soal yang akan dikerjakan dalam 25 menit",
+  description: "Ada 20 soal yang akan dikerjakan dalam 15 menit",
+  duration: 15 * 60,
   questions: [
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Keberadaan industri olahraga di tingkat dunia terus berkembang pesat. (2) Beberapa negara maju seperti Amerika, Inggris, Jerman, Perancis, dan Cina telah menjadikan olahraga sebagai industri **prioritas** sekaligus pemasok devisa negara. (3) Bahkan, olahraga terus **didesain** sebagai industri modern berskala global. (4) Salah satu jejak munculnya industri olahraga dapat dirujuk saat Peter Ueberroth sukses mengusung bisnis dalam penyelenggaraan Olimpiade Los Angeles 1984. (5) Pada saat itu, penyelenggaraan olimpiade berhasil mencetak laba 227,7 juta **dollar** AS yang ditandai dengan munculnya produk Nike sebagai sponsor kegiatan tersebut. (6) Sejak saat itu, berbagai negara terus mengembangkan industri olahraga. (7) Pasar olahraga global terus menunjukkan **tren** kenaikan dari tahun ke tahun. (8) Pertumbuhan industri olahraga itu dipicu oleh perkembangan internet dan digitalisasi. (9) (....), tiap-tiap kawasan memiliki **spesifikasi** dalam pengembangan industri olahraga. (10) Misalnya, Amerika Serikat mengedepankan industri olahraga basket, sedangkan Eropa, terutama Inggris, industri sepakbola.
-      \nDiadaptasi dari https://kompaspedia.kompas.id/`,
-      question: `Apa inti isi teks tersebut?`,
+    { //Soal 1
+      txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
+      question: "Perbaikan kalimat (2) yang paling tepat sesuai kaidah penulisan istilah ilmiah dan tanda baca adalah ...",
       options: [
-        `Negara maju menjadikan olahraga sebagai industri.`,
-        `Industri olahraga di dunia berkembang pesat.`,
-        `Olahraga dirancang sebagai industri berskala besar.`,
-        `Olimpiade ditengarai sebagai tonggak industri olahraga.`,
-        `Industri olahraga modern tumbuh berskala global.`,
+        "Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui.",
+        "Bangkai satwa dengan nama latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026, di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui.",
+        "Bangkai satwa dengan nama Latin Elephas Maximus Sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui.",
+        "Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui.",
+        "Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari, 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga Kecamatan Ukui."
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 2
+      txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
+      question: "Ketidakefektifan kalimat (3) terutama disebabkan oleh …",
+      options: [
+        "penggunaan frasa yang terlalu panjang",
+        "tidak adanya koma pada unsur aposisi",
+        "pemilihan diksi yang kurang tepat",
+        "pengulangan informasi yang tidak perlu"
       ],
       answerIndex: [1]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Keberadaan industri olahraga di tingkat dunia terus berkembang pesat. (2) Beberapa negara maju seperti Amerika, Inggris, Jerman, Perancis, dan Cina telah menjadikan olahraga sebagai industri **prioritas** sekaligus pemasok devisa negara. (3) Bahkan, olahraga terus **didesain** sebagai industri modern berskala global. (4) Salah satu jejak munculnya industri olahraga dapat dirujuk saat Peter Ueberroth sukses mengusung bisnis dalam penyelenggaraan Olimpiade Los Angeles 1984. (5) Pada saat itu, penyelenggaraan olimpiade berhasil mencetak laba 227,7 juta **dollar** AS yang ditandai dengan munculnya produk Nike sebagai sponsor kegiatan tersebut. (6) Sejak saat itu, berbagai negara terus mengembangkan industri olahraga. (7) Pasar olahraga global terus menunjukkan **tren** kenaikan dari tahun ke tahun. (8) Pertumbuhan industri olahraga itu dipicu oleh perkembangan internet dan digitalisasi. (9) (....), tiap-tiap kawasan memiliki **spesifikasi** dalam pengembangan industri olahraga. (10) Misalnya, Amerika Serikat mengedepankan industri olahraga basket, sedangkan Eropa, terutama Inggris, industri sepakbola.
-      \nDiadaptasi dari https://kompaspedia.kompas.id/`,
-      question: `Kata sambung yang paling tepat untuk melengkapi kalimat (9) adalah ....`,
+    { //Soal 3
+      txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
+      question: "Perbaikan paling tepat untuk kalimat (4) agar sesuai kaidah adalah …",
       options: [
-        `oleh karena itu`,
-        `dengan demikian`,
-        `selain itu`,
-        `selanjutnya`,
-        `meskipun demikian`,
+        "Menurutnya, kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia.",
+        "Menurutnya kejahatan terhadap gajah, sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia.",
+        "Menurutnya, kejahatan terhadap gajah, sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia.",
+        "Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara, dan masa depan keanekaragaman hayati Indonesia.",
+        "Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan, masa depan keanekaragaman hayati Indonesia."
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 4
+      txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
+      question: "Penggabungan kalimat (5) dan (6) yang paling tepat dan menunjukkan relasi makna yang logis adalah …",
+      options: [
+        "Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar dan gajah tersebut diduga diburu untuk diambil gadingnya.",
+        "Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar karena gajah tersebut diduga diburu untuk diambil gadingnya.",
+        "Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar, sehingga gajah tersebut diduga diburu untuk diambil gadingnya.",
+        "Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar; oleh karena itu, gajah tersebut diduga diburu untuk diambil gadingnya.",
+        "Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar, tetapi gajah tersebut diduga diburu untuk diambil gadingnya."
       ],
       answerIndex: [2]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Keberadaan industri olahraga di tingkat dunia terus berkembang pesat. (2) Beberapa negara maju seperti Amerika, Inggris, Jerman, Perancis, dan Cina telah menjadikan olahraga sebagai industri **prioritas** sekaligus pemasok devisa negara. (3) Bahkan, olahraga terus **didesain** sebagai industri modern berskala global. (4) Salah satu jejak munculnya industri olahraga dapat dirujuk saat Peter Ueberroth sukses mengusung bisnis dalam penyelenggaraan Olimpiade Los Angeles 1984. (5) Pada saat itu, penyelenggaraan olimpiade berhasil mencetak laba 227,7 juta **dollar** AS yang ditandai dengan munculnya produk Nike sebagai sponsor kegiatan tersebut. (6) Sejak saat itu, berbagai negara terus mengembangkan industri olahraga. (7) Pasar olahraga global terus menunjukkan **tren** kenaikan dari tahun ke tahun. (8) Pertumbuhan industri olahraga itu dipicu oleh perkembangan internet dan digitalisasi. (9) (....), tiap-tiap kawasan memiliki **spesifikasi** dalam pengembangan industri olahraga. (10) Misalnya, Amerika Serikat mengedepankan industri olahraga basket, sedangkan Eropa, terutama Inggris, industri sepakbola.
-      \nDiadaptasi dari https://kompaspedia.kompas.id/`,
-      question: `Penulisan kata bercetak tebal dalam teks tersebut yang salah terdapat pada kalimat ....`,
+    { //Soal 5
+      txtField: "(1) Kondisi tersebut menunjukkan bahwa literasi digital tidak cukup hanya diajarkan secara teoretis di sekolah. (2) Dalam beberapa tahun terakhir, penyebaran informasi palsu di media sosial meningkat secara signifikan. (3) Oleh karena itu, diperlukan kemampuan berpikir kritis agar masyarakat mampu memilah informasi sebelum membagikannya. (4) Banyak pengguna internet yang langsung menyebarkan berita tanpa memeriksa kebenarannya terlebih dahulu. (5) Pendidikan literasi digital yang aplikatif dan berkelanjutan menjadi salah satu solusi yang dapat diterapkan.",
+      question: "Urutan kalimat yang tepat agar menjadi paragraf yang padu adalah …",
       options: [
-        `2`,
-        `3`,
-        `5`,
-        `7`,
-        `9`,
+        "2, 4, 1, 3, 5",
+        "2, 1, 4, 3, 5",
+        "4, 2, 1, 3, 5",
+        "2, 4, 3, 1, 5",
+        "4, 1, 2, 3, 5"
       ],
-      answerIndex: [2]
+      answerIndex: [0]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Tantangan seorang guru masa kini adalah tidak hanya mengurusi siswa, namun juga mengubah cara pandang orang tua siswa dan masyarakat secara umum dari cara pandang lama atau tradisional ke arah pandang yang modern. (2) Paradigma pendidikan masa lampau bagi para orang tua adalah orientasi pendidikan berbasis nilai akademik. (3) Dewasa ini, banyak orang tua masih mengutamakan nilai akademik yang tinggi daripada karakter yang baik. (4) Nilai ujian memang penting. (5) Kerja keras, disiplin, menghargai orang lain, simpati, jujur, dan lain-lain adalah yang terpenting dari pencapaian proses pembelajaran. (6) Ada lima kemampuan yang wajib dimiliki setiap siswa saat ini. (7) Kelima kemampuan tersebut adalah kemampuan berpikir kritis, memecahkan masalah, berkomunikasi, berkreativitas, dan berkolaborasi (8) Kemampuan tersebut tidak dapat diukur dengan angka-angka.`,
-      question: `Kata yang paling tepat menggantikan paradigma dalam kalimat 2 adalah ....`,
-      options: [
-        `ukuran standar`,
-        `kerangka berpikir`,
-        `matriks dasar`,
-        `sudut pandang`,
-        `pola acuan`,
-      ],
+    { //Soal 6
+      txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
+      question: "Penulisan tanda baca yang tidak tepat pada teks tersebut terdapat pada kalimat nomor",
+      options: ["1", "2", "3", "4", "5"],
       answerIndex: [3]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Tantangan seorang guru masa kini adalah tidak hanya mengurusi siswa, namun juga mengubah cara pandang orang tua siswa dan masyarakat secara umum dari cara pandang lama atau tradisional ke arah pandang yang modern. (2) Paradigma pendidikan masa lampau bagi para orang tua adalah orientasi pendidikan berbasis nilai akademik. (3) Dewasa ini, banyak orang tua masih mengutamakan nilai akademik yang tinggi daripada karakter yang baik. (4) Nilai ujian memang penting. (5) Kerja keras, disiplin, menghargai orang lain, simpati, jujur, dan lain-lain adalah yang terpenting dari pencapaian proses pembelajaran. (6) Ada lima kemampuan yang wajib dimiliki setiap siswa saat ini. (7) Kelima kemampuan tersebut adalah kemampuan berpikir kritis, memecahkan masalah, berkomunikasi, berkreativitas, dan berkolaborasi (8) Kemampuan tersebut tidak dapat diukur dengan angka-angka.`,
-      question: `Kalimat manakah yang paling tepat sebagai perluasan kalimat 4 agar padu dengan kalimat yang lain?`,
+    { //Soal 7
+      txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
+      question: "Kalimat manakah yang isinya sama dengan kalimat (1)?",
       options: [
-        `Nilai ujian yang tinggi memang penting dan dapat mengukur perilaku siswa.`,
-        `Nilai ujian yang tinggi memang penting sebagai ukuran prestasi dan perilaku siswa.`,
-        `Nilai ujian yang tinggi memang penting, namun itu bukan satu-satunya tolok ukur.`,
-        `Nilai ujian memang penting untuk mengukur perkembangan prestasi dan perilaku siswa.`,
-        `Nilai ujian yang tinggi menunjukkan bahwa siswa mempunyai prestasi yang baik.`,
+        "Penggunaan teknologi digital di sekolah perlu ditingkatkan secara merata sebagaimana disampaikan oleh Menteri Pendidikan, Nadiem Makarim.",
+        "Menteri Pendidikan, Nadiem Makarim, menyatakan bahwa seluruh sekolah sudah menerapkan teknologi digital secara merata.",
+        "Nadiem Makarim berpendapat bahwa teknologi digital di sekolah hanya perlu dikembangkan di wilayah perkotaan.",
+        "Teknologi digital di sekolah dinilai tidak terlalu penting oleh Menteri Pendidikan.",
+        "Menteri Pendidikan menyampaikan bahwa teknologi digital di sekolah tidak harus diterapkan secara merata."
       ],
-      answerIndex: [2]
+      answerIndex: [0]
     },
-    {
-      txtField: `Jadi, proses pembelajaran secara aktif dapat menempatkan siswa dalam suatu situasi yang membuat mereka terlibat dalam aktivitas yang telah dirancang oleh guru untuk tujuan tertentu.`,
-      question: `Manakah perbaikan kalimat di atas yang paling efektif?`,
+    { //Soal 8
+      txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
+      question: "Kata maka dalam kalimat (6) seharusnya . . .",
       options: [
-        `Jadi, pembelajaran secara aktif menempatkan siswa ke suatu situasi yang membuat mereka terlibat dalam aktivitas yang telah dirancang oleh guru untuk tujuan tertentu.`,
-        `Jadi, pembelajaran secara aktif dapat menempatkan siswa dalam suatu situasi yang membuat mereka terlibat dalam aktivitas yang telah dirancang oleh guru untuk tujuan tertentu.`,
-        `Jadi, pembelajaran secara aktif menempatkan siswa dalam suatu situasi yang membuat mereka terlibat dalam aktivitas yang telah dirancang oleh guru untuk tujuan tertentu.`,
-        `Jadi, proses pembelajaran secara aktif menempatkan siswa dalam suatu situasi yang membuat mereka terlibat dalam aktivitas yang telah dirancang oleh guru untuk tujuan tertentu.`,
-        `Jadi, proses pembelajaran secara aktif dapat menempatkan siswa dalam suatu situasi yang membuat mereka terlibat dalam aktivitas yang telah dirancang oleh guru untuk tujuan tertentu,`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `Menurut penulis buku "Demokrasi Pancasila di Era Kemajemukan, menjelaskan gotong-royong merupakan kegiatan yang dilakukan secara bersama-sama agar kegiatan tersebut dapat berjalan dengan lancar, ball. dan terasa lebih ringan. Begitu pula, lembaga-lembaga masyarakat adat seperti Lembaga Desa Adat Ba selalu mengatur gotong royong ini serta fungsi dan manfaatnya.`,
-      question: `Penulisan judul buku dan nama lembaga pada teks di atas yang benar adalah ....`,
-      options: [
-        `Demokrasi Pancasila di Era Kemajemukan; "Lembaga Desa Adat Bali"`,
-        `*Demokrasi Pancasila di Era Kemajemukan*; Lembaga Desa Adat Bali`,
-        `*Demokrasi Pancasila di Era Kemajemukan*; "Lembaga Desa Adat Bali"`,
-        `Demokrasi Pancasila di Era Kemajemukan; Lembaga Desa Adat Bali`,
-        `"Demokrasi Pancasila di Era Kemajemukan"; "Lembaga Desa Adat Bali"`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `Pengambilan sampel tanpa memahami struktur hidung bisa menyebabkan kesakitan, Risiko pendarahan bisa terjadi jika tangkai swab mengenai pembuluh darah.
-      \nPERINGATAN!\n
-      \n- Masyarakat tidak boleh sembarangan membeli alat kesehatan.
-      \n- Alat kesehatan seperti alat tes rapid antigen tidak boleh dibeli dan dipakai secara mandiri.
-      \n- Semua alat kesehatan yang telah mendapat izin edar tercatat dalam infoalkes.kemenkes.go.id`,
-      question: `Berdasarkan bacaan di atas dapat disimpulkan bahwa penggunaan alat rapid tes berbasis antigen secara sendiri ....`,
-      options: [
-        `dikhawatirkan berpotensi meningkatkan penularan covid-19`,
-        `dikahwatikan membahayakan masyarakat dan hasilnya tidak akurat`,
-        `diatur dan dibatasi berdasarkan hukum yang berlaku`,
-        `boleh dilakukan di rumah tanpa bantuan petugas medis`,
-        `bisa menimbulkan penyakit`,
+        "dibiarkan saja karena sudah tepat",
+        "dihilangkan",
+        "diganti dengan kata sehingga",
+        "ditulis dengan huruf kapital",
+        "diikuti tanda koma di belakangnya"
       ],
       answerIndex: [1]
     },
-    {
-      txtField: `Pengambilan sampel tanpa memahami struktur hidung bisa menyebabkan kesakitan, Risiko pendarahan bisa terjadi jika tangkai swab mengenai pembuluh darah.
-      \nPERINGATAN!\n
-      \n- Masyarakat tidak boleh sembarangan membeli alat kesehatan.
-      \n- Alat kesehatan seperti alat tes rapid antigen tidak boleh dibeli dan dipakai secara mandiri.
-      \n- Semua alat kesehatan yang telah mendapat izin edar tercatat dalam infoalkes.kemenkes.go.id`,
-      question: `Kata memahami pada kalimat "Pengambilan sampel tanpa memahami struktur hidung bisa menyebabkan kesakitan" memiliki makna ....`,
+    { //Soal 9
+      txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
+      question: "Apa judul yang paling tepat untuk teks tersebut?",
       options: [
-        `mengenali`,
-        `menguasai`,
-        `mengetahui`,
-        `memperhatikan`,
-        `mempertimbangkan`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `Pengambilan sampel tanpa memahami struktur hidung bisa menyebabkan kesakitan, Risiko pendarahan bisa terjadi jika tangkai swab mengenai pembuluh darah.
-      \nPERINGATAN!\n
-      \n- Masyarakat tidak boleh sembarangan membeli alat kesehatan.
-      \n- Alat kesehatan seperti alat tes rapid antigen tidak boleh dibeli dan dipakai secara mandiri.
-      \n- Semua alat kesehatan yang telah mendapat izin edar tercatat dalam infoalkes.kemenkes.go.id`,
-      question: `Penulisan kata swab pada teks di atas seharusnya adalah ....`,
-      options: [
-        `'swab'`,
-        `Swab`,
-        `*swab*`,
-        `"swab"`,
-        `**Swab**`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Marsialapari menjadi salah satu tradisi yang masih melekat dan sudah sejak lama dilestarikan masyarakat Mandailing, Tapanuli Selatan, Sumatra Utara. (2) Dalam tradis tolong menolong ini laksanakan pada saat menanam dan memanen padi. (3) Hal ini juga diungkapkan dalam artikel berjudul Marsialipari, Tradisi Gotong Royong Yang Mengakar Kuat Di Masyarakat Mandailing. (4) Di samping itu, tradisi Marsialapari ini juga menunjukkan adanya nilai kasih sayang dan persatuan yang hidup dalam khazanah Budaya masyarakat Mandailing. (5) Menurut hasil kajian Lembaga Adat Dalian Na Tolu tradisi ini tidak sekadar aktivitas dalam melakukan gotong royong, tetapi juga cermin nilai-nilai budaya masyarakat Mandailing. (6) Dalam tradisi ini tercermin adanya esensi kasih sayang dan persatuan yang tertanam dalam diri masyarakat Mandailing. (7) Semua lembaga memperhatikan adat dan tradisi budaya yang ada di daerah Sumatera Utara, khususnya Tapanuli Selatan.`,
-      question: `Kalimat (2) perlu disempurnakan dengan cara ....`,
-      options: [
-        `menghilangkan *dalam*`,
-        `menghilangka *tolong-menolong*`,
-        `menghilangkan *ini*`,
-        `menggantikan *dilaksakan* dengan *terlaksana*`,
-        `menghilangkan *pada*`,
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Marsialapari menjadi salah satu tradisi yang masih melekat dan sudah sejak lama dilestarikan masyarakat Mandailing, Tapanuli Selatan, Sumatra Utara. (2) Dalam tradis tolong menolong ini laksanakan pada saat menanam dan memanen padi. (3) Hal ini juga diungkapkan dalam artikel berjudul Marsialipari, Tradisi Gotong Royong Yang Mengakar Kuat Di Masyarakat Mandailing. (4) Di samping itu, tradisi Marsialapari ini juga menunjukkan adanya nilai kasih sayang dan persatuan yang hidup dalam khazanah Budaya masyarakat Mandailing. (5) Menurut hasil kajian Lembaga Adat Dalian Na Tolu tradisi ini tidak sekadar aktivitas dalam melakukan gotong royong, tetapi juga cermin nilai-nilai budaya masyarakat Mandailing. (6) Dalam tradisi ini tercermin adanya esensi kasih sayang dan persatuan yang tertanam dalam diri masyarakat Mandailing. (7) Semua lembaga memperhatikan adat dan tradisi budaya yang ada di daerah Sumatera Utara, khususnya Tapanuli Selatan.`,
-      question: `Kata yang harus dihilangkan pada kalimat (4) adalah ....`,
-      options: [
-        `ini`,
-        `juga`,
-        `adanya`,
-        `nilai`,
-        `khazanah`,
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Marsialapari menjadi salah satu tradisi yang masih melekat dan sudah sejak lama dilestarikan masyarakat Mandailing, Tapanuli Selatan, Sumatra Utara. (2) Dalam tradis tolong menolong ini laksanakan pada saat menanam dan memanen padi. (3) Hal ini juga diungkapkan dalam artikel berjudul Marsialipari, Tradisi Gotong Royong Yang Mengakar Kuat Di Masyarakat Mandailing. (4) Di samping itu, tradisi Marsialapari ini juga menunjukkan adanya nilai kasih sayang dan persatuan yang hidup dalam khazanah Budaya masyarakat Mandailing. (5) Menurut hasil kajian Lembaga Adat Dalian Na Tolu tradisi ini tidak sekadar aktivitas dalam melakukan gotong royong, tetapi juga cermin nilai-nilai budaya masyarakat Mandailing. (6) Dalam tradisi ini tercermin adanya esensi kasih sayang dan persatuan yang tertanam dalam diri masyarakat Mandailing. (7) Semua lembaga memperhatikan adat dan tradisi budaya yang ada di daerah Sumatera Utara, khususnya Tapanuli Selatan.`,
-      question: `Kalimat yang tidak berkaitan dengan gagasan utama bacaan adalah kalimat ....`,
-      options: [
-        `5`,
-        `3`,
-        `7`,
-        `1`,
-        `6`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Marsialapari menjadi salah satu tradisi yang masih melekat dan sudah sejak lama dilestarikan masyarakat Mandailing, Tapanuli Selatan, Sumatra Utara. (2) Dalam tradis tolong menolong ini laksanakan pada saat menanam dan memanen padi. (3) Hal ini juga diungkapkan dalam artikel berjudul Marsialipari, Tradisi Gotong Royong Yang Mengakar Kuat Di Masyarakat Mandailing. (4) Di samping itu, tradisi Marsialapari ini juga menunjukkan adanya nilai kasih sayang dan persatuan yang hidup dalam khazanah Budaya masyarakat Mandailing. (5) Menurut hasil kajian Lembaga Adat Dalian Na Tolu tradisi ini tidak sekadar aktivitas dalam melakukan gotong royong, tetapi juga cermin nilai-nilai budaya masyarakat Mandailing. (6) Dalam tradisi ini tercermin adanya esensi kasih sayang dan persatuan yang tertanam dalam diri masyarakat Mandailing. (7) Semua lembaga memperhatikan adat dan tradisi budaya yang ada di daerah Sumatera Utara, khususnya Tapanuli Selatan.`,
-      question: `Penulisan judul artikel dan nama lembaga pada kalimat (3) dan (5) yang benar adalah ....`,
-      options: [
-        `"*Marsialapali*, Tradisi Gotong Royong yang Mengakar Kuat di Masyarakat Mandailing"; "Lembaga Adat Dalian Na Tolu"`,
-        `*Marsialapali, Tradisi Gotong Royong yang Mengakar Kuat di Masyarakat Mandailing*; Lembaga Adat Dalian Na Tolu`,
-        `*Marsialapali*, Tradisi Gotong Royong yang Mengakar Kuat di Masyarakat Mandailing; Lembaga Adat Dalian Na Tolu`,
-        `"*Marsialapali*, Tradisi Gotong Royong yang Mengakar Kuat di Masyarakat Mandailing"; Lembaga Adat Dalian Na Tolu`,
-        `*Marsialapali*, Tradisi Gotong Royong yang Mengakar Kuat di Masyarakat Mandailing; *Lembaga Adat Dalian Na Tolu*`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `"Sudah sewajarnya pemerintah terus mempercepat pemudahan bisnis dengan menyederhanakan sistem perizinan, di antaranya meluncurkan program pengurusan satu pintu (One Single Submissions /OSS) yang merupakan tindak lanjut dari Perpres Nomor 91 Tahun 2017 tentang Percepatan Kemudahan Berusaha.`,
-      question: `Kalimat manakah yang paling tepat sebagai kalimat inti dari kalimat di atas ....`,
-      options: [
-        `Pemerintah mempercepat pemudahan bisnis.`,
-        `Pemerintah menyederhanakan sistem perizinan.`,
-        `Pemerintah meluncurkan program pengurusan satu pintu.`,
-        `Pengurusan satu pintu merupakan tindak lanjut peraturan presiden.`,
-        `Pemudahan bisnis merupakan percepatan kemudahan berusaha.`,
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Menurut Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup mengamanatkan perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang **kontinu** (1). Salah satu **strategi** yang dapat dilakukan adalah pembangunan taman kehati yang dilakukan di luar kawasan hutan (2). Dengan semakin menurunnya **kwalitas** lingkungan, terutama di wilayah yang bukan kawasan hutan, diperlukan upaya pelestarian kehati melalui pembangunan taman kehati di setiap daerah (3). Pembangunan taman kehati dapat digunakan untuk mempertahankan kehati setempat yang sudah semakin langka dan menjadi ikon suatu kota (4). Misalnya saja kota Jakarta yang mempunyai ikon salak condet, akan sangat bagus jika Jakarta memiliki taman kehati yang salah satu fungsinya adalah mempertahankan **eksistensi** salak condet (5). (...) taman kehati juga bisa dimanfaatkan untuk mempertahankan keberadaan **spesies** tumbuhan yang dulunya sangat umum (6).`,
-      question: `Kata sambung yang paling tepat untuk mengisi titik-titik di atas adalah ....`,
-      options: [
-        `Sebaliknya`,
-        `Selain itu`,
-        `Selanjutnya`,
-        `Sementara itu`,
-        `Namun`,
+        "Literasi Digital dan Keterampilan Abad 21",
+        "Pentingnya Literasi Digital di Era Informasi",
+        "Etika Digital dalam Interaksi Sosial",
+        "Manfaat Teknologi Digital untuk Semua",
+        "Dampak Negatif Internet bagi Masyarakat"
       ],
       answerIndex: [1]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Menurut Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup mengamanatkan perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang **kontinu** (1). Salah satu **strategi** yang dapat dilakukan adalah pembangunan taman kehati yang dilakukan di luar kawasan hutan (2). Dengan semakin menurunnya **kwalitas** lingkungan, terutama di wilayah yang bukan kawasan hutan, diperlukan upaya pelestarian kehati melalui pembangunan taman kehati di setiap daerah (3). Pembangunan taman kehati dapat digunakan untuk mempertahankan kehati setempat yang sudah semakin langka dan menjadi ikon suatu kota (4). Misalnya saja kota Jakarta yang mempunyai ikon salak condet, akan sangat bagus jika Jakarta memiliki taman kehati yang salah satu fungsinya adalah mempertahankan **eksistensi** salak condet (5). (...) taman kehati juga bisa dimanfaatkan untuk mempertahankan keberadaan **spesies** tumbuhan yang dulunya sangat umum (6).`,
-      question: `Penulisan kata bercetak tebal yang salah pada teks tersebut terdapat pada kalimat ....`,
+    { //Soal 10
+      txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
+      question: "Manakah yang paling tepat sebagai kalimat inti dari kalimat (2)?",
       options: [
-        `1`,
-        `2`,
-        `3`,
-        `5`,
-        `6`,
+        "Informasi di internet sangat banyak",
+        "Setiap individu perlu berpikir kritis",
+        "Literasi digital penting untuk dibahas",
+        "Internet sering menimbulkan hoaks",
+        "Ketidakbenaran informasi harus dihindari"
       ],
       answerIndex: [2]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Menurut Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup mengamanatkan perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang **kontinu** (1). Salah satu **strategi** yang dapat dilakukan adalah pembangunan taman kehati yang dilakukan di luar kawasan hutan (2). Dengan semakin menurunnya **kwalitas** lingkungan, terutama di wilayah yang bukan kawasan hutan, diperlukan upaya pelestarian kehati melalui pembangunan taman kehati di setiap daerah (3). Pembangunan taman kehati dapat digunakan untuk mempertahankan kehati setempat yang sudah semakin langka dan menjadi ikon suatu kota (4). Misalnya saja kota Jakarta yang mempunyai ikon salak condet, akan sangat bagus jika Jakarta memiliki taman kehati yang salah satu fungsinya adalah mempertahankan **eksistensi** salak condet (5). (...) taman kehati juga bisa dimanfaatkan untuk mempertahankan keberadaan **spesies** tumbuhan yang dulunya sangat umum (6).`,
-      question: `Kalimat yang tepat untuk memperbaiki kalimat ke-1 teks di atas adalah ....`,
-      options: [
-        `Menurut Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup mengamanatkan perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang kontinu.`,
-        `Menurut Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup bahwa perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang kontinu.`,
-        `Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup mengamanatkan perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang kontinu.`,
-        `Menurut Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup diamanatkan perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang kontinu.`,
-        `Undang-Undang Nomor 32 Tahun 2009 tentang Perlindungan dan Pengelolaan Lingkungan Hidup diamanatkan bahwa perlunya upaya mempertahankan keanekaragaman hayati (kehati) sebagai modal pembangunan nasional yang kontinu.`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `Menurut penulis buku "Demokrasi Pancasila di Era Kemajemukan, menjelaskan gotong-royong merupakan kegiatan yang dilakukan secara bersama-sama agar kegiatan tersebut dapat berjalan dengan lancar, baik, dan terasa lebih ringan.`,
-      question: `Kata yang harus dihilangkan pada kalimat tersebut adalah ....`,
-      options: [
-        `penulis`,
-        `buku`,
-        `menjelaskan`,
-        `secara`,
-        `dapat`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Pada hakikatnya, manusia hidup dalam sebuah kesatuan ruang yang terdiri atas beberapa komponen yang berkaitan. (2) Ruang tersebut dikenal sebagai lingkungan hidup. (3) Dalam perundang-undangan, lingkungan hidup dianggap sebagai kesatuan ruang dengan semua benda, daya, keadaan, dan makhluk hidup, termasuk di dalamnya manusia dan perilakunya. (4) Semua hal itu memengaruhi kelangsungan perikehidupan dan kesejahteraan manusia serta makhluk hidup lainnya. (5) Lingkungan hidup terdiri atas tiga kompoknen, yaitu lingkungan alam, lingkungan buatan, dan lingkungan sosial. (6) Lingkungan sosial sangat berpengaruh terhadap pembangunan manusia seutuhnya. (7) Akan tetapi, kebutuhan manusia tidak ada batasnya sering membuat manusia bertindak berlebihan. (8) Mereka mengeksploitasi lingkungan sebesar-besarnya demi memenuhi kebutuhan hidup. (9) Kebutuhan hidup setiap manusia pasti berbeda, bergantung pada jabatan, gaya hidup, usia, dan jenis kelaminnya.
-      \nDiadaptasi dari https://www.kompas.com/`,
-      question: `Kalimat yang tidak berkaitan dengan gagasan utama bacaan di atas adalah kalimat ....`,
-      options: [
-        `8`,
-        `7`,
-        `6`,
-        `5`,
-        `4`,
-      ],
+    { //Soal 11
+      txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
+      question: "Kata yang paling tepat untuk mengganti kata efektif dalam kalimat (1) adalah …",
+      options: ["terampil", "produktif", "cermat", "kreatif", "bijak"],
       answerIndex: [4]
     },
+    { //Soal 12
+      txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
+      question: "Pernyataan yang paling tepat untuk melengkapi kalimat (5) adalah …",
+      options: [
+        "membantu individu menggunakan teknologi dengan bijak",
+        "mengurangi penggunaan internet di kalangan anak",
+        "menggantikan pendidikan formal dengan pelatihan digital",
+        "menjadikan teknologi sebagai gaya hidup utama",
+        "membatasi penyebaran informasi internasional"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 13
+      txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
+      question: "Penggunaan kata bercetak tebal yang tidak tepat terdapat pada kalimat nomor …",
+      options: ["(2)", "(3)", "(6)", "(7)", "(8)"],
+      answerIndex: [2]
+    },
+    { //Soal 14
+      txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
+      question: "Kalimat berikut perlu dimasukkan dalam bacaan tersebut. \"Program ini juga membuka lapangan kerja baru bagi warga sekitar melalui pengelolaan dan pemasaran produk daur ulang.\" Kalimat tersebut paling tepat ditempatkan setelah kalimat nomor …",
+      options: ["(2)", "(4)", "(5)", "(6)", "(8)"],
+      answerIndex: [3]
+    },
+    { //Soal 15
+      txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
+      question: "Kalimat manakah yang merupakan kalimat efektif dari kalimat (2)?",
+      options: [
+        "Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur.",
+        "Salah satu wilayah yang berhasil mengembangkan program tersebut yaitu Kampung Berseri di Surabaya, Jawa Timur.",
+        "Salah satu wilayah yang berhasil mengembangkan program tersebut, adalah Kampung Berseri di Surabaya, Jawa Timur.",
+        "Salah satu wilayah yang berhasil dikembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur.",
+        "Salah satu wilayah yang berhasil mengembangkan program tersebut di Surabaya adalah Kampung Berseri, Jawa Timur."
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 16
+      txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
+      question: "Makna kata berkelanjutan pada kalimat (8) adalah …",
+      options: [
+        "berlangsung terus-menerus dalam jangka panjang",
+        "berakhir dalam waktu singkat",
+        "dilakukan secara tiba-tiba",
+        "bersifat sementara",
+        "tidak direncanakan sebelumnya"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 17
+      txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
+      question: "Penulisan kata bercetak tebal yang salah terdapat pada kalimat nomor …",
+      options: ["(2)", "(3)", "(4)", "(5)", "(11)"],
+      answerIndex: [3]
+    },
+    { //Soal 18
+      txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
+      question: "Kata penghubung yang paling tepat untuk melengkapi kalimat (3) adalah ….",
+      options: [
+        "oleh karena itu",
+        "namun",
+        "sementara itu",
+        "bahkan",
+        "selain itu"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 19
+      txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
+      question: "Kata yang harus dihilangkan pada kalimat (9) adalah ….",
+      options: ["lainnya", "yang", "juga", "adalah", "aspek"],
+      answerIndex: [2]
+    },
+    { //Soal 20
+      txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
+      question: "Kalimat (10) perlu disempurnakan dengan cara …..",
+      options: [
+        "menghilangkan kata dalam",
+        "menghilangkan kata yang",
+        "menambahkan kata maka setelah wisata",
+        "mengganti kata tanpa dengan dengan",
+        "mengganti kata berhasil dengan sukses"
+      ],
+      answerIndex: [0]
+    }
   ],
 }
 
 const soalPK: ujianSession = {
   name: "Pengetahuan Kuantitatif",
   description: "Ada 20 soal yang akan dikerjakan dalam 20 menit.",
+  duration: 20 * 60,
   questions: [
-    {
-      txtField: ``,
-      question: `Diketahui barisan aritmetika:
-      \n$U_2 + U_4 + U_6 = 15$
-      \n$U_3 + U_5 + U_7 = 27$
-      \n$U_1 + U_2 + U_3 + ... + U_20 = ....$`,
+    { //Soal 1
+      txtField: "Dari angka-angka 2, 4, 7, dan 9, akan dibentuk dua bilangan puluhan dengan setiap angka tepat dipakai sekali. Pernyataan mana saja yang bernilai benar berdasarkan informasi di atas? (1) Bilangan puluhan terkecil yang mungkin dibentuk merupakan bilangan genap. (2) Bilangan puluhan terbesar yang mungkin dibentuk merupakan bilangan ganjil. (3) Selisih terbesar yang mungkin dari dua bilangan puluhan tersebut adalah 73. (4) Jumlah terbesar yang mungkin dari dua bilangan puluhan tersebut adalah 117.",
+      question: "Pernyataan mana saja yang bernilai benar?",
       options: [
-        `600`,
-        `610`,
-        `620`,
-        `630`,
-        `640`,
+        "(1), (2), dan (3) SAJA",
+        "(1) dan (3) SAJA",
+        "(2) dan (4) SAJA",
+        "(4) SAJA",
+        "SEMUA PILIHAN"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 2
+      txtField: "Tujuh bilangan bulat positif, yaitu 6, 5, 8, a, 7, 5, dan 7, memiliki rata-rata 6 1/7. Jika modus dari ketujuh bilangan tersebut ditambah rata-ratanya adalah 78b, maka nilai b sama dengan …",
+      question: "Nilai b sama dengan …",
+      options: ["1/7", "2/7", "3/7", "4/7", "5/7"],
+      answerIndex: [0]
+    },
+    { //Soal 3
+      txtField: "Barisan bilangan x+1, y+3, 4x, 16, … merupakan barisan aritmetika. Suku ke‑10 dari barisan bilangan tersebut adalah ….",
+      question: "Suku ke‑10 dari barisan bilangan tersebut adalah ….",
+      options: ["36", "38", "40", "42", "44"],
+      answerIndex: [2]
+    },
+    { //Soal 4
+      txtField: "Grafik fungsi f(x) = x^2 - 3x + 2 dan g(x) = 2x^2 - 5x + 2 berpotongan di dua titik, yaitu titik P(p,q) dan Q(r,s). Garis h melalui kedua titik tersebut.",
+      question: "Gradien garis h adalah ….",
+      options: ["-2", "-1", "0", "1", "2"],
+      answerIndex: [1]
+    },
+    { //Soal 5
+      txtField: "Grafik fungsi f(x) = x^2 - 3x + 2 dan g(x) = 2x^2 - 5x + 2 berpotongan di dua titik, yaitu titik P(p,q) dan Q(r,s). Garis h melalui kedua titik tersebut.",
+      question: "Persamaan garis yang tegak lurus dengan garis h dan melalui titik (6,2) adalah ....",
+      options: [
+        "x - y - 4 = 0",
+        "x + y - 8 = 0",
+        "x - y + 4 = 0",
+        "x + y + 4 = 0",
+        "-x + y - 4 = 0"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 6
+      txtField: "Grafik fungsi f(x) = x^2 - 3x + 2 dan g(x) = 2x^2 - 5x + 2 berpotongan di dua titik, yaitu titik P(p,q) dan Q(r,s). Garis h melalui kedua titik tersebut.",
+      question: "Jika p < r dan titik P ditranslasi sejauh 3 satuan ke bawah dan 2 satuan ke kiri menjadi titik P', jarak antara titik P' dan Q adalah ....",
+      options: ["√5", "√10", "√13", "√17", "√20"],
+      answerIndex: [3]
+    },
+    { //Soal 7
+      txtField: "",
+      question: "Banyaknya susunan lima angka berbeda dari angka 1, 3, 4, 6, dan 8 dengan angka pertama genap dan angka kelima ganjil adalah ....",
+      options: ["12", "18", "24", "30", "36"],
+      answerIndex: [4]
+    },
+    { //Soal 8
+      txtField: "Pada segitiga ABC di bawah, besar ∠ABC = 45° dan AC = 6. Titik D terletak pada sisi BC sehingga AD tegak lurus BC dan AD = BD.",
+      question: "Besar ∠BAC = …",
+      options: ["30°", "45°", "60°", "90°", "105°"],
+      answerIndex: [3]
+    },
+    { //Soal 9
+      txtField: "Pada segitiga ABC di bawah, besar ∠ABC = 45° dan AC = 6. Titik D terletak pada sisi BC sehingga AD tegak lurus BC dan AD = BD.",
+      question: "Panjang AB = …",
+      options: ["3√2", "3√3", "6", "6√2", "6√3"],
+      answerIndex: [2]
+    },
+    { //Soal 10
+      txtField: "Pada segitiga ABC di bawah, besar ∠ABC = 45° dan AC = 6. Titik D terletak pada sisi BC sehingga AD tegak lurus BC dan AD = BD.",
+      question: "Luas segitiga ABC adalah …",
+      options: ["9", "9√2", "18", "9 + 9√3", "18 + 18√2"],
+      answerIndex: [2]
+    },
+    { //Soal 11
+      txtField: `
+Diketahui sistem persamaan linear dalam x, y, z sebagai berikut.
+
+$$
+\\begin{cases}
+2x - y + z = 3 \\\\
+-2x + 2y = 2 \\\\
+y - z = 1
+\\end{cases}
+$$
+
+Sistem tersebut memiliki solusi $x = a,\\; y = b,\\; z = c.$
+
+Berdasarkan informasi yang diberikan, manakah hubungan antara kuantitas P dan Q berikut yang benar?
+
+$$
+\\begin{array}{|c|c|}
+\\hline
+P & Q \\\\
+\\hline
+a + b + c & 7 \\\\
+\\hline
+\\end{array}
+$$
+`,
+      question: "Manakah hubungan antara kuantitas P dan Q berikut yang benar?",
+      options: [
+        "Kuantitas P lebih dari Q.",
+        "Kuantitas P kurang dari Q.",
+        "Kuantitas P sama dengan Q.",
+        "Tidak dapat ditentukan hubungan antara kuantitas P dan Q."
       ],
       answerIndex: [2]
     },
-    {
-      txtField: ``,
-      question: `Jika vertikal sembarang titik $(x_0, y_0)$ ke garis $I:y = ax + b$ didefinisikan sebagai $|y_0 - (ax_0 + b)|$. Rata-rata jarak vertikal titik (0,-3), (1,3), dan (2,5) ke garis $m:y = 2x - 1$ adalah ....`,
-      options: [
-        `0`,
-        `1`,
-        `2`,
-        `3`,
-        `6`,
-      ],
+    { //Soal 12
+      txtField: "Pertidaksamaan |4x - 6| < a dengan a > 0 memiliki himpunan penyelesaian $$\\{x \\mid -1 < x < 4,\\; x \\in \\mathbb{R}\\}$$. Nilai a sama dengan ….",
+      question: "Nilai a sama dengan ….",
+      options: ["8", "9", "10", "11", "12"],
       answerIndex: [2]
     },
-    {
-      txtField: ``,
-      question: `Modal sebuah barang adalah Rp720.000,00. Berapa harga yang harus dipasang pada barang tersebut agar pedagang bisa menjual dengan potongan harga 10% dan tetap untung 25%?`,
+    { //Soal 13
+      txtField: `
+Kurva $y = (x - p)^2 + q$ diperoleh dengan menggeser kurva 
+$y = x^2 - 6x + 10$ sejauh 3 satuan ke kanan dan 1 satuan ke atas.
+
+Berdasarkan informasi yang diberikan, manakah hubungan antara kuantitas P dan Q berikut yang benar?
+
+$$
+\\begin{array}{|c|c|}
+\\hline
+P & Q \\\\
+\\hline
+p + q & 4 \\\\
+\\hline
+\\end{array}
+$$
+`,
+      question: "Manakah hubungan antara kuantitas P dan Q berikut yang benar?",
       options: [
-        `Rp1.200.000,00`,
-        `Rp1.000.000,00`,
-        `Rp960.000,00`,
-        `Rp862.000,00`,
-        `Rp840.000,00`,
+        "Kuantitas P lebih dari Q.",
+        "Kuantitas P kurang dari Q.",
+        "Kuantitas P sama dengan Q.",
+        "Tidak dapat ditentukan hubungan antara kuantitas P dan Q."
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 14
+      txtField: "Diketahui matriks A = [[a,b],[c,d]] dan B = [[10,12],[14,16]] memenuhi persamaan A [[2,3],[1,1]] = B untuk suatu bilangan riil a, b, c, d. Berdasarkan informasi yang diberikan, manakah hubungan antara kuantitas P dan Q berikut yang benar? (P = a+b+c+d, Q = 30)",
+      question: "Manakah hubungan antara kuantitas P dan Q berikut yang benar?",
+      options: [
+        "Kuantitas P lebih dari Q.",
+        "Kuantitas P kurang dari Q.",
+        "Kuantitas P sama dengan Q.",
+        "Tidak dapat ditentukan hubungan antara kuantitas P dan Q."
       ],
       answerIndex: [1]
     },
-    {
-      txtField: ``,
-      question: `Banyaknya susunan lima angka berbeda dari angka 5,6,7,8, dan 9 dari kiri ke kanan, dengan angka pertamanya BUKAN 5 dan angka terakhir 8 atau 9 adalah ....`,
+    { //Soal 15
+      txtField: "Dari himpunan {3, 5, 7, 9} akan diambil dua anggotanya sekaligus secara acak. Pernyataan mana saja yang bernilai benar berdasarkan informasi di atas? (1) Peluang terambilnya dua bilangan dengan hasil kali genap adalah 1/2. (2) Peluang terambilnya dua bilangan dengan jumlah kurang dari 12 adalah 1/3. (3) Peluang terambilnya dua bilangan dengan selisih bilangan prima adalah 1/3. (4) Peluang terambilnya dua bilangan dengan hasil kali ganjil adalah 1.",
+      question: "Pernyataan mana saja yang bernilai benar?",
       options: [
-        `18`,
-        `36`,
-        `90`,
-        `96`,
-        `192`,
+        "(1), (2), dan (3) SAJA",
+        "(1) dan (3) SAJA",
+        "(2) dan (4) SAJA",
+        "(4) SAJA",
+        "SEMUA PILIHAN"
       ],
       answerIndex: [2]
     },
-    {
-      txtField: `KPK dari dua buah bilangan prima $x$ dan $y$ adalah 14, dengan $x > y$.`,
-      question: `Nilai dari $3x-y$ adalah ....`,
+    { //Soal 16
+      txtField: "Diketahui suatu fungsi m = f(a) = ka^2 + la + 1 dengan k dan l bilangan real. Input a = 2 menghasilkan m = 11 dan input a = 3 menghasilkan m = 19. Pernyataan mana saja yang bernilai benar berdasarkan informasi di atas? (1) Nilai k = 2. (2) Nilai k + l = 4. (3) Input a = 4 menghasilkan m = 31. (4) Input a = 1 menghasilkan m = 5.",
+      question: "Pernyataan mana saja yang bernilai benar?",
       options: [
-        `-1`,
-        `13`,
-        `19`,
-        `21`,
-        `23`,
+        "(1), (2), dan (3) SAJA",
+        "(1) dan (3) SAJA",
+        "(2) dan (4) SAJA",
+        "(4) SAJA",
+        "SEMUA PILIHAN"
       ],
       answerIndex: [2]
     },
-    {
-      txtField: ``,
-      question: `Nilai $x$ yang memenuhi pertidaksamaan $5^{2x} - 6 \\cdot 5^{x+1} + 125 < 0$ yang dimana x anggota bilangan riil adalah ....`,
+    { //Soal 17
+      txtField: "",
+      question: "Hasil dari a/3 - b/2 adalah ....",
       options: [
-        `$1 < x < 2$`,
-        `$5 < x < 25$`,
-        `$x < -1$ atau $x > 2$`,
-        `$x < 1$ atau $x > 2$`,
-        `$x < 5$ atau $x > 25$`,
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: ``,
-      question: `Apabila $x$, $y$, dan $z$ adalah bilangan bulat dan didefinisikan x # y # z $= x^2 - y : z$, maka nilai dari 3 # (-6) # 3 adalah ....`,
-      options: [
-        `4`,
-        `5`,
-        `6`,
-        `11`,
-        `12`,
+        "(2a - b)/6",
+        "(a + 4b)/6",
+        "(4a - b)/6",
+        "(2a - 3b)/6",
+        "(2a + 3b)/6"
       ],
       answerIndex: [3]
     },
-    {
-      txtField: `Barisan $14, (p-1), 6, 2, -2, ....$ adalah barisan aritmetika.`,
-      question: `Nilai p adalah ....`,
+    { //Soal 18
+      txtField: "Fungsi f(x) dan g(x) = 2x + 3 memiliki komposisi fungsi (f ∘ g)(a) = 23, dengan a > 0. Berapakah nilai dari f(5)? Putuskan apakah pernyataan (1) dan (2) berikut cukup untuk menjawab pertanyaan tersebut. (1) Nilai g(a) = 7. (2) Fungsi f(x) = ax + 4.",
+      question: "Manakah pernyataan yang cukup?",
       options: [
-        `7`,
-        `8`,
-        `9`,
-        `10`,
-        `11`,
+        "Pernyataan (1) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (2) SAJA tidak cukup.",
+        "Pernyataan (2) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (1) SAJA tidak cukup.",
+        "DUA pernyataan BERSAMA-SAMA cukup untuk menjawab pertanyaan, tetapi SATU pernyataan SAJA tidak cukup.",
+        "Pernyataan (1) SAJA cukup untuk menjawab pertanyaan dan pernyataan (2) SAJA cukup.",
+        "Pernyataan (1) dan pernyataan (2) tidak cukup untuk menjawab pertanyaan."
       ],
-      answerIndex: [4]
+      answerIndex: [2]
     },
-    {
-      txtField: `Diberikan a, b, c adalah anggota bilangan riil (nyata).
-      \n $a+b+c = 7$
-      \n $\\frac{1}{a+b} + \\frac{1}{b+c} + \\frac{1}{c+a} = \\frac{7}{10}$`,
-      question: `Maka, nilai $\\frac{a}{b + c} + \\frac{b}{c + a} + \\frac{c}{a + b} = $ ....`,
-      options: [
-        `$\\frac{19}{10}$`,
-        `$\\frac{21}{10}$`,
-        `$\\frac{23}{10}$`,
-        `$\\frac{25}{10}$`,
-        `$\\frac{27}{10}$`,
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: ``,
-      question: `Luas seluruh sisi balok 96 $cm^2$ apabila alasnya berbentuk persegi, maka paling besar balok tersebut dapat dibuat dengan volume ....$cm^3$`,
-      options: [
-        `32`,
-        `64`,
-        `96`,
-        `112`,
-        `124`,
-      ],
+    { //Soal 19
+      txtField: "Pulau A, Pulau B, dan Pulau C digambarkan dalam peta di atas yang terbentuk dari kumpulan persegi kecil. Titik A, B, dan C pada peta berturut-turut menyatakan posisi Kota A, Kota B, dan Kota C. (Koordinat: A(1,2), B(4,6), C(1,6))",
+      question: "Jarak terpendek antara Kota A dan Kota B adalah ... satuan.",
+      options: ["4", "5", "6", "7", "8"],
       answerIndex: [1]
     },
-    {
-      txtField: ``,
-      question: `Kamar Akbar berbentuk balok dengan ukuran panjang:lebar:tinggi = 5:5:4. Di langit-langit kamar terdapat lampu yang letaknya tepat pada pusat bidang langit-langit. Pada salah satu dinding kamar dipasang saklar yang letaknya tepat di tengah-tengah dinding. Jarak saklar ke lampu adalah ....`,
-      options: [
-        `$\\frac{3}{2}$ m`,
-        `$\\frac{5}{2}$ m`,
-        `$\\frac{1}{2}\\sqrt{34}$ m`,
-        `$\\frac{1}{2}\\sqrt{41}$ m`,
-        `$\\sqrt{14}$ m`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: ``,
-      question: `Nilai $\\frac{2^{14} - 2^{12}}{2^{11}+2^{10}} = $ ....`,
-      options: [
-        `1`,
-        `2`,
-        `3`,
-        `4`,
-        `5`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `H = 12`,
-      question: `LASWJ ZE XWSWD EJE UWJC PANIWOQG EJOAYPW WZWHWD ....`,
-      options: [
-        `GQZW`,
-        `WUWI`,
-        `XAHWHWJC`,
-        `DWNEIWQ`,
-        `QHWN`,
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: ``,
-      question: `Jika diketahui $x = \\frac{1}{2}$ adalah solusi dari persamaan $^a \\log{x} + ^a \\log{(2x+1)} = b$, maka nilai dari $2a - 6b = $ ....`,
-      options: [
-        `$-5a$`,
-        `$-4a$`,
-        `$-3a$`,
-        `$2a$`,
-        `$a$`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      imageUrl: `![Diagram](https://iili.io/2PrEFmN.png "Diagram")`,
-      // txtField: ``,
-      question: `Jika diberikan input x = 5, manakah pernyataan berikut yang benar dengan menjalan prosedur yang disajikan diagram?
-      \n(1) $y + 3x$ bilangan ganjil
-      \n(2) $z > 11$
-      \n(3) $y + z$ bilangan prima
-      \n(4) $w + 2z$ bilangan genap`,
-      options: [
-        `(1), (2), dan (3)`,
-        `(1) dan (3)`,
-        `(2) dan (4)`,
-        `(4)`,
-        `(1), (2), (3), dan (4)`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      question: `Himpunan penyelesaian dari |$\\frac{1}{4}x^2-10$|$<6$ adalah ....`,
-      options: [
-        `$-8<8$`,
-        `$x<4$ atau $x>4$`,
-        `$-4<x<4$ atau $x<-8$ atau $x>8$`,
-        `$-4<x<4$`,
-        `$-8<x<-4$ atau $4<x<8$`,
-      ],
-      answerIndex: [4]
-    },
-    {
-      txtField: `Diketahui x,y,z didefinisikan x @ y ? z = $(x+2y)^z$`,
-      question: `Nilai dari 5 @ -3 ? 100 adalah ....`,
-      options: [
-        `-2`,
-        `-1`,
-        `0`,
-        `1`,
-        `2`,
-      ],
-      answerIndex: [3]
-    },
-    {
-      question: `Nilai $(\\frac{1}{2^3 \times 3^{-6}})^{\\frac{1}{3}} =$ ....`,
-      options: [
-        `$\\frac{9}{2}$`,
-        `$\\frac{2}{9}$`,
-        `$18$`,
-        `$\\frac{1}{18}$`,
-        `$9$`,
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `Diketahui f dan g adalah fungsi yang mempunyai invers. Jika $f(g(x)) = 2x - 1$ dan $g(x+1) = x - 3$`,
-      question: `Maka nilai $f^{-1}(3) \\cdot g^{-1}(3)$ adalah ....`,
-      options: [
-        `14`,
-        `9`,
-        `0`,
-        `-9`,
-        `-14`,
-      ],
-      answerIndex: [4]
-    },
-    {
-      question: `Jika a dan b dua bilangan real dengan $ \\lim_{x\\to\\infty} \\frac{x^2 + 2ax + b}{x - 2} = 3$`,
-      options: [
-        `-35`,
-        `-30`,
-        `-15`,
-        `-3`,
-        `-1`,
-      ],
-      answerIndex: [0]
-    },
+    { //Soal 20
+      txtField: "Barisan bilangan x + 2, y + 4, 5x, 13, … merupakan barisan aritmetika.",
+      question: "Suku ke-10 dari barisan bilangan tersebut adalah ....",
+      options: ["30", "31", "32", "33", "34"],
+      answerIndex: [1]
+    }
   ],
 };
   
@@ -1194,450 +1021,378 @@ const soalPK: ujianSession = {
 const soalLitdo: ujianSession = {
   name: "Literasi Bahasa Indonesia",
   description: "Ada 30 soal yang akan dikerjakan dalam 42,5 menit",
+  duration: 42.5 * 60,
   questions: [
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev (*magnetic levitation*) adalah kereta api yang mengambang di atas rel. Kereta maglev mengambang dan bergerak berdasarkan tarikan dan tolakan elektromagnetik, seperti dua kutub magnet sejenis tolak-menolak dan dua kutub magnet berbeda jenis tarik menarik. Tidak adanya kontak dengan rel membuat gesekan sangat kecil sehingga kereta dapat bergerak dengan tenang, halus, dan cepat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Ada dua sistem teknologi maglev, yaitu sistem suspense elektromagnetik (SSE) dan sistem suspense elektrodinamik (SSD). Di dalam SSE, pada bagian bawah kereta di kedua sisi dipasang suatu struktur kuat (bogle) berbentuk huruf C tegak sehingga posisi rel berada di atas ujung bogie bagian bawah. Perangkat elektromagnet dipasang di ujung bogie di bawah rel. Ketika dialiri arus listrik dari bateral, perangkat elektromagnet berubah menjadi magnet dan terjadi tarik-menarik dengan rel kereta. Akibatnya, bogie tertarik ke atas menyebabkan kereta mengambang sekitar 1,5 cm di atas rel kereta. Maglev dengan sistem ini dapat bergerak dengan kelajuan rendah maupun tinggi. Sayangnya, SSE kurang stabil dibanding SSD. Di dalam SSD, di sepanjang rel dipasang perangkat elektromagnet dan di bagian bawah dari kereta dipasang magnet permanen. Ketika elektromagnet menjadi magnet, terjadi tolak-menolak dengan magnet permanen dan menyebabkan kereta terangkat sekitar 10 cm. Terangkatnya kereta memerlukan waktu sehingga kereta sistem SSD ini harus dilengkapi dengan roda agar dapat bergerak pada kelajuan rendah Sistem elektronik untuk SSE dan SSD harus handal agar tarikan dan dorongan dapat berlangsung pada saat-saat yang diinginkan.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev ramah lingkungan karena tidak ada proses pembakaran dan hampir tidak ada polusi suara meskipun masih mengalami gangguan suara. Tiadanya hambatan dengan rel membuat kereta dapat melaju sangat cepat sampai 500 km/jam. Sayangnya, jalur kereta maglev adalah jalur khusus, tidak bisa menggunakan jalur kereta biasa. Hal ini menjadi salah satu penyebab sangat mahalnya biaya pembangunan kereta maglev. Namun, mengingat jumlah kelebihan yang telah diungkapkan di atas dan perkembangan teknologi yang diharapkan dapat mereduksi biaya produksi, kereta maglev diharapkan bisa menjadi kereta massal di masa depan.`,
-      question: `Pilih beberapa pernyataan berikut yang sesuai bacaan di atas!`,
+    { //Soal 1
+      txtField: "Pematangan buah yang kita saksikan sehari-hari adalah proses kimia yang unik, di mana gas berperan sebagai sinyal utama. Fenomena ini paling mudah dipahami ketika kita meletakkan Buah A, yaitu buah yang sudah matang (misalnya apel atau pisang yang sudah kuning), di dekat Buah B, yaitu buah yang masih mentah (misalnya alpukat atau mangga hijau). Buah A yang sudah matang secara alami melepaskan Gas Etilen (C22H44). Gas Etilen ini adalah hormon tumbuhan yang bersifat volatil, yang berarti ia mudah menguap dan menyebar ke seluruh udara di sekitarnya. Dengan menempatkan kedua buah ini dalam satu wadah tertutup, Etilen yang dilepaskan oleh Buah A akan terperangkap dan berdifusi, lalu mencapai permukaan Buah B.\n\nGas Etilen yang diserap oleh Buah B yang mentah akan bertindak sebagai pemicu sinyal yang sangat kuat. Begitu molekul Etilen terikat pada reseptor di sel Buah B, ia mengirimkan sinyal untuk mengaktifkan enzim-enzim khusus. Enzim-enzim ini kemudian memulai serangkaian reaksi kimia seperti memecah zat hijau (klorofil) sehingga buah berubah warna menjadi kuning atau merah, memecah pati menjadi gula (membuat buah menjadi manis), dan melarutkan pektin (zat yang membuat buah keras) sehingga buah menjadi lunak. Jadi, Buah A secara efektif \"memberi tahu\" Buah B bahwa sudah waktunya untuk matang, menyebabkan pematangan terjadi lebih cepat dan lebih seragam daripada buah mentah yang dibiarkan sendiri.",
+      question: "Ide pokok yang paling tepat untuk Paragraf 1 adalah …",
       options: [
-        "Mendapat hambatan udara lebih kecil dibanding kereta biasa.",
-        "Mendapat tarikan dan dorongan melalui pasangan dua magnet permanen.",
-        "Sumber utama energi magelev berupa energi listrik.",
-        "Maglev dengan sistem SSE dapat mengambang di udara pada kelajuan rendah.",
-        "Maglev dengan sistem SSE tidak dapat mengambang di udara pada kelajuan renda.",
-      ],
-      answerIndex: [0,2,3,4]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev (*magnetic levitation*) adalah kereta api yang mengambang di atas rel. Kereta maglev mengambang dan bergerak berdasarkan tarikan dan tolakan elektromagnetik, seperti dua kutub magnet sejenis tolak-menolak dan dua kutub magnet berbeda jenis tarik menarik. Tidak adanya kontak dengan rel membuat gesekan sangat kecil sehingga kereta dapat bergerak dengan tenang, halus, dan cepat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Ada dua sistem teknologi maglev, yaitu sistem suspense elektromagnetik (SSE) dan sistem suspense elektrodinamik (SSD). Di dalam SSE, pada bagian bawah kereta di kedua sisi dipasang suatu struktur kuat (bogle) berbentuk huruf C tegak sehingga posisi rel berada di atas ujung bogie bagian bawah. Perangkat elektromagnet dipasang di ujung bogie di bawah rel. Ketika dialiri arus listrik dari bateral, perangkat elektromagnet berubah menjadi magnet dan terjadi tarik-menarik dengan rel kereta. Akibatnya, bogie tertarik ke atas menyebabkan kereta mengambang sekitar 1,5 cm di atas rel kereta. Maglev dengan sistem ini dapat bergerak dengan kelajuan rendah maupun tinggi. Sayangnya, SSE kurang stabil dibanding SSD. Di dalam SSD, di sepanjang rel dipasang perangkat elektromagnet dan di bagian bawah dari kereta dipasang magnet permanen. Ketika elektromagnet menjadi magnet, terjadi tolak-menolak dengan magnet permanen dan menyebabkan kereta terangkat sekitar 10 cm. Terangkatnya kereta memerlukan waktu sehingga kereta sistem SSD ini harus dilengkapi dengan roda agar dapat bergerak pada kelajuan rendah Sistem elektronik untuk SSE dan SSD harus handal agar tarikan dan dorongan dapat berlangsung pada saat-saat yang diinginkan.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev ramah lingkungan karena tidak ada proses pembakaran dan hampir tidak ada polusi suara meskipun masih mengalami gangguan suara. Tiadanya hambatan dengan rel membuat kereta dapat melaju sangat cepat sampai 500 km/jam. Sayangnya, jalur kereta maglev adalah jalur khusus, tidak bisa menggunakan jalur kereta biasa. Hal ini menjadi salah satu penyebab sangat mahalnya biaya pembangunan kereta maglev. Namun, mengingat jumlah kelebihan yang telah diungkapkan di atas dan perkembangan teknologi yang diharapkan dapat mereduksi biaya produksi, kereta maglev diharapkan bisa menjadi kereta massal di masa depan.`,
-      question: `Pernyataan di bawah ini yang merupakan opini penulis yang sesuai dengan bacaan tersebut adalah ....`,
-      options: [
-        "menjadikan kereta maglev sebagai kereta massal di masa depan",
-        "membangun kereta maglev pada rel yang telah ada",
-        "mengembangkan kereta sistem SSE yang melayang 10 cm di atas rel",
-        "merancang dan membangun kereta sistem SSD tanpa roda",
-        "membangun kereta maglev dengan kestabilan tinggi",
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev (*magnetic levitation*) adalah kereta api yang mengambang di atas rel. Kereta maglev mengambang dan bergerak berdasarkan tarikan dan tolakan elektromagnetik, seperti dua kutub magnet sejenis tolak-menolak dan dua kutub magnet berbeda jenis tarik menarik. Tidak adanya kontak dengan rel membuat gesekan sangat kecil sehingga kereta dapat bergerak dengan tenang, halus, dan cepat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Ada dua sistem teknologi maglev, yaitu sistem suspense elektromagnetik (SSE) dan sistem suspense elektrodinamik (SSD). Di dalam SSE, pada bagian bawah kereta di kedua sisi dipasang suatu struktur kuat (bogle) berbentuk huruf C tegak sehingga posisi rel berada di atas ujung bogie bagian bawah. Perangkat elektromagnet dipasang di ujung bogie di bawah rel. Ketika dialiri arus listrik dari bateral, perangkat elektromagnet berubah menjadi magnet dan terjadi tarik-menarik dengan rel kereta. Akibatnya, bogie tertarik ke atas menyebabkan kereta mengambang sekitar 1,5 cm di atas rel kereta. Maglev dengan sistem ini dapat bergerak dengan kelajuan rendah maupun tinggi. Sayangnya, SSE kurang stabil dibanding SSD. Di dalam SSD, di sepanjang rel dipasang perangkat elektromagnet dan di bagian bawah dari kereta dipasang magnet permanen. Ketika elektromagnet menjadi magnet, terjadi tolak-menolak dengan magnet permanen dan menyebabkan kereta terangkat sekitar 10 cm. Terangkatnya kereta memerlukan waktu sehingga kereta sistem SSD ini harus dilengkapi dengan roda agar dapat bergerak pada kelajuan rendah Sistem elektronik untuk SSE dan SSD harus handal agar tarikan dan dorongan dapat berlangsung pada saat-saat yang diinginkan.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev ramah lingkungan karena tidak ada proses pembakaran dan hampir tidak ada polusi suara meskipun masih mengalami gangguan suara. Tiadanya hambatan dengan rel membuat kereta dapat melaju sangat cepat sampai 500 km/jam. Sayangnya, jalur kereta maglev adalah jalur khusus, tidak bisa menggunakan jalur kereta biasa. Hal ini menjadi salah satu penyebab sangat mahalnya biaya pembangunan kereta maglev. Namun, mengingat jumlah kelebihan yang telah diungkapkan di atas dan perkembangan teknologi yang diharapkan dapat mereduksi biaya produksi, kereta maglev diharapkan bisa menjadi kereta massal di masa depan.`,
-      question: `Kelemahan SSD dibandingkan SSE adalah ....`,
-      options: [
-        "melayang terlalu tinggi, 10 cm di atas rel",
-        "tidak dapat melayang pada awal geraknya",
-        "tidak bisa bergerak dengan cepat",
-        "bergerak kurang tenang dan kurang halus",
-        "sistem elektroniknya kurang handal",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev (*magnetic levitation*) adalah kereta api yang mengambang di atas rel. Kereta maglev mengambang dan bergerak berdasarkan tarikan dan tolakan elektromagnetik, seperti dua kutub magnet sejenis tolak-menolak dan dua kutub magnet berbeda jenis tarik menarik. Tidak adanya kontak dengan rel membuat gesekan sangat kecil sehingga kereta dapat bergerak dengan tenang, halus, dan cepat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Ada dua sistem teknologi maglev, yaitu sistem suspense elektromagnetik (SSE) dan sistem suspense elektrodinamik (SSD). Di dalam SSE, pada bagian bawah kereta di kedua sisi dipasang suatu struktur kuat (bogle) berbentuk huruf C tegak sehingga posisi rel berada di atas ujung bogie bagian bawah. Perangkat elektromagnet dipasang di ujung bogie di bawah rel. Ketika dialiri arus listrik dari bateral, perangkat elektromagnet berubah menjadi magnet dan terjadi tarik-menarik dengan rel kereta. Akibatnya, bogie tertarik ke atas menyebabkan kereta mengambang sekitar 1,5 cm di atas rel kereta. Maglev dengan sistem ini dapat bergerak dengan kelajuan rendah maupun tinggi. Sayangnya, SSE kurang stabil dibanding SSD. Di dalam SSD, di sepanjang rel dipasang perangkat elektromagnet dan di bagian bawah dari kereta dipasang magnet permanen. Ketika elektromagnet menjadi magnet, terjadi tolak-menolak dengan magnet permanen dan menyebabkan kereta terangkat sekitar 10 cm. Terangkatnya kereta memerlukan waktu sehingga kereta sistem SSD ini harus dilengkapi dengan roda agar dapat bergerak pada kelajuan rendah Sistem elektronik untuk SSE dan SSD harus handal agar tarikan dan dorongan dapat berlangsung pada saat-saat yang diinginkan.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev ramah lingkungan karena tidak ada proses pembakaran dan hampir tidak ada polusi suara meskipun masih mengalami gangguan suara. Tiadanya hambatan dengan rel membuat kereta dapat melaju sangat cepat sampai 500 km/jam. Sayangnya, jalur kereta maglev adalah jalur khusus, tidak bisa menggunakan jalur kereta biasa. Hal ini menjadi salah satu penyebab sangat mahalnya biaya pembangunan kereta maglev. Namun, mengingat jumlah kelebihan yang telah diungkapkan di atas dan perkembangan teknologi yang diharapkan dapat mereduksi biaya produksi, kereta maglev diharapkan bisa menjadi kereta massal di masa depan.`,
-      question: `Alasan utama kereta maglev dikembangkan adalah ....`,
-      options: [
-        "menggunakan sumber energi listrik",
-        "dapat melayang di udara",
-        "tidak menimbulkan polusi",
-        "dapat bergerak sangat cepat",
-        "tidak ada pengaruh gesekan",
+        "Sifat dan fungsi klorofil, pati, dan pektin dalam proses pematangan buah",
+        "Buah matang dan mentah harus diletakkan dalam wadah tertutup agar gas etilen memicu pematangan buah mentah",
+        "Peran gas Etilen yang bersifat volatil dari buah matang sebagai sinyal pemicu pematangan",
+        "Buah yang matang secara alami akan melepaskan gas etilen",
+        "Mekanisme kerja enzim-enzim khusus yang aktif di dalam sel Buah B"
       ],
       answerIndex: [2]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev (*magnetic levitation*) adalah kereta api yang mengambang di atas rel. Kereta maglev mengambang dan bergerak berdasarkan tarikan dan tolakan elektromagnetik, seperti dua kutub magnet sejenis tolak-menolak dan dua kutub magnet berbeda jenis tarik menarik. Tidak adanya kontak dengan rel membuat gesekan sangat kecil sehingga kereta dapat bergerak dengan tenang, halus, dan cepat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Ada dua sistem teknologi maglev, yaitu sistem suspense elektromagnetik (SSE) dan sistem suspense elektrodinamik (SSD). Di dalam SSE, pada bagian bawah kereta di kedua sisi dipasang suatu struktur kuat (bogle) berbentuk huruf C tegak sehingga posisi rel berada di atas ujung bogie bagian bawah. Perangkat elektromagnet dipasang di ujung bogie di bawah rel. Ketika dialiri arus listrik dari bateral, perangkat elektromagnet berubah menjadi magnet dan terjadi tarik-menarik dengan rel kereta. Akibatnya, bogie tertarik ke atas menyebabkan kereta mengambang sekitar 1,5 cm di atas rel kereta. Maglev dengan sistem ini dapat bergerak dengan kelajuan rendah maupun tinggi. Sayangnya, SSE kurang stabil dibanding SSD. Di dalam SSD, di sepanjang rel dipasang perangkat elektromagnet dan di bagian bawah dari kereta dipasang magnet permanen. Ketika elektromagnet menjadi magnet, terjadi tolak-menolak dengan magnet permanen dan menyebabkan kereta terangkat sekitar 10 cm. Terangkatnya kereta memerlukan waktu sehingga kereta sistem SSD ini harus dilengkapi dengan roda agar dapat bergerak pada kelajuan rendah Sistem elektronik untuk SSE dan SSD harus handal agar tarikan dan dorongan dapat berlangsung pada saat-saat yang diinginkan.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev ramah lingkungan karena tidak ada proses pembakaran dan hampir tidak ada polusi suara meskipun masih mengalami gangguan suara. Tiadanya hambatan dengan rel membuat kereta dapat melaju sangat cepat sampai 500 km/jam. Sayangnya, jalur kereta maglev adalah jalur khusus, tidak bisa menggunakan jalur kereta biasa. Hal ini menjadi salah satu penyebab sangat mahalnya biaya pembangunan kereta maglev. Namun, mengingat jumlah kelebihan yang telah diungkapkan di atas dan perkembangan teknologi yang diharapkan dapat mereduksi biaya produksi, kereta maglev diharapkan bisa menjadi kereta massal di masa depan.`,
-      question: `Kalimat berikut ini yang merupakan fakta adalah..`,
+    { //Soal 2
+      txtField: "Pematangan buah yang kita saksikan sehari-hari adalah proses kimia yang unik, di mana gas berperan sebagai sinyal utama. Fenomena ini paling mudah dipahami ketika kita meletakkan Buah A, yaitu buah yang sudah matang (misalnya apel atau pisang yang sudah kuning), di dekat Buah B, yaitu buah yang masih mentah (misalnya alpukat atau mangga hijau). Buah A yang sudah matang secara alami melepaskan Gas Etilen (C22H44). Gas Etilen ini adalah hormon tumbuhan yang bersifat volatil, yang berarti ia mudah menguap dan menyebar ke seluruh udara di sekitarnya. Dengan menempatkan kedua buah ini dalam satu wadah tertutup, Etilen yang dilepaskan oleh Buah A akan terperangkap dan berdifusi, lalu mencapai permukaan Buah B.\n\nGas Etilen yang diserap oleh Buah B yang mentah akan bertindak sebagai pemicu sinyal yang sangat kuat. Begitu molekul Etilen terikat pada reseptor di sel Buah B, ia mengirimkan sinyal untuk mengaktifkan enzim-enzim khusus. Enzim-enzim ini kemudian memulai serangkaian reaksi kimia seperti memecah zat hijau (klorofil) sehingga buah berubah warna menjadi kuning atau merah, memecah pati menjadi gula (membuat buah menjadi manis), dan melarutkan pektin (zat yang membuat buah keras) sehingga buah menjadi lunak. Jadi, Buah A secara efektif \"memberi tahu\" Buah B bahwa sudah waktunya untuk matang, menyebabkan pematangan terjadi lebih cepat dan lebih seragam daripada buah mentah yang dibiarkan sendiri.",
+      question: "Dalam konteks teks di atas, makna dari kata sifat \"volatil\" yang digunakan untuk mendeskripsikan Gas Etilen adalah ….",
       options: [
-        "Di dalam SSE, pada bagian bawah kereta di kedua sisi dipasang suatu struktur kuat (bogie) berbentuk huruf C tegak sehingga posisi rel berada di atas ujung bogie bagian bawah.",
-        "Ketika elektromagnet menjadi magnet, terjadi tolak-menolak dengan magnet permanen dan menye babkan kereta terangkat sekitar 10 cm.",
-        `Mengingat jumlah kelebihan yang telah diungkapkan di atas dan perkembangan teknologi yang diharapkan dapat mereduksi biaya produksi, kereta maglev diharapkan bisa menjadi kereta massal di masa depan.`,
-        `Tidak adanya kontak dengan rel membuat gesekan sangat kecil sehingga kereta dapat bergerak dengan tenang, halus, dan cepat.`,
-        `Sayangnya, SSE kurang stabil dibanding SSD.`,
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev (*magnetic levitation*) adalah kereta api yang mengambang di atas rel. Kereta maglev mengambang dan bergerak berdasarkan tarikan dan tolakan elektromagnetik, seperti dua kutub magnet sejenis tolak-menolak dan dua kutub magnet berbeda jenis tarik menarik. Tidak adanya kontak dengan rel membuat gesekan sangat kecil sehingga kereta dapat bergerak dengan tenang, halus, dan cepat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Ada dua sistem teknologi maglev, yaitu sistem suspense elektromagnetik (SSE) dan sistem suspense elektrodinamik (SSD). Di dalam SSE, pada bagian bawah kereta di kedua sisi dipasang suatu struktur kuat (bogle) berbentuk huruf C tegak sehingga posisi rel berada di atas ujung bogie bagian bawah. Perangkat elektromagnet dipasang di ujung bogie di bawah rel. Ketika dialiri arus listrik dari bateral, perangkat elektromagnet berubah menjadi magnet dan terjadi tarik-menarik dengan rel kereta. Akibatnya, bogie tertarik ke atas menyebabkan kereta mengambang sekitar 1,5 cm di atas rel kereta. Maglev dengan sistem ini dapat bergerak dengan kelajuan rendah maupun tinggi. Sayangnya, SSE kurang stabil dibanding SSD. Di dalam SSD, di sepanjang rel dipasang perangkat elektromagnet dan di bagian bawah dari kereta dipasang magnet permanen. Ketika elektromagnet menjadi magnet, terjadi tolak-menolak dengan magnet permanen dan menyebabkan kereta terangkat sekitar 10 cm. Terangkatnya kereta memerlukan waktu sehingga kereta sistem SSD ini harus dilengkapi dengan roda agar dapat bergerak pada kelajuan rendah Sistem elektronik untuk SSE dan SSD harus handal agar tarikan dan dorongan dapat berlangsung pada saat-saat yang diinginkan.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Kereta maglev ramah lingkungan karena tidak ada proses pembakaran dan hampir tidak ada polusi suara meskipun masih mengalami gangguan suara. Tiadanya hambatan dengan rel membuat kereta dapat melaju sangat cepat sampai 500 km/jam. Sayangnya, jalur kereta maglev adalah jalur khusus, tidak bisa menggunakan jalur kereta biasa. Hal ini menjadi salah satu penyebab sangat mahalnya biaya pembangunan kereta maglev. Namun, mengingat jumlah kelebihan yang telah diungkapkan di atas dan perkembangan teknologi yang diharapkan dapat mereduksi biaya produksi, kereta maglev diharapkan bisa menjadi kereta massal di masa depan.`,
-      question: `Kalimat di bawah ini yang termasuk opini adalah ....`,
-      options: [
-        "Ada dua sistem teknologi maglev, yaitu sistem suspense elektromagnetik (SSE) dan sistem suspense elektrodinamik (SSD).",
-        "Kereta maglev (magnetic levitation) adalah kereta api yang mengambang di atas rel.",
-        "Kereta maglev mengambang dan bergerak berdasarkan tarikan dan tolakan elektromagnetik.",
-        `Sistem elektromagnetik untuk SSE dan SSD harus handal agar tarikan dan dorongan dapat berlang-sung pada saat-saat yang diinginkan.`,
-        `Tiadanya hambatan dengan rel membuat kereta dapat melaju sangat cepat sampai 500 km/jam.`,
+        "Zat yang bereaksi secara lambat dengan oksigen",
+        "Zat yang tidak dapat menguap pada suhu ruangan",
+        "Zat kimia yang dihasilkan oleh buah yang sudah matang",
+        "Zat yang dapat menyebabkan buah menjadi lebih lunak",
+        "Zat yang mudah menguap dan bisa menyebar seperti sifat gas"
       ],
       answerIndex: [3]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Diet pescatarian masih tergolong sebagai salah satu tipe diet vegetarian. Istilah pescatarian ber- asal dari kata pesce (bahasa Italia) yang berarti ikan, sedangkan kata tarian diambil dari vegetarian. Orang yang menjalani diet pescatarian menghindari konsumsi daging mentah dan daging unggas, tetapi dapat mengonsumsi sayuran, buah-buahan, biji-bijian, kacang-kacangan, dan produk olahannya (seperti tahu dan tempe), jamur, ikan (baik ikan air laut maupun ikan air tawar, termasuk ikan tilapia, seafood (termasuk udang, cumi-cumi, kerang, dan gurita), telur, susu, dan produk olahannya (seperti yoghurt dan keju). Meski demikian, ada pula sebagian orang yang menjalani diet pescatarian memilih untuk tidak mengonsumsi telur beserta susu dan produk olahannya sama sekali. Diet ini disebut dengan pescatarian.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Orang melakukan diet pescatarian didasarkan pada pertimbangan ideal, baik sosial maupun personal. Salah satu alasan mengapa banyak orang mulai menjalani diet vegetarian dan pescatarian adalah karena kepedulian terhadap lingkungan. Alasan ini muncul dari anggapan bahwa konsumsi daging hewan dan unggas bisa berdampak buruk terhadap lingkungan. Hal ini dikarenakan industri tersebut dapat menghasilkan banyak polusi dan memicu pemanasan global. Namun, ada pula yang memilih untuk menjalani diet pescatarian karena alasan kesehatan. Ini dikarenakan pola makan pescatarian didominasi oleh makanan bernilai gizi tinggi, seperti ikan, seafood, sayur, dan buah-buahan.`,
-      question: `Dalam bacaan terdapat pernyataan "orang melakukan diet pescatarian didasarkan pada pertimbangan ideal, baik sosial maupun personal". Pernyataan berikut ini yang merupakan penjelasan yang tepat atas pernyataan tersebut adalah ....`,
+    { //Soal 3
+      type: "MULTIPLE_SELECTION",
+      txtField: "Pematangan buah yang kita saksikan sehari-hari adalah proses kimia yang unik, di mana gas berperan sebagai sinyal utama. Fenomena ini paling mudah dipahami ketika kita meletakkan Buah A, yaitu buah yang sudah matang (misalnya apel atau pisang yang sudah kuning), di dekat Buah B, yaitu buah yang masih mentah (misalnya alpukat atau mangga hijau). Buah A yang sudah matang secara alami melepaskan Gas Etilen (C22H44). Gas Etilen ini adalah hormon tumbuhan yang bersifat volatil, yang berarti ia mudah menguap dan menyebar ke seluruh udara di sekitarnya. Dengan menempatkan kedua buah ini dalam satu wadah tertutup, Etilen yang dilepaskan oleh Buah A akan terperangkap dan berdifusi, lalu mencapai permukaan Buah B.\n\nGas Etilen yang diserap oleh Buah B yang mentah akan bertindak sebagai pemicu sinyal yang sangat kuat. Begitu molekul Etilen terikat pada reseptor di sel Buah B, ia mengirimkan sinyal untuk mengaktifkan enzim-enzim khusus. Enzim-enzim ini kemudian memulai serangkaian reaksi kimia seperti memecah zat hijau (klorofil) sehingga buah berubah warna menjadi kuning atau merah, memecah pati menjadi gula (membuat buah menjadi manis), dan melarutkan pektin (zat yang membuat buah keras) sehingga buah menjadi lunak. Jadi, Buah A secara efektif \"memberi tahu\" Buah B bahwa sudah waktunya untuk matang, menyebabkan pematangan terjadi lebih cepat dan lebih seragam daripada buah mentah yang dibiarkan sendiri.",
+      question: "Berdasarkan isi Paragraf 2, pilihlah pernyataan di bawah ini mengenai fungsi enzim yang diaktifkan oleh Etilen yang benar!",
       options: [
-        "Alasan orang menjalani diet vegetarian dan pescatarian adalah karena kepedulian terhadap pelestarian lingkungan.",
-        "Anggapan bahwa konsumsi daging hewan dari industri peternakan hewan terdampak buruk terhadap lingkungan.",
-        "Konsumsi daging hewan dari industri peternakan dapat menghasilkan banyak polusi dan memicu pemanasan global.",
-        "Pertimbangan orang yang memilih untuk menjalani diet vegetarian atau pescatarian adalah karena alasan kesehatan.",
-        "Pemilihan pola makan atau diet pescatarian dengan alasan peduli pelestarian lingkungan dan alasan peduli kesehatan.",
+        "Enzim akan memecah klorofil yang menyebabkan perubahan warna.",
+        "Enzim pektinase berfungsi melarutkan pektin yang membuat buah menjadi lunak.",
+        "Enzim menonaktifkan reseptor Etilen agar proses pematangan tidak berlebihan.",
+        "Enzim secara kolektif menyebabkan pematangan terjadi lebih cepat dan seragam.",
+        "Enzim amilase berfungsi mengubah pati menjadi gula, sehingga meningkatkan rasa manis."
       ],
-      answerIndex: [4]
+      answerIndex: [0, 1, 4]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Diet pescatarian masih tergolong sebagai salah satu tipe diet vegetarian. Istilah pescatarian ber- asal dari kata pesce (bahasa Italia) yang berarti ikan, sedangkan kata tarian diambil dari vegetarian. Orang yang menjalani diet pescatarian menghindari konsumsi daging mentah dan daging unggas, tetapi dapat mengonsumsi sayuran, buah-buahan, biji-bijian, kacang-kacangan, dan produk olahannya (seperti tahu dan tempe), jamur, ikan (baik ikan air laut maupun ikan air tawar, termasuk ikan tilapia, seafood (termasuk udang, cumi-cumi, kerang, dan gurita), telur, susu, dan produk olahannya (seperti yoghurt dan keju). Meski demikian, ada pula sebagian orang yang menjalani diet pescatarian memilih untuk tidak mengonsumsi telur beserta susu dan produk olahannya sama sekali. Diet ini disebut dengan pescatarian.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Orang melakukan diet pescatarian didasarkan pada pertimbangan ideal, baik sosial maupun personal. Salah satu alasan mengapa banyak orang mulai menjalani diet vegetarian dan pescatarian adalah karena kepedulian terhadap lingkungan. Alasan ini muncul dari anggapan bahwa konsumsi daging hewan dan unggas bisa berdampak buruk terhadap lingkungan. Hal ini dikarenakan industri tersebut dapat menghasilkan banyak polusi dan memicu pemanasan global. Namun, ada pula yang memilih untuk menjalani diet pescatarian karena alasan kesehatan. Ini dikarenakan pola makan pescatarian didominasi oleh makanan bernilai gizi tinggi, seperti ikan, seafood, sayur, dan buah-buahan.`,
-      question: `Berdasarkan teks di atas pengertian diet pescatarian adalah ....`,
+    { //Soal 4
+      txtField: "Pematangan buah yang kita saksikan sehari-hari adalah proses kimia yang unik, di mana gas berperan sebagai sinyal utama. Fenomena ini paling mudah dipahami ketika kita meletakkan Buah A, yaitu buah yang sudah matang (misalnya apel atau pisang yang sudah kuning), di dekat Buah B, yaitu buah yang masih mentah (misalnya alpukat atau mangga hijau). Buah A yang sudah matang secara alami melepaskan Gas Etilen (C22H44). Gas Etilen ini adalah hormon tumbuhan yang bersifat volatil, yang berarti ia mudah menguap dan menyebar ke seluruh udara di sekitarnya. Dengan menempatkan kedua buah ini dalam satu wadah tertutup, Etilen yang dilepaskan oleh Buah A akan terperangkap dan berdifusi, lalu mencapai permukaan Buah B.\n\nGas Etilen yang diserap oleh Buah B yang mentah akan bertindak sebagai pemicu sinyal yang sangat kuat. Begitu molekul Etilen terikat pada reseptor di sel Buah B, ia mengirimkan sinyal untuk mengaktifkan enzim-enzim khusus. Enzim-enzim ini kemudian memulai serangkaian reaksi kimia seperti memecah zat hijau (klorofil) sehingga buah berubah warna menjadi kuning atau merah, memecah pati menjadi gula (membuat buah menjadi manis), dan melarutkan pektin (zat yang membuat buah keras) sehingga buah menjadi lunak. Jadi, Buah A secara efektif \"memberi tahu\" Buah B bahwa sudah waktunya untuk matang, menyebabkan pematangan terjadi lebih cepat dan lebih seragam daripada buah mentah yang dibiarkan sendiri.",
+      question: "Tujuan penulisan teks di atas yang paling utama adalah ....",
       options: [
-        "Diet dengan cara tidak memakan segala macam jenis daging dan ikan serta produk olahan yang mengandung lemak.",
-        "Diet dengan tidak mengonsumsi daging mentah dan daging unggas, tetapi dapat mengonsumsi sayuran, buah-buahan, biji-bijian, kacang-kacangan, ikan.",
-        "Diet dengan tidak mengonsumsi segala jenis olahan daging dan hanya diperbolehkan mengonsumsi sayuran dan produk olahan.",
-        "Diet dengan tidak mengonsumsi daging mentah, tetapi harus mengonsumsi susu dan produk olahannya sebagai pengganti lemak dalam tubuh.",
-        "Diet vegetarian, yaitu hanya memakan semua jenis sayuran, kacang-kacangan, dan biji-bijian.",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Diet pescatarian masih tergolong sebagai salah satu tipe diet vegetarian. Istilah pescatarian ber- asal dari kata pesce (bahasa Italia) yang berarti ikan, sedangkan kata tarian diambil dari vegetarian. Orang yang menjalani diet pescatarian menghindari konsumsi daging mentah dan daging unggas, tetapi dapat mengonsumsi sayuran, buah-buahan, biji-bijian, kacang-kacangan, dan produk olahannya (seperti tahu dan tempe), jamur, ikan (baik ikan air laut maupun ikan air tawar, termasuk ikan tilapia, seafood (termasuk udang, cumi-cumi, kerang, dan gurita), telur, susu, dan produk olahannya (seperti yoghurt dan keju). Meski demikian, ada pula sebagian orang yang menjalani diet pescatarian memilih untuk tidak mengonsumsi telur beserta susu dan produk olahannya sama sekali. Diet ini disebut dengan pescatarian.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Orang melakukan diet pescatarian didasarkan pada pertimbangan ideal, baik sosial maupun personal. Salah satu alasan mengapa banyak orang mulai menjalani diet vegetarian dan pescatarian adalah karena kepedulian terhadap lingkungan. Alasan ini muncul dari anggapan bahwa konsumsi daging hewan dan unggas bisa berdampak buruk terhadap lingkungan. Hal ini dikarenakan industri tersebut dapat menghasilkan banyak polusi dan memicu pemanasan global. Namun, ada pula yang memilih untuk menjalani diet pescatarian karena alasan kesehatan. Ini dikarenakan pola makan pescatarian didominasi oleh makanan bernilai gizi tinggi, seperti ikan, seafood, sayur, dan buah-buahan.`,
-      question: `Judul yang tepat berdasarkan teks di atas adalah ....`,
-      options: [
-        "Perbedaan Diet Vegetarian dan Pescatarian",
-        "Ciri-ciri Diet Pescatarian",
-        "Diet Pescatarian",
-        "Definisi Diet Pescatarian",
-        "Cara Diet Pescatarian",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Diet pescatarian masih tergolong sebagai salah satu tipe diet vegetarian. Istilah pescatarian ber- asal dari kata pesce (bahasa Italia) yang berarti ikan, sedangkan kata tarian diambil dari vegetarian. Orang yang menjalani diet pescatarian menghindari konsumsi daging mentah dan daging unggas, tetapi dapat mengonsumsi sayuran, buah-buahan, biji-bijian, kacang-kacangan, dan produk olahannya (seperti tahu dan tempe), jamur, ikan (baik ikan air laut maupun ikan air tawar, termasuk ikan tilapia, seafood (termasuk udang, cumi-cumi, kerang, dan gurita), telur, susu, dan produk olahannya (seperti yoghurt dan keju). Meski demikian, ada pula sebagian orang yang menjalani diet pescatarian memilih untuk tidak mengonsumsi telur beserta susu dan produk olahannya sama sekali. Diet ini disebut dengan pescatarian.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Orang melakukan diet pescatarian didasarkan pada pertimbangan ideal, baik sosial maupun personal. Salah satu alasan mengapa banyak orang mulai menjalani diet vegetarian dan pescatarian adalah karena kepedulian terhadap lingkungan. Alasan ini muncul dari anggapan bahwa konsumsi daging hewan dan unggas bisa berdampak buruk terhadap lingkungan. Hal ini dikarenakan industri tersebut dapat menghasilkan banyak polusi dan memicu pemanasan global. Namun, ada pula yang memilih untuk menjalani diet pescatarian karena alasan kesehatan. Ini dikarenakan pola makan pescatarian didominasi oleh makanan bernilai gizi tinggi, seperti ikan, seafood, sayur, dan buah-buahan.`,
-      question: `Ringkasan yang terdapat pada teks di atas adalah ....`,
-      options: [
-        "Orang yang menjalani diet pescatarian menghindari konsumsi daging mentah dan daging unggas, tetapi dapat mengonsumsi sayuran, buah-buahan, biji-bijian, kacang-kacangan, dan produk olah- annya (seperti tahu dan tempe), jamur, ikan (baik ikan air laut maupun ikan air tawar, termasuk ikan tilapia, seafood (termasuk udang, cumi-cumi, kerang dan gurita), telur, susu, dan produk olahannya (seperti yoghurt dan keju).",
-        "Diet pescatarian masih tergolong sebagai salah satu diet vegetarian yang hanya memperbolehkan makan buah-buahan dan sayur-sayuran, sesekali boleh mengonsumsi olahan susu, ikan, kacang, dan biji.",
-        "Diet pescatarian masih tergolong sebagai salah satu tipe diet vegetarian, tetapi boleh mengonsumsi ikan, susu, dan produk olahan yang didasarkan pada pertimbangan ideal, baik sosial maupun personal dengan berbagai alasan.",
-        "Alasan diet pescatarian karena alasan kesehatan, pola makan pescatarian didominasi oleh makanan bernilai gizi tinggi, seperti ikan, seafood, sayur, dan buah-buahan, serta alasan pelestarian lingkungan.",
-        "Orang yang menjalani diet pescatarian menghindari konsumsi daging mentah dan daging unggas dengan alasan untuk kesehatan dan ingin melestarikan buah-buahan dan sayur-sayuran.",
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Tanaman kopi umumnya berdaun hijau sepanjang tahun, berbunga putih, dan menghasilkan buah kopi yang mirip dengan buah ceri, tetapi terbungkus dengan cangkang yang keras. Pemanenan buah kopi dari tandannya biasanya dilakukan secara manual, dipilih buah yang matang dan berwarna merah. Biji kopi kemudian dipisahkan dari kulit buah dan cangkangnya melalui penggilingan langsung atau dikeringkan terlebih dahulu di bawah sinar matahari. Sebelum digiling buah kopi umumnya dicuci saat penggilingan. Di Indonesia, buah kopi umumnya dikeringkan dengan dijemur di bawah sinar matahari hingga kadar airnya tersisa 30-35%. Pemisahan biji dari cangkangnya dapat dilakukan dengan lebih mudah pada biji kopi kering. Biji kopi yang sudah bersih kemudian disangrai dengan derajat dan waktu pemanasan tertentu. Akhirnya, kopinya dihaluskan menjadi bubuk yang siap diseduh dengan air panas untuk menghadirkan minuman kopi.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Rasa nikmat minuman kopi sangat ditentukan oleh suhu pemanasan dan tingkat kegosongan selama pemanggangan, selain juga ditentukan oleh jenis pohon kopinya. Di Indonesia dikenal dua jenis kopi, yaitu Arabica dan Robusta. Biji kopi Arabica mempunyai ukuran agak besar, pipih sedikit memanjang, dan agak rapuh. Di lain pihak, biji kopi Robusta berukuran lebih kecil, berbentuk bulat, dan terlihat padat. Tanaman kopi Arabica tidak tahan panas dan rentan terhadap penyakit, tetapi cita rasa kopi Arabica lebih banyak disukai masyarakat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Zat aktif yang terdapat dalam biji kopi disebut kafein. Zat ini berasa pahit dan dipercaya dapat memberikan efek stimulasi terhadap sistem saraf pusat, seperti mengurangi rasa kantuk, mengurangi rasa lelah, meningkatkan stamina tubuh, meningkatkan daya tangkap panca indera, dan meningkatkan detak jantung. Dekafein merupakan modifikasi produk kopi untuk mengurangi kadar kafein dan meningkatkan cita rasa kopi. Beberapa metode yang dapat dilakukan dalam dekafeinasi antara lain melalui ekstraksi menggunakan air, pelarut kimia, karbondioksida superkritis, dan minyak biji bunga matahari. Dekafeinasi juga dapat dilakukan menggunakan arang aktif, mikroorganisme, atau enzim tertentu. Gas CO2 banyak terdapat di udara dan ekstraksi dengan pelarut CO2 superkritis dapat mengurangi kadar kafein dalam biji kopi hingga 96%, tetapi teknologi pengerjaannya memerlukan biaya yang tinggi.`,
-      question: `Dekafeinasi dengan metode ekstraksi yang mahal, tetapi efektif untuk mengurangi kadar kafein dalam biji kopi adalah ....`,
-      options: [
-        "menggunakan pelarut air",
-        "menggunakan pelarut kimia",
-        "menggunakan karbondioksida superkritis",
-        "memanfaatkan mikroorganisme",
-        "memanfaatkan enzim sebagai biokatalis",
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Tanaman kopi umumnya berdaun hijau sepanjang tahun, berbunga putih, dan menghasilkan buah kopi yang mirip dengan buah ceri, tetapi terbungkus dengan cangkang yang keras. Pemanenan buah kopi dari tandannya biasanya dilakukan secara manual, dipilih buah yang matang dan berwarna merah. Biji kopi kemudian dipisahkan dari kulit buah dan cangkangnya melalui penggilingan langsung atau dikeringkan terlebih dahulu di bawah sinar matahari. Sebelum digiling buah kopi umumnya dicuci saat penggilingan. Di Indonesia, buah kopi umumnya dikeringkan dengan dijemur di bawah sinar matahari hingga kadar airnya tersisa 30-35%. Pemisahan biji dari cangkangnya dapat dilakukan dengan lebih mudah pada biji kopi kering. Biji kopi yang sudah bersih kemudian disangrai dengan derajat dan waktu pemanasan tertentu. Akhirnya, kopinya dihaluskan menjadi bubuk yang siap diseduh dengan air panas untuk menghadirkan minuman kopi.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Rasa nikmat minuman kopi sangat ditentukan oleh suhu pemanasan dan tingkat kegosongan selama pemanggangan, selain juga ditentukan oleh jenis pohon kopinya. Di Indonesia dikenal dua jenis kopi, yaitu Arabica dan Robusta. Biji kopi Arabica mempunyai ukuran agak besar, pipih sedikit memanjang, dan agak rapuh. Di lain pihak, biji kopi Robusta berukuran lebih kecil, berbentuk bulat, dan terlihat padat. Tanaman kopi Arabica tidak tahan panas dan rentan terhadap penyakit, tetapi cita rasa kopi Arabica lebih banyak disukai masyarakat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Zat aktif yang terdapat dalam biji kopi disebut kafein. Zat ini berasa pahit dan dipercaya dapat memberikan efek stimulasi terhadap sistem saraf pusat, seperti mengurangi rasa kantuk, mengurangi rasa lelah, meningkatkan stamina tubuh, meningkatkan daya tangkap panca indera, dan meningkatkan detak jantung. Dekafein merupakan modifikasi produk kopi untuk mengurangi kadar kafein dan meningkatkan cita rasa kopi. Beberapa metode yang dapat dilakukan dalam dekafeinasi antara lain melalui ekstraksi menggunakan air, pelarut kimia, karbondioksida superkritis, dan minyak biji bunga matahari. Dekafeinasi juga dapat dilakukan menggunakan arang aktif, mikroorganisme, atau enzim tertentu. Gas CO2 banyak terdapat di udara dan ekstraksi dengan pelarut CO2 superkritis dapat mengurangi kadar kafein dalam biji kopi hingga 96%, tetapi teknologi pengerjaannya memerlukan biaya yang tinggi.`,
-      question: `Salah satu ciri khas kopi Arabica adalah ...`,
-      options: [
-        "Biji kopinya berukuran agak besar dan berbentuk pipih.",
-        "Tekstur biji kopinya berbentuk bulat dan terlihat padat.",
-        "Kandungan kafeinnya lebih tinggi dibandingkan Robusta",
-        "Tanaman kopinya tahan terhadap hama dan penyakit.",
-        "Cita rasa minuman kopinya kurang disukai masyarakat.",
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Tanaman kopi umumnya berdaun hijau sepanjang tahun, berbunga putih, dan menghasilkan buah kopi yang mirip dengan buah ceri, tetapi terbungkus dengan cangkang yang keras. Pemanenan buah kopi dari tandannya biasanya dilakukan secara manual, dipilih buah yang matang dan berwarna merah. Biji kopi kemudian dipisahkan dari kulit buah dan cangkangnya melalui penggilingan langsung atau dikeringkan terlebih dahulu di bawah sinar matahari. Sebelum digiling buah kopi umumnya dicuci saat penggilingan. Di Indonesia, buah kopi umumnya dikeringkan dengan dijemur di bawah sinar matahari hingga kadar airnya tersisa 30-35%. Pemisahan biji dari cangkangnya dapat dilakukan dengan lebih mudah pada biji kopi kering. Biji kopi yang sudah bersih kemudian disangrai dengan derajat dan waktu pemanasan tertentu. Akhirnya, kopinya dihaluskan menjadi bubuk yang siap diseduh dengan air panas untuk menghadirkan minuman kopi.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Rasa nikmat minuman kopi sangat ditentukan oleh suhu pemanasan dan tingkat kegosongan selama pemanggangan, selain juga ditentukan oleh jenis pohon kopinya. Di Indonesia dikenal dua jenis kopi, yaitu Arabica dan Robusta. Biji kopi Arabica mempunyai ukuran agak besar, pipih sedikit memanjang, dan agak rapuh. Di lain pihak, biji kopi Robusta berukuran lebih kecil, berbentuk bulat, dan terlihat padat. Tanaman kopi Arabica tidak tahan panas dan rentan terhadap penyakit, tetapi cita rasa kopi Arabica lebih banyak disukai masyarakat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Zat aktif yang terdapat dalam biji kopi disebut kafein. Zat ini berasa pahit dan dipercaya dapat memberikan efek stimulasi terhadap sistem saraf pusat, seperti mengurangi rasa kantuk, mengurangi rasa lelah, meningkatkan stamina tubuh, meningkatkan daya tangkap panca indera, dan meningkatkan detak jantung. Dekafein merupakan modifikasi produk kopi untuk mengurangi kadar kafein dan meningkatkan cita rasa kopi. Beberapa metode yang dapat dilakukan dalam dekafeinasi antara lain melalui ekstraksi menggunakan air, pelarut kimia, karbondioksida superkritis, dan minyak biji bunga matahari. Dekafeinasi juga dapat dilakukan menggunakan arang aktif, mikroorganisme, atau enzim tertentu. Gas CO2 banyak terdapat di udara dan ekstraksi dengan pelarut CO2 superkritis dapat mengurangi kadar kafein dalam biji kopi hingga 96%, tetapi teknologi pengerjaannya memerlukan biaya yang tinggi.`,
-      question: `Efek berikut yang bukan merupakan akibat konsumsi kafein adalah ....`,
-      options: [
-        "mengurangi rasa kantuk",
-        "mengurangi rasa lelah",
-        "menurunkan detak jantung",
-        "meningkatkan daya tangkap panca indera",
-        "Meningkatkan stamina tubuh",
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Tanaman kopi umumnya berdaun hijau sepanjang tahun, berbunga putih, dan menghasilkan buah kopi yang mirip dengan buah ceri, tetapi terbungkus dengan cangkang yang keras. Pemanenan buah kopi dari tandannya biasanya dilakukan secara manual, dipilih buah yang matang dan berwarna merah. Biji kopi kemudian dipisahkan dari kulit buah dan cangkangnya melalui penggilingan langsung atau dikeringkan terlebih dahulu di bawah sinar matahari. Sebelum digiling buah kopi umumnya dicuci saat penggilingan. Di Indonesia, buah kopi umumnya dikeringkan dengan dijemur di bawah sinar matahari hingga kadar airnya tersisa 30-35%. Pemisahan biji dari cangkangnya dapat dilakukan dengan lebih mudah pada biji kopi kering. Biji kopi yang sudah bersih kemudian disangrai dengan derajat dan waktu pemanasan tertentu. Akhirnya, kopinya dihaluskan menjadi bubuk yang siap diseduh dengan air panas untuk menghadirkan minuman kopi.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Rasa nikmat minuman kopi sangat ditentukan oleh suhu pemanasan dan tingkat kegosongan selama pemanggangan, selain juga ditentukan oleh jenis pohon kopinya. Di Indonesia dikenal dua jenis kopi, yaitu Arabica dan Robusta. Biji kopi Arabica mempunyai ukuran agak besar, pipih sedikit memanjang, dan agak rapuh. Di lain pihak, biji kopi Robusta berukuran lebih kecil, berbentuk bulat, dan terlihat padat. Tanaman kopi Arabica tidak tahan panas dan rentan terhadap penyakit, tetapi cita rasa kopi Arabica lebih banyak disukai masyarakat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Zat aktif yang terdapat dalam biji kopi disebut kafein. Zat ini berasa pahit dan dipercaya dapat memberikan efek stimulasi terhadap sistem saraf pusat, seperti mengurangi rasa kantuk, mengurangi rasa lelah, meningkatkan stamina tubuh, meningkatkan daya tangkap panca indera, dan meningkatkan detak jantung. Dekafein merupakan modifikasi produk kopi untuk mengurangi kadar kafein dan meningkatkan cita rasa kopi. Beberapa metode yang dapat dilakukan dalam dekafeinasi antara lain melalui ekstraksi menggunakan air, pelarut kimia, karbondioksida superkritis, dan minyak biji bunga matahari. Dekafeinasi juga dapat dilakukan menggunakan arang aktif, mikroorganisme, atau enzim tertentu. Gas CO2 banyak terdapat di udara dan ekstraksi dengan pelarut CO2 superkritis dapat mengurangi kadar kafein dalam biji kopi hingga 96%, tetapi teknologi pengerjaannya memerlukan biaya yang tinggi.`,
-      question: `Dekafeinasi adalah ...`,
-      options: [
-        "Dekafein merupakan zat aktif yang terdapat dalam biji kopi.",
-        "Dekafein merupakan metode menggunakan arang aktif, mikroorganisme, atau enzim tertentu.",
-        "Zat yang dapat memberikan efek stimulasi terhadap sistem saraf pusat, seperti mengurangi rasa kantuk, mengurangi rasa lelah, meningkatkan stamina tubuh, meningkatkan daya tangkap panca indera, dan meningkatkan detak jantung.",
-        "Zat aktif yang terdapat dalam kopi sebagai modifikasi untuk mengurangi kadar kafein di dalam kopi.",
-        "Dekafein merupakan modifikasi produk kopi untuk mengurangi kadar kafein dan meningkatkan cita rasa kopi.",],
-      answerIndex: [4]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Tanaman kopi umumnya berdaun hijau sepanjang tahun, berbunga putih, dan menghasilkan buah kopi yang mirip dengan buah ceri, tetapi terbungkus dengan cangkang yang keras. Pemanenan buah kopi dari tandannya biasanya dilakukan secara manual, dipilih buah yang matang dan berwarna merah. Biji kopi kemudian dipisahkan dari kulit buah dan cangkangnya melalui penggilingan langsung atau dikeringkan terlebih dahulu di bawah sinar matahari. Sebelum digiling buah kopi umumnya dicuci saat penggilingan. Di Indonesia, buah kopi umumnya dikeringkan dengan dijemur di bawah sinar matahari hingga kadar airnya tersisa 30-35%. Pemisahan biji dari cangkangnya dapat dilakukan dengan lebih mudah pada biji kopi kering. Biji kopi yang sudah bersih kemudian disangrai dengan derajat dan waktu pemanasan tertentu. Akhirnya, kopinya dihaluskan menjadi bubuk yang siap diseduh dengan air panas untuk menghadirkan minuman kopi.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Rasa nikmat minuman kopi sangat ditentukan oleh suhu pemanasan dan tingkat kegosongan selama pemanggangan, selain juga ditentukan oleh jenis pohon kopinya. Di Indonesia dikenal dua jenis kopi, yaitu Arabica dan Robusta. Biji kopi Arabica mempunyai ukuran agak besar, pipih sedikit memanjang, dan agak rapuh. Di lain pihak, biji kopi Robusta berukuran lebih kecil, berbentuk bulat, dan terlihat padat. Tanaman kopi Arabica tidak tahan panas dan rentan terhadap penyakit, tetapi cita rasa kopi Arabica lebih banyak disukai masyarakat.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Zat aktif yang terdapat dalam biji kopi disebut kafein. Zat ini berasa pahit dan dipercaya dapat memberikan efek stimulasi terhadap sistem saraf pusat, seperti mengurangi rasa kantuk, mengurangi rasa lelah, meningkatkan stamina tubuh, meningkatkan daya tangkap panca indera, dan meningkatkan detak jantung. Dekafein merupakan modifikasi produk kopi untuk mengurangi kadar kafein dan meningkatkan cita rasa kopi. Beberapa metode yang dapat dilakukan dalam dekafeinasi antara lain melalui ekstraksi menggunakan air, pelarut kimia, karbondioksida superkritis, dan minyak biji bunga matahari. Dekafeinasi juga dapat dilakukan menggunakan arang aktif, mikroorganisme, atau enzim tertentu. Gas CO2 banyak terdapat di udara dan ekstraksi dengan pelarut CO2 superkritis dapat mengurangi kadar kafein dalam biji kopi hingga 96%, tetapi teknologi pengerjaannya memerlukan biaya yang tinggi.`,
-      question: `Pernyataan berikut yang tidak sesuai dengan teks di atas adalah ...`,
-      options: [
-        "Rasa nikmat minuman kopi sangan ditentukan oleh suhu pemanasan dan tingkat kegosongan selama pemanggangan, selain juga ditentukan oleh jenis pohon kopinya.",
-        "Permanenan buah kopi dari tandannya biasanya dilakukan secara manual, dipilih buah yang matang dan berwarna merah.",
-        "Di Indonesia, buah kopi umumnya dikeringkan dengan dijemur di bawah sinar matahari hingga kadar airnya tersisa 30 hingga 35%.",
-        "Gas CO2 banyak terdapat di udara dan ekstraksi dengan pelarut CO2 superkritis dapat mengurangi kadar kafein dalam biji kopi hingga 96%, tetapi teknologi pengerjaannya memerlukan biaya yang tidak terlalu tinggi.",
-        "Beberapa metode yang dapat dilakukan dalam dekafeinasi antara lain melalui ekstraksi menggunakan air, pelarut kimia, karbondioksida superkritis, dan minyak biji bunga matahari.",
+        "Membandingkan efektivitas pematangan alami dengan pematangan buatan",
+        "Menginformasikan peran penggunaan gas Etilen pada produk buah-buahan",
+        "Memberi instruksi langkah demi langkah tentang cara mempercepat pematangan buah di rumah",
+        "Menjelaskan secara ringkas bagaimana mekanisme ilmiah (kimia) di balik percepatan pematangan buah",
+        "Mengajak pembaca untuk membedakan antara Buah A dan Buah B berdasarkan warna kulitnya"
       ],
       answerIndex: [3]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Walaupun mutasi genetika pada bakteri dan virus dapat menimbulkan epidemi, beberapa epidemi disebabkan oleh bakteri dan virus yang tidak mengalami perubahan genetika secara signifikan. Dalam menganalisa kasus kedua, para ahli telah menemukan faktor-faktor sosial dan lingkungan yang penting dari epidemi tersebut.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Penyakit polio, misalnya, muncul semua suatu epidemi pada awal abad ke-20 karena sanitasi modern mampu memperlambat penyebaran polio sampai usia dewasa, sehingga polio menyebabkan kelumpuhan. Sebelumnya, infeksi terjadi pada masa bayi yang akan memunculkan imunitas seumur hidup tanpa mengalami kelumpuhan. Dengan demikian, faktor higienis yang mencegah terjadinya epidemi tipus secara tidak langsung memunculkan epidemik polio yang melumpuhkan. Contoh lain adalah penyakit lyme, yang disebabkan oleh bakteri yang disebarkan melalui kotoran rusa. Penyakit ini hanya muncul secara sporadis selarna akhir abad ke-19, tetapi sekarang menjadi sering timbul di beberapa tempat di Amerika Utara disebabkan oleh peningkatan populasi rusa yang terjadi bersamaan dengan pertumbuhan kota-kota satelit dan peningkatan aktivitas rekreasi alam terbuka pada habitat rusa. Hal yang sama juga menjadi faktor munculnya epidemi demam berdarah di Asia pada tahun 1950-an yang terjadi karena perubahan-perubahan. Ekologis yang meningkatkan populasi nyamuk *Aedes Aegepty*, nyamuk penyebar virus demam berdarah setiap saat dapat muncul di Amerika Utara karena penyebaran secara tidak sengaja satu jenis nyamuk lain, yaitu *aedes albopictus*.`,
-      question: `Menurut teks di atas, ketiadaan sanitasi modern akan memunculkan mana dari berikut ini?`,
+    { //Soal 5
+      txtField: "Keindahan warna-warni pada kembang api bukanlah keajaiban, melainkan hasil langsung dari reaksi kimia yang dikenal sebagai uji nyala logam atau emisi cahaya. Kembang api tersusun dari bubuk peledak, bahan pengoksidasi, dan yang terpenting, garam-garam dari berbagai unsur logam. Ketika kembang api dinyalakan, energi panas yang sangat tinggi menyebabkan elektron pada atom logam (seperti Stronsium, Barium, atau Tembaga) bergerak ke tingkat energi yang lebih tinggi (keadaan tereksitasi). Setelah beberapa saat, elektron-elektron ini jatuh kembali ke tingkat energi asalnya (keadaan dasar), dan dalam proses ini, mereka melepaskan kelebihan energi tersebut dalam bentuk foton (cahaya). Panjang gelombang foton yang dilepaskan ini menentukan warna yang kita lihat, misalnya, Stronsium menghasilkan merah, Tembaga menghasilkan biru, dan Natrium menghasilkan oranye/kuning. Hal ini membuktikan bahwa setiap unsur kimia memiliki \"sidik jari\" cahayanya sendiri.",
+      question: "Berdasarkan teks, penyebab langsung dari terciptanya warna (misalnya merah, biru, atau kuning) yang kita lihat pada kembang api adalah ….",
       options: [
-        "Penyebaran penyakit demam berdarah.",
-        "Epidemi tipus.",
-        "Epidemi polio melumpuhkan pada bayi-bayi.",
-        "Epidemi polio melumpuhkan pada orang dewasa.",
-        "Penyebaran penyakit di berbagai aspek.",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Walaupun mutasi genetika pada bakteri dan virus dapat menimbulkan epidemi, beberapa epidemi disebabkan oleh bakteri dan virus yang tidak mengalami perubahan genetika secara signifikan. Dalam menganalisa kasus kedua, para ahli telah menemukan faktor-faktor sosial dan lingkungan yang penting dari epidemi tersebut.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Penyakit polio, misalnya, muncul semua suatu epidemi pada awal abad ke-20 karena sanitasi modern mampu memperlambat penyebaran polio sampai usia dewasa, sehingga polio menyebabkan kelumpuhan. Sebelumnya, infeksi terjadi pada masa bayi yang akan memunculkan imunitas seumur hidup tanpa mengalami kelumpuhan. Dengan demikian, faktor higienis yang mencegah terjadinya epidemi tipus secara tidak langsung memunculkan epidemik polio yang melumpuhkan. Contoh lain adalah penyakit lyme, yang disebabkan oleh bakteri yang disebarkan melalui kotoran rusa. Penyakit ini hanya muncul secara sporadis selarna akhir abad ke-19, tetapi sekarang menjadi sering timbul di beberapa tempat di Amerika Utara disebabkan oleh peningkatan populasi rusa yang terjadi bersamaan dengan pertumbuhan kota-kota satelit dan peningkatan aktivitas rekreasi alam terbuka pada habitat rusa. Hal yang sama juga menjadi faktor munculnya epidemi demam berdarah di Asia pada tahun 1950-an yang terjadi karena perubahan-perubahan. Ekologis yang meningkatkan populasi nyamuk *Aedes Aegepty*, nyamuk penyebar virus demam berdarah setiap saat dapat muncul di Amerika Utara karena penyebaran secara tidak sengaja satu jenis nyamuk lain, yaitu *aedes albopictus*.`,
-      question: `Manakah dari pernyataan berikut disimpulkan tentang nyamuk *aedes albopictus* berdasarkan informasi yang tertera pada teks?`,
-      options: [
-        "Nyamuk tersebut menyebabkan epidemi demam berdarah pada tahun 1950-an.",
-        "Nyamuk ini menggantikan *aedes aegepty* di Asia ketika faktor-faktor ekologis mengubah habitat *Aedes Aegepty*.",
-        "Nyamuk tersebut hanya berkembang di Asia.",
-        "Nyamuk tersebut dapat menyebarkan virus demam berdarah.",
-        "Nyamuk tersebut sangat berbahaya dan menyebabkan kematian.",
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Walaupun mutasi genetika pada bakteri dan virus dapat menimbulkan epidemi, beberapa epidemi disebabkan oleh bakteri dan virus yang tidak mengalami perubahan genetika secara signifikan. Dalam menganalisa kasus kedua, para ahli telah menemukan faktor-faktor sosial dan lingkungan yang penting dari epidemi tersebut.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Penyakit polio, misalnya, muncul semua suatu epidemi pada awal abad ke-20 karena sanitasi modern mampu memperlambat penyebaran polio sampai usia dewasa, sehingga polio menyebabkan kelumpuhan. Sebelumnya, infeksi terjadi pada masa bayi yang akan memunculkan imunitas seumur hidup tanpa mengalami kelumpuhan. Dengan demikian, faktor higienis yang mencegah terjadinya epidemi tipus secara tidak langsung memunculkan epidemik polio yang melumpuhkan. Contoh lain adalah penyakit lyme, yang disebabkan oleh bakteri yang disebarkan melalui kotoran rusa. Penyakit ini hanya muncul secara sporadis selarna akhir abad ke-19, tetapi sekarang menjadi sering timbul di beberapa tempat di Amerika Utara disebabkan oleh peningkatan populasi rusa yang terjadi bersamaan dengan pertumbuhan kota-kota satelit dan peningkatan aktivitas rekreasi alam terbuka pada habitat rusa. Hal yang sama juga menjadi faktor munculnya epidemi demam berdarah di Asia pada tahun 1950-an yang terjadi karena perubahan-perubahan. Ekologis yang meningkatkan populasi nyamuk *Aedes Aegepty*, nyamuk penyebar virus demam berdarah setiap saat dapat muncul di Amerika Utara karena penyebaran secara tidak sengaja satu jenis nyamuk lain, yaitu *aedes albopictus*.`,
-      question: `Manakah dari pernyataan berikut ini yang benar akan memperkuat pernyataan pengarang tentang penyebab penyebaran penyakit lyme di Amerika Utara?`,
-      options: [
-        "Populasi rusa lebih rendah pada akhir abad ke-19 bila dibandingkan dengan pertengahan abad ke-20.",
-        "Para peminat rekreasi di alam terbuka telah secara rutin mengambil langkah-langkah untuk melindungi diri mereka terhadap penyakit lyme.",
-        "Para ahli belum dapat mengembangkan vaksin yang dapat mencegah penyakit lyme.",
-        "Peningkatan rekreasi di alam terbuka bermula sejak akhir abad ke-19.",
-        "Semua pernyataan benar.",
+        "Pelepasan foton oleh elektron yang kembali ke tingkat energi dasar",
+        "Pemanasan logam hingga mencapai suhu tinggi",
+        "Reaksi kimia antara bahan peledak dan oksigen",
+        "Pembakaran bubuk mesiu",
+        "Interaksi antara berbagai unsur logam"
       ],
       answerIndex: [0]
     },
-    {
-      txtField: `
-      \n### TEKNOLOGI KUANTUM DAN KOMPUTER MASA DEPAN
-      \n### Oleh: Djoko Wiryawan
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Kecepatan komputer mengolah informasi sangat ditentukan oleh prosesornya. Dalam tekno-logi akan digital silicon (konvensional), untuk meningkatkan kecepatan prosesor, kecepatan transistor dalam cip prosesor harus ditingkatkan. Upaya meningkatkan kerapatan transistor ini tidak mungkin dilakukan terus-menerus tanpa batas karena suatu saat pasti akan mencapai maksimum, yaitu ketika ukuran transistor sudah tidak dapat diperkecil lagi. Pada keadaan ini perlu ditemukan teknologi baru, misalnya teknologi kuantum, untuk meningkatkan kecepatan prosesor.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Istilah kuantum (quantum), belakangan ini mulai popular dan sering digunakan dalam berbagai konsep yang memperkenalkan suatu paradigma baru, misalnya quantum learning, quantum teaching, quantum business, dan sebagainya. Kiranya tidak berlebihan jika dikatakan bahwa istilah kuantum pertama kali diperkenalkan oleh Max Planck, seorang fisikawan Jerman, dari teori kuantum cahaya untuk menjelaskan radiasi benda hitam. Secara tidak langsung teori inilah yang melahirkan fisika kuantum yang mempunyai efek dominan pada skala sistem atomik.
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Sejalan dengan perkembangan ilmu fisika dan informasi, belakangan ini mulai dikembangkan komputasi kuantum yang menggunakan prinsip-prinsip fisika kuantum. Komputasi kuantum ini nantinya diharapkan dapat melahirkan teknologi kuantum yang memungkinkan terobosan teknologi untuk mewujudkan komputer masa depan (komputer kuantum) yang bekerja dengan cara yang sama sekali berbeda dengan komputer konvensional yang dikenal saat ini. (Dikutip dari Harian Kompas, 27 Mei 2001, halaman 22)`,
-      question: `Kecepatan pengolahan informasi masa depan dalam sistem komputer yang berteknologi digital silicon, seperti sekarang, tidak akan lagi diharapkan maksimum karena ....`,
+    { //Soal 6
+      txtField: "Keindahan warna-warni pada kembang api bukanlah keajaiban, melainkan hasil langsung dari reaksi kimia yang dikenal sebagai uji nyala logam atau emisi cahaya. Kembang api tersusun dari bubuk peledak, bahan pengoksidasi, dan yang terpenting, garam-garam dari berbagai unsur logam. Ketika kembang api dinyalakan, energi panas yang sangat tinggi menyebabkan elektron pada atom logam (seperti Stronsium, Barium, atau Tembaga) bergerak ke tingkat energi yang lebih tinggi (keadaan tereksitasi). Setelah beberapa saat, elektron-elektron ini jatuh kembali ke tingkat energi asalnya (keadaan dasar), dan dalam proses ini, mereka melepaskan kelebihan energi tersebut dalam bentuk foton (cahaya). Panjang gelombang foton yang dilepaskan ini menentukan warna yang kita lihat, misalnya, Stronsium menghasilkan merah, Tembaga menghasilkan biru, dan Natrium menghasilkan oranye/kuning. Hal ini membuktikan bahwa setiap unsur kimia memiliki \"sidik jari\" cahayanya sendiri.",
+      question: "Pernyataan berikut yang merupakan sebuah fakta yang disajikan dalam teks adalah",
       options: [
-        "cip prosesor bermasalah",
-        "ukuran transistornya tidak dapat diperkecil lagi",
-        "transistornya sudah lemah",
-        "teknologi bersifat konvensional",
-        "transistornya sudah tidak kuat",
+        "Kembang api seharusnya menggunakan lebih banyak natrium untuk warna kuning yang lebih cerah",
+        "Stronium menghasilkan warna merah, Tembaga menghasilkan warna biru, dan Natrium menghasilkan warna oranye/kuning",
+        "Keindahan warna-warni kembang api bukanlah keajaiban",
+        "Setiap unsur kimia memiliki \"sidik jari\" cahayanya sendiri",
+        "Elektron yang jatuh kembali ke keadaan dasar harusnya melepaskan energi yang lebih besar"
       ],
       answerIndex: [1]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Peningkatan suhu ekstrem di kawasan Kalimantan karena perubahan iklim telah mengancam populasi lebah. (2) Perubahan suhu telah memengaruhi seberapa buruk pestisida memengaruhi perilaku lebah. (3) Terdapat dampak yang tidak pasti dalam perubahan iklim terutama di wilayah Kalimantan bagian timur sebagai daerah terkena dampak terbanyak. (4) Sejumlah Pakar Penelitian telah meneliti peristiwa tersebut. (5) Studi tersebut telah dipublikasikan di Global Change Biology dengan judul "Toxic temperatures: bee behaviours exhibit divergent pesticide toxicity relationships with warming."
-
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(6) Peristiwa suhu ekstrem di masa depan dalam perubahan iklim dapat meningkatkan dampak pestisida pada populasi lebah dan layanan penyerbukan mereka. (7) Beberapa jenis pestisida, terutama yang termasuk dalam kelas neonicotinoid, diketahui memengaruhi lebah dan serangga penting lainnya, dan diyakini berkontribusi pada penurunan populasi. (8) Namun, respons yang dilaporkan oleh lebah terhadap ancaman ini di seluruh dunia sering kali tampak berbeda, menunjukkan adanya faktor lain yang berinteraksi. Sekarang mereka telah menunjukkan bahwa suhu lingkungan dapat memengaruhi tingkat di mana pestisida dapat mengubah sekelompok perilaku lebah besar. (9) Perilaku tersebut penting untuk kelangsungan hidup mereka dan kemampuan mereka dalam penyerbukan tanaman. (10) Petani lebah merasa senang dengan peristiwa tersebut karena dapat beristirahat sejenak sambil memikirkan langkah yang tepat untuk mengatasi peristiwa tersebut.`,
-      question: `Kalimat yang melemahkan argumen pada teks di atas adalah ....`,
+    { //Soal 7
+      txtField: "Keindahan warna-warni pada kembang api bukanlah keajaiban, melainkan hasil langsung dari reaksi kimia yang dikenal sebagai uji nyala logam atau emisi cahaya. Kembang api tersusun dari bubuk peledak, bahan pengoksidasi, dan yang terpenting, garam-garam dari berbagai unsur logam. Ketika kembang api dinyalakan, energi panas yang sangat tinggi menyebabkan elektron pada atom logam (seperti Stronsium, Barium, atau Tembaga) bergerak ke tingkat energi yang lebih tinggi (keadaan tereksitasi). Setelah beberapa saat, elektron-elektron ini jatuh kembali ke tingkat energi asalnya (keadaan dasar), dan dalam proses ini, mereka melepaskan kelebihan energi tersebut dalam bentuk foton (cahaya). Panjang gelombang foton yang dilepaskan ini menentukan warna yang kita lihat, misalnya, Stronsium menghasilkan merah, Tembaga menghasilkan biru, dan Natrium menghasilkan oranye/kuning. Hal ini membuktikan bahwa setiap unsur kimia memiliki \"sidik jari\" cahayanya sendiri.",
+      question: "Istilah \"sidik jari\" pada akhir paragraf digunakan untuk menjelaskan ...",
       options: [
-        `Studi tersebut telah dipublikasikan di Global Change Biology dengan judul "Toxic temperatures: bee behaviours exhibit divergent pesticide toxicity relationships with warming".`,
-        "Namun, respons yang dilaporkan oleh lebah terhadap ancaman ini di seluruh dunia sering kali tampak berbeda, menunjukkan adanya faktor lain yang berinteraksi.",
-        "Beberapa jenis pestisida, terutama yang termasuk dalam kelas neonicotinoid, diketahui memengaruhi lebah.",
-        "Perilaku tersebut penting untuk kelangsungan hidup mereka dan kemampuan mereka dalam penyerbukan tanaman.",
-        "Petani lebah merasa senang dengan peristiwa tersebut karena dapat beristirahat sejenak sambil memikirkan langkah yang tepat untuk mengatasi peristiwa tersebut.",
+        "Setiap kembang api dibuat dengan campuran bahan yang unik dan tidak dapat ditiru",
+        "Setiap unsur logam memancarkan panjang gelombang cahaya (warna) yang khas dan berbeda",
+        "Cahaya yang dipancarkan oleh kembang api dapat digunakan untuk mengidentifikasi bahan peledak",
+        "Pola ledakan kembang api selalu unik dan tidak pernah sama antara satu dengan yang lain",
+        "Hanya beberapa jenis logam tertentu yang bisa menghasilkan cahaya saat dipanaskan"
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 8
+      imageUrl: `https://tan-sandye-90.tiiny.site/LBI-8-10.svg`,
+      txtField: "Sabun memiliki kemampuan untuk menghilangkan kotoran, terutama yang berminyak dan berlemak. Peristiwa ini terletak pada struktur molekulnya yang unik, yaitu terdapat dua ujung yang berbeda. Satu ujung disebut hidrofilik (suka air), yaitu terdiri dari gugus karboksilat bermuatan yang siap berinteraksi dengan air. Ujung lainnya adalah ekor hidrofobik (takut air/suka minyak), yaitu rantai hidrokarbon panjang yang cenderung menempel pada minyak. Ketika sabun dicampur dengan air dan diterapkan pada kotoran berminyak, ekor hidrofobik akan menempel pada kotoran. Selanjutnya, ribuan molekul sabun akan mengelilingi partikel kotoran secara keseluruhan. Mereka membentuk struktur bola kecil yang dikenal sebagai misel. Misel ini memiliki inti kotoran yang terbungkus rapat oleh ekor sabun, dan permukaan luarnya yang semuanya terdiri dari kepala hidrofilik. Karena permukaan misel kini diselimuti oleh bagian yang suka air, kotoran yang tadinya tidak mau larut di dalam air sekarang menjadi teremulsi dan dapat terlarut ke dalam air. Proses ini memungkinkan kotoran berminyak terangkat dan terbawa bersama air bilasan, menjadikan area yang dibersihkan menjadi bersih.",
+      question: "Cara yang dilakukan oleh ujung hidrofobik dari molekul sabun berinteraksi saat bertemu dengan kotoran berminyak adalah ....",
+      options: [
+        "Ujung hidrofobik menjauh dari kotoran dan membentuk lapisan di permukaan air",
+        "Ujung hidrofobik segera menempel, menembus, dan mengunci gumpalan minyak/kotoran",
+        "Ujung hidrofobik bereaksi secara kimia dengan kotoran untuk mengubah strukturnya",
+        "Ujung hidrofobik menguap menjadi gas setelah bersentuhan dengan kotoran",
+        "Ujung hidrofobik menarik kepala hidrofilik untuk menghadap ke inti kotoran"
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 9
+      imageUrl: `https://tan-sandye-90.tiiny.site/LBI-8-10.svg`,
+      txtField: "Sabun memiliki kemampuan untuk menghilangkan kotoran, terutama yang berminyak dan berlemak. Peristiwa ini terletak pada struktur molekulnya yang unik, yaitu terdapat dua ujung yang berbeda. Satu ujung disebut hidrofilik (suka air), yaitu terdiri dari gugus karboksilat bermuatan yang siap berinteraksi dengan air. Ujung lainnya adalah ekor hidrofobik (takut air/suka minyak), yaitu rantai hidrokarbon panjang yang cenderung menempel pada minyak. Ketika sabun dicampur dengan air dan diterapkan pada kotoran berminyak, ekor hidrofobik akan menempel pada kotoran. Selanjutnya, ribuan molekul sabun akan mengelilingi partikel kotoran secara keseluruhan. Mereka membentuk struktur bola kecil yang dikenal sebagai misel. Misel ini memiliki inti kotoran yang terbungkus rapat oleh ekor sabun, dan permukaan luarnya yang semuanya terdiri dari kepala hidrofilik. Karena permukaan misel kini diselimuti oleh bagian yang suka air, kotoran yang tadinya tidak mau larut di dalam air sekarang menjadi teremulsi dan dapat terlarut ke dalam air. Proses ini memungkinkan kotoran berminyak terangkat dan terbawa bersama air bilasan, menjadikan area yang dibersihkan menjadi bersih.",
+      question: "Berdasarkan Paragraf 2, fungsi utama dari pembentukan struktur misel dalam proses pembersihan adalah ....",
+      options: [
+        "Untuk membuat kotoran berminyak menjadi lebih padat dan mudah diambil",
+        "Untuk menetralkan muatan listrik pada kotoran sehingga menjadi tidak berbahaya",
+        "Untuk mengubah kotoran yang tidak larut menjadi teremulsi (terlarut) dalam air",
+        "Untuk mempercepat reaksi saponifikasi antara sabun dan air",
+        "Untuk menghambat interaksi antara gugus karboksilat sabun dengan kotoran"
+      ],
+      answerIndex: [2]
+    },
+    { //Soal 10
+      imageUrl: `https://tan-sandye-90.tiiny.site/LBI-8-10.svg`,
+      txtField: "Sabun memiliki kemampuan untuk menghilangkan kotoran, terutama yang berminyak dan berlemak. Peristiwa ini terletak pada struktur molekulnya yang unik, yaitu terdapat dua ujung yang berbeda. Satu ujung disebut hidrofilik (suka air), yaitu terdiri dari gugus karboksilat bermuatan yang siap berinteraksi dengan air. Ujung lainnya adalah ekor hidrofobik (takut air/suka minyak), yaitu rantai hidrokarbon panjang yang cenderung menempel pada minyak. Ketika sabun dicampur dengan air dan diterapkan pada kotoran berminyak, ekor hidrofobik akan menempel pada kotoran. Selanjutnya, ribuan molekul sabun akan mengelilingi partikel kotoran secara keseluruhan. Mereka membentuk struktur bola kecil yang dikenal sebagai misel. Misel ini memiliki inti kotoran yang terbungkus rapat oleh ekor sabun, dan permukaan luarnya yang semuanya terdiri dari kepala hidrofilik. Karena permukaan misel kini diselimuti oleh bagian yang suka air, kotoran yang tadinya tidak mau larut di dalam air sekarang menjadi teremulsi dan dapat terlarut ke dalam air. Proses ini memungkinkan kotoran berminyak terangkat dan terbawa bersama air bilasan, menjadikan area yang dibersihkan menjadi bersih.",
+      question: "Pernyataan berikut yang paling tepat untuk merangkum ide pokok keseluruhan teks adalah ....",
+      options: [
+        "Kotoran bisa menempel dengan struktur bagian hidrofobik dari sabun",
+        "Kotoran hanya bisa dibersihkan oleh sabun karena sabun memiliki dua ujung yang berperan beda terhadap air dan kotoran itu sendiri",
+        "Semua kotoran berminyak dapat larut dalam air ketika dicuci dengan sabun",
+        "Ujung hidrofilik molekul sabun bertindak sebagai penghalang agar kotoran tidak kembali menempel",
+        "Struktur molekul sabun mampu mengangkat kotoran berminyak karena terdapat dua ujung berbeda (hidrofilik dan hidrofobik) yang membentuk struktur misel, sehingga akan larut oleh air"
       ],
       answerIndex: [4]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Fungsi pendidikan adalah serangkaian tugas ataupun misi yang diemban dan dilaksanakan oleh pendidikan. Dari pengertian ini dapat dijelaskan bahwa sesungguhnya kegiatan atau praktik pendidikan di mana pun bukanlah kegiatan tanpa makna dan tujuan yang jelas. Kegiatan pendidikan tersirat suatu tugas atau misi yang harus diwujudkan. Oleh karena itu, para pendidik, pengelola pendidikan, dan pihak- pihak yang terlibat dalam kegiatan pendidikan seharusnya selalu menyadari akan tugas atau misi kegiatan pendidikan yang dilaksanakan atau yang dikelolanya.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Dari segi kultural dan sosial, fungsi pendidikan adalah menumbuhkan nilai-nilai insaniah serta menyiapkan tenaga kerja produktif. Sementara itu, Bock mengatakan bahwa peran pendidikan adalah memasyarakatkan ideologi dan nilai-nilai sosio-kultural bangsa, mempersiapkan tenaga kerja untuk mendorong perubahan sosial; serta memeratakan kesempatan dan pendapatan. Dari sumber tersebut jelas bahwa kegiatan atau praktik pendidikan memiliki misi atau tugas bukan hanya menjadikan peserta didik tumbuh dan berkembang potensi atau kemampuannya, melainkan juga (1) menjaga dan melestarikan nilai-nilai yang dianggap baik dan benar oleh masyarakat dan bangsa serta (2) menyiapkan peserta didik menjadi tenaga kerja produktif. Di pihak lain, fungsi pendidikan nasional menurut Undang-Undang Nomor 20 Tahun 2003 adalah mengembangkan kemampuan dan membentuk watak serta peradaban bangsa yang bermartabat dalam rangka mencerdaskan bangsa.`,
-      question: `Simpulan teks di atas yang paling tepat adalah ....`,
+    { //Soal 11
+      txtField: "Setelah kemerdekaan tahun 1945, Indonesia menghadapi tantangan besar dalam membangun sistem pendidikan nasional. Pada masa itu, banyak sekolah masih menggunakan kurikulum warisan kolonial yang lebih menekankan penguasaan bahasa dan budaya Belanda. Pemerintah kemudian berusaha menyesuaikan isi pendidikan agar sesuai dengan semangat kemerdekaan dan kebutuhan rakyat.\n\nSalah satu kebijakan penting adalah Kongres Pendidikan Indonesia tahun 1947 yang menekankan perlunya pendidikan berjiwa nasional, menumbuhkan rasa kebangsaan, serta menolak diskriminasi sosial dalam pendidikan. Dengan kebijakan ini, sekolah tidak lagi hanya berfungsi mencetak tenaga kerja terampil, tetapi juga membentuk warga negara yang berkarakter dan sadar akan tanggung jawab sosialnya.",
+      question: "Faktor utama yang mendorong perubahan kurikulum pendidikan Indonesia setelah kemerdekaan adalah ...",
       options: [
-        "Tujuan pendidikan nasional di Indonesia telah mencakup segi kultural dan sosial dan menjangkau semua lapisan masyarakat dalam hal mencerdaskan bangsa serta menyiapkan tenaga kerja produktif.",
-        "Pendidikan bertugas menjadikan peserta didik tumbuh dan berkembang potensinya, melestarikan nilai-nilai yang baik dan benar, serta menyiapkan tenaga produktif.",
-        "Fungsi pendidikan nasional menurut Undang-Undang No. 20 Tahun 2003 selaras dengan pendapat Bock yang mengatakan bahwa peran pendidikan adalah memasyarakatkan ideologi.",
-        "Kegiatan pendidikan memiliki misi bukan hanya menjadikan peserta didik tumbuh dan berkembang potensinya, melainkan juga menjaga dan melestarikan nilai-nilal yang dianggap baik dan benar.",
-        "Pendidikan nasional menurut Undang-Undang No. 20 Tahun 2003 berfungsi mengembangkan kemampuan membentuk watak serta peradaban bangsa yang bermartabat dalam rangka mencerdaskan bangsa.",
+        "tekanan politik dari bekas pemerintah kolonial untuk mempertahankan sistem lama",
+        "kebutuhan untuk menyesuaikan pendidikan dengan cita-cita kemerdekaan bangsa",
+        "dorongan agar sekolah menghasilkan tenaga administrasi terampil bagi pemerintahan baru",
+        "tuntutan masyarakat agar bahasa Belanda tetap diajarkan di sekolah-sekolah",
+        "pengaruh guru-guru asing yang masih aktif mengajar setelah 1945"
       ],
       answerIndex: [1]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Fungsi pendidikan adalah serangkaian tugas ataupun misi yang diemban dan dilaksanakan oleh pendidikan. Dari pengertian ini dapat dijelaskan bahwa sesungguhnya kegiatan atau praktik pendidikan di mana pun bukanlah kegiatan tanpa makna dan tujuan yang jelas. Kegiatan pendidikan tersirat suatu tugas atau misi yang harus diwujudkan. Oleh karena itu, para pendidik, pengelola pendidikan, dan pihak- pihak yang terlibat dalam kegiatan pendidikan seharusnya selalu menyadari akan tugas atau misi kegiatan pendidikan yang dilaksanakan atau yang dikelolanya.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Dari segi kultural dan sosial, fungsi pendidikan adalah menumbuhkan nilai-nilai insaniah serta menyiapkan tenaga kerja produktif. Sementara itu, Bock mengatakan bahwa peran pendidikan adalah memasyarakatkan ideologi dan nilai-nilai sosio-kultural bangsa, mempersiapkan tenaga kerja untuk mendorong perubahan sosial; serta memeratakan kesempatan dan pendapatan. Dari sumber tersebut jelas bahwa kegiatan atau praktik pendidikan memiliki misi atau tugas bukan hanya menjadikan peserta didik tumbuh dan berkembang potensi atau kemampuannya, melainkan juga (1) menjaga dan melestarikan nilai-nilai yang dianggap baik dan benar oleh masyarakat dan bangsa serta (2) menyiapkan peserta didik menjadi tenaga kerja produktif. Di pihak lain, fungsi pendidikan nasional menurut Undang-Undang Nomor 20 Tahun 2003 adalah mengembangkan kemampuan dan membentuk watak serta peradaban bangsa yang bermartabat dalam rangka mencerdaskan bangsa.`,
-      question: `Agar menjadi paragraf yang baik, kalimat penutup peragraf ke-2 yang paling sesuai adalah ....`,
+    { //Soal 12
+      txtField: "Setelah kemerdekaan tahun 1945, Indonesia menghadapi tantangan besar dalam membangun sistem pendidikan nasional. Pada masa itu, banyak sekolah masih menggunakan kurikulum warisan kolonial yang lebih menekankan penguasaan bahasa dan budaya Belanda. Pemerintah kemudian berusaha menyesuaikan isi pendidikan agar sesuai dengan semangat kemerdekaan dan kebutuhan rakyat.\n\nSalah satu kebijakan penting adalah Kongres Pendidikan Indonesia tahun 1947 yang menekankan perlunya pendidikan berjiwa nasional, menumbuhkan rasa kebangsaan, serta menolak diskriminasi sosial dalam pendidikan. Dengan kebijakan ini, sekolah tidak lagi hanya berfungsi mencetak tenaga kerja terampil, tetapi juga membentuk warga negara yang berkarakter dan sadar akan tanggung jawab sosialnya.",
+      question: "Manakah opini berikut yang paling tepat berdasarkan isi teks?",
       options: [
-        "Dengan demikian, fungsi pendidikan selain untuk mencerdaskan bangsa, menyiapkan tenaga kerja produktif, juga membentuk watak.",
-        `Dengan demikian, fungsi pendidikan adalah menjadikan siswa terampil dan siap menjadi tenaga kerja produktif dan menjunjung tinggi nama bangsa.`,
-        "Oleh karena itu, tugas pendidikan membentuk siswa menjadi warga negara yang berkepribadian luhur, beriman, dan bertaqwa.",
-        "Karena itulah, fungsi utama pendidikan adalah membentuk siswa yang cerdas dan terampil dalam menghadapi semua permasalahan.",
-        "Oleh sebab itu, sebagai pendidik, guru harus selalu siap berkorban untuk membentuk anak bangsa menjadi manusia yang berguna.",
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Telah ditemukan fosil tengkorak dinosaurus titan atau Titanosaurus yang hampir lengkap di Formasi Winton Kapur Akhir Queensland, Australia. (2) Penemuan fosil tersebut telah diterbitkan dalam jurnal *Royal Society Open Science* secara daring belum lama ini. (3) Jurnal tersebut juga menyebutkan bahwa, jenis dinosaurus sauropoda Titanosaurian beragam dan melimpah sepanjang periode Kapur dengan distribusi global. (4) Namun, beberapa spesimen titanosaurus hanya diwakili dengan kumpulan kerangka tengkorak kepala saja. (5) Evolusi awal dinosaurus sauropoda titanosaurian yang masih kurang dipahami dikarenakan oleh catatan fosil klad hanya mencakup sebagian zaman kapur dengan contoh dari setiap benua. (6) Salah satu hambatan terbesar untuk menyelesaikan filogenetik titanosaurus adalah kelangkaan sisa-sisa tengkorak. (7) Beberapa tengkorak titanosaurus yang paling terkenal berasal dari zaman kapur terbaru, yaitu *Rapetosaurus krausei* dari Madagaskar, *Nemegtosaurus mongoliensis*, dan *Quaesitosaurus orientalis* dari Mongolia. (8) Untuk dinosaurus titan yang baru ditemukan ini memiliki nama ilmiah Diamantinasaurus matildae yang ditemukan dari Formasi Winton Kapur Akhir Queensland, Australia dan diwakili oleh tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya. (9) Dalam makalah baru, mereka yang merupakan para ahli paleontologi dari Curtin University menggambarkan spesimen keempat *Diamantinasaurus matildae* yang mengawetkan tengkorak yang lebih lengkap, termasuk banyak elemen tengkorak yang sebelumnya tidak dikenal untuk spesies ini, serta kerangka parsial.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(10) "Di sini, kami mendeskripsikan spesimen keempat *Diamantinasaurus matildae* yang mempertahankan tengkorak lebih lengkap termasuk banyak elemen tengkorak yang sebelumnya tidak diketahui untuk takson ini serta kerangka parsial postkranial," tulis peneliti. (11) *Diamantinasaurus matildae* hidup pada awal Zaman Kapur sekitar 94 juta tahun yang lalu. (12) Dinosaurus ini pertama kali dideskripsikan dan diberi nama pada tahun 2009 berdasarkan penemuan fosil di Formasi Winton Australia. (13) *Diamantinasaurus matildae* adalah titanosaurian berukuran sedang yang berukuran panjang 16 m atau sekitar 52 kaki dan berat mencapai 25 ton. (14) Hanya tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya, yang diketahui sebelumnya.
-      \nSumber: www.nationalgeographicindonesia.com`,
-      question: `Berdasarkan teks tersebut, manakah pernyataan yang tidak sesuai?`,
-      options: [
-        "Penemuan fosil tengkorak dinosaurus titan atau Titanosaurus yang hampir lengkap di Australia.",
-        "Penemuan fosil tengkorak dinosaurus titan atau Titanosaurus telah diterbitkan dalam jurnal *Royal Society Open Science* secara daring belum lama ini.",
-        "Beberapa tengkorak titanosaurus yang paling banyak berasal dari zaman kapur terbaru, yaitu *Rapetosaurus krausei* dari Madagaskar, *Nemegtosaurus mongoliensis*, dan *Quaesitosaurus orientalis* dari Mongolia.",
-        "*Diamantinasaurus matildae* hidup pada awal Zaman Kapur sekitar 94 juta tahun yang lalu.",
-        "*Diamantinasaurus matildae* adalah titanosaurian berukuran sedang yang berukuran panjang 16 m atau sekitar 52 kaki dan berat mencapai 25 ton.",],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Telah ditemukan fosil tengkorak dinosaurus titan atau Titanosaurus yang hampir lengkap di Formasi Winton Kapur Akhir Queensland, Australia. (2) Penemuan fosil tersebut telah diterbitkan dalam jurnal *Royal Society Open Science* secara daring belum lama ini. (3) Jurnal tersebut juga menyebutkan bahwa, jenis dinosaurus sauropoda Titanosaurian beragam dan melimpah sepanjang periode Kapur dengan distribusi global. (4) Namun, beberapa spesimen titanosaurus hanya diwakili dengan kumpulan kerangka tengkorak kepala saja. (5) Evolusi awal dinosaurus sauropoda titanosaurian yang masih kurang dipahami dikarenakan oleh catatan fosil klad hanya mencakup sebagian zaman kapur dengan contoh dari setiap benua. (6) Salah satu hambatan terbesar untuk menyelesaikan filogenetik titanosaurus adalah kelangkaan sisa-sisa tengkorak. (7) Beberapa tengkorak titanosaurus yang paling terkenal berasal dari zaman kapur terbaru, yaitu *Rapetosaurus krausei* dari Madagaskar, *Nemegtosaurus mongoliensis*, dan *Quaesitosaurus orientalis* dari Mongolia. (8) Untuk dinosaurus titan yang baru ditemukan ini memiliki nama ilmiah Diamantinasaurus matildae yang ditemukan dari Formasi Winton Kapur Akhir Queensland, Australia dan diwakili oleh tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya. (9) Dalam makalah baru, mereka yang merupakan para ahli paleontologi dari Curtin University menggambarkan spesimen keempat *Diamantinasaurus matildae* yang mengawetkan tengkorak yang lebih lengkap, termasuk banyak elemen tengkorak yang sebelumnya tidak dikenal untuk spesies ini, serta kerangka parsial.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(10) "Di sini, kami mendeskripsikan spesimen keempat *Diamantinasaurus matildae* yang mempertahankan tengkorak lebih lengkap termasuk banyak elemen tengkorak yang sebelumnya tidak diketahui untuk takson ini serta kerangka parsial postkranial," tulis peneliti. (11) *Diamantinasaurus matildae* hidup pada awal Zaman Kapur sekitar 94 juta tahun yang lalu. (12) Dinosaurus ini pertama kali dideskripsikan dan diberi nama pada tahun 2009 berdasarkan penemuan fosil di Formasi Winton Australia. (13) *Diamantinasaurus matildae* adalah titanosaurian berukuran sedang yang berukuran panjang 16 m atau sekitar 52 kaki dan berat mencapai 25 ton. (14) Hanya tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya, yang diketahui sebelumnya.
-      \nSumber: www.nationalgeographicindonesia.com`,
-      question: `Pilih pernyataan di bawah ini yang sesuai dengan bacaan!`,
-      options: [
-        "Telah ditemukan fosil tengkorak dinosaurus titan atau Titanosaurus yang sudah lengkap di Formasi Winton Kapur Akhir Queensland, Australia.",
-        "Dinosaurus titan yang baru ditemukan ini memiliki nama ilmiah *Diamantinasaurus matildae* yang ditemukan dari Formasi Winton Kapur Akhir Queensland, Australia dan diwakili oleh tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya.",
-        "Evolusi awal dinosaurus sauropoda titanosaurian yang mudah dipahami karena oleh catatan fosil klad hanya mencakup sebagian zaman kapur dengan contoh dari setiap benua.",
-        "*Diamantinasaurus matildae* adalah titanosaurian berukuran sedang yang berukuran panjang 16 m atau sekitar 52 kaki dan berat mencapai 25 ton.",
-        "Terdapat tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya, yang diketahui sebelumnya.",
-      ],
-      answerIndex: [1,3,4]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;(1) Telah ditemukan fosil tengkorak dinosaurus titan atau Titanosaurus yang hampir lengkap di Formasi Winton Kapur Akhir Queensland, Australia. (2) Penemuan fosil tersebut telah diterbitkan dalam jurnal *Royal Society Open Science* secara daring belum lama ini. (3) Jurnal tersebut juga menyebutkan bahwa, jenis dinosaurus sauropoda Titanosaurian beragam dan melimpah sepanjang periode Kapur dengan distribusi global. (4) Namun, beberapa spesimen titanosaurus hanya diwakili dengan kumpulan kerangka tengkorak kepala saja. (5) Evolusi awal dinosaurus sauropoda titanosaurian yang masih kurang dipahami dikarenakan oleh catatan fosil klad hanya mencakup sebagian zaman kapur dengan contoh dari setiap benua. (6) Salah satu hambatan terbesar untuk menyelesaikan filogenetik titanosaurus adalah kelangkaan sisa-sisa tengkorak. (7) Beberapa tengkorak titanosaurus yang paling terkenal berasal dari zaman kapur terbaru, yaitu *Rapetosaurus krausei* dari Madagaskar, *Nemegtosaurus mongoliensis*, dan *Quaesitosaurus orientalis* dari Mongolia. (8) Untuk dinosaurus titan yang baru ditemukan ini memiliki nama ilmiah Diamantinasaurus matildae yang ditemukan dari Formasi Winton Kapur Akhir Queensland, Australia dan diwakili oleh tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya. (9) Dalam makalah baru, mereka yang merupakan para ahli paleontologi dari Curtin University menggambarkan spesimen keempat *Diamantinasaurus matildae* yang mengawetkan tengkorak yang lebih lengkap, termasuk banyak elemen tengkorak yang sebelumnya tidak dikenal untuk spesies ini, serta kerangka parsial.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;(10) "Di sini, kami mendeskripsikan spesimen keempat *Diamantinasaurus matildae* yang mempertahankan tengkorak lebih lengkap termasuk banyak elemen tengkorak yang sebelumnya tidak diketahui untuk takson ini serta kerangka parsial postkranial," tulis peneliti. (11) *Diamantinasaurus matildae* hidup pada awal Zaman Kapur sekitar 94 juta tahun yang lalu. (12) Dinosaurus ini pertama kali dideskripsikan dan diberi nama pada tahun 2009 berdasarkan penemuan fosil di Formasi Winton Australia. (13) *Diamantinasaurus matildae* adalah titanosaurian berukuran sedang yang berukuran panjang 16 m atau sekitar 52 kaki dan berat mencapai 25 ton. (14) Hanya tiga spesimen, termasuk satu yang mengawetkan tempurung otak dan beberapa elemen tengkorak lainnya, yang diketahui sebelumnya.
-      \nSumber: www.nationalgeographicindonesia.com`,
-      question: `Kapan dinosaurus titan hidup?`,
-      options: [
-        "Pada zaman kapur 49 juta tahun yang lalu",
-        "Pada zaman batu 94 juta tahun yang lalu",
-        "Hidup pada zaman batu 49 juta tahun lalu",
-        "Pada zaman kapur 94 juta tahun yang lalu",
-        "Pada zaman batu 194 juta tahun yang lalu",
+        "Kurikulum kolonial sebaiknya dipertahankan karena sudah teruji kualitasnya.",
+        "Kongres Pendidikan 1947 gagal mencapai tujuan utamanya karena kekurangan tenaga pendidik.",
+        "Pendidikan nasional sebaiknya lebih menekankan keahlian praktis dibanding nilai kebangsaan.",
+        "Pendidikan pasca-kemerdekaan merupakan bentuk perlawanan terhadap sisa penjajahan.",
+        "Pendidikan pasca-kemerdekaan lebih memprioritaskan pembentukan tenaga kerja terampil dibanding nilai-nilai kebangsaan."
       ],
       answerIndex: [3]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Drs. H. Mohammad Hatta atau yang lebih dikenal dengan Bung Hatta adalah wakil presiden pertama Indonesia, selain itu beliau juga adalah seorang pejuang, negarawan, dan juga ekonom. Lelaki kelahiran Fort de Kock, Hindia Belanda (Sekarang Bukittinggi, Sumatera Barat, Indonesia) 12 Agustus 1902 yang bernama lahir Mohammad Attar merupakan anak kedua dari pasangan Muhammad Djamil dan Siti Saleha. 
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Pada 18 November 1945, Bung Hatta menikah dengan Rahmi Hatta dan setelah 3 hari menikah mereka pindah dan tinggal Yogyakarta, Pernikahan mereka dikaruniai 3 orang anak perempuan yaitu Meutia Farida Hatta, Gembala Rabi'ah Hatta, dan Halida Nuriah Hatta. Moh. Hatta menjadi wakil presiden pertama di Indonesia, la sangat berperan dalam membantu Soekarno dan para pendiri bangsa untuk mencapai kemerdekaan. Selain menjabat sebagai wakil presiden Bung Hatta juga pernah menjabat menjadi perdana menteri dalam Kabinet Hatta I-II dan RIS. Pada tahun 1956 Bung Hatta mengundurkan diri sebagai wakil presiden akibat perselisihan dengan Presiden Soekarno. Hatta merupakan sosok yang memiliki kegemaran membaca dan dikenal sebagai Bapak Koperasi Indonesia. Hatta juga menggalakkan ekonomi dengan semangat gotong royong pada masyarakat. Koperasi juga menjadi pilar ekonomi dari tingkat paling kecil yaitu desa. Dengan desa yang berdaya ekonomi dan pangan, akan membuat bangsa menjadi lebih kuat.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Atas jasanya nama Bung Hatta diabadikan dalam nama sebuah bandar udara internasional di Tangerang. Banten, Indonesia bersama dengan Ir. Soekarno yaitu Bandara Soekarno-Hatta. Selain di Indonesia nama beliau juga diabadikan menjadi sebuah nama jalan bernama mohammed hattastraat di Zuiderpolder, Haarlem Belanda. Pada 14 Maret 1980 pada usia 77 tahun, Bung Hatta meninggal dunia di Jakarta.`,
-      question: `Apa peristiwa penting yang ada di hidup Bung Hatta?`,
+    { //Soal 13
+      type: "MULTIPLE_SELECTION",
+      txtField: "Urbanisasi di Indonesia meningkat pesat sejak tahun 1970-an, seiring pembangunan industri dan perluasan lapangan kerja di kota-kota besar. Fenomena ini menimbulkan dua dampak sosial utama. Di satu sisi, kota menjadi pusat pertumbuhan ekonomi baru; di sisi lain, muncul masalah sosial seperti pemukiman kumuh, kemacetan, dan kesenjangan sosial.\n\nBeberapa ahli berpendapat bahwa urbanisasi tidak akan menjadi masalah jika diimbangi dengan kebijakan pembangunan wilayah yang merata. Artinya, kesempatan ekonomi di daerah harus diperkuat agar masyarakat tidak terpaksa pindah ke kota. Pendapat ini menekankan bahwa urbanisasi bukan semata-mata persoalan migrasi, tetapi juga ketimpangan struktural antar wilayah.",
+      question: "Berdasarkan teks di atas, pernyataan berikut yang relevan dengan gagasan penulis adalah ….",
       options: [
-        "Pernah menjabat sebagai wakil presiden dan menjabat menjadi perdana menteri dalam Kabinet Hatta I-II dan RIS.",
-        "Bung Hatta setia dalam membantu Soekarno dan para pendiri bangsa untuk mencapai kemerdekaan.",
-        "Selain sebagai wakil presiden pertama Indonesia, Bung Hatta juga seorang pejuang, negarawan, dan juga ekonom.",
-        "Nama Bung Hatta banyak diabadikan untuk menamai gedung dan nama jalan di Indonesia.",
-        "Banyak menorehkan prestasi dan sebagai bapak ekonomi.",
+        "Urbanisasi merupakan akibat dari pembangunan yang tidak merata antara kota dan desa.",
+        "Urbanisasi menimbulkan dampak sosial seperti kemacetan dan kesenjangan sosial.",
+        "Urbanisasi tidak akan menjadi masalah besar jika daerah memiliki kesempatan ekonomi yang merata.",
+        "Urbanisasi sepenuhnya disebabkan oleh meningkatnya jumlah penduduk di desa.",
+        "Urbanisasi menggambarkan adanya ketimpangan struktural antara desa dan kota."
+      ],
+      answerIndex: [0, 1, 2, 4]
+    },
+    { //Soal 14
+      txtField: "Urbanisasi di Indonesia meningkat pesat sejak tahun 1970-an, seiring pembangunan industri dan perluasan lapangan kerja di kota-kota besar. Fenomena ini menimbulkan dua dampak sosial utama. Di satu sisi, kota menjadi pusat pertumbuhan ekonomi baru; di sisi lain, muncul masalah sosial seperti pemukiman kumuh, kemacetan, dan kesenjangan sosial.\n\nBeberapa ahli berpendapat bahwa urbanisasi tidak akan menjadi masalah jika diimbangi dengan kebijakan pembangunan wilayah yang merata. Artinya, kesempatan ekonomi di daerah harus diperkuat agar masyarakat tidak terpaksa pindah ke kota. Pendapat ini menekankan bahwa urbanisasi bukan semata-mata persoalan migrasi, tetapi juga ketimpangan struktural antar wilayah.",
+      question: "Fakta yang paling mendukung gagasan utama bacaan adalah …",
+      options: [
+        "migran kota umumnya berasal dari wilayah yang peluang ekonominya terbatas.",
+        "jumlah pengguna transportasi umum di kota besar terus meningkat setiap tahun.",
+        "banyak desa di Indonesia mengalami lonjakan harga tanah sejak tahun 2000-an.",
+        "pemukiman kumuh menunjukkan pertumbuhan ekonomi yang pesat."
       ],
       answerIndex: [0]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Drs. H. Mohammad Hatta atau yang lebih dikenal dengan Bung Hatta adalah wakil presiden pertama Indonesia, selain itu beliau juga adalah seorang pejuang, negarawan, dan juga ekonom. Lelaki kelahiran Fort de Kock, Hindia Belanda (Sekarang Bukittinggi, Sumatera Barat, Indonesia) 12 Agustus 1902 yang bernama lahir Mohammad Attar merupakan anak kedua dari pasangan Muhammad Djamil dan Siti Saleha. 
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Pada 18 November 1945, Bung Hatta menikah dengan Rahmi Hatta dan setelah 3 hari menikah mereka pindah dan tinggal Yogyakarta, Pernikahan mereka dikaruniai 3 orang anak perempuan yaitu Meutia Farida Hatta, Gembala Rabi'ah Hatta, dan Halida Nuriah Hatta. Moh. Hatta menjadi wakil presiden pertama di Indonesia, la sangat berperan dalam membantu Soekarno dan para pendiri bangsa untuk mencapai kemerdekaan. Selain menjabat sebagai wakil presiden Bung Hatta juga pernah menjabat menjadi perdana menteri dalam Kabinet Hatta I-II dan RIS. Pada tahun 1956 Bung Hatta mengundurkan diri sebagai wakil presiden akibat perselisihan dengan Presiden Soekarno. Hatta merupakan sosok yang memiliki kegemaran membaca dan dikenal sebagai Bapak Koperasi Indonesia. Hatta juga menggalakkan ekonomi dengan semangat gotong royong pada masyarakat. Koperasi juga menjadi pilar ekonomi dari tingkat paling kecil yaitu desa. Dengan desa yang berdaya ekonomi dan pangan, akan membuat bangsa menjadi lebih kuat.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Atas jasanya nama Bung Hatta diabadikan dalam nama sebuah bandar udara internasional di Tangerang. Banten, Indonesia bersama dengan Ir. Soekarno yaitu Bandara Soekarno-Hatta. Selain di Indonesia nama beliau juga diabadikan menjadi sebuah nama jalan bernama mohammed hattastraat di Zuiderpolder, Haarlem Belanda. Pada 14 Maret 1980 pada usia 77 tahun, Bung Hatta meninggal dunia di Jakarta.`,
-      question: `Keistimewaan yang terdapat pada tokoh tersebut adalah ....`,
+    { //Soal 15
+      type: "MULTIPLE_SELECTION",
+      txtField: "Banyak kota di Indonesia kini menerapkan konsep “kota pintar” atau smart city. Konsep ini tidak hanya soal teknologi, tetapi bagaimana kota dapat meningkatkan kualitas hidup warganya melalui data, konektivitas, pelayanan publik yang efisien, serta pelibatan masyarakat. Misalnya, aplikasi daring untuk pelaporan fasilitas publik rusak dan sistem transportasi berbasis data yang membantu mengurangi kemacetan serta polusi. Namun, tantangan besar tetap ada: infrastruktur digital, literasi masyarakat, anggaran, dan keberpihakan pada kelompok rentan. Dalam jangka panjang, kota yang mampu mengintegrasikan teknologi dengan kebijakan pro-warga dan berkelanjutan akan lebih unggul dalam persaingan global.",
+      question: "Tentukan pernyataan berikut ini yang benar sesuai dengan informasi dari teks di atas!",
       options: [
-        "turut berjuang dalam memerdekakan Indonesia bersama Soekarno",
-        "mendapat julukan bapak proklamator",
-        "nama Bung Hatta diabadikan sebagai nama tempat dan jalan",
-        "memiliki hobi membaca",
-        "dikenal sebagai bapak koperasi Indonesia karena sebagai promotor adanya koperasi di Indonesia",
+        "Konsep smart city hanya menekankan pada penggunaan teknologi mutakhir di kota-kota besar.",
+        "Salah satu tujuan utama kota pintar adalah meningkatkan kualitas hidup warga melalui pelayanan publik yang efisien.",
+        "Tantangan penerapan smart city antara lain terkait dengan literasi digital masyarakat dan anggaran.",
+        "Penulis berpendapat bahwa teknologi cukup menjadi solusi tunggal bagi semua persoalan perkotaan.",
+        "Keberpihakan terhadap kelompok rentan disebut sebagai salah satu aspek penting dalam mewujudkan kota pintar."
       ],
-      answerIndex: [4]
+      answerIndex: [1, 2, 4]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Drs. H. Mohammad Hatta atau yang lebih dikenal dengan Bung Hatta adalah wakil presiden pertama Indonesia, selain itu beliau juga adalah seorang pejuang, negarawan, dan juga ekonom. Lelaki kelahiran Fort de Kock, Hindia Belanda (Sekarang Bukittinggi, Sumatera Barat, Indonesia) 12 Agustus 1902 yang bernama lahir Mohammad Attar merupakan anak kedua dari pasangan Muhammad Djamil dan Siti Saleha. 
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Pada 18 November 1945, Bung Hatta menikah dengan Rahmi Hatta dan setelah 3 hari menikah mereka pindah dan tinggal Yogyakarta, Pernikahan mereka dikaruniai 3 orang anak perempuan yaitu Meutia Farida Hatta, Gembala Rabi'ah Hatta, dan Halida Nuriah Hatta. Moh. Hatta menjadi wakil presiden pertama di Indonesia, la sangat berperan dalam membantu Soekarno dan para pendiri bangsa untuk mencapai kemerdekaan. Selain menjabat sebagai wakil presiden Bung Hatta juga pernah menjabat menjadi perdana menteri dalam Kabinet Hatta I-II dan RIS. Pada tahun 1956 Bung Hatta mengundurkan diri sebagai wakil presiden akibat perselisihan dengan Presiden Soekarno. Hatta merupakan sosok yang memiliki kegemaran membaca dan dikenal sebagai Bapak Koperasi Indonesia. Hatta juga menggalakkan ekonomi dengan semangat gotong royong pada masyarakat. Koperasi juga menjadi pilar ekonomi dari tingkat paling kecil yaitu desa. Dengan desa yang berdaya ekonomi dan pangan, akan membuat bangsa menjadi lebih kuat.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Atas jasanya nama Bung Hatta diabadikan dalam nama sebuah bandar udara internasional di Tangerang. Banten, Indonesia bersama dengan Ir. Soekarno yaitu Bandara Soekarno-Hatta. Selain di Indonesia nama beliau juga diabadikan menjadi sebuah nama jalan bernama mohammed hattastraat di Zuiderpolder, Haarlem Belanda. Pada 14 Maret 1980 pada usia 77 tahun, Bung Hatta meninggal dunia di Jakarta.`,
-      question: `Keteladanan yang terdapat pada kutipan teks biografi tersebut adalah ....`,
+    { //Soal 16
+      txtField: "Indonesia menjadi negara penting bagi negara-negara di benua Asia, Afrika, dan kemudian Amerika Latin. Pada awal 1960-an, Indonesia menggandeng bangsa-bangsa lain yang baru merdeka bergabung dalam Gerakan Non Blok (GNB). Wadah itu menjadi wujud sikap politik internasional Indonesia yang tak mau menjadi pion Blok Barat maupun Blok Timur yang sedang sengit bersaing dalam Perang Dingin.\n\nBegitulah Sukarno membangun dunia baru yang bertentangan dengan kemauan para imperialis lama. Dunia baru itu adalah kemerdekaan 100 persen dari bangsa-bangsa yang dulunya terjadi menjadi bangsa yang setara dengan bekas penjajah mereka. Tentu saja dengan membawa Indonesia yang masih muda menggerakkan bangsa-bangsa Asia-Afrika, Sukarno menjadi masalah bagi negara-negara imperialis seperti Kerajaan Inggris ataupun Amerika Serikat.\n\nNamun, prestasi yang patut dibanggakan itu tak dipahami lagi setelah 1965, bahkan tak diajarkan dalam pelajaran sejarah Indonesia bagaimana Sukarno membawa Indonesia dalam membangun dunia baru. Maka, hingga hari ini orang Indonesia tak paham bagaimana Indonesia pernah berusaha membangun dunia yang merdeka dan setara.",
+      question: "Berdasarkan teks di atas, ide pokok yang terdapat pada paragraf pertama adalah …",
       options: [
-        "menjadi wakil presiden pertama di Indonesia",
-        "berperan dalam berperang mempertahankan kemerdekaan",
-        "memiliki kegemaran membaca",
-        "hidup sederhana dan bersahaja",
-        "seorang pejuang, negarawan, dan juga ekonom",
+        "Indonesia aktif menjalin kerja sama ekonomi dengan negara-negara Barat",
+        "Indonesia menolak menjadi bagian dari persaingan Blok Barat dan Blok Timur",
+        "Indonesia membantu negara-negara Amerika Latin dalam bidang industri",
+        "Indonesia bergabung dengan Blok Timur untuk menghadapi Blok Barat",
+        "Indonesia berperan penting dalam persaingan antara Blok Barat dan Blok Timur"
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 17
+      txtField: "Indonesia menjadi negara penting bagi negara-negara di benua Asia, Afrika, dan kemudian Amerika Latin. Pada awal 1960-an, Indonesia menggandeng bangsa-bangsa lain yang baru merdeka bergabung dalam Gerakan Non Blok (GNB). Wadah itu menjadi wujud sikap politik internasional Indonesia yang tak mau menjadi pion Blok Barat maupun Blok Timur yang sedang sengit bersaing dalam Perang Dingin.\n\nBegitulah Sukarno membangun dunia baru yang bertentangan dengan kemauan para imperialis lama. Dunia baru itu adalah kemerdekaan 100 persen dari bangsa-bangsa yang dulunya terjadi menjadi bangsa yang setara dengan bekas penjajah mereka. Tentu saja dengan membawa Indonesia yang masih muda menggerakkan bangsa-bangsa Asia-Afrika, Sukarno menjadi masalah bagi negara-negara imperialis seperti Kerajaan Inggris ataupun Amerika Serikat.\n\nNamun, prestasi yang patut dibanggakan itu tak dipahami lagi setelah 1965, bahkan tak diajarkan dalam pelajaran sejarah Indonesia bagaimana Sukarno membawa Indonesia dalam membangun dunia baru. Maka, hingga hari ini orang Indonesia tak paham bagaimana Indonesia pernah berusaha membangun dunia yang merdeka dan setara.",
+      question: "Berdasarkan teks, sikap Sukarno terhadap kekuatan imperialis dunia adalah ….",
+      options: [
+        "patuh terhadap kepentingan negara-negara Barat",
+        "netral karena tidak berpihak dalam persaingan di Perang Dingin",
+        "berani karena menentang dominasi kekuatan imperialis",
+        "nasionalis karena fokus pada pembangunan ekonomi dalam negeri",
+        "egois sehingga menimbulkan masalah bagi Inggris dan Amerika"
       ],
       answerIndex: [2]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Bahasa yang Taksa dan Samar-samar Perlu dijelaskan bahwa sebagai aparatus komunikasi, bahasa memiliki rupa-rupa keterbatasan dan ketidaksempurnaan. Banyak kekuranglengkapan yang melekat erat (inheren) di dalam sosok bahasa itu sendiri, yang pada gilirannya justru dapat mencuatkan aneka kesalahpahaman. Sebab pertama dari kekuranglengkapan dan kekurangsempurnaan bahasa adalah ihwal penandaan atau penyimbolan unsur-unsur kebahasaan. Penandaan komponen-komponen bahasa tersebut lazimnya dilakukan baik secara konvensional maupun inkonvensional.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Penyimbolan secara konvensional dilaksanakan atas dasar kesepahaman dan kesepakatan bersama di antara sesama warga pemakaian bahasa dalam sebuah masyarakat bahasa. Karena dasar utamanya adalah kesepakatan atau konvensi, maka lazimnya hasil penyimbolan yang demikian itu tidak banyak menghadirkan persoalan. Ambillah contoh kata Jawa segawon yang dalam bahasa Indonesia anjing, dan dalam bahasa Inggris dog. Penamaan terhadap sosok binatang piaraan yang buas, berbulu bagus, tidak terlalu besar, dan sukanya meraung-raung keras itu dilakukan secara konvensional. Karena simbol tersebut muncul dalam kesepakatan atau kesepahaman bersama, tidak ditemukan persoalan pemakaian unsur kebahasaan tersebut di dalam praktik komunikasi.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Penyimbolan kedua dilakukan secara arbitrer. Artinya, satuan lingual tertentu digunakan untuk menyimboli sesuatu entitas di alam raya ini secara semena-mena dan tidak selalu jelas alasan dan justifikasinya. Karena itu, simbolisasi yang demikian rentan terhadap aneka kesamaran dan ketaksaan. Sejumlah pakar bahkan dengan tegas menyebutkan, kesamaan dan ketaksaan tersebut sesungguhnya merupakan sifat kebahasaan melekat, sebagai akibat yang tidak terhindarkan lagi dari simbolisasi arbitrer itu.`,
-      question: `Masalah utama yang dibicarakan dalam paragraf pertama pada teks di atas adalah ....`,
+    { //Soal 18
+      type: "MULTIPLE_SELECTION",
+      txtField: "Indonesia menjadi negara penting bagi negara-negara di benua Asia, Afrika, dan kemudian Amerika Latin. Pada awal 1960-an, Indonesia menggandeng bangsa-bangsa lain yang baru merdeka bergabung dalam Gerakan Non Blok (GNB). Wadah itu menjadi wujud sikap politik internasional Indonesia yang tak mau menjadi pion Blok Barat maupun Blok Timur yang sedang sengit bersaing dalam Perang Dingin.\n\nBegitulah Sukarno membangun dunia baru yang bertentangan dengan kemauan para imperialis lama. Dunia baru itu adalah kemerdekaan 100 persen dari bangsa-bangsa yang dulunya terjadi menjadi bangsa yang setara dengan bekas penjajah mereka. Tentu saja dengan membawa Indonesia yang masih muda menggerakkan bangsa-bangsa Asia-Afrika, Sukarno menjadi masalah bagi negara-negara imperialis seperti Kerajaan Inggris ataupun Amerika Serikat.\n\nNamun, prestasi yang patut dibanggakan itu tak dipahami lagi setelah 1965, bahkan tak diajarkan dalam pelajaran sejarah Indonesia bagaimana Sukarno membawa Indonesia dalam membangun dunia baru. Maka, hingga hari ini orang Indonesia tak paham bagaimana Indonesia pernah berusaha membangun dunia yang merdeka dan setara.",
+      question: "Berikut ini pernyataan yang sesuai dengan isi bacaan, antara lain …",
       options: [
-        "Bahasa memiliki rupa-rupa keterbatasan dan ketidaksempurnaan.",
-        "Kekuranglengkapan di dalam sosok bahasa dapat mencuatkan kesalahpahaman.",
-        "Penyebab kekuranglengkapan dan ketidaksempurnaan bahasa.",
-        "Penandaan unsur-unsur kebahasaan dilakukan baik secara konvensional maupun inkonvensional.",
-        "Ketidaksempurnaan bahasa sehingga banyak pihak yang memiliki kebiasaan salah berbahasa.",
+        "Gerakan Non Blok menunjukkan sikap politik bebas-aktif Indonesia dalam kancah global.",
+        "Sukarno berupaya menciptakan dunia baru yang menolak dominasi kekuatan lama.",
+        "Setelah 1965, peran Indonesia dalam GNB semakin dikenal luas di dunia pendidikan nasional.",
+        "Negara-negara imperialis seperti Amerika Serikat mengagumi gagasan Sukarno.",
+        "Banyak orang Indonesia kurang memahami upaya Sukarno membangun dunia yang setara."
+      ],
+      answerIndex: [0, 1, 4]
+    },
+    { //Soal 19
+      type: "MULTIPLE_SELECTION",
+      txtField: "Media sosial memberikan imbalan sosial yang kuat dan terukur melalui fitur suka, berbagi, dan jumlah pengikut. Selain menjadi sumber hiburan dan kesenangan sesaat, penelitian menunjukkan bahwa dorongan untuk memperoleh pengakuan sosial inilah yang sering membuat pengguna terus-menerus mengecek media sosial secara kompulsif. Sebagai makhluk sosial, manusia memiliki kebutuhan untuk diterima, diakui, dan menjadi bagian dari kelompok. Media sosial menawarkan cara yang mudah dan selalu tersedia untuk memenuhi kebutuhan tersebut, bahkan mampu menciptakan koneksi baru di tengah kehidupan modern yang banyak dihabiskan dalam sistem kerja jarak jauh.\n\nNamun, bentuk penghargaan sosial ini bisa dengan cepat berubah menjadi sumber tekanan. Rasa senang karena mendapatkan banyak likes bisa bergeser menjadi obsesi untuk terus mengejarnya. Ketika unggahan tidak mendapat tanggapan sesuai harapan, muncul kekecewaan, rasa iri terhadap kehidupan orang lain, bahkan ketakutan akan ketinggalan (FOMO). Dalam situasi yang lebih buruk, pengguna bisa saja menjadi sasaran komentar negatif atau ujaran kebencian di dunia maya.",
+      question: "Pilihlah pernyataan berikut ini yang benar sesuai dengan informasi dari teks di atas!",
+      options: [
+        "Media sosial dapat memenuhi kebutuhan manusia untuk diterima dan diakui secara sosial.",
+        "Penggunaan media sosial tidak memiliki hubungan dengan tekanan sosial.",
+        "Dorongan untuk memperoleh pengakuan sosial dapat membuat seseorang terus-menerus membuka media sosial.",
+        "Komentar negatif di media sosial tidak berpengaruh terhadap kondisi emosional pengguna.",
+        "Media sosial membantu menciptakan koneksi sosial baru di tengah kehidupan modern dengan sistem kerja jarak jauh."
+      ],
+      answerIndex: [0, 2, 4]
+    },
+    { //Soal 20
+      txtField: "Media sosial memberikan imbalan sosial yang kuat dan terukur melalui fitur suka, berbagi, dan jumlah pengikut. Selain menjadi sumber hiburan dan kesenangan sesaat, penelitian menunjukkan bahwa dorongan untuk memperoleh pengakuan sosial inilah yang sering membuat pengguna terus-menerus mengecek media sosial secara kompulsif. Sebagai makhluk sosial, manusia memiliki kebutuhan untuk diterima, diakui, dan menjadi bagian dari kelompok. Media sosial menawarkan cara yang mudah dan selalu tersedia untuk memenuhi kebutuhan tersebut, bahkan mampu menciptakan koneksi baru di tengah kehidupan modern yang banyak dihabiskan dalam sistem kerja jarak jauh.\n\nNamun, bentuk penghargaan sosial ini bisa dengan cepat berubah menjadi sumber tekanan. Rasa senang karena mendapatkan banyak likes bisa bergeser menjadi obsesi untuk terus mengejarnya. Ketika unggahan tidak mendapat tanggapan sesuai harapan, muncul kekecewaan, rasa iri terhadap kehidupan orang lain, bahkan ketakutan akan ketinggalan (FOMO). Dalam situasi yang lebih buruk, pengguna bisa saja menjadi sasaran komentar negatif atau ujaran kebencian di dunia maya.",
+      question: "Hubungan sebab-akibat yang paling tepat antara kebutuhan sosial manusia dan dampak penggunaan media sosial berdasarkan teks adalah ….",
+      options: [
+        "Karena manusia adalah makhluk sosial, media sosial diciptakan hanya untuk memenuhi hiburan dan komunikasi jarak jauh.",
+        "Karena media sosial memberikan penghargaan sosial yang cepat, manusia menjadi lebih produktif dan jarang mengalami tekanan sosial.",
+        "Karena manusia membutuhkan penerimaan sosial, media sosial menjadi sarana yang efektif sekaligus berisiko menimbulkan tekanan emosional.",
+        "Karena media sosial mudah diakses, semua orang dapat menghindari perasaan iri dan ketakutan akan ketinggalan (FOMO).",
+        "Karena media sosial menciptakan hubungan sosial baru, manusia tidak lagi membutuhkan pengakuan dari lingkungan sekitarnya."
+      ],
+      answerIndex: [2]
+    },
+    { //Soal 21
+      type: "MULTIPLE_SELECTION",
+      txtField: "Secara ilmiah, rasa yang kita kenali hanya terdiri dari lima jenis, yaitu asin, manis, asam, pahit, dan gurih (umami), sebagai representasi dari sinyal kimia spesifik yang tertangkap lidah, jelas James. N. Palmer, peneliti dari University of Pennsylvania. “Kita bukan hanya mengenali rasa dari suatu makanan, tapi kombinasi dari rasa tersebut dengan aromanya. Persepsi itu yang menjadikan pengalaman kita berbeda”, tambahnya. Hal ini dapat menyingkap misteri mengapa setiap orang punya selera yang berbeda terhadap makanan, meski punya sensor lidah yang sama.\n\nSaat kita mengunyah, makanan akan bercampur dengan enzim dalam ludah. Hal ini memungkinkan adanya kontak antara makanan dengan lidah, yang terdiri dari kumpulan tonjolan kecil bernama papila. Tonjolan ini memiliki sekitar 50 hingga 100 sensor pengecap, yang masing-masing dapat mengenali kelima rasa, mulai dari manis hingga gurih.\n\n“Manusia menggunakan lima rasa untuk mengenali molekul spesifik yang terkandung dalam makanan”, ujar Kathryn Medler, profesor dari University of Buffalo. “Kita menyukai makanan manis, asin, atau gurih, karena molekul yang memiliki rasa tersebut banyak diperlukan tubuh. Sebaliknya, kita cenderung menghindari makanan asam, sebagai indikator makanan yang mungkin sudah busuk, dan juga pahit, sebagai pengenal racun potensial bagi tubuh. Tapi yang menarik dari lidah adalah, kita bisa melatih preferensinya, sehingga beberapa orang malah menyukai rasa asam dan pahit pada makanan tertentu”, papar Medler.\n\nSelain rasa, proses mengunyah juga melepas molekul odoran yang menghasilkan aroma khas. Molekul ini akan mengalir melalui saluran nasofaring menuju bagian belakang hidung, sehingga hidung masih bekerja saat makanan berada di rongga mulut. Proses ini dikenal dengan istilah retronasal olfaction, yang dapat mempengaruhi persepsi di otak kita. Contohnya, saus siraman steak dan coklat memiliki tingkat kepahitan, keasaman, dan kemanisan yang mirip, tapi punya aroma yang berbeda sehingga kita mempersepsikannya sebagai rasa yang berbeda.\n\nSetelah mengenali perbedaan rasa dengan persepsi, kita menjadi lebih mudah memahami bagaimana pengaruh DNA terhadap alasan mengapa kita menyukai dan membenci makanan tertentu. Gen kita menentukan bagaimana cara kita membentuk persepsi pada otak, bukan rasa yang dikenali lidah.\n\nDaun ketumbar segar, misalnya, memiliki aroma asam mirip jeruk akibat senyawa aldehid yang dikandungnya. Namun karena adanya variasi pada gen reseptor pada hidung kita, beberapa orang dapat lebih sensitif terhadap aldehid tersebut, sehingga mengunyah daun ketumbar terasa seperti memakan sabun. Fenomena ini terjadi karena aroma aldehid yang terlepas saat daun tergerus menginvasi sensor oversensitif di hidung.",
+      question: "Pilihlah pernyataan yang sesuai dengan informasi pada bacaan di atas!",
+      options: [
+        "Semua orang dapat mengenali kelima rasa yang sama",
+        "Rasa pahit digunakan sebagai indikator penanda makanan busuk",
+        "Persepsi rasa yang kita alami merupakan kombinasi informasi dari lidah dan hidung",
+        "Setiap orang dapat memiliki persepsi berbeda terhadap makanan yang sama",
+        "Selera manusia terhadap makanan ditentukan oleh kemampuan lidahnya"
+      ],
+      answerIndex: [0, 2, 3]
+    },
+    { //Soal 22
+      txtField: "Secara ilmiah, rasa yang kita kenali hanya terdiri dari lima jenis, yaitu asin, manis, asam, pahit, dan gurih (umami), sebagai representasi dari sinyal kimia spesifik yang tertangkap lidah, jelas James. N. Palmer, peneliti dari University of Pennsylvania. “Kita bukan hanya mengenali rasa dari suatu makanan, tapi kombinasi dari rasa tersebut dengan aromanya. Persepsi itu yang menjadikan pengalaman kita berbeda”, tambahnya. Hal ini dapat menyingkap misteri mengapa setiap orang punya selera yang berbeda terhadap makanan, meski punya sensor lidah yang sama.\n\nSaat kita mengunyah, makanan akan bercampur dengan enzim dalam ludah. Hal ini memungkinkan adanya kontak antara makanan dengan lidah, yang terdiri dari kumpulan tonjolan kecil bernama papila. Tonjolan ini memiliki sekitar 50 hingga 100 sensor pengecap, yang masing-masing dapat mengenali kelima rasa, mulai dari manis hingga gurih.\n\n“Manusia menggunakan lima rasa untuk mengenali molekul spesifik yang terkandung dalam makanan”, ujar Kathryn Medler, profesor dari University of Buffalo. “Kita menyukai makanan manis, asin, atau gurih, karena molekul yang memiliki rasa tersebut banyak diperlukan tubuh. Sebaliknya, kita cenderung menghindari makanan asam, sebagai indikator makanan yang mungkin sudah busuk, dan juga pahit, sebagai pengenal racun potensial bagi tubuh. Tapi yang menarik dari lidah adalah, kita bisa melatih preferensinya, sehingga beberapa orang malah menyukai rasa asam dan pahit pada makanan tertentu”, papar Medler.\n\nSelain rasa, proses mengunyah juga melepas molekul odoran yang menghasilkan aroma khas. Molekul ini akan mengalir melalui saluran nasofaring menuju bagian belakang hidung, sehingga hidung masih bekerja saat makanan berada di rongga mulut. Proses ini dikenal dengan istilah retronasal olfaction, yang dapat mempengaruhi persepsi di otak kita. Contohnya, saus siraman steak dan coklat memiliki tingkat kepahitan, keasaman, dan kemanisan yang mirip, tapi punya aroma yang berbeda sehingga kita mempersepsikannya sebagai rasa yang berbeda.\n\nSetelah mengenali perbedaan rasa dengan persepsi, kita menjadi lebih mudah memahami bagaimana pengaruh DNA terhadap alasan mengapa kita menyukai dan membenci makanan tertentu. Gen kita menentukan bagaimana cara kita membentuk persepsi pada otak, bukan rasa yang dikenali lidah.\n\nDaun ketumbar segar, misalnya, memiliki aroma asam mirip jeruk akibat senyawa aldehid yang dikandungnya. Namun karena adanya variasi pada gen reseptor pada hidung kita, beberapa orang dapat lebih sensitif terhadap aldehid tersebut, sehingga mengunyah daun ketumbar terasa seperti memakan sabun. Fenomena ini terjadi karena aroma aldehid yang terlepas saat daun tergerus menginvasi sensor oversensitif di hidung.",
+      question: "Bagaimana proses retronasal olfaction mempengaruhi selera manusia?",
+      options: [
+        "Proses tersebut menentukan rasa utama suatu makanan sebelum dikombinasikan dengan rasa lain",
+        "Proses tersebut mengkategorikan rasa pahit menjadi berbagai jenis sensasi berbeda, seperti pada coklat dan saus steak",
+        "Proses tersebut mendorong kontak antara enzim dengan makanan di rongga mulut",
+        "Proses tersebut menangkap aroma makanan yang sedang dikunyah, dan memberi informasi tambahan pada otak",
+        "Proses tersebut dapat mengenali rasa manis dan asam untuk mendeteksi gula dan menjauhi makanan busuk"
+      ],
+      answerIndex: [3]
+    },
+    { //Soal 23
+      txtField: "Secara ilmiah, rasa yang kita kenali hanya terdiri dari lima jenis, yaitu asin, manis, asam, pahit, dan gurih (umami), sebagai representasi dari sinyal kimia spesifik yang tertangkap lidah, jelas James. N. Palmer, peneliti dari University of Pennsylvania. “Kita bukan hanya mengenali rasa dari suatu makanan, tapi kombinasi dari rasa tersebut dengan aromanya. Persepsi itu yang menjadikan pengalaman kita berbeda”, tambahnya. Hal ini dapat menyingkap misteri mengapa setiap orang punya selera yang berbeda terhadap makanan, meski punya sensor lidah yang sama.\n\nSaat kita mengunyah, makanan akan bercampur dengan enzim dalam ludah. Hal ini memungkinkan adanya kontak antara makanan dengan lidah, yang terdiri dari kumpulan tonjolan kecil bernama papila. Tonjolan ini memiliki sekitar 50 hingga 100 sensor pengecap, yang masing-masing dapat mengenali kelima rasa, mulai dari manis hingga gurih.\n\n“Manusia menggunakan lima rasa untuk mengenali molekul spesifik yang terkandung dalam makanan”, ujar Kathryn Medler, profesor dari University of Buffalo. “Kita menyukai makanan manis, asin, atau gurih, karena molekul yang memiliki rasa tersebut banyak diperlukan tubuh. Sebaliknya, kita cenderung menghindari makanan asam, sebagai indikator makanan yang mungkin sudah busuk, dan juga pahit, sebagai pengenal racun potensial bagi tubuh. Tapi yang menarik dari lidah adalah, kita bisa melatih preferensinya, sehingga beberapa orang malah menyukai rasa asam dan pahit pada makanan tertentu”, papar Medler.\n\nSelain rasa, proses mengunyah juga melepas molekul odoran yang menghasilkan aroma khas. Molekul ini akan mengalir melalui saluran nasofaring menuju bagian belakang hidung, sehingga hidung masih bekerja saat makanan berada di rongga mulut. Proses ini dikenal dengan istilah retronasal olfaction, yang dapat mempengaruhi persepsi di otak kita. Contohnya, saus siraman steak dan coklat memiliki tingkat kepahitan, keasaman, dan kemanisan yang mirip, tapi punya aroma yang berbeda sehingga kita mempersepsikannya sebagai rasa yang berbeda.\n\nSetelah mengenali perbedaan rasa dengan persepsi, kita menjadi lebih mudah memahami bagaimana pengaruh DNA terhadap alasan mengapa kita menyukai dan membenci makanan tertentu. Gen kita menentukan bagaimana cara kita membentuk persepsi pada otak, bukan rasa yang dikenali lidah.\n\nDaun ketumbar segar, misalnya, memiliki aroma asam mirip jeruk akibat senyawa aldehid yang dikandungnya. Namun karena adanya variasi pada gen reseptor pada hidung kita, beberapa orang dapat lebih sensitif terhadap aldehid tersebut, sehingga mengunyah daun ketumbar terasa seperti memakan sabun. Fenomena ini terjadi karena aroma aldehid yang terlepas saat daun tergerus menginvasi sensor oversensitif di hidung.",
+      question: "Berdasarkan informasi yang terkandung dalam teks di atas, apa tujuan penulis saat membahas kaitan antara rasa, persepsi, dan DNA?",
+      options: [
+        "Untuk menekankan pentingnya fungsi papila dalam menentukan preferensi makanan",
+        "Untuk memperkenalkan peranan DNA dalam mengubah sensasi rasa makanan",
+        "Untuk menjelaskan bagaimana variasi gen mempengaruhi persepsi terhadap makanan tanpa mengubah rasa",
+        "Untuk mendukung pendapat bahwa deteksi aroma lebih penting dari deteksi rasa dalam penentuan persepsi",
+        "Untuk menjelaskan mengapa banyak orang menganggap rasa daun ketumbar mirip sabun"
+      ],
+      answerIndex: [2]
+    },
+    { //Soal 24
+      txtField: "Secara ilmiah, rasa yang kita kenali hanya terdiri dari lima jenis, yaitu asin, manis, asam, pahit, dan gurih (umami), sebagai representasi dari sinyal kimia spesifik yang tertangkap lidah, jelas James. N. Palmer, peneliti dari University of Pennsylvania. “Kita bukan hanya mengenali rasa dari suatu makanan, tapi kombinasi dari rasa tersebut dengan aromanya. Persepsi itu yang menjadikan pengalaman kita berbeda”, tambahnya. Hal ini dapat menyingkap misteri mengapa setiap orang punya selera yang berbeda terhadap makanan, meski punya sensor lidah yang sama.\n\nSaat kita mengunyah, makanan akan bercampur dengan enzim dalam ludah. Hal ini memungkinkan adanya kontak antara makanan dengan lidah, yang terdiri dari kumpulan tonjolan kecil bernama papila. Tonjolan ini memiliki sekitar 50 hingga 100 sensor pengecap, yang masing-masing dapat mengenali kelima rasa, mulai dari manis hingga gurih.\n\n“Manusia menggunakan lima rasa untuk mengenali molekul spesifik yang terkandung dalam makanan”, ujar Kathryn Medler, profesor dari University of Buffalo. “Kita menyukai makanan manis, asin, atau gurih, karena molekul yang memiliki rasa tersebut banyak diperlukan tubuh. Sebaliknya, kita cenderung menghindari makanan asam, sebagai indikator makanan yang mungkin sudah busuk, dan juga pahit, sebagai pengenal racun potensial bagi tubuh. Tapi yang menarik dari lidah adalah, kita bisa melatih preferensinya, sehingga beberapa orang malah menyukai rasa asam dan pahit pada makanan tertentu”, papar Medler.\n\nSelain rasa, proses mengunyah juga melepas molekul odoran yang menghasilkan aroma khas. Molekul ini akan mengalir melalui saluran nasofaring menuju bagian belakang hidung, sehingga hidung masih bekerja saat makanan berada di rongga mulut. Proses ini dikenal dengan istilah retronasal olfaction, yang dapat mempengaruhi persepsi di otak kita. Contohnya, saus siraman steak dan coklat memiliki tingkat kepahitan, keasaman, dan kemanisan yang mirip, tapi punya aroma yang berbeda sehingga kita mempersepsikannya sebagai rasa yang berbeda.\n\nSetelah mengenali perbedaan rasa dengan persepsi, kita menjadi lebih mudah memahami bagaimana pengaruh DNA terhadap alasan mengapa kita menyukai dan membenci makanan tertentu. Gen kita menentukan bagaimana cara kita membentuk persepsi pada otak, bukan rasa yang dikenali lidah.\n\nDaun ketumbar segar, misalnya, memiliki aroma asam mirip jeruk akibat senyawa aldehid yang dikandungnya. Namun karena adanya variasi pada gen reseptor pada hidung kita, beberapa orang dapat lebih sensitif terhadap aldehid tersebut, sehingga mengunyah daun ketumbar terasa seperti memakan sabun. Fenomena ini terjadi karena aroma aldehid yang terlepas saat daun tergerus menginvasi sensor oversensitif di hidung.",
+      question: "Berdasarkan informasi yang tertera dalam teks, mengapa sebagian orang menganggap rasa daun ketumbar mirip sabun?",
+      options: [
+        "Mereka memiliki variasi genetik yang membuatnya lebih sensitif terhadap aroma aldehid pada daun ketumbar",
+        "Mereka memiliki sensitivitas tinggi terhadap rasa asam, yang menyamarkan rasa asli daun ketumbar",
+        "Mereka memiliki lebih sedikit papila yang dibutuhkan untuk mendeteksi rasa daun ketumbar",
+        "Mereka memiliki defisiensi enzim pada ludah, sehingga mengubah rasa daun ketumbar",
+        "Mereka memiliki preferensi terhadap rasa sabun, sehingga mempengaruhi persepsi di otak"
       ],
       answerIndex: [0]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Bahasa yang Taksa dan Samar-samar Perlu dijelaskan bahwa sebagai aparatus komunikasi, bahasa memiliki rupa-rupa keterbatasan dan ketidaksempurnaan. Banyak kekuranglengkapan yang melekat erat (inheren) di dalam sosok bahasa itu sendiri, yang pada gilirannya justru dapat mencuatkan aneka kesalahpahaman. Sebab pertama dari kekuranglengkapan dan kekurangsempurnaan bahasa adalah ihwal penandaan atau penyimbolan unsur-unsur kebahasaan. Penandaan komponen-komponen bahasa tersebut lazimnya dilakukan baik secara konvensional maupun inkonvensional.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Penyimbolan secara konvensional dilaksanakan atas dasar kesepahaman dan kesepakatan bersama di antara sesama warga pemakaian bahasa dalam sebuah masyarakat bahasa. Karena dasar utamanya adalah kesepakatan atau konvensi, maka lazimnya hasil penyimbolan yang demikian itu tidak banyak menghadirkan persoalan. Ambillah contoh kata Jawa segawon yang dalam bahasa Indonesia anjing, dan dalam bahasa Inggris dog. Penamaan terhadap sosok binatang piaraan yang buas, berbulu bagus, tidak terlalu besar, dan sukanya meraung-raung keras itu dilakukan secara konvensional. Karena simbol tersebut muncul dalam kesepakatan atau kesepahaman bersama, tidak ditemukan persoalan pemakaian unsur kebahasaan tersebut di dalam praktik komunikasi.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Penyimbolan kedua dilakukan secara arbitrer. Artinya, satuan lingual tertentu digunakan untuk menyimboli sesuatu entitas di alam raya ini secara semena-mena dan tidak selalu jelas alasan dan justifikasinya. Karena itu, simbolisasi yang demikian rentan terhadap aneka kesamaran dan ketaksaan. Sejumlah pakar bahkan dengan tegas menyebutkan, kesamaan dan ketaksaan tersebut sesungguhnya merupakan sifat kebahasaan melekat, sebagai akibat yang tidak terhindarkan lagi dari simbolisasi arbitrer itu.`,
-      question: `Kesimpulan dari teks di atas adalah ....`,
+    { //Soal 25
+      type: "MULTIPLE_SELECTION",
+      txtField: "Secara ilmiah, rasa yang kita kenali hanya terdiri dari lima jenis, yaitu asin, manis, asam, pahit, dan gurih (umami), sebagai representasi dari sinyal kimia spesifik yang tertangkap lidah, jelas James. N. Palmer, peneliti dari University of Pennsylvania. “Kita bukan hanya mengenali rasa dari suatu makanan, tapi kombinasi dari rasa tersebut dengan aromanya. Persepsi itu yang menjadikan pengalaman kita berbeda”, tambahnya. Hal ini dapat menyingkap misteri mengapa setiap orang punya selera yang berbeda terhadap makanan, meski punya sensor lidah yang sama.\n\nSaat kita mengunyah, makanan akan bercampur dengan enzim dalam ludah. Hal ini memungkinkan adanya kontak antara makanan dengan lidah, yang terdiri dari kumpulan tonjolan kecil bernama papila. Tonjolan ini memiliki sekitar 50 hingga 100 sensor pengecap, yang masing-masing dapat mengenali kelima rasa, mulai dari manis hingga gurih.\n\n“Manusia menggunakan lima rasa untuk mengenali molekul spesifik yang terkandung dalam makanan”, ujar Kathryn Medler, profesor dari University of Buffalo. “Kita menyukai makanan manis, asin, atau gurih, karena molekul yang memiliki rasa tersebut banyak diperlukan tubuh. Sebaliknya, kita cenderung menghindari makanan asam, sebagai indikator makanan yang mungkin sudah busuk, dan juga pahit, sebagai pengenal racun potensial bagi tubuh. Tapi yang menarik dari lidah adalah, kita bisa melatih preferensinya, sehingga beberapa orang malah menyukai rasa asam dan pahit pada makanan tertentu”, papar Medler.\n\nSelain rasa, proses mengunyah juga melepas molekul odoran yang menghasilkan aroma khas. Molekul ini akan mengalir melalui saluran nasofaring menuju bagian belakang hidung, sehingga hidung masih bekerja saat makanan berada di rongga mulut. Proses ini dikenal dengan istilah retronasal olfaction, yang dapat mempengaruhi persepsi di otak kita. Contohnya, saus siraman steak dan coklat memiliki tingkat kepahitan, keasaman, dan kemanisan yang mirip, tapi punya aroma yang berbeda sehingga kita mempersepsikannya sebagai rasa yang berbeda.\n\nSetelah mengenali perbedaan rasa dengan persepsi, kita menjadi lebih mudah memahami bagaimana pengaruh DNA terhadap alasan mengapa kita menyukai dan membenci makanan tertentu. Gen kita menentukan bagaimana cara kita membentuk persepsi pada otak, bukan rasa yang dikenali lidah.\n\nDaun ketumbar segar, misalnya, memiliki aroma asam mirip jeruk akibat senyawa aldehid yang dikandungnya. Namun karena adanya variasi pada gen reseptor pada hidung kita, beberapa orang dapat lebih sensitif terhadap aldehid tersebut, sehingga mengunyah daun ketumbar terasa seperti memakan sabun. Fenomena ini terjadi karena aroma aldehid yang terlepas saat daun tergerus menginvasi sensor oversensitif di hidung.",
+      question: "Selain daun ketumbar, makanan lain yang juga memicu polarisasi ekstrim adalah durian. Bagi populasi kawasan Asia Timur dan Tenggara, molekul volatil yang dikeluarkan buah durian matang dikenali sebagai aroma yang harum dan manis. Sementara bagi banyak populasi keturunan Caucasian, aroma durian dianggap tengik, bahkan dibandingkan dengan bau keju busuk, sepatu basah, loker pria, dan berbagai bau tak sedap lainnya. Berikut ini, manakah inferensi yang sesuai dengan informasi yang terkandung dalam teks, terkait fenomena tersebut?",
       options: [
-        "kesamaan dan ketaksaan di dalam sosok bahasa adalah suatu keniscayaan",
-        "kesamaran dan ketaksaan di dalam sosok bahasa merupakan hal yang bisa dihindari",
-        "kesamaran dan ketaksaan di dalam sosok bahasa terjadi sebagai akibat simbolisasi",
-        "kesamaran dan ketaksaan di dalam sosok bahasa bisa mamunculkan aneka kesalahpahaman",
-        "tidak dapat ditarik kesimpulan",
+        "Terdapat perbedaan gen pendeteksi aroma pada populasi Asia Timur & Tenggara dengan populasi Caucasian",
+        "Orang Caucasian mengenali lima rasa yang berbeda dengan orang Asia Timur dan Tenggara",
+        "DNA hanya mempengaruhi persepsi di otak, sedangkan aroma murni ditentukan oleh latar belakang sosial dan budaya",
+        "Variasi genetik menyebabkan penerimaan berbeda antara orang Asia Tenggara dengan orang Caucasian terhadap durian",
+        "Durian melepas molekul odoran saat dimakan, yang dapat dideteksi oleh hidung"
       ],
-      answerIndex: [2]
+      answerIndex: [0, 3, 4]
     },
+    { //Soal 26
+      type: "MULTIPLE_SELECTION",
+      txtField: "Dogma dalam menjalani diet selalu berkuat pada kalori. Lebih banyak makan dibanding membakar kalori, maka berat badan bertambah; makan lebih sedikit, maka berat badan menurun. Ratusan aplikasi mengklaim mempunyai database informasi nutrisi berbagai makanan untuk mengukur harian kalori yang kita konsumsi. Syaratnya? Hanya mengisi kolom umur, tinggi badan, berat badan, dan jenis kelamin semata. Namun, apakah benar sesederhana itu? Nyatanya, hitungan kalori tidak selalu merepresentasikan secara akurat energi yang dikonsumsi dan dibakar oleh tubuh kita.\n\nPada abad 19, kimiawan Amerika, Wilbur O. Atwater mempopulerkan metode pengukuran kalori, dengan cara “membakar” makanan dengan menggunakan bom kalorimeter. Makanan diletakkan pada wadah tertutup yang ditempatkan dalam air dengan takaran tertentu, lalu dialiri listrik hingga terjadi reaksi pembakaran. Kalori makanan diukur melalui suhu yang dihasilkan selama reaksi berlangsung. Semakin tinggi energi pada suatu makanan, maka semakin besar peningkatan suhu yang terjadi pada air di sekeliling wadah. Istilah kalori mengacu pada satuan energi yang dibutuhkan untuk menaikkan suhu satu gram air sebesar 1° Celsius.\n\nSayangnya, tidak semua makanan bersifat setara. Lebih tepatnya, bom kalorimeter kembangan Atwater tidak menggambarkan proses yang terjadi pada berbagai makanan berbeda sepanjang saluran pencernaan kita, dan bagaimana cara tubuh menyerap nutrisi tersebut. “Kita telah lama mengetahui bahwa terdapat makanan yang berbeda dicerna secara berbeda pula,” ujar Peter Ellis, ahli biokimia King’s College London.\n\nKacang tanah, misalnya, kaya akan kandungan lemak. Pada aplikasi penghitung kalori, kacang dianggap memiliki kalori tinggi berdasarkan metode Atwater, sehingga perlu dihindari dalam diet. Padahal sebenarnya, kalori tersebut tidak seluruhnya dapat diserap tubuh. “Molekul lemak tersimpan di balik dinding sel, yang tersusun atas serat selulosa yang tidak bisa kita cerna. Jadi ide bahwa seluruh makanan dapat diukur dengan metode yang sama pastinya tidak akurat”, tambah Ellis.\n\nMelalui riset yang dilakukan bersama timnya, Ellis menemukan bahwa tubuh kita kesulitan untuk mengakses pati dan gula yang tersimpan pada biji-bijian kaya serat, seperti kacang-kacangan. Selain itu, kelemahan lain dari metode Atwater adalah tidak mengonsiderasi efek pengolahan makanan dalam proses memasak. Energi yang kita peroleh dari suatu hidangan jadi seringkali tidak sama dengan hitungan kasar berbagai bahan mentahnya, karena proses memasak dapat membuat banyak makronutrien (pati, lemak, dan protein) menjadi lebih mudah dicerna dan diserap tubuh.",
+      question: "Berdasarkan teks di atas, mengapa perhitungan harian konsumsi kalori pada banyak aplikasi tidak selalu akurat untuk mengukur energi yang dikonsumsi dan dibakar oleh tubuh?",
+      options: [
+        "Perhitungan kalori gagal memasukkan faktor variasi laju metabolisme tiap individu",
+        "Perhitungan kalori tidak secara akurat mengukur jumlah panas yang dihasilkan oleh seluruh reaksi yang berlangsung dalam tubuh",
+        "Perhitungan kalori didasarkan pada metode yang usang, seperti bom kalorimeter",
+        "Perhitungan kalori mengabaikan pengaruh proses memasak terhadap serapan makronutrien",
+        "Perhitungan kalori tidak memperhitungkan proses pencernaan dan penyerapan jenis makanan yang berbeda"
+      ],
+      answerIndex: [2, 3, 4]
+    },
+    { //Soal 27
+      txtField: "Dogma dalam menjalani diet selalu berkuat pada kalori. Lebih banyak makan dibanding membakar kalori, maka berat badan bertambah; makan lebih sedikit, maka berat badan menurun. Ratusan aplikasi mengklaim mempunyai database informasi nutrisi berbagai makanan untuk mengukur harian kalori yang kita konsumsi. Syaratnya? Hanya mengisi kolom umur, tinggi badan, berat badan, dan jenis kelamin semata. Namun, apakah benar sesederhana itu? Nyatanya, hitungan kalori tidak selalu merepresentasikan secara akurat energi yang dikonsumsi dan dibakar oleh tubuh kita.\n\nPada abad 19, kimiawan Amerika, Wilbur O. Atwater mempopulerkan metode pengukuran kalori, dengan cara “membakar” makanan dengan menggunakan bom kalorimeter. Makanan diletakkan pada wadah tertutup yang ditempatkan dalam air dengan takaran tertentu, lalu dialiri listrik hingga terjadi reaksi pembakaran. Kalori makanan diukur melalui suhu yang dihasilkan selama reaksi berlangsung. Semakin tinggi energi pada suatu makanan, maka semakin besar peningkatan suhu yang terjadi pada air di sekeliling wadah. Istilah kalori mengacu pada satuan energi yang dibutuhkan untuk menaikkan suhu satu gram air sebesar 1° Celsius.\n\nSayangnya, tidak semua makanan bersifat setara. Lebih tepatnya, bom kalorimeter kembangan Atwater tidak menggambarkan proses yang terjadi pada berbagai makanan berbeda sepanjang saluran pencernaan kita, dan bagaimana cara tubuh menyerap nutrisi tersebut. “Kita telah lama mengetahui bahwa terdapat makanan yang berbeda dicerna secara berbeda pula,” ujar Peter Ellis, ahli biokimia King’s College London.\n\nKacang tanah, misalnya, kaya akan kandungan lemak. Pada aplikasi penghitung kalori, kacang dianggap memiliki kalori tinggi berdasarkan metode Atwater, sehingga perlu dihindari dalam diet. Padahal sebenarnya, kalori tersebut tidak seluruhnya dapat diserap tubuh. “Molekul lemak tersimpan di balik dinding sel, yang tersusun atas serat selulosa yang tidak bisa kita cerna. Jadi ide bahwa seluruh makanan dapat diukur dengan metode yang sama pastinya tidak akurat”, tambah Ellis.\n\nMelalui riset yang dilakukan bersama timnya, Ellis menemukan bahwa tubuh kita kesulitan untuk mengakses pati dan gula yang tersimpan pada biji-bijian kaya serat, seperti kacang-kacangan. Selain itu, kelemahan lain dari metode Atwater adalah tidak mengonsiderasi efek pengolahan makanan dalam proses memasak. Energi yang kita peroleh dari suatu hidangan jadi seringkali tidak sama dengan hitungan kasar berbagai bahan mentahnya, karena proses memasak dapat membuat banyak makronutrien (pati, lemak, dan protein) menjadi lebih mudah dicerna dan diserap tubuh.",
+      question: "Faktor apakah yang tidak dipertimbangkan dalam pengukuran kalori menggunakan metode bom kalorimeter Atwater?",
+      options: [
+        "Efisiensi sistem pencernaan dalam memecah dan menyerap makanan dengan komposisi kimia yang berbeda",
+        "Variasi individu dalam menjalankan aktivitas hariannya",
+        "Pengaruh suhu lingkungan pada kawasan tempat pengukuran dilakukan",
+        "Seberapa lama durasi proses memasak yang diperlukan saat makanan diolah",
+        "Jumlah panas yang dihasilkan oleh tubuh saat reaksi kimia berlangsung sepanjang proses pencernaan"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 28
+      txtField: "Dogma dalam menjalani diet selalu berkuat pada kalori. Lebih banyak makan dibanding membakar kalori, maka berat badan bertambah; makan lebih sedikit, maka berat badan menurun. Ratusan aplikasi mengklaim mempunyai database informasi nutrisi berbagai makanan untuk mengukur harian kalori yang kita konsumsi. Syaratnya? Hanya mengisi kolom umur, tinggi badan, berat badan, dan jenis kelamin semata. Namun, apakah benar sesederhana itu? Nyatanya, hitungan kalori tidak selalu merepresentasikan secara akurat energi yang dikonsumsi dan dibakar oleh tubuh kita.\n\nPada abad 19, kimiawan Amerika, Wilbur O. Atwater mempopulerkan metode pengukuran kalori, dengan cara “membakar” makanan dengan menggunakan bom kalorimeter. Makanan diletakkan pada wadah tertutup yang ditempatkan dalam air dengan takaran tertentu, lalu dialiri listrik hingga terjadi reaksi pembakaran. Kalori makanan diukur melalui suhu yang dihasilkan selama reaksi berlangsung. Semakin tinggi energi pada suatu makanan, maka semakin besar peningkatan suhu yang terjadi pada air di sekeliling wadah. Istilah kalori mengacu pada satuan energi yang dibutuhkan untuk menaikkan suhu satu gram air sebesar 1° Celsius.\n\nSayangnya, tidak semua makanan bersifat setara. Lebih tepatnya, bom kalorimeter kembangan Atwater tidak menggambarkan proses yang terjadi pada berbagai makanan berbeda sepanjang saluran pencernaan kita, dan bagaimana cara tubuh menyerap nutrisi tersebut. “Kita telah lama mengetahui bahwa terdapat makanan yang berbeda dicerna secara berbeda pula,” ujar Peter Ellis, ahli biokimia King’s College London.\n\nKacang tanah, misalnya, kaya akan kandungan lemak. Pada aplikasi penghitung kalori, kacang dianggap memiliki kalori tinggi berdasarkan metode Atwater, sehingga perlu dihindari dalam diet. Padahal sebenarnya, kalori tersebut tidak seluruhnya dapat diserap tubuh. “Molekul lemak tersimpan di balik dinding sel, yang tersusun atas serat selulosa yang tidak bisa kita cerna. Jadi ide bahwa seluruh makanan dapat diukur dengan metode yang sama pastinya tidak akurat”, tambah Ellis.\n\nMelalui riset yang dilakukan bersama timnya, Ellis menemukan bahwa tubuh kita kesulitan untuk mengakses pati dan gula yang tersimpan pada biji-bijian kaya serat, seperti kacang-kacangan. Selain itu, kelemahan lain dari metode Atwater adalah tidak mengonsiderasi efek pengolahan makanan dalam proses memasak. Energi yang kita peroleh dari suatu hidangan jadi seringkali tidak sama dengan hitungan kasar berbagai bahan mentahnya, karena proses memasak dapat membuat banyak makronutrien (pati, lemak, dan protein) menjadi lebih mudah dicerna dan diserap tubuh.",
+      question: "Manakah pernyataan yang paling tepat menjelaskan alasan mengapa energi yang terkandung dalam kacang tanah tidak dapat sepenuhnya diserap oleh tubuh?",
+      options: [
+        "Molekul lemak pada kacang tanah sulit dipecah dan diserap oleh sel tubuh",
+        "Kacang tanah memiliki kadar serat tinggi yang menghalangi penyerapan energi",
+        "Terjadi serangkaian reaksi kimia dalam tubuh untuk mencerna kacang tanah, sehingga kadar kalorinya berkurang",
+        "Kacang tanah memiliki nilai energi rendah karena komposisi kimianya yang unik",
+        "Kacang tanah melepas lebih sedikit kalori jika dibandingkan dengan jenis makanan lainnya"
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 29
+      txtField: "Dogma dalam menjalani diet selalu berkuat pada kalori. Lebih banyak makan dibanding membakar kalori, maka berat badan bertambah; makan lebih sedikit, maka berat badan menurun. Ratusan aplikasi mengklaim mempunyai database informasi nutrisi berbagai makanan untuk mengukur harian kalori yang kita konsumsi. Syaratnya? Hanya mengisi kolom umur, tinggi badan, berat badan, dan jenis kelamin semata. Namun, apakah benar sesederhana itu? Nyatanya, hitungan kalori tidak selalu merepresentasikan secara akurat energi yang dikonsumsi dan dibakar oleh tubuh kita.\n\nPada abad 19, kimiawan Amerika, Wilbur O. Atwater mempopulerkan metode pengukuran kalori, dengan cara “membakar” makanan dengan menggunakan bom kalorimeter. Makanan diletakkan pada wadah tertutup yang ditempatkan dalam air dengan takaran tertentu, lalu dialiri listrik hingga terjadi reaksi pembakaran. Kalori makanan diukur melalui suhu yang dihasilkan selama reaksi berlangsung. Semakin tinggi energi pada suatu makanan, maka semakin besar peningkatan suhu yang terjadi pada air di sekeliling wadah. Istilah kalori mengacu pada satuan energi yang dibutuhkan untuk menaikkan suhu satu gram air sebesar 1° Celsius.\n\nSayangnya, tidak semua makanan bersifat setara. Lebih tepatnya, bom kalorimeter kembangan Atwater tidak menggambarkan proses yang terjadi pada berbagai makanan berbeda sepanjang saluran pencernaan kita, dan bagaimana cara tubuh menyerap nutrisi tersebut. “Kita telah lama mengetahui bahwa terdapat makanan yang berbeda dicerna secara berbeda pula,” ujar Peter Ellis, ahli biokimia King’s College London.\n\nKacang tanah, misalnya, kaya akan kandungan lemak. Pada aplikasi penghitung kalori, kacang dianggap memiliki kalori tinggi berdasarkan metode Atwater, sehingga perlu dihindari dalam diet. Padahal sebenarnya, kalori tersebut tidak seluruhnya dapat diserap tubuh. “Molekul lemak tersimpan di balik dinding sel, yang tersusun atas serat selulosa yang tidak bisa kita cerna. Jadi ide bahwa seluruh makanan dapat diukur dengan metode yang sama pastinya tidak akurat”, tambah Ellis.\n\nMelalui riset yang dilakukan bersama timnya, Ellis menemukan bahwa tubuh kita kesulitan untuk mengakses pati dan gula yang tersimpan pada biji-bijian kaya serat, seperti kacang-kacangan. Selain itu, kelemahan lain dari metode Atwater adalah tidak mengonsiderasi efek pengolahan makanan dalam proses memasak. Energi yang kita peroleh dari suatu hidangan jadi seringkali tidak sama dengan hitungan kasar berbagai bahan mentahnya, karena proses memasak dapat membuat banyak makronutrien (pati, lemak, dan protein) menjadi lebih mudah dicerna dan diserap tubuh.",
+      question: "Berdasarkan informasi yang tertera dalam teks, kesimpulan apa yang dapat ditarik saat seseorang mengonsumsi makanan berkalori tinggi namun sulit dicerna dan diserap oleh tubuh?",
+      options: [
+        "Orang tersebut akan mengalami peningkatan suhu tubuh akibat pelepasan energi saat pencernaan berlangsung",
+        "Jumlah asupan kalori harian orang tersebut akan mengalami overestimasi jika diukur menggunakan aplikasi yang didasari pada metode Atwater",
+        "Tubuh orang tersebut akan menyimpan kalori yang tidak terserap dalam bentuk lemak, sehingga berat badannya bertambah",
+        "Laju metabolisme orang tersebut akan secara otomatis menyesuaikan dengan penyerapan kalori yang rendah tersebut",
+        "Orang tersebut akan mengalami kekenyangan lebih lama karena kadar kalori yang tinggi telah memenuhi kebutuhan hariannya"
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 30
+      txtField: "Dogma dalam menjalani diet selalu berkuat pada kalori. Lebih banyak makan dibanding membakar kalori, maka berat badan bertambah; makan lebih sedikit, maka berat badan menurun. Ratusan aplikasi mengklaim mempunyai database informasi nutrisi berbagai makanan untuk mengukur harian kalori yang kita konsumsi. Syaratnya? Hanya mengisi kolom umur, tinggi badan, berat badan, dan jenis kelamin semata. Namun, apakah benar sesederhana itu? Nyatanya, hitungan kalori tidak selalu merepresentasikan secara akurat energi yang dikonsumsi dan dibakar oleh tubuh kita.\n\nPada abad 19, kimiawan Amerika, Wilbur O. Atwater mempopulerkan metode pengukuran kalori, dengan cara “membakar” makanan dengan menggunakan bom kalorimeter. Makanan diletakkan pada wadah tertutup yang ditempatkan dalam air dengan takaran tertentu, lalu dialiri listrik hingga terjadi reaksi pembakaran. Kalori makanan diukur melalui suhu yang dihasilkan selama reaksi berlangsung. Semakin tinggi energi pada suatu makanan, maka semakin besar peningkatan suhu yang terjadi pada air di sekeliling wadah. Istilah kalori mengacu pada satuan energi yang dibutuhkan untuk menaikkan suhu satu gram air sebesar 1° Celsius.\n\nSayangnya, tidak semua makanan bersifat setara. Lebih tepatnya, bom kalorimeter kembangan Atwater tidak menggambarkan proses yang terjadi pada berbagai makanan berbeda sepanjang saluran pencernaan kita, dan bagaimana cara tubuh menyerap nutrisi tersebut. “Kita telah lama mengetahui bahwa terdapat makanan yang berbeda dicerna secara berbeda pula,” ujar Peter Ellis, ahli biokimia King’s College London.\n\nKacang tanah, misalnya, kaya akan kandungan lemak. Pada aplikasi penghitung kalori, kacang dianggap memiliki kalori tinggi berdasarkan metode Atwater, sehingga perlu dihindari dalam diet. Padahal sebenarnya, kalori tersebut tidak seluruhnya dapat diserap tubuh. “Molekul lemak tersimpan di balik dinding sel, yang tersusun atas serat selulosa yang tidak bisa kita cerna. Jadi ide bahwa seluruh makanan dapat diukur dengan metode yang sama pastinya tidak akurat”, tambah Ellis.\n\nMelalui riset yang dilakukan bersama timnya, Ellis menemukan bahwa tubuh kita kesulitan untuk mengakses pati dan gula yang tersimpan pada biji-bijian kaya serat, seperti kacang-kacangan. Selain itu, kelemahan lain dari metode Atwater adalah tidak mengonsiderasi efek pengolahan makanan dalam proses memasak. Energi yang kita peroleh dari suatu hidangan jadi seringkali tidak sama dengan hitungan kasar berbagai bahan mentahnya, karena proses memasak dapat membuat banyak makronutrien (pati, lemak, dan protein) menjadi lebih mudah dicerna dan diserap tubuh.",
+      question: "Apa niatan utama penulis dalam membahas batasan dan kekurangan perhitungan kalori harian dan kaitannya dengan proses pencernaan makanan?",
+      options: [
+        "Untuk mendorong penggunaan metode alternatif untuk digunakan untuk mengukur dan melacak konsumsi kalori harian",
+        "Untuk mendukung pemahaman yang lebih komprehensif terkait proses kompleks yang terlibat dalam asupan dan pengeluaran energi dalam tubuh",
+        "Untuk meragukan riwayat kontribusi Wilbur O. Atwater dalam bidang studi ilmu nutrisi",
+        "Untuk menyuguhkan ketidakcocokan informasi yang disuguhkan oleh aplikasi penghitung kalori dengan energi yang digunakan tubuh",
+        "Untuk mengajak orang yang tengah melakukan diet agar tidak bergantung pada perhitungan kalori kasar untuk mengendalikan berat badannya"
+      ],
+      answerIndex: [1]
+    }
   ],
 }
 
@@ -1645,578 +1400,390 @@ const soalLitdo: ujianSession = {
 const soalLitBing: ujianSession = {
   name: "Literasi Bahasa Inggris",
   description: "Ada 20 soal yang akan dikerjakan dalam 20 menit",
+  duration: 20 * 60,
   questions: [
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Social media advertising is a type of digital marketing that utilizes social networks such as Facebook, Twitter, and Instagram to deliver paid advertisements to your target audience in a quick and effective way to connect with customers and boost your marketing campaigns.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;By leveraging various data sources, advertisers are able to hyper target their audiences and deliver personalized content based on demographics and user behavior. When an audience social media advertisers may see more interaction and conversion. Social media advertisements are also cost effective, offering the potential for high rates of return.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Social media advertising is a must if you want to quickly reach new target markets. More and more companies - including the world's top performing brands utilize social media companies and reach out to new consumers. To keep up with the competition, we need to earn how these ads work and how they can benefit your company.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Because both the internet and the content marketing are constantly evolving, there are many ways to go about your advertising strategy on social media platforms: the types of advertising your preferred platforms and the audience you want to reach.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;When considering social media advertising options, such as which advertising platform to use, remember that each platform has its own audience. That means you want to choose customers. If you are already active on social media, pay attention to which platforms perform well and which organic posts get the most interaction to target the best audience.`,
-      question: `Which of the following statements expresses the main idea of the text?`,
+    { //Soal 1
+      txtField: "Plastic packaging presents a major problem for both the environment and human health. Most plastics are made from fossil fuels and are not biodegradable. They can remain in landfills and oceans for hundreds of years, breaking down into tiny pieces known as microplastics. These microplastics pollute water, enter the food chain, and harm marine life through ingestion and entanglement. In addition, some plastics release harmful chemicals that can disrupt hormones or even cause cancer, especially when heated. Plastic production also depends on fossil fuels, which contributes to global warming and resource depletion.\n\nTo overcome these problems, scientists have turned to seaweed as a promising raw material for bioplastics. Seaweed is an abundant and fast- growing marine plant that requires no land, fertilizer, or freshwater to cultivate. It absorbs carbon dioxide as it grows, making it environmentally beneficial. Seaweed contains natural polysaccharides such as agar, carrageenan, and alginate that can be processed into flexible, transparent, and biodegradable films for food packaging. Some types of seaweed even have natural antimicrobial properties that can help prevent bacterial growth on food surfaces.\n\nDespite its potential, seaweed- based bioplastic still faces challenges. Production costs remain high, and the resulting materials are often less durable and water- resistant than petroleum- based plastics. Researchers are now developing better processing techniques to improve quality and lower costs. With continuous innovation, seaweed bioplastics could become a sustainable alternative for future food packaging.\n\nText B\n\nSeaweed is a marine algae found in coastal waters around the world, and it is attracting growing interest because of its versatility and renewability. It has been applied in food and nutrition and is used as an ingredient in soups, snacks, and health- foods.\n\nIn the cosmetics and pharmaceuticals sectors, seaweed extracts and polysaccharides (such as agar and carrageenan) function as thickeners, stabilisers and active bio- compounds with antioxidant or antimicrobial features.\n\nFurthermore, seaweed is increasingly used in agriculture and sustainable industry: as bio- fertilisers and biostimulants to improve soil health, and in the production of bioplastics and packaging materials that decompose naturally without leaving harmful microplastics.\n\nBecause seaweed cultivation needs no arable land and minimal fresh water, it offers a low- impact alternative to traditional farming. With continued research and investment, seaweed is positioned to become a key raw material in the transition to a more sustainable, circular economy.",
+      question: "Based on Text A, what is the main concern about using conventional plastic packaging?",
       options: [
-          `The use of social media advertisements can be effective when adjusted to the types of platforms and their audiences.`,
-          `The most important impact to consider in using social media advertisement is the interaction with users.`,
-          `Social media platforms are now widely used by advertising comparative to promote their products.`,
-          `Using various social media platforms is a must to make the advertisements cost-effective.`,
-          `Social media is the only effective way to interact with the news market.`,
-          ],
+        "It releases nutrients that pollute water and soil.",
+        "It cannot be recycled properly due to limited facilities.",
+        "It releases hormones when heated that can cause cancer.",
+        "It can not be broken down into tiny pieces in landfills and oceans.",
+        "It causes serious pollution and potential health hazards."
+      ],
+      answerIndex: [4]
+    },
+    { //Soal 2
+      txtField: "Plastic packaging presents a major problem for both the environment and human health. Most plastics are made from fossil fuels and are not biodegradable. They can remain in landfills and oceans for hundreds of years, breaking down into tiny pieces known as microplastics. These microplastics pollute water, enter the food chain, and harm marine life through ingestion and entanglement. In addition, some plastics release harmful chemicals that can disrupt hormones or even cause cancer, especially when heated. Plastic production also depends on fossil fuels, which contributes to global warming and resource depletion.\n\nTo overcome these problems, scientists have turned to seaweed as a promising raw material for bioplastics. Seaweed is an abundant and fast- growing marine plant that requires no land, fertilizer, or freshwater to cultivate. It absorbs carbon dioxide as it grows, making it environmentally beneficial. Seaweed contains natural polysaccharides such as agar, carrageenan, and alginate that can be processed into flexible, transparent, and biodegradable films for food packaging. Some types of seaweed even have natural antimicrobial properties that can help prevent bacterial growth on food surfaces.\n\nDespite its potential, seaweed- based bioplastic still faces challenges. Production costs remain high, and the resulting materials are often less durable and water- resistant than petroleum- based plastics. Researchers are now developing better processing techniques to improve quality and lower costs. With continuous innovation, seaweed bioplastics could become a sustainable alternative for future food packaging.\n\nText B\n\nSeaweed is a marine algae found in coastal waters around the world, and it is attracting growing interest because of its versatility and renewability. It has been applied in food and nutrition and is used as an ingredient in soups, snacks, and health- foods.\n\nIn the cosmetics and pharmaceuticals sectors, seaweed extracts and polysaccharides (such as agar and carrageenan) function as thickeners, stabilisers and active bio- compounds with antioxidant or antimicrobial features.\n\nFurthermore, seaweed is increasingly used in agriculture and sustainable industry: as bio- fertilisers and biostimulants to improve soil health, and in the production of bioplastics and packaging materials that decompose naturally without leaving harmful microplastics.\n\nBecause seaweed cultivation needs no arable land and minimal fresh water, it offers a low- impact alternative to traditional farming. With continued research and investment, seaweed is positioned to become a key raw material in the transition to a more sustainable, circular economy.",
+      question: "The word they in Text A paragraph 1 refers to....",
+      options: [
+        "Fossil fuels",
+        "Harmful chemicals",
+        "Microplastics",
+        "Plastics",
+        "Marine life"
+      ],
+      answerIndex: [3]
+    },
+    { //Soal 3
+      txtField: "Plastic packaging presents a major problem for both the environment and human health. Most plastics are made from fossil fuels and are not biodegradable. They can remain in landfills and oceans for hundreds of years, breaking down into tiny pieces known as microplastics. These microplastics pollute water, enter the food chain, and harm marine life through ingestion and entanglement. In addition, some plastics release harmful chemicals that can disrupt hormones or even cause cancer, especially when heated. Plastic production also depends on fossil fuels, which contributes to global warming and resource depletion.\n\nTo overcome these problems, scientists have turned to seaweed as a promising raw material for bioplastics. Seaweed is an abundant and fast- growing marine plant that requires no land, fertilizer, or freshwater to cultivate. It absorbs carbon dioxide as it grows, making it environmentally beneficial. Seaweed contains natural polysaccharides such as agar, carrageenan, and alginate that can be processed into flexible, transparent, and biodegradable films for food packaging. Some types of seaweed even have natural antimicrobial properties that can help prevent bacterial growth on food surfaces.\n\nDespite its potential, seaweed- based bioplastic still faces challenges. Production costs remain high, and the resulting materials are often less durable and water- resistant than petroleum- based plastics. Researchers are now developing better processing techniques to improve quality and lower costs. With continuous innovation, seaweed bioplastics could become a sustainable alternative for future food packaging.\n\nText B\n\nSeaweed is a marine algae found in coastal waters around the world, and it is attracting growing interest because of its versatility and renewability. It has been applied in food and nutrition and is used as an ingredient in soups, snacks, and health- foods.\n\nIn the cosmetics and pharmaceuticals sectors, seaweed extracts and polysaccharides (such as agar and carrageenan) function as thickeners, stabilisers and active bio- compounds with antioxidant or antimicrobial features.\n\nFurthermore, seaweed is increasingly used in agriculture and sustainable industry: as bio- fertilisers and biostimulants to improve soil health, and in the production of bioplastics and packaging materials that decompose naturally without leaving harmful microplastics.\n\nBecause seaweed cultivation needs no arable land and minimal fresh water, it offers a low- impact alternative to traditional farming. With continued research and investment, seaweed is positioned to become a key raw material in the transition to a more sustainable, circular economy.",
+      question: "Which of the following is a recommendation from Text A?",
+      options: [
+        "Seaweed grows quickly and helps absorb carbon dioxide.",
+        "Seaweed-based materials can be utilized for sustainable food packaging.",
+        "Some plastics packaging can be replaced by marine plants.",
+        "Seaweed contains natural polysaccharides used in food packaging.",
+        "Seaweed bioplastics are still more expensive than conventional plastics."
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 4
+      txtField: "Plastic packaging presents a major problem for both the environment and human health. Most plastics are made from fossil fuels and are not biodegradable. They can remain in landfills and oceans for hundreds of years, breaking down into tiny pieces known as microplastics. These microplastics pollute water, enter the food chain, and harm marine life through ingestion and entanglement. In addition, some plastics release harmful chemicals that can disrupt hormones or even cause cancer, especially when heated. Plastic production also depends on fossil fuels, which contributes to global warming and resource depletion.\n\nTo overcome these problems, scientists have turned to seaweed as a promising raw material for bioplastics. Seaweed is an abundant and fast- growing marine plant that requires no land, fertilizer, or freshwater to cultivate. It absorbs carbon dioxide as it grows, making it environmentally beneficial. Seaweed contains natural polysaccharides such as agar, carrageenan, and alginate that can be processed into flexible, transparent, and biodegradable films for food packaging. Some types of seaweed even have natural antimicrobial properties that can help prevent bacterial growth on food surfaces.\n\nDespite its potential, seaweed- based bioplastic still faces challenges. Production costs remain high, and the resulting materials are often less durable and water- resistant than petroleum- based plastics. Researchers are now developing better processing techniques to improve quality and lower costs. With continuous innovation, seaweed bioplastics could become a sustainable alternative for future food packaging.\n\nText B\n\nSeaweed is a marine algae found in coastal waters around the world, and it is attracting growing interest because of its versatility and renewability. It has been applied in food and nutrition and is used as an ingredient in soups, snacks, and health- foods.\n\nIn the cosmetics and pharmaceuticals sectors, seaweed extracts and polysaccharides (such as agar and carrageenan) function as thickeners, stabilisers and active bio- compounds with antioxidant or antimicrobial features.\n\nFurthermore, seaweed is increasingly used in agriculture and sustainable industry: as bio- fertilisers and biostimulants to improve soil health, and in the production of bioplastics and packaging materials that decompose naturally without leaving harmful microplastics.\n\nBecause seaweed cultivation needs no arable land and minimal fresh water, it offers a low- impact alternative to traditional farming. With continued research and investment, seaweed is positioned to become a key raw material in the transition to a more sustainable, circular economy.",
+      question: "What is the relation between the two texts?",
+      options: [
+        "Text B broadens the discussion in Text A by explaining other uses of seaweed beyond bioplastic production.",
+        "Text B opposes the idea of using seaweed as a sustainable raw material for packaging.",
+        "Text B discusses the nutritional benefits of seaweed, while Text A explains its chemical composition.",
+        "Both texts describe the negative environmental effects of seaweed-based materials.",
+        "Text A focuses on the industrial uses of seaweed, while Text B focuses only on its ecological role."
+      ],
       answerIndex: [0]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Improving the mental health and wellbeing of young people is a global priority. Approximately 80% of the population will experience mental il-fhealth at some point in their life. 75% of mental disorders begin before the age of 25. Mental ill health changes the course of young people's lives. (...) It can also cut lives short through an increased risk of dying by suicide, treatment side effects, and higher rates of chronic physical health conditionh Good-quality, impactful rese should bential to helping young people cope with mental health challenges. Young people with lived experience should be integral partners in designing, implementing and translating this research.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Expertise based on experience matters. Young people who experience mental health challenges can provide unique insights that others do not have. Through roles such as youth advisors and peer researchers, they can put that knowledge to use. They are best placed to make a participant information and consent form meaningful and comprehensible for people their age. They can advise whether an intervention is appealing and practical. In doing this, they should consider time and resource investment in development and testing. Involving people with lived experience in research helps to improve funding success, recruitment rates and research outcomes. Across the research cycle, young people can increase the charice of research making a real difference.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Young people with the most relevant experience should be offered opportunities. Typically, youth partners are not able to speak on behalf of all young people. However, it is important to ensure that they have experiences that are relevant to the research area. Someone who has experienced suicidal ideation cannot necessarily speak to the needs of young people who hear voices. Representation of other intersecting experiences and contexts matters too. These may include experiences of voluntary versus involuntary treatment, genders and sexualities, and socioeconomic backgrounds.`,
-      question: `The author illustrates the importance of involving youths with lived experience in mental health studies in paragraph(s)?`,
+    { //Soal 5
+      txtField: "Plastic packaging presents a major problem for both the environment and human health. Most plastics are made from fossil fuels and are not biodegradable. They can remain in landfills and oceans for hundreds of years, breaking down into tiny pieces known as microplastics. These microplastics pollute water, enter the food chain, and harm marine life through ingestion and entanglement. In addition, some plastics release harmful chemicals that can disrupt hormones or even cause cancer, especially when heated. Plastic production also depends on fossil fuels, which contributes to global warming and resource depletion.\n\nTo overcome these problems, scientists have turned to seaweed as a promising raw material for bioplastics. Seaweed is an abundant and fast- growing marine plant that requires no land, fertilizer, or freshwater to cultivate. It absorbs carbon dioxide as it grows, making it environmentally beneficial. Seaweed contains natural polysaccharides such as agar, carrageenan, and alginate that can be processed into flexible, transparent, and biodegradable films for food packaging. Some types of seaweed even have natural antimicrobial properties that can help prevent bacterial growth on food surfaces.\n\nDespite its potential, seaweed- based bioplastic still faces challenges. Production costs remain high, and the resulting materials are often less durable and water- resistant than petroleum- based plastics. Researchers are now developing better processing techniques to improve quality and lower costs. With continuous innovation, seaweed bioplastics could become a sustainable alternative for future food packaging.\n\nText B\n\nSeaweed is a marine algae found in coastal waters around the world, and it is attracting growing interest because of its versatility and renewability. It has been applied in food and nutrition and is used as an ingredient in soups, snacks, and health- foods.\n\nIn the cosmetics and pharmaceuticals sectors, seaweed extracts and polysaccharides (such as agar and carrageenan) function as thickeners, stabilisers and active bio- compounds with antioxidant or antimicrobial features.\n\nFurthermore, seaweed is increasingly used in agriculture and sustainable industry: as bio- fertilisers and biostimulants to improve soil health, and in the production of bioplastics and packaging materials that decompose naturally without leaving harmful microplastics.\n\nBecause seaweed cultivation needs no arable land and minimal fresh water, it offers a low- impact alternative to traditional farming. With continued research and investment, seaweed is positioned to become a key raw material in the transition to a more sustainable, circular economy.",
+      question: "The information about the industrial and environmental benefits of using seaweed can be found in....",
       options: [
-          `1`,
-          `2`,
-          `3`,
-          `1 and 2`,
-          `2 and 3`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Improving the mental health and wellbeing of young people is a global priority. Approximately 80% of the population will experience mental il-fhealth at some point in their life. 75% of mental disorders begin before the age of 25. Mental ill health changes the course of young people's lives. (...) It can also cut lives short through an increased risk of dying by suicide, treatment side effects, and higher rates of chronic physical health conditionh Good-quality, impactful rese should bential to helping young people cope with mental health challenges. Young people with lived experience should be integral partners in designing, implementing and translating this research.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Expertise based on experience matters. Young people who experience mental health challenges can provide unique insights that others do not have. Through roles such as youth advisors and peer researchers, they can put that knowledge to use. They are best placed to make a participant information and consent form meaningful and comprehensible for people their age. They can advise whether an intervention is appealing and practical. In doing this, they should consider time and resource investment in development and testing. Involving people with lived experience in research helps to improve funding success, recruitment rates and research outcomes. Across the research cycle, young people can increase the charice of research making a real difference.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Young people with the most relevant experience should be offered opportunities. Typically, youth partners are not able to speak on behalf of all young people. However, it is important to ensure that they have experiences that are relevant to the research area. Someone who has experienced suicidal ideation cannot necessarily speak to the needs of young people who hear voices. Representation of other intersecting experiences and contexts matters too. These may include experiences of voluntary versus involuntary treatment, genders and sexualities, and socioeconomic backgrounds.`,
-      question: `Which of the following sentences can complete the missing sentence in paragraph 1?`,
-      options: [
-          `The lives of young people are valuable so that treatment should be given.`,
-          `It impacts their health and their social, emotional and functional outcomes.`,
-          `An example includes the ways young people deal with their mental disorders.`,
-          `It explains the increasing rates of mental ill-health issues among young people.`,
-          `The changes of life style are thus required to decrease the rate of mental ill-health cases.`,
-          ],
+        "Text A paragraph 1 and Text B paragraph 1",
+        "Text A paragraph 2 and Text B paragraph 3",
+        "Text A paragraph 3 and Text B paragraph 2",
+        "Text A paragraph 2 and Text B paragraph 2",
+        "Text A paragraph 3 and Text B paragraph 4"
+      ],
       answerIndex: [1]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Improving the mental health and wellbeing of young people is a global priority. Approximately 80% of the population will experience mental il-fhealth at some point in their life. 75% of mental disorders begin before the age of 25. Mental ill health changes the course of young people's lives. (...) It can also cut lives short through an increased risk of dying by suicide, treatment side effects, and higher rates of chronic physical health conditionh Good-quality, impactful rese should bential to helping young people cope with mental health challenges. Young people with lived experience should be integral partners in designing, implementing and translating this research.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Expertise based on experience matters. Young people who experience mental health challenges can provide unique insights that others do not have. Through roles such as youth advisors and peer researchers, they can put that knowledge to use. They are best placed to make a participant information and consent form meaningful and comprehensible for people their age. They can advise whether an intervention is appealing and practical. In doing this, they should consider time and resource investment in development and testing. Involving people with lived experience in research helps to improve funding success, recruitment rates and research outcomes. Across the research cycle, young people can increase the charice of research making a real difference.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Young people with the most relevant experience should be offered opportunities. Typically, youth partners are not able to speak on behalf of all young people. However, it is important to ensure that they have experiences that are relevant to the research area. Someone who has experienced suicidal ideation cannot necessarily speak to the needs of young people who hear voices. Representation of other intersecting experiences and contexts matters too. These may include experiences of voluntary versus involuntary treatment, genders and sexualities, and socioeconomic backgrounds.`,
-      question: `Based on the passage, if a study focuses on anxiety disorders, the experience included should be taken from someone who....`,
+    { //Soal 6
+      txtField: "Plastic packaging presents a major problem for both the environment and human health. Most plastics are made from fossil fuels and are not biodegradable. They can remain in landfills and oceans for hundreds of years, breaking down into tiny pieces known as microplastics. These microplastics pollute water, enter the food chain, and harm marine life through ingestion and entanglement. In addition, some plastics release harmful chemicals that can disrupt hormones or even cause cancer, especially when heated. Plastic production also depends on fossil fuels, which contributes to global warming and resource depletion.\n\nTo overcome these problems, scientists have turned to seaweed as a promising raw material for bioplastics. Seaweed is an abundant and fast- growing marine plant that requires no land, fertilizer, or freshwater to cultivate. It absorbs carbon dioxide as it grows, making it environmentally beneficial. Seaweed contains natural polysaccharides such as agar, carrageenan, and alginate that can be processed into flexible, transparent, and biodegradable films for food packaging. Some types of seaweed even have natural antimicrobial properties that can help prevent bacterial growth on food surfaces.\n\nDespite its potential, seaweed- based bioplastic still faces challenges. Production costs remain high, and the resulting materials are often less durable and water- resistant than petroleum- based plastics. Researchers are now developing better processing techniques to improve quality and lower costs. With continuous innovation, seaweed bioplastics could become a sustainable alternative for future food packaging.\n\nText B\n\nSeaweed is a marine algae found in coastal waters around the world, and it is attracting growing interest because of its versatility and renewability. It has been applied in food and nutrition and is used as an ingredient in soups, snacks, and health- foods.\n\nIn the cosmetics and pharmaceuticals sectors, seaweed extracts and polysaccharides (such as agar and carrageenan) function as thickeners, stabilisers and active bio- compounds with antioxidant or antimicrobial features.\n\nFurthermore, seaweed is increasingly used in agriculture and sustainable industry: as bio- fertilisers and biostimulants to improve soil health, and in the production of bioplastics and packaging materials that decompose naturally without leaving harmful microplastics.\n\nBecause seaweed cultivation needs no arable land and minimal fresh water, it offers a low- impact alternative to traditional farming. With continued research and investment, seaweed is positioned to become a key raw material in the transition to a more sustainable, circular economy.",
+      question: "According to both texts, what is most likely to happen in the future?",
       options: [
-          `eats in an unhealthy portion`,
-          `suffers from physical injuries`,
-          `regularly lies in different occasions`,
-          `constantly feels worried for no reason`,
-          `shows the difficulty of managing suicidal thoughts`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `#### TEXT 1
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Every day we chew food with our teeth. We can crush hard food using molars. Our teeth are coated with a protective layer called tooth enamel. This layer is only a few millimeters of food without causing pain to the soft tissue under it.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Scientists believe tooth enamel is the hardest biological tissue in the human body, Dental scientists have done a lot of research to replicate this super thin but strong structure for longer teeth health. Recently material scientists and chemical engineers have created synthetic tooth enamel that is even stronger that what is found in our teeth. They also studied both to more closely resemble the composition and structure of the real substance.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Tooth enamel is constantly bombarded by the strike of acids and bases from food and drink. It is contending with new bacteria and changes in the mouth's microbiome. Enamel can be strong brushing and habitual teeth grinding. Time, wear, and decay bore holes through a tooth's outer layers, resulting in cavities and other dental issues. Unlike a broken bone, enamel defenses itself.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;The origin of enamel's strength comes from its complex and intricate structure. Protective minerals are made of tiny, interconnected tubes called nanorods, which are filled with lattice grids, a type of calcium phosphate mineral.
-      \n### TEXT 2
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Tooth enamel is a hard substance that is found on the outermost part of our teeth. Enamel is considered as the hardest substance in our body. It is known even harder than our bones. How it decays or breaks down when bacteria breaks down the sugar in food creating an acid hole. About two percent of enamel is made of some organic materials known as enamelin.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Enamels plays an important role in protecting the tooth's to reduce the discomfort we feel due to hot or cold foods.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Although tooth enamel is a hard and protective coating, it can easily crack. When the enamel breaks, it is no longer able to protect the teeth adequately. Tooth decay and enamel darnage and presence of acids in the food we eat. Acids cause erosion of the enamel. Once your tooth enamel is destroyed, your body will not make more of an effort to replace it. Therefore, we should avoid acids.`,
-      question: `According to the two texts, which of the following will most likely happen in the future?`,
-      options: [
-          `Because of the use of enamel specific protein, tooth enamel will not be bombarded anymore by the acids and bases from food and drink.`,
-          `An enamel specific protein known as enamelin will be implemented on the tooth so that the eroded tooth enamel can repair itself.`,
-          `Tooth enamel made from bone-similar structure will be developed to replace natural tooth enamel.`,
-          `Synthetic tooth enamel that has physical properties similar to the real one will be used to replace the damaged tooth enamel.`,
-          `Synthetic tooth enamel that contains anti-bacterial coating will be able to maintain the discomfort we feel due to hot or cold food.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Tooth enamel is a hard substance that is found on the outermost part of our teeth. Enamel is considered as the hardest substance in our body. It is known even harder than our bones. How it decays or breaks down when bacteria breaks down the sugar in food creating an acid hole. About two percent of enamel is made of some organic materials known as enamelin.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Enamels plays an important role in protecting the tooth's to reduce the discomfort we feel due to hot or cold foods.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Although tooth enamel is a hard and protective coating, it can easily crack. When the enamel breaks, it is no longer able to protect the teeth adequately. Tooth decay and enamel damage and presence of acids in the food we eat. Acids cause erosion of the enamel. Once your tooth enamel is destroyed, your body will not make more of an effort to replace it. Therefore, we should avoid acids.`,
-      question: `The word "it" in paragraph 1 refers to...`,
-      options: [
-          `Substance of our body`,
-          `Tooth enamel`,
-          `Our tooth`,
-          `Outermost part of our body`,
-          `Bacteria from foods and drinks`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `UCI Gravel World Championship 2022, October 8-9, Italy
-| Lequack Jul 10, 2022 10:23 | Maybe we can get a look at what this gravel thing really is. Honestly, I myself haven't seen a gravel race yet. Let's see if it's actually a thing or a gimmick.|
-|--------------------------------|-----------------------------------------|
-| Stonerider Jul 10, 2022 13:58  | For one thing, the route is rather more in keeping with the chalk roads of Strade Bianche than the rocker terrain on offer on the North American grave scene. Gravel bikes emerged as means of tracking a wider range of surfaces than a conventional road or mountain bike.|
-| Cyclingnews Jul 10, 2022 20:15 | The rules allow the use of any kind of bike-gravel, road, cyclo-cross or mountain bike-provided that it weighs at least 6.8 kg, and there are no restrictions on type width. Wheel changes are permitted at feed zones, but bike changes are not allowed: riders must finish aboard the same frame on which they started. |
-| Red Rick Jul 10, 2022 22:33 | It looks a lot more fun than most road racing.|
-| Lequack Jul 10, 2022 22:23 | Unfortunately, the profiles leave much to be desired. I just hope it is similar to cobbled races in a way that it can generate action without climbs.|
-| Saunaking Jul 10, 2022 11:10 | I do not think it is a gimmick since it is definitely growing. UCI has basically created a road race course for the worlds - no climbing and pretty gravel from what I have read.|
-| Tobydawq Jul 11, 2022 13:45    | @Red Rick, sometimes I wonder why you even follow road cycling. However, yes, it looks interesting. I will definitely take a look. |
-\nAdapted from:https://forum.cyclingnews.com`,
-      question: `What is the tone of the thread with regards to the gravel race as world championship?`,
-      options: [
-          `Confused`,
-          `Concerned`,
-          `Underestimating`,
-          `Uncertain`,
-          `Neutral`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Artificial Intelligence (AI) is rapidly entering health care and serving major roles. These include automating routine tasks in medical practice and managing medical resources. As developers create Al systems to take on these tasks, several risks and challenges emerge.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;The most obvious risk is that Al systems will sometimes be wrong. This can result in patient injury or other health-care problems. An Al system possibly recommends the wrong drug for a patient or fails to notice a tumor on a radiological scan. Of course, many injuries occur due to medical error in the health care system today, even without the involvement of AL. Al errors potentially different for at least two reasons. First, patients and providers may react differently to injuries resulting from software than from human error. Second, if Al systems become widespread, an underlying problem in one Al system might result in injuries to thousands of patients.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Moreover, training Al systems requires large amount of data from sources. However, health data are often problematic. Data are typically fragmented across many different systems. Even aside from the variety Just mentioned, patients typically see different providers and switch insurance companies. This would lead to data split in multiple systems and multiple formats.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Another set of risks arise around privacy. The requirement of large datasets creates incentives for developers to collect such data from many patients. Some patients may be concerned that this collection may violate their privacy. In fact, lawsuits have been filled based on data-sharing between large health care systems and Al developers
-      \n&nbsp;&nbsp;&nbsp;&nbsp;The integration of Al into the health system will undoubtedly change the role of health care providers. A hopeful vision is that providers will be enabled to provide more-personalized and better care, freed to spend more time interacting with patients as humans. <u>A less hopeful vision would see providers struggling to weather monsoon of uninterpretable predictions and recommendations from competing algorithms<u>. In either case, medical education will need to prepare providers to evaluate and interpret the Al systems they will encounter in the evolving health care environment.
-      \nAdapted from:https://www.brooking.edu/`,
-      question: `The author holds the assumption about Al developers that...`,
-      options: [
-          `their business practice could leak patients' personal data.`,
-          `most of them have been jailed for wrongdoings in data-sharing`,
-          `they often violate patients' rights for privacy through forceful data.`,
-          `they commercialize patients' data to maximize profits of their business.`,
-          `They cooperate with large health care centers in monetizing patients' data.`,
-          ],
-      answerIndex: [4]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Artificial Intelligence (AI) is rapidly entering health care and serving major roles. These include automating routine tasks in medical practice and managing medical resources. As developers create Al systems to take on these tasks, several risks and challenges emerge.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;The most obvious risk is that Al systems will sometimes be wrong. This can result in patient injury or other health-care problems. An Al system possibly recommends the wrong drug for a patient or fails to notice a tumor on a radiological scan. Of course, many injuries occur due to medical error in the health care system today, even without the involvement of AL. Al errors potentially different for at least two reasons. First, patients and providers may react differently to injuries resulting from software than from human error. Second, if Al systems become widespread, an underlying problem in one Al system might result in injuries to thousands of patients.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Moreover, training Al systems requires large amount of data from sources. However, health data are often problematic. Data are typically fragmented across many different systems. Even aside from the variety Just mentioned, patients typically see different providers and switch insurance companies. This would lead to data split in multiple systems and multiple formats.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Another set of risks arise around privacy. The requirement of large datasets creates incentives for developers to collect such data from many patients. Some patients may be concerned that this collection may violate their privacy. In fact, lawsuits have been filled based on data-sharing between large health care systems and Al developers
-      \n&nbsp;&nbsp;&nbsp;&nbsp;The integration of Al into the health system will undoubtedly change the role of health care providers. A hopeful vision is that providers will be enabled to provide more-personalized and better care, freed to spend more time interacting with patients as humans. <u>A less hopeful vision would see providers struggling to weather monsoon of uninterpretable predictions and recommendations from competing algorithms<u>. In either case, medical education will need to prepare providers to evaluate and interpret the Al systems they will encounter in the evolving health care environment.
-      \nAdapted from:https://www.brooking.edu/`,
-      question: `Which of the following best restates the underlined sentence in paragraph 5?`,
-      options: [
-          `In the future, reading between the lines could be hampered by forecasts and commendations from confusing algorithm.`,
-          `There is a strong possibility that algorithms will support with each other, yielding guesses and suggestions that are hardly understood by providers.`,
-          `Providers can be less flexible about their ability to understand calculations and advice generated by opposite algorithm.`,
-          `A more pessimistic view on Al in health care is rooted in conflicting algorithms which cause predictions and suggestions impossible to deduce by providers.`,
-          `A new season would come and bring more challenges from providers which fail to infer projections and recommendations from competing algorithms.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Fast food is widely known in most populated countries. Now, fast food has become part of urban people's life because it offers a delicious quick-meal at a small price. However, consuming fast food such as hot dog, hamburger, fried chicken, soft drink, and many other may frequently cause several bad impacts on your health.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;In many countries, dieticians often emphasize the dangers of consuming too much fast food. Fast food is high in calories but they come from unhealthy fat and added sugars. Therefore, the food provides few nutrients. The imbalanced content from this kind of food may trigger various diseases. Obesity is one of the most possible impact of consuming too much fast food. Besides, it can also increase the risk of hypertension, heart attack, as well as diabetes.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;A study showed that children who consumed a lot of fast food had lower IQ than children who ate less fast food. Although the difference was subtle, the study proved that fast food that children consumed at age between 6 and 24 months gave a small but significant effect on their IQ when they reached 8 years old.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;In addition, most fast food meals have the artificial additives and sweetener to maintain their texture consistency, to give them longer shelf-life, and also to enhance the flavor. These substances contribute to the good taste of fast food.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;1). Pregnant women should also avoid eating fast food. 2). Eating such food is not only bad for the mother herself but also the baby. 3). The baby will be so vulnerable of hypertension and diabetes. 4). There fore, we should consult a doctor before consuming fast food. 5). The cause is the preservatives in fast food that are harmful to both mother and her baby. 6). Moreover, a number of studies in China have found that the rate of breast cancer among women has risen due to the consumption of fast food.`,
-      question: `Which of the statements in paragraph 5 is NOT relevant to the topic discussed in the passage?`,
-      options: [
-          `1`,
-          `2`,
-          `3`,
-          `4`,
-          `5`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Fast food is widely known in most populated countries. Now, fast food has become part of urban people's life because it offers a delicious quick-meal at a small price. However, consuming fast food such as hot dog, hamburger, fried chicken, soft drink, and many other may frequently cause several bad impacts on your health.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;In many countries, dieticians often emphasize the dangers of consuming too much fast food. Fast food is high in calories but they come from unhealthy fat and added sugars. Therefore, the food provides few nutrients. The imbalanced content from this kind of food may trigger various diseases. Obesity is one of the most possible impact of consuming too much fast food. Besides, it can also increase the risk of hypertension, heart attack, as well as diabetes.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;A study showed that children who consumed a lot of fast food had lower IQ than children who ate less fast food. Although the difference was subtle, the study proved that fast food that children consumed at age between 6 and 24 months gave a small but significant effect on their IQ when they reached 8 years old.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;In addition, most fast food meals have the artificial additives and sweetener to maintain their texture consistency, to give them longer shelf-life, and also to enhance the flavor. These substances contribute to the good taste of fast food.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;1). Pregnant women should also avoid eating fast food. 2). Eating such food is not only bad for the mother herself but also the baby. 3). The baby will be so vulnerable of hypertension and diabetes. 4). There fore, we should consult a doctor before consuming fast food. 5). The cause is the preservatives in fast food that are harmful to both mother and her baby. 6). Moreover, a number of studies in China have found that the rate of breast cancer among women has risen due to the consumption of fast food.`,
-      question: `Here are the jumbled sentences from the paragraph that follows the last paragraph of the passage. Please reorder the following sentences.
-      \nA. As we have mentioned, it could trigger various diseases on adults and make children have lower IQ.
-      \nB. Fast food meets the needs of urban people of quickly served food.
-      \nC. From the facts above, there is definitely nothing nutritional about fast food, it simply feeds your hunger and craving.
-      \nD. However, consuming this delightful meal regularly may bring some bad impacts on health.
-      \nE. in addition, a study shows that consuming fast food has negative effects on pregnant women and their babies.
-      \nThe best order of the sentences above is ---`,
-      options: [
-          `b-a-d-c-e`,
-          `b-d-c-e-a`,
-          `b-d-a-e-c`,
-          `b-d-c-e-a`,
-          `b-e-d-c-a`,
-          ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;From small committees to national elections, group decision making can be complicated. Unfortunately, it may not always settle on the best choice. That's partly because some members of the group do research on their own, and others take their cues from the people around them.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;That distinction is readily observed around election time. "Many voters couldn't tell you the policy platforms for the candidates they're voting for," says applied mathematician Vicky Chuqiao Yang at the Santa Fe Institute. "Many individuals are uninformed, and they're most likely to rely on information they get from others".
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Social scientists have long sought ways to study the phenomenon of group decision-making, but that's a tricky undertaking. Researchers in a range of disciplines have tried to tackle the problem, with parallel efforts often leading to conflicting conclusions. Most existing models examine the effect of a single variable, which means they don't capture the whole picture.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;"The outcome of collective decision making is the result of complex interactions of many variables," says Yang, "And those integractions are rarely taken into account" in previous work. To overcome that challange, Yang recently developed a mathematical framework that captures the influence of multiple interactions among members of a group. "You can plug in multiple effects and see their behavior and how they manifest in the group at the same time", she explains.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Those effects include the influence of social leaners. The model predicted, for example, that decision making groups have a critical threshold of people who get their Information from others. Below that threshold, the group chooses the high-quality outcome. Above it, the group can end up choosing the better or worse option.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;The mathematical model is both simple and general. It can accurately reflect the multitude of moving parts within a system. The model also predicted a significant role for "committed minorities, or people who refuse to change their minds, no matter the evidence. These committed minorities can be bolstered, Yang says, by social learners, though every group is different. Yang says she hopes the model will help bring together parallel work from different disciplines. .... "but we don't yet have a holistic understanding that gives a recipe for good collective decision making," she said. "Our work brings us one step closer to it."
-      \nAdapted from https://www.sciencedaily.com`,
-      question: `The paragraph following the passage most likely discusses ....`,
-      options: [
-          `How decision making is applied at individual level.`,
-          `How to reach an agreement on group decision-making.`,
-          `What other disciplines have found about group decision-making.`,
-          `Why collective decision making is better than the individual one.`,
-          `How to achieve consensus in a group decision making process.`,
-          ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Social media advertising is a type of digital marketing that utilizes social networks such as Facebook, Twitter, and Instagram to deliver paid advertisements to your target audience in a quick and effective way to connect with customers and boost your marketing campaigns.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;By leveraging various data sources, advertisers are able to hyper target their audiences and deliver personalized content based on demographics and user behavior. When an audience social media advertisers may see more interaction and conversion. Social media advertisements are also cost effective, offering the potential for high rates of return.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Social media advertising is a must if you want to quickly reach new target markets. More and more companies-including the world's top performing brands - utilize social media companies and reach out to new consumers. To keep up with the competition, we need to earn how these ads work and how they can benefit your company.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Because both the internet and the content marketing are constantly evolving, there are many ways to go about your advertising strategy on social media platforms; the types of advertising your preferred platforms and the audience you want to reach.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;When considering social media advertising options, such as which advertising platform to use, remember that each platform has its own audience. That means you want to choose customers. If you are already active on social media, pay attention to which platforms perform well and which organic posts get the most interaction to target the best audience.`,
-      question: `Which of the following is closest in meaning to the phrase "to keep up with" in Text Paragraph 3?`,
-      options: [
-          `to observe`,
-          `to practice`,
-          `to participate`,
-          `to face`,
-          `to evaluate`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Hypebeast is defined by Urban Dictionary as: "A kid that collects clothing, shoes, and accessories for the sole purpose of impressing others". Some people accept that hypebeast is a slang for someone who is a 'beast' (or obsessed) about hyped-up fashion brands. Thus, they will enact whatever means to achieve that hype. The term has been attributed to (usually) well-off youth, who are obsessed in purchasing popular and high-end streetwear brands. They camp out overnight to await the next sneaker release from famous streetwear brands. On the other hand, they ignore brands that haven't been hyped online. They also constantly show off their sneaker and snapback collections.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;These people spend much of their time curating their social media image by projecting a certain lifestyle. They love to post pictures of their outfits of the day, or OOTD, and count the likes. However, it is commonly considered an insult to be called a hypebeast, because it is generally the urban version of "social climber".`,
-      question: `According to the passage, hypebeasts feel that they ... not miss the current street fashion trends.`,
-      options: [
-          `should`,
-          `must`,
-          `shall`,
-          `may`,
-          `can`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Hypebeast is defined by Urban Dictionary as: "A kid that collects clothing, shoes, and accessories for the sole purpose of impressing others". Some people accept that hypebeast is a slang for someone who is a 'beast' (or obsessed) about hyped-up fashion brands. Thus, they will enact whatever means to achieve that hype. The term has been attributed to (usually) well-off youth, who are obsessed in purchasing popular and high-end streetwear brands. They camp out overnight to await the next sneaker release from famous streetwear brands. On the other hand, they ignore brands that haven't been hyped online. They also constantly show off their sneaker and snapback collections.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;These people spend much of their time curating their social media image by projecting a certain lifestyle. They love to post pictures of their outfits of the day, or OOTD, and count the likes. However, it is commonly considered an insult to be called a hypebeast, because it is generally the urban version of "social climber".`,
-      question: `According to the passage, hypebeast dedicate time to ... their social media persona in order to escalate their social status.`,
-      options: [
-          `rely on`,
-          `focus on`,
-          `enhance`,
-          `present`,
-          `declare`,
-          ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Hypebeast is defined by Urban Dictionary as: "A kid that collects clothing, shoes, and accessories for the sole purpose of impressing others". Some people accept that hypebeast is a slang for someone who is a 'beast' (or obsessed) about hyped-up fashion brands. Thus, they will enact whatever means to achieve that hype. The term has been attributed to (usually) well-off youth, who are obsessed in purchasing popular and high-end streetwear brands. They camp out overnight to await the next sneaker release from famous streetwear brands. On the other hand, they ignore brands that haven't been hyped online. They also constantly show off their sneaker and snapback collections.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;These people spend much of their time curating their social media image by projecting a certain lifestyle. They love to post pictures of their outfits of the day, or OOTD, and count the likes. However, it is commonly considered an insult to be called a hypebeast, because it is generally the urban version of "social climber".`,
-      question: `Hypebeasts ... with hyped-up fashion brands would ignore brands that are not hyped up online.`,
-      options: [
-          `obsess`,
-          `obsessed`,
-          `is obsessed`,
-          `are obsessed`,
-          `who obsessed`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;A doctor in pediatric respiratory medicine reported that with the rising popularity of vaping the hospitals are treating many life threatening cases. The doctor is concerned that e-cigarettes are advertised in the UK, given the severe reaction they can cause in children and a lack of scientific studies on their safety.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;E-cigarettes are promoted in the UK as a way to quit smoking because they let people inhale nicotine in vapor rather than breathing in smoke. The Director of Public Health England said vaporing is 95% safer than smoking, but is not without risks. He asserted that smoking kills half of lifelong smokers and accounts for almost 220 death in England every day. While it is not completely risk free, UK regulated e-cigarettes carry a fraction of the risk of smoked tobacco.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;This is supported by Dr. Hopkinson, the Medical Director of the British Lung Foundation. He stated that if people switch completely from smoking to vaping, they will substantially reduce their health risk as e-cigarettes do not contain tobacco and any harmful components that present at a much lower lever. He advises people who switch to vaping to try to quit vaping in the long term too but not at the expense of relapsing to smoking.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;But there are arguments about how safe vaping really is. The World Health Organization says e-cigarettes are undoubtedly harmful and should therefore be subject to regulation. It also raises concerns about vaping being aggressively marketed at young people, it is also concerned about the possibility of e-smoking leading to the renormalizing of smoking.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;A researcher studying the effects of vaping said the findings show that vaping is not safe, especially for the lungs or young people. He belives that it is dangerous to announce that e-cigarettes are much safer than tobacco. In conclusion, the best advice that can be given is. "If you smoke, switch to vaping: if you don't smoke don't vape"`,
-      question: `Which of the following is the best summary of the passage?`,
-      options: [
-          `Vaping is being aggressively advertised as an effective means to help smokers stop their habit. As a result, both smokers and non-smokers are turning to e-cigarettes. This might reduce the number of deaths caused by smoking.`,
-          `Severe lung diseases caused by vaping have caused a lot of concern among health authorities in the UK. This is mainly caused by the successful marketing strategies of e-cigarettes which are targeting the most vulnerable sector, the youth.`,
-          `A heated argument is going on about the benefits and safety of vaping. The parties gainst vaping say that there is no scientific evidence that it is safe. However, the opposing parties claim that vaping is 95% safer than smoking which causes the deaths of hundreds of people daily.`,
-          `It is argued that vaping is much safer than smoking can be used as a method to stop smoking. Nevertheless, arguments are being raised about its safety. There is evidence that it can cause severe reactions, particularly in teenagers. Therefore, people who are non-smokers are advised to avoid vaping.`,
-          `Although vaping has already caused some deaths among young people, nothing has been done to prohibit the marketing of e-cigarettes. This is because health authorities believe that it is still better to vape than to smoke regular tobacco cigarettes. The latter takes the lives of approximately 200 people a day.`,
-          ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;In the enchanting realm of the beauty, where cosmetics promise to accentuate our features and boost confidence, a less glamorous reality emerges--the potential dangers hidden within these beauty products. As we explore the multifaceted risks associated with cosmetics, it becomes evident that an informed approach is crucial to maintaining both personal health and environment well-being.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;One major hazard lies in the chemical composition of cosmetics. Common ingredients like parabens, phthalates, and formaldehyde have raised red flags due to their association with hormonal imbalances and potential links to serious health issues, including cancer. The question arises: how can consumers navigate product labels to discer these harmful components and make informed choices for their well-being?
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Our body's largest organ, the skin, is not impervious to the risks of cosmetics. Harsh chemicals and synthetic fragrances can lead to irritations and allergies, prompting the need for a nuanced understanding of individual skin sensitivities. Additionally, the danger extends to misleading marketing practices that create unrealistic expectations.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Beyond personal health risks, the environmental footprint of the cosmetic industry adds another layer of concern. Excessive packaging, single-use plastics, and the disposal of expired products contribute to pollution. Here, consumers play a pivotal role in questioning industry practices and seeking eco-friendly alternatives.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;In conclusion, the danger of cosmetics necessitates a vigilant and informed consumer approach. By questioning ingredients, understanding individual skin sensitivities, deciphering marketing claims, and advocating for sustainable practices, consumers can navigate the cosmetic landscape with a discerning eye, ensuring that beauty routines align with both personal and planetary well-being.`,
-      question: `The best title for the test is:`,
-      options: [
-          `Exploring the World of Beauty`,
-          `Cosmetic Dangers: A Closer Look`,
-          `Mastering Skin Sensitivities`,
-          `The Beauty Industry's Environmental Impact`,
-          `Achieving Flawless Beauty Safely`,
-          ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;In the enchanting realm of the beauty, where cosmetics promise to accentuate our features and boost confidence, a less glamorous reality emerges--the potential dangers hidden within these beauty products. As we explore the multifaceted risks associated with cosmetics, it becomes evident that an informed approach is crucial to maintaining both personal health and environment well-being.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;One major hazard lies in the chemical composition of cosmetics. Common ingredients like parabens, phthalates, and formaldehyde have raised red flags due to their association with hormonal imbalances and potential links to serious health issues, including cancer. The question arises: how can consumers navigate product labels to discer these harmful components and make informed choices for their well-being?
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Our body's largest organ, the skin, is not impervious to the risks of cosmetics. Harsh chemicals and synthetic fragrances can lead to irritations and allergies, prompting the need for a nuanced understanding of individual skin sensitivities. Additionally, the danger extends to misleading marketing practices that create unrealistic expectations.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Beyond personal health risks, the environmental footprint of the cosmetic industry adds another layer of concern. Excessive packaging, single-use plastics, and the disposal of expired products contribute to pollution. Here, consumers play a pivotal role in questioning industry practices and seeking eco-friendly alternatives.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;In conclusion, the danger of cosmetics necessitates a vigilant and informed consumer approach. By questioning ingredients, understanding individual skin sensitivities, deciphering marketing claims, and advocating for sustainable practices, consumers can navigate the cosmetic landscape with a discerning eye, ensuring that beauty routines align with both personal and planetary well-being.`,
-      question: `The tone of the text is:`,
-      options: [
-          `Informativs`,
-          `Enthuastic`,
-          `Critical`,
-          `Humorous`,
-          `Indifferent`,
-          ],
+        "Seaweed-based materials will be further developed to support sustainable production.",
+        "Seaweed farming will require more land and freshwater to meet global demand.",
+        "Conventional plastics will still dominate because they are cheaper to produce.",
+        "The development of seaweed packaging will slow down due to technical challenges.",
+        "The environmental impact of seaweed cultivation will increase significantly."
+      ],
       answerIndex: [0]
     },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;In the enchanting realm of the beauty, where cosmetics promise to accentuate our features and boost confidence, a less glamorous reality emerges--the potential dangers hidden within these beauty products. As we explore the multifaceted risks associated with cosmetics, it becomes evident that an informed approach is crucial to maintaining both personal health and environment well-being.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;One major hazard lies in the chemical composition of cosmetics. Common ingredients like parabens, phthalates, and formaldehyde have raised red flags due to their association with hormonal imbalances and potential links to serious health issues, including cancer. The question arises: how can consumers navigate product labels to discer these harmful components and make informed choices for their well-being?
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Our body's largest organ, the skin, is not impervious to the risks of cosmetics. Harsh chemicals and synthetic fragrances can lead to irritations and allergies, prompting the need for a nuanced understanding of individual skin sensitivities. Additionally, the danger extends to misleading marketing practices that create unrealistic expectations.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Beyond personal health risks, the environmental footprint of the cosmetic industry adds another layer of concern. Excessive packaging, single-use plastics, and the disposal of expired products contribute to pollution. Here, consumers play a pivotal role in questioning industry practices and seeking eco-friendly alternatives.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;In conclusion, the danger of cosmetics necessitates a vigilant and informed consumer approach. By questioning ingredients, understanding individual skin sensitivities, deciphering marketing claims, and advocating for sustainable practices, consumers can navigate the cosmetic landscape with a discerning eye, ensuring that beauty routines align with both personal and planetary well-being.`,
-      question: `The relationship between 'chemical composition of cosmetics and health' is similar to the phenomenon between...`,
+    { //Soal 7
+      txtField: "(1) When people move from rural environments to large urban areas, they bring more than just their belongings—they also carry their invisible microbial companions. (2) Recent studies reveal that urbanization can profoundly alter the human gut microbiome, the vast community of microorganisms that live in our digestive system and help regulate metabolism, immunity, and even mood. (3) Researchers comparing individuals who grew up in rural or forested regions with those who live in big cities found that the urban group tends to have lower microbial diversity. (4) This reduction is linked to lifestyle changes such as processed diets, limited exposure to soil and animals, and increased antibiotic use, all of which restrict contact with the diverse microbes found in natural settings. (5) Scientists suggest that these shifts in microbial composition may reflect how modern lifestyles are gradually reshaping the human body's internal ecosystem.\n\n(1) Scientists warn that this shrinking microbial diversity may have subtle but serious health implications. (2) A less varied gut microbiome has been associated with higher risks of allergies, asthma, obesity, diabetes, and autoimmune conditions. (3) Urban residents also tend to spend more time on digital devices, which can increase eye strain and reduce physical activity. (4) In traditional rural populations, people are routinely exposed to microbes through farming, outdoor play, and natural food fermentation, which may help build a resilient immune system. (5) In contrast, highly sanitized city living may protect against infection but inadvertently deprive the body of beneficial microbial encounters that train immune tolerance.\n\nTo counter this unintended consequence of modernization, researchers recommend practical steps to restore microbial richness: consuming probiotic and fermented foods, spending time in green spaces, and using antibiotics judiciously. Some scientists even advocate \"microbial rewilding,\" encouraging contact with nature to reintroduce missing microbial diversity. The",
+      question: "Based on the passage, the less...the more...",
       options: [
-          `Exercise and weight loss`,
-          `Nutrition and energy levels`,
-          `Education and intelligence`,
-          `Sunscreen and sun protection`,
-          `Smoking and lung cancer`,
-          ],
+        "processed food you eat - diverse your gut microbes are",
+        "contact you have with soil - healthy your microbiome becomes",
+        "antibiotics you take - balanced your immune system is",
+        "microbes you encounter - adaptable your immune response becomes",
+        "fermented food you consume - strong your digestion is"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 8
+      txtField: "(1) When people move from rural environments to large urban areas, they bring more than just their belongings—they also carry their invisible microbial companions. (2) Recent studies reveal that urbanization can profoundly alter the human gut microbiome, the vast community of microorganisms that live in our digestive system and help regulate metabolism, immunity, and even mood. (3) Researchers comparing individuals who grew up in rural or forested regions with those who live in big cities found that the urban group tends to have lower microbial diversity. (4) This reduction is linked to lifestyle changes such as processed diets, limited exposure to soil and animals, and increased antibiotic use, all of which restrict contact with the diverse microbes found in natural settings. (5) Scientists suggest that these shifts in microbial composition may reflect how modern lifestyles are gradually reshaping the human body's internal ecosystem.\n\n(1) Scientists warn that this shrinking microbial diversity may have subtle but serious health implications. (2) A less varied gut microbiome has been associated with higher risks of allergies, asthma, obesity, diabetes, and autoimmune conditions. (3) Urban residents also tend to spend more time on digital devices, which can increase eye strain and reduce physical activity. (4) In traditional rural populations, people are routinely exposed to microbes through farming, outdoor play, and natural food fermentation, which may help build a resilient immune system. (5) In contrast, highly sanitized city living may protect against infection but inadvertently deprive the body of beneficial microbial encounters that train immune tolerance.\n\nTo counter this unintended consequence of modernization, researchers recommend practical steps to restore microbial richness: consuming probiotic and fermented foods, spending time in green spaces, and using antibiotics judiciously. Some scientists even advocate \"microbial rewilding,\" encouraging contact with nature to reintroduce missing microbial diversity. The",
+      question: "The author describes the way microbiome diversity decreases most clearly in paragraph 1 sentence....",
+      options: ["(1)", "(2)", "(3)", "(4)", "(5)"],
+      answerIndex: [3]
+    },
+    { //Soal 9
+      txtField: "(1) When people move from rural environments to large urban areas, they bring more than just their belongings—they also carry their invisible microbial companions. (2) Recent studies reveal that urbanization can profoundly alter the human gut microbiome, the vast community of microorganisms that live in our digestive system and help regulate metabolism, immunity, and even mood. (3) Researchers comparing individuals who grew up in rural or forested regions with those who live in big cities found that the urban group tends to have lower microbial diversity. (4) This reduction is linked to lifestyle changes such as processed diets, limited exposure to soil and animals, and increased antibiotic use, all of which restrict contact with the diverse microbes found in natural settings. (5) Scientists suggest that these shifts in microbial composition may reflect how modern lifestyles are gradually reshaping the human body's internal ecosystem.\n\n(1) Scientists warn that this shrinking microbial diversity may have subtle but serious health implications. (2) A less varied gut microbiome has been associated with higher risks of allergies, asthma, obesity, diabetes, and autoimmune conditions. (3) Urban residents also tend to spend more time on digital devices, which can increase eye strain and reduce physical activity. (4) In traditional rural populations, people are routinely exposed to microbes through farming, outdoor play, and natural food fermentation, which may help build a resilient immune system. (5) In contrast, highly sanitized city living may protect against infection but inadvertently deprive the body of beneficial microbial encounters that train immune tolerance.\n\nTo counter this unintended consequence of modernization, researchers recommend practical steps to restore microbial richness: consuming probiotic and fermented foods, spending time in green spaces, and using antibiotics judiciously. Some scientists even advocate \"microbial rewilding,\" encouraging contact with nature to reintroduce missing microbial diversity. The",
+      question: "The irrelevant sentence in paragraph 2 is sentence....",
+      options: ["(1)", "(2)", "(3)", "(4)", "(5)"],
+      answerIndex: [2]
+    },
+    { //Soal 10
+      txtField: "(1) When people move from rural environments to large urban areas, they bring more than just their belongings—they also carry their invisible microbial companions. (2) Recent studies reveal that urbanization can profoundly alter the human gut microbiome, the vast community of microorganisms that live in our digestive system and help regulate metabolism, immunity, and even mood. (3) Researchers comparing individuals who grew up in rural or forested regions with those who live in big cities found that the urban group tends to have lower microbial diversity. (4) This reduction is linked to lifestyle changes such as processed diets, limited exposure to soil and animals, and increased antibiotic use, all of which restrict contact with the diverse microbes found in natural settings. (5) Scientists suggest that these shifts in microbial composition may reflect how modern lifestyles are gradually reshaping the human body's internal ecosystem.\n\n(1) Scientists warn that this shrinking microbial diversity may have subtle but serious health implications. (2) A less varied gut microbiome has been associated with higher risks of allergies, asthma, obesity, diabetes, and autoimmune conditions. (3) Urban residents also tend to spend more time on digital devices, which can increase eye strain and reduce physical activity. (4) In traditional rural populations, people are routinely exposed to microbes through farming, outdoor play, and natural food fermentation, which may help build a resilient immune system. (5) In contrast, highly sanitized city living may protect against infection but inadvertently deprive the body of beneficial microbial encounters that train immune tolerance.\n\nTo counter this unintended consequence of modernization, researchers recommend practical steps to restore microbial richness: consuming probiotic and fermented foods, spending time in green spaces, and using antibiotics judiciously. Some scientists even advocate \"microbial rewilding,\" encouraging contact with nature to reintroduce missing microbial diversity. The",
+      question: "The author would apparently agree the relationship between urban living and gut diversity discussed in the passage is similar to the phenomenon of...",
+      options: [
+        "globalization and cultural uniqueness",
+        "teacher and student",
+        "device password and privacy",
+        "rainfall season and harvest time",
+        "noise and communication"
+      ],
+      answerIndex: [0]
+    },
+    { //Soal 11
+      txtField: "(1) When people move from rural environments to large urban areas, they bring more than just their belongings—they also carry their invisible microbial companions. (2) Recent studies reveal that urbanization can profoundly alter the human gut microbiome, the vast community of microorganisms that live in our digestive system and help regulate metabolism, immunity, and even mood. (3) Researchers comparing individuals who grew up in rural or forested regions with those who live in big cities found that the urban group tends to have lower microbial diversity. (4) This reduction is linked to lifestyle changes such as processed diets, limited exposure to soil and animals, and increased antibiotic use, all of which restrict contact with the diverse microbes found in natural settings. (5) Scientists suggest that these shifts in microbial composition may reflect how modern lifestyles are gradually reshaping the human body's internal ecosystem.\n\n(1) Scientists warn that this shrinking microbial diversity may have subtle but serious health implications. (2) A less varied gut microbiome has been associated with higher risks of allergies, asthma, obesity, diabetes, and autoimmune conditions. (3) Urban residents also tend to spend more time on digital devices, which can increase eye strain and reduce physical activity. (4) In traditional rural populations, people are routinely exposed to microbes through farming, outdoor play, and natural food fermentation, which may help build a resilient immune system. (5) In contrast, highly sanitized city living may protect against infection but inadvertently deprive the body of beneficial microbial encounters that train immune tolerance.\n\nTo counter this unintended consequence of modernization, researchers recommend practical steps to restore microbial richness: consuming probiotic and fermented foods, spending time in green spaces, and using antibiotics judiciously. Some scientists even advocate \"microbial rewilding,\" encouraging contact with nature to reintroduce missing microbial diversity. The",
+      question: "Here are sentences taken from the passage. Please reorder the following sentences to form a coherent sequence.\n\n1. The reduction in microbial diversity is closely linked to modern urban lifestyles.\n2. Scientists warn that losing microbial diversity may lead to serious health problems.\n3. Researchers suggest restoring microbial richness through diet and nature exposure.\n4. Urbanization can significantly change the composition of the human gut microbiome.\n5. People in rural areas are more exposed to natural microbes through soil and animals.",
+      options: [
+        "4 - 2 - 5 - 1 - 3",
+        "4 - 1 - 3 - 5 - 2",
+        "4 - 5 - 1 - 3 - 2",
+        "4 - 3 - 2 - 5 - 1",
+        "4 - 1 - 2 - 5 - 3"
+      ],
       answerIndex: [4]
     },
+    { //Soal 12
+      txtField: "Thread: Should I stop eating meat?\n\nJayM\nPosted: 12 June 2024, 09:28\nI've been reading about how meat production harms the environment, especially with all the carbon emissions and deforestation. I'm not sure if quitting meat completely would make any real difference though. Has anyone here tried going vegetarian for environmental reasons?\n\nNora\nPosted: 12 June 2024, 10:10\nI stopped eating beef two years ago and switched to plant-based meals most days. It actually feels good knowing I'm doing something small but positive. One person can't fix climate change, but millions making small choices can help.\n\nFelix\nPosted: 12 June 2024, 11:02\nI tried going vegan once but it didn't last long. I got tired, missed the taste, and it became expensive. I think it's more realistic to reduce meat rather than quit completely.\n\nLiam\nPosted: 12 June 2024, 14:25\nThere's also the cultural side. In some families, refusing meat can be seen as disrespectful. I think awareness and moderation are better than strict rules.\n\nCeline\nPosted: 12 June 2024, 18:00\nIf you're thinking about it for the planet, even small steps matter — like eating less red meat or supporting local farms. It's not about being perfect, just being conscious.\n\nDevon\nPosted: 13 June 2024, 08:15\nI work in environmental policy, and the data shows that meat production does have a huge carbon footprint, but transportation and energy use are even bigger factors. Reducing meat helps, but focusing only on food ignores other major sources of emissions.",
+      question: "Which of the following is the problem stated at the beginning of the thread?",
+      options: [
+        "Finding it hard to afford vegetarian food",
+        "Feeling unsure whether going meat-free helps the planet",
+        "Trying to convince others to stop eating meat",
+        "Struggling with health issues after quitting meat",
+        "Feeling guilty for enjoying meat"
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 13
+      txtField: "Thread: Should I stop eating meat?\n\nJayM\nPosted: 12 June 2024, 09:28\nI've been reading about how meat production harms the environment, especially with all the carbon emissions and deforestation. I'm not sure if quitting meat completely would make any real difference though. Has anyone here tried going vegetarian for environmental reasons?\n\nNora\nPosted: 12 June 2024, 10:10\nI stopped eating beef two years ago and switched to plant-based meals most days. It actually feels good knowing I'm doing something small but positive. One person can't fix climate change, but millions making small choices can help.\n\nFelix\nPosted: 12 June 2024, 11:02\nI tried going vegan once but it didn't last long. I got tired, missed the taste, and it became expensive. I think it's more realistic to reduce meat rather than quit completely.\n\nLiam\nPosted: 12 June 2024, 14:25\nThere's also the cultural side. In some families, refusing meat can be seen as disrespectful. I think awareness and moderation are better than strict rules.\n\nCeline\nPosted: 12 June 2024, 18:00\nIf you're thinking about it for the planet, even small steps matter — like eating less red meat or supporting local farms. It's not about being perfect, just being conscious.\n\nDevon\nPosted: 13 June 2024, 08:15\nI work in environmental policy, and the data shows that meat production does have a huge carbon footprint, but transportation and energy use are even bigger factors. Reducing meat helps, but focusing only on food ignores other major sources of emissions.",
+      question: "The word \"quit\" in JayM's post is closest in meaning to...",
+      options: ["avoid", "cancel", "stop", "reduce", "deny"],
+      answerIndex: [2]
+    },
+    { //Soal 14
+      txtField: "Thread: Should I stop eating meat?\n\nJayM\nPosted: 12 June 2024, 09:28\nI've been reading about how meat production harms the environment, especially with all the carbon emissions and deforestation. I'm not sure if quitting meat completely would make any real difference though. Has anyone here tried going vegetarian for environmental reasons?\n\nNora\nPosted: 12 June 2024, 10:10\nI stopped eating beef two years ago and switched to plant-based meals most days. It actually feels good knowing I'm doing something small but positive. One person can't fix climate change, but millions making small choices can help.\n\nFelix\nPosted: 12 June 2024, 11:02\nI tried going vegan once but it didn't last long. I got tired, missed the taste, and it became expensive. I think it's more realistic to reduce meat rather than quit completely.\n\nLiam\nPosted: 12 June 2024, 14:25\nThere's also the cultural side. In some families, refusing meat can be seen as disrespectful. I think awareness and moderation are better than strict rules.\n\nCeline\nPosted: 12 June 2024, 18:00\nIf you're thinking about it for the planet, even small steps matter — like eating less red meat or supporting local farms. It's not about being perfect, just being conscious.\n\nDevon\nPosted: 13 June 2024, 08:15\nI work in environmental policy, and the data shows that meat production does have a huge carbon footprint, but transportation and energy use are even bigger factors. Reducing meat helps, but focusing only on food ignores other major sources of emissions.",
+      question: "Who gave the most balanced and realistic advice?",
+      options: ["Nora", "Felix", "Liam", "Celine", "Devon"],
+      answerIndex: [3]
+    },
+    { //Soal 15
+      txtField: "Thread: Should I stop eating meat?\n\nJayM\nPosted: 12 June 2024, 09:28\nI've been reading about how meat production harms the environment, especially with all the carbon emissions and deforestation. I'm not sure if quitting meat completely would make any real difference though. Has anyone here tried going vegetarian for environmental reasons?\n\nNora\nPosted: 12 June 2024, 10:10\nI stopped eating beef two years ago and switched to plant-based meals most days. It actually feels good knowing I'm doing something small but positive. One person can't fix climate change, but millions making small choices can help.\n\nFelix\nPosted: 12 June 2024, 11:02\nI tried going vegan once but it didn't last long. I got tired, missed the taste, and it became expensive. I think it's more realistic to reduce meat rather than quit completely.\n\nLiam\nPosted: 12 June 2024, 14:25\nThere's also the cultural side. In some families, refusing meat can be seen as disrespectful. I think awareness and moderation are better than strict rules.\n\nCeline\nPosted: 12 June 2024, 18:00\nIf you're thinking about it for the planet, even small steps matter — like eating less red meat or supporting local farms. It's not about being perfect, just being conscious.\n\nDevon\nPosted: 13 June 2024, 08:15\nI work in environmental policy, and the data shows that meat production does have a huge carbon footprint, but transportation and energy use are even bigger factors. Reducing meat helps, but focusing only on food ignores other major sources of emissions.",
+      question: "Who added a new perspective by suggesting that other factors should also be considered related to the climate change issue?",
+      options: ["Nora", "Felix", "Liam", "Celine", "Devon"],
+      answerIndex: [4]
+    },
+    { //Soal 16
+      txtField: "Thread: Should I stop eating meat?\n\nJayM\nPosted: 12 June 2024, 09:28\nI've been reading about how meat production harms the environment, especially with all the carbon emissions and deforestation. I'm not sure if quitting meat completely would make any real difference though. Has anyone here tried going vegetarian for environmental reasons?\n\nNora\nPosted: 12 June 2024, 10:10\nI stopped eating beef two years ago and switched to plant-based meals most days. It actually feels good knowing I'm doing something small but positive. One person can't fix climate change, but millions making small choices can help.\n\nFelix\nPosted: 12 June 2024, 11:02\nI tried going vegan once but it didn't last long. I got tired, missed the taste, and it became expensive. I think it's more realistic to reduce meat rather than quit completely.\n\nLiam\nPosted: 12 June 2024, 14:25\nThere's also the cultural side. In some families, refusing meat can be seen as disrespectful. I think awareness and moderation are better than strict rules.\n\nCeline\nPosted: 12 June 2024, 18:00\nIf you're thinking about it for the planet, even small steps matter — like eating less red meat or supporting local farms. It's not about being perfect, just being conscious.\n\nDevon\nPosted: 13 June 2024, 08:15\nI work in environmental policy, and the data shows that meat production does have a huge carbon footprint, but transportation and energy use are even bigger factors. Reducing meat helps, but focusing only on food ignores other major sources of emissions.",
+      question: "What is the general tone of the thread?",
+      options: ["Judgemental", "Encouraging", "Doubtful", "Sarcastic", "Defensive"],
+      answerIndex: [1]
+    },
+    { //Soal 17
+      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
+      question: "Which of the following statements is NOT TRUE according to the text?",
+      options: [
+        "Some university jobs require physical presence on campus.",
+        "Remote work supports Duke's environmental goals.",
+        "Employees found balancing home and work life difficult.",
+        "All Duke employees are allowed to work remotely full-time.",
+        "Leadership encourages flexibility in work arrangements."
+      ],
+      answerIndex: [3]
+    },
+    { //Soal 18
+      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
+      question: "What can be inferred about Duke's leadership from the text?",
+      options: [
+        "They prioritize environmental goals over employee well-being.",
+        "They are exploring hybrid models instead of one fixed policy.",
+        "They insist on returning everyone to the office.",
+        "They discourage experimentation with new work systems.",
+        "They believe remote work harms institutional culture."
+      ],
+      answerIndex: [1]
+    },
+    { //Soal 19
+      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
+      question: "Suppose Duke decided to make remote work mandatory for all employees. Based on the text, which problem would most likely arise?",
+      options: [
+        "The university would fail to meet its carbon reduction goals.",
+        "Many employees would struggle to remain productive while working at home.",
+        "Some departments would lose autonomy to adapt work models to their needs.",
+        "Healthcare and laboratory work would become more efficient.",
+        "The Work-From-Home Committee would be unnecessary."
+      ],
+      answerIndex: [2]
+    },
+    { //Soal 20
+      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
+      question: "Based on the graph, most employees at Duke prefer to...",
+      options: [
+        "work fully on campus.",
+        "work remotely five days a week.",
+        "work remotely for one or two days.",
+        "avoid remote work completely.",
+        "work from home only once a week."
+      ],
+      answerIndex: [1]
+    }
   ],
 }
 
 const soalPM: ujianSession = {
   name: "Penalaran Matematika",
   description: "Ada 20 soal yang akan dikerjakan dalam 42,5 menit",
+  duration: 42.5 * 60,
   questions: [
-    {
-      txtField: `Sebuah kolam berbentuk persegi dengan panjang sisi 4 m. Sebuah batu akan dilemparkan tepat di tengah kolam sehingga timbul riak gelombang berbentuk lingkaran. Riak gelombang yang terjadi akan melebar 10 cm setiap detik.`,
-      question: `Jika $R(t)$ menyatakan jari-jari riak gelombang setelah $t$ detik, maka $R(t)$ dapat dinyatakan dengan persamaan .... (dalam cm)`,
+    { //Soal 1
+      txtField: "Keluarga Langlangbhumi adalah salah satu keluarga yang telah ada sejak jaman Kerajaan Majapahit. Pada tahun 2025, keluarga besar Langlangbhumi terdiri dari 5 golongan tua dan 11 keluarga golongan muda. Setiap caturwulan, Keluarga Langlangbhumi mengadakan arisan. Untuk persiapan arisan, Keluarga Langlangbhumi mengadakan rapat keluarga dengan setiap keluarga diwakili oleh satu orang. Pada rapat tersebut akan dipilih panitia arisan yang terdiri dari ketua, bendahara, dan sekretaris. Pemilihan dilakukan secara acak.",
+      question: "Banyak cara terpilihnya panitia arisan dengan golongan tua sebagai ketua adalah …",
+      options: ["60", "1050", "1280", "3360", "4096"],
+      answerIndex: [1]
+    },
+    { //Soal 2
+      txtField: "Keluarga Langlangbhumi adalah salah satu keluarga yang telah ada sejak jaman Kerajaan Majapahit. Pada tahun 2025, keluarga besar Langlangbhumi terdiri dari 5 golongan tua dan 11 keluarga golongan muda. Setiap caturwulan, Keluarga Langlangbhumi mengadakan arisan. Untuk persiapan arisan, Keluarga Langlangbhumi mengadakan rapat keluarga dengan setiap keluarga diwakili oleh satu orang. Pada rapat tersebut akan dipilih panitia arisan yang terdiri dari ketua, bendahara, dan sekretaris. Pemilihan dilakukan secara acak.",
+      question: "Keluarga Langlangbhumi memutuskan bahwa akan ada 4 keluarga yang mendapatkan undian arisan. Jika keempat keluarga tersebut mendapatkan nominal uang arisan yang sama, peluang keempat keluarga tersebut berasal dari golongan muda adalah ….",
+      options: ["1/364", "55/1092", "33/182", "5/16", "11/16"],
+      answerIndex: [2]
+    },
+    { //Soal 3
+      txtField: "Keluarga Langlangbhumi adalah salah satu keluarga yang telah ada sejak jaman Kerajaan Majapahit. Pada tahun 2025, keluarga besar Langlangbhumi terdiri dari 5 golongan tua dan 11 keluarga golongan muda. Setiap caturwulan, Keluarga Langlangbhumi mengadakan arisan. Untuk persiapan arisan, Keluarga Langlangbhumi mengadakan rapat keluarga dengan setiap keluarga diwakili oleh satu orang. Pada rapat tersebut akan dipilih panitia arisan yang terdiri dari ketua, bendahara, dan sekretaris. Pemilihan dilakukan secara acak.",
+      question: "Panitia terpilih lalu mengundi tiga keluarga yang akan dimintai bantuan untuk menyediakan konsumsi arisan. Peluang terpilih tiga keluarga yang berasal dari golongan yang sama adalah ….",
+      options: ["165", "175", "560", "990", "1050"],
+      answerIndex: [1]
+    },
+    { //Soal 4
+      txtField: "Keluarga Langlangbhumi adalah salah satu keluarga yang telah ada sejak jaman Kerajaan Majapahit. Pada tahun 2025, keluarga besar Langlangbhumi terdiri dari 5 golongan tua dan 11 keluarga golongan muda. Setiap caturwulan, Keluarga Langlangbhumi mengadakan arisan. Untuk persiapan arisan, Keluarga Langlangbhumi mengadakan rapat keluarga dengan setiap keluarga diwakili oleh satu orang. Pada rapat tersebut akan dipilih panitia arisan yang terdiri dari ketua, bendahara, dan sekretaris. Pemilihan dilakukan secara acak.",
+      question: "Peluang terpilihnya panitia dengan ketua dan bendahara berasal dari golongan yang berbeda adalah ....",
+      options: ["11/48", "11/40", "11/32", "11/24", "11/16"],
+      answerIndex: [3]
+    },
+    { //Soal 5
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
+      question: "Jika K n menyatakan barisan dari banyak bulir pada kolom A dimulai dari A1 hingga A8, maka K n = ….",
+      options: ["n + 8, n = 1, 2, 3,…, 8", "n, n = 1, 2, 3,…, 8", "9n, n = 1, 2, 3,…, 8", "8n – 8, n = 1, 2, 3,…, 8", "4n2 – 3, n = 1, 2, 3,…, 8"],
+      answerIndex: [3]
+    },
+    { //Soal 6
+      type: "MULTIPLE_SELECTION",
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
+      question: "Pilihlah pernyataan yang Benar untuk masing-masing pernyataan di bawah ini!*",
       options: [
-          `$R(t) = 10t$`,
-          `$R(t) = 5t$`,
-          `$R(t) = 2,5t$`,
-          `$R(t) = 10t - 4$`,
-          `$R(t) = 5t - 4$`,
-          ],
+        "Banyak bulir pada petak D4 adalah 28 bulir.",
+        "Jumlah semua bulir pada kolom H adalah 256 bulir.",
+        "Banyak bulir pada petak berwarna hitam mengikuti barisan bilangan ganjil.",
+        "Selisih banyak bulir pada H8 dan A1 adalah 63 bulir.",
+        "Jumlah semua bulir pada papan catur adalah 2080 bulir."
+      ],
+      answerIndex: [0, 3, 4]
+    },
+    { //Soal 7
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
+      question: "Hasil bagi banyak bulir pada petak B6 dengan banyak bulir pada petak E3 adalah ....",
+      options: ["1", "2", "3", "4", "5"],
+      answerIndex: [1]
+    },
+    { //Soal 8
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
+      question: "Jika banyak bulir pada tiap petak ditambah sesuai dengan label barisnya (contoh: petak A1 dan E1 masing-masing akan ditambah 1 bulir, sementara petak C2 dan F4 akan ditambah masing-masing 2 dan 4 bulir), maka jumlah penambahan bulir padinya adalah ....",
+      options: ["36", "288", "2080", "2368", "4160"],
+      answerIndex: [1]
+    },
+    { //Soal 9
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
+      question: "Jarak Ramon dari tiang lampu adalah ... m.",
+      options: ["2,4", "3,36", "4,48", "5,6", "8,0"],
+      answerIndex: [3]
+    },
+    { //Soal 10
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
+      question: "Jika Ramon harus berjalan sejauh 3,36 m sepanjang tepi jalan agar tepat berseberangan dengan lampu jalan, maka lebar jalan raya tersebut adalah ... m.",
+      options: ["2,4", "3,36", "4,48", "5,6", "8,0"],
+      answerIndex: [2]
+    },
+    { //Soal 11
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
+      question: "Jika Ramon berjalan sepanjang sisi jalan dengan laju tetap, perbandingan antara bayangan Ramon dan jarak Ramon dengan lampu adalah ....",
+      options: ["2 : 5", "3 : 7", "5 : 11", "7 : 13", "tidak konstan"],
+      answerIndex: [1]
+    },
+    { //Soal 12
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
+      question: "Ramon meloncat kecil ke atas. Jika bayangan ujung kepala Ramon bergerak sejauh 40 cm, tinggi loncatan Ramon adalah ... cm.",
+      options: ["20", "30", "40", "50", "60"],
       answerIndex: [0]
     },
-    {
-      txtField: `Sebuah kolam berbentuk persegi dengan panjang sisi 4 m. Sebuah batu akan dilemparkan tepat di tengah kolam sehingga timbul riak gelombang berbentuk lingkaran. Riak gelombang yang terjadi akan melebar 10 cm setiap detik.`,
-      question: `Luas di dalam lingkaran riak gelombang setelah $t$ detik dinyatakan dengan $L(t)$, maka bentuk matematika dari $L(t)$ adalah .... $cm^2$`,
+    { //Soal 13
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
+      question: "Berdasarkan diagram di atas, jumlah tamu yang sedang menginap di hotel tersebut tidak berubah pada hari ....",
+      options: ["Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
+      answerIndex: [0]
+    },
+    { //Soal 14
+      type: "MULTIPLE_SELECTION",
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
+      question: "Pilihlah pernyataan yang Benar untuk masing-masing pernyataan di bawah ini!*",
       options: [
-        "$L(t) = \\pi t^2$",
-        "$L(t) = 10 \\pi t^2$",
-        "$L(t) = 100 \\pi t^2$",
-        "$L(t) = 25\\pi t^2$",
-        "$L(t) = 250\\pi^2t^2$",
+        "Penambahan jumlah tamu terbanyak pada minggu itu adalah hari Jumat.",
+        "Pada akhir hari Minggu, masih ada tamu yang menginap.",
+        "Rata-rata penambahan jumlah tamu dalam satu minggu itu adalah 10 orang.",
+        "Pada hari Kamis, hotel mengalami penurunan jumlah tamu terbanyak.",
+        "Total tamu yang masuk selama satu minggu adalah 490 orang."
+      ],
+      answerIndex: [1, 4]
+    },
+    { //Soal 15
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
+      question: "Jika tiap tamu menghasilkan keuntungan bersih sebesar Rp500.000,00, maka total keuntungan bersih hotel pada satu minggu itu adalah ... juta rupiah.",
+      options: ["30", "215", "245", "460", "490"],
+      answerIndex: [2]
+    },
+    { //Soal 16
+      type: "MULTIPLE_SELECTION",
+      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
+      question: "Staf hotel akan merasa kewalahan jika tamu yang masuk melebihi rata-rata mingguan ditambah 1/4 simpangan mutlak. Diasumsikan jumlah tamu yang masuk dan keluar tiap minggu masih memiliki pola yang sama. Pilihlah semua hari staf hotel merasa kewalahan dari pilihan-pilihan berikut!*",
+      options: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"],
+      answerIndex: [0, 3]
+    },
+    { //Soal 17
+      txtField: "Ramon akan menghias kamarnya dengan menempelkan wallpaper pada dinding kamarnya. Ramon membeli sebungkus wallpaper berisi 50 lembar wallpaper berukuran 20×20 cm. Ramon akan memasang sejumlah lembar wallpaper secara rapat dan membentuk persegi panjang.",
+      question: "Jika f adalah fungsi yang menyatakan luas wallpaper yang dipasang, f(x) = ... m².",
+      options: ["0,04x", "0,4x", "4x", "40x", "400x"],
+      answerIndex: [0]
+    },
+    { //Soal 18
+      type: "MULTIPLE_SELECTION",
+      txtField: "Ramon akan menghias kamarnya dengan menempelkan wallpaper pada dinding kamarnya. Ramon membeli sebungkus wallpaper berisi 50 lembar wallpaper berukuran 20×20 cm. Ramon akan memasang sejumlah lembar wallpaper secara rapat dan membentuk persegi panjang.",
+      question: "Jika Ramon menggunakan 24 lembar wallpaper, pilihlah semua ukuran luasan dinding yang mungkin ditutupi oleh wallpaper!*",
+      options: [
+        "0,6×1,6 m²",
+        "0,8×1,2 m²",
+        "1,2×0,8 m²",
+        "1,6×0,6 m²",
+        "4,8×0,2 m²"
+      ],
+      answerIndex: [0, 1, 2, 3, 4]
+    },
+    { //Soal 19
+      txtField: "Ramon akan menghias kamarnya dengan menempelkan wallpaper pada dinding kamarnya. Ramon membeli sebungkus wallpaper berisi 50 lembar wallpaper berukuran 20×20 cm. Ramon akan memasang sejumlah lembar wallpaper secara rapat dan membentuk persegi panjang.",
+      question: "Agar lebih menarik, Ramon tidak jadi memasang wallpaper secara rapat dan memberikan jarak antar lembar sejauh 5 cm. Jika Ramon menyusun 24 lembar wallpaper dalam 4 baris dan 6 kolom, ukuran luasan dinding yang terhiasi wallpaper adalah ... m².",
+      options: [
+        "0,95×1,45",
+        "1×1,5",
+        "1,45×0,95",
+        "1,5×1",
+        "1,5×1,5"
       ],
       answerIndex: [2]
     },
-    {
-      txtField: `Sebuah kolam berbentuk persegi dengan panjang sisi 4 m. Sebuah batu akan dilemparkan tepat di tengah kolam sehingga timbul riak gelombang berbentuk lingkaran. Riak gelombang yang terjadi akan melebar 10 cm setiap detik.`,
-      question: `Setelah 10 detik riak berjalan, maka luas daerah di luar riak gelombang pertama adalah ....`,
+    { //Soal 20
+      txtField: "Ramon akan menghias kamarnya dengan menempelkan wallpaper pada dinding kamarnya. Ramon membeli sebungkus wallpaper berisi 50 lembar wallpaper berukuran 20×20 cm. Ramon akan memasang sejumlah lembar wallpaper secara rapat dan membentuk persegi panjang.",
+      question: "Jika Ramon menggunakan 24 lembar wallpaper dan harga wallpaper tersebut adalah Rp20.000,00 per lembar, maka Ramon mengeluarkan uang sebesar ... rupiah untuk membeli wallpaper.",
       options: [
-        "$(4 - \\pi) 10^2$",
-        "$(4 - \\pi) 10^4$",
-        "$(16 - \\pi)$",
-        "$(16 - \\pi)10^2$",
-        "$(16 - \\pi)10^4$",
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `Sebuah kolam berbentuk persegi dengan panjang sisi 4 m. Sebuah batu akan dilemparkan tepat di tengah kolam sehingga timbul riak gelombang berbentuk lingkaran. Riak gelombang yang terjadi akan melebar 10 cm setiap detik.`,
-      question: `Waktu yang dibutuhkan riak gelombang agar menyentuh sisi kolam untuk pertama kalinya adalah .... detik`,
-      options: [
-        "$40$",
-        "$20$",
-        "$40\\sqrt{2}$",
-        "$20\\sqrt{2}$",
-        "$40\\sqrt{2} + 20$",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `Pada bulan Juni, Pandi dan Redi memanen hasil ternak ikannya. Pandi memanen 150 ikan lele dan 75 ikan gurame dengan berat total 60 kg. Redi memanen 75 ikan gurami dan 150 ikan nila dengan berat total 75 kg. Setiap ikan dari jenis yang sama díasumsikan memiliki berat yang sama.`,
-      question: `Satu bulan kemudian, Pandi kembali memanen 150 ikan lele dan 75 ikan gurame dengan berat total 67,5 kg. Sedangkan Redi memanen 75 ikan gurame dan 150 ikan nila dengan berat total 82,5 kg. Jika diasumsikan berat setiap ikan gurame sama dengan berat pada saat panen bulan lalu, total kenaikan berat seekor ikan lele dan ikan nila adalah .... g.`,
-      options: [
-        "50",
-        "100",
-        "150",
-        "200",
-        "250",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `Pada bulan Juni, Pandi dan Redi memanen hasil ternak ikannya. Pandi memanen 150 ikan lele dan 75 ikan gurame dengan berat total 60 kg. Redi memanen 75 ikan gurami dan 150 ikan nila dengan berat total 75 kg. Setiap ikan dari jenis yang sama díasumsikan memiliki berat yang sama.`,
-      question: `Pada saat Pandi dan Redi memanen ikan ternaknya, Seno juga memanen ikan lele dan Ikan nila. Seno menjual 300 ikan lele dan 200 ikan nila dengan berat total 70 kg. Jika harga 1 kg ikan lele Rp20.000,00 dan 1 kg ikan nila Rp27.500,00, uang yang diperoleh Seno adalah ....`,
-      options: [
-        "Rp1.500.000,00",
-        "Rp1.600.000,00",
-        "Rp1.700.000,00",
-        "Rp1.800.000,00",
-        "Rp1.900.000,00",
-      ],
-      answerIndex: [2]
-    },
-    {
-      // txtField: ``,
-      question: `Ibu Vanessa mengandung anak kembar laki-laki dan perempuan. Ibu Vanessa memiliki lingkar perut sebelum hamil sebesar 90 cm. Hasil analisa dokter kandungan, lingkar perut seorang ibu akan bertambah 1 cm per minggu jika bayinya laki-laki dan bertambah 0,5 cm per minggu jika bayinya perempuan. Berapa diameter perut Ibu Vanessa saat ini jika usia kandungan sudah 30 minggu?`,
-      options: [
-        "41 cm",
-        "42,3 cm",
-        "43 cm",
-        "43,75 cm",
-        "44 cm",
-      ],
-      answerIndex: [2]
-    },
-    {
-      txtField: `Toko Laku menerima kiriman beras dari tiga distributor untuk dijual kembali. Jadwal peneri maannya adalah beras merek A setiap 3 hari sebanyak 100 kg; beras merek B setiap 4 hari sebanyak 200 kg; dan beras merek C setiap 5 hari sebanyak 300 kg. Pada tanggal 1 Mei 2023 toko tersebut menerima kiriman beras merek A, B, dan C secara bersamaan untuk pertama kalinya.`,
-      question: `Mulai 1 Juni 2023, kiriman beras merek C ditambah menjadi 350 kg pada setiap kali pengiriman. Total kiriman beras semua merek yang diterima Toko Laku pada bulan Juni adalah .... kg.`,
-      options: [
-        "4.350",
-        "4.400",
-        "4.550",
-        "4.700",
-        "5.050",
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `Toko Laku menerima kiriman beras dari tiga distributor untuk dijual kembali. Jadwal peneri maannya adalah beras merek A setiap 3 hari sebanyak 100 kg; beras merek B setiap 4 hari sebanyak 200 kg; dan beras merek C setiap 5 hari sebanyak 300 kg. Pada tanggal 1 Mei 2023 toko tersebut menerima kiriman beras merek A, B, dan C secara bersamaan untuk pertama kalinya.`,
-      question: `Selisih berat beras merek B dan C yang diterima Toko Laku pada bulan Mei 2023 adalah .... kg.`,
-      options: [
-        "900",
-        "800",
-        "600",
-        "500",
-        "400",
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `Toko Laku menerima kiriman beras dari tiga distributor untuk dijual kembali. Jadwal peneri maannya adalah beras merek A setiap 3 hari sebanyak 100 kg; beras merek B setiap 4 hari sebanyak 200 kg; dan beras merek C setiap 5 hari sebanyak 300 kg. Pada tanggal 1 Mei 2023 toko tersebut menerima kiriman beras merek A, B, dan C secara bersamaan untuk pertama kalinya.`,
-      question: `Toko Laku menerima kiriman beras merek A dan C pada hari yang sama untuk ketiga kalinya pada ....`,
-      options: [
-        "15 Mei 2023",
-        "16 Mei 2023",
-        "21 Mei 2023",
-        "30 Mei 2023",
-        "31 Mei 2023",
+        "Rp480.000,00",
+        "Rp520.000,00",
+        "Rp620.000,00",
+        "Rp780.000,00",
+        "Rp1.000.000,00"
       ],
       answerIndex: [4]
-    },
-    {
-      txtField: `Sebuah perusahaan kereta api melayani tiga rute perjalanan pulang pergi di dalam kota, yaitu rute A-B (dari stasiun A ke B), A - C (dari stasiun A ke C), dan A - D (dari stasiun A ke D). Pada pekan pertama total jumlah penumpang pada ketiga rute tersebut adalah 600.000. Pada pekan kedua, terjadi penurunan jumlah penumpang pada rute A - C dan A - D sebanyak masing-masing 20%. Sedangkan jumlah penumpang pada pekan kedua adalah 528.000.`,
-      question: `Total jumlah penumpang pada rute A - B pada pekan pertama adalah ....`,
-      options: [
-        "72.000",
-        "160.000",
-        "200.000",
-        "240.000",
-        "360.000",
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: ``,
-      question: `Misalkan satu rangkaian kereta terdiri dari 8 gerbong dan dalam satu hari terjadi perjalanan dari A ke B sebanyak 75 kali, dan begitu juga sebaliknya. Rata-rata jumlah penumpang pada per perjalanan di pekan pertama adalah ....`,
-      options: [
-        "168",
-        "200",
-        "229",
-        "480",
-        "520",
-      ],
-      answerIndex: [2]
-    },
-    {
-      // txtField: ``,
-      question: `Pak Anggit membeli motor pertama seharga Rp16.000.000,00 dan menjualnya dengan keuntungan 8%. Kemudian, Pak anggit membeli kembali motor kedua dengan harga Rp20.000.000,00 dan menjualnya kembali. Pak Anggit memperoleh keuntungan sebesar 7% dari penjualan kedua motor tersebut. Pada penjualan motor kedua, pak Anggit mengalami ....`,
-      options: [
-        "Keuntungan 6,2%",
-        "Kerugian 6,2%",
-        "Keuntungan 7,2%",
-        "Kerugian 7,2%",
-        "Keuntungan 5,8%",
-      ],
-      answerIndex: [0]
-    },
-    {
-      // txtField: ``,
-      question: `Andi akan membuat suatu larutan yang mencampurkan isi dari dua botol yang volumenya sama. Pada botol pertama, terdapat campuran antara larutan garam dan air sebanyak 3:8. Sedangkan pada botol kedua, perbandingan antara garam dengan air 2:9. Dari percampuran keduanya, maka larutan yang didapatkan Andi mempunyai perbandingan antara larutan garam dan air adalah ....`,
-      options: [
-        "9:16",
-        "5:17",
-        "16:27",
-        "7:72",
-        "11:32",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `Dua akuarium A dan B diisi air sehingga volumnya sama yaitu 64.000 $cm^3$. Anto memiliki 30 kelereng kecil dan 20 kelereng besar yang akan dimasukkan ke dalam akuarium tersebut. Ke dalam akuarium A dimasukkan 7 kelereng kecil dan 7 kelereng besar sehingga volume akuarium yang terisi menjadi 64.821 $\\frac{1}{3} cm^3$ sedangkan ke dalam akuarium B dimasukkan 21 kelereng kecil dan 7 kelereng besar sehingga volume akuarium yang terisi menjadi 64.880 $cm^3$.`,
-      question: `Volume seluruh kelereng Anto yang tidak dimasukkan ke akuarium adalah .... $cm^3$`,
-      options: [
-        "$113 \\frac{1}{7}$",
-        "$226 \\frac{2}{7}$",
-        "$251 \\frac{3}{7}$",
-        "$687 \\frac{5}{21}$",
-        "$712 \\frac{1}{3}$",
-      ],
-      answerIndex: [3]
-    },
-    {
-      txtField: `Pendapatan sopir bus antarkota ditentukan dari besarnya UMR (Upah Minimum Regional) ditambah uang lembur per jam, dan ditambah hasil kali rata-rata indeks kepuasan pelanggan dengan jumlah penumpang dalam satu bulan kali 1000. Indeks kepuasan pelanggan dalam bentuk persentase dari 50% - 90%. Uang lembur adalah Rp20.000,00 per jam, dan maksimal lembur dalam satu hari 3 jam.`,
-      question: `Jika upah minimum regional (UMR) daerah setempat adalah Rp3.200.000,00, rata-rata indeks adalah i, banyaknya penumpang x, dan jumlah jam lembur dalam satu bulan adalah y, maka pendapatan sopir bus antar kota (P) dapat ditulis dengan rumus ....`,
-      options: [
-        "$p = 1000ix + 20000y + 3200000$",
-        "$p = 20000x + 1000iy + 3200000$",
-        "$p = ix + 3200000x - 20000y$",
-        "$p = ix + 20000y + 3200000$",
-        "$p = iy - 20000 - 3200000$",
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Sistem telekomunikasi di Indonesia terbagi menjadi jaringan tetap dan jaringan bergerak. Dalam perkembangannya, telah terjadi pergantian sektor telekomunikasi dari yang awalnya menggunakan jaringan telekomunikasi berbasis kabel namun kebutuhan akan ases informasi yang akurat telah menggeser moda telekomunikasi di Indonesia sejak tahun 2000an.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Mulai tahun 2000 sampai 2007, banyak pengguna telepon seluler $f(x)$ dimodelkan oleh persamaan $f(x) = 1,3x^2 + 1,6x + 3,7$ dengan $x = 0$ menggambarkan tahun 2000.`,
-      question: `Banyak pengguna telepon seluler di Indonesia akan mencapai angka 78,6 juta pada tahun ....`,
-      options: [
-        "2006",
-        "2007",
-        "2005",
-        "2009",
-        "2010",
-      ],
-      answerIndex: [1]
-    },
-    {
-      txtField: `&nbsp;&nbsp;&nbsp;&nbsp;Sistem telekomunikasi di Indonesia terbagi menjadi jaringan tetap dan jaringan bergerak. Dalam perkembangannya, telah terjadi pergantian sektor telekomunikasi dari yang awalnya menggunakan jaringan telekomunikasi berbasis kabel namun kebutuhan akan ases informasi yang akurat telah menggeser moda telekomunikasi di Indonesia sejak tahun 2000an.
-      \n&nbsp;&nbsp;&nbsp;&nbsp;Mulai tahun 2000 sampai 2007, banyak pengguna telepon seluler $f(x)$ dimodelkan oleh persamaan $f(x) = 1,3x^2 + 1,6x + 3,7$ dengan $x = 0$ menggambarkan tahun 2000.`,
-      question: `Banyak pengguna telepon seluler pada tahun 2005 adalah ....`,
-      options: [
-        "60.100.000",
-        "57.100.000",
-        "49.100.000",
-        "45.200.000",
-        "44.200.000",
-      ],
-      answerIndex: [4]
-    },
-    {
-      txtField: `Andi mengikuti kursus academic writing untuk melatih kemampuannya dalam menulis. Academic writing adalah kemampuan menulis karya ilmiah dalam Bahasa Inggris yang mengikuti kaidah Bahasa Inggris yang baik dan benar. Untuk belajar menulis dengan baik, guru meminta Andi untuk menulis sebuah teks yang terdiri dari 100 kata pada minggu pertama. Kemudian pada minggu-minggu berikutnya Andi harus menambahkan 20 kata untuk setiap minggu. Andi menuliskan teks dengan jumlah kata sesuai dengan permintaan. `,
-      question: `Pada minggu ke berapakah Andi menulis teks sebanyak 300 kata?`,
-      options: [
-        "9",
-        "10",
-        "11",
-        "12",
-        "13",
-      ],
-      answerIndex: [0]
-    },
-    {
-      txtField: ``,
-      question: `Sebuah nampan pada tumpeng jika diberdirikan akan setinggi 50 cm. Tumpeng akan diletakkan tepat di tengah, jika masing-masing ujung tumpeng berjarak 7,5 cm dari ujung nampan. Berapa isian nasi yang dibutuhkan agar tumpeng tersebut padat, jika tinggi tumpeng yang diinginkan adalah 30 cm?`,
-      options: [
-        "9.625 $cm^3$",
-        "96,25 liter",
-        "11.250 ml",
-        "12.500 $cm^3$",
-        "3,85 liter",
-      ],
-      answerIndex: [0]
-    },
+    }
   ],
 }
 
@@ -2226,7 +1793,9 @@ export const data: Ujian[] = [
     name: "Try Out UTBK",
     description: "Rin Education",
     items: [
-      soalPU,
+      soalPUInduktif,
+      soalPUDeduktif,
+      soalPUKuantitatif,
       soalPPU,
       soalPBM,
       soalPK,
