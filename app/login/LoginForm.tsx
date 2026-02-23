@@ -12,9 +12,10 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useRouter } from "next/navigation";
 import { getFormData } from "@/lib/getFormData";
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import { useLoading } from "@/context/LoadingContext";
 import { login } from "@/be/action/user";
+import { Eye, EyeOff } from "lucide-react";
 
 export function LoginForm() {
   const router = useRouter();
@@ -38,6 +39,8 @@ export function LoginForm() {
       setLoading(false)
     }
   }
+
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <Card className="mx-auto max-w-sm">
@@ -69,15 +72,25 @@ export function LoginForm() {
               />
             </div>
             <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label>Kode Ujian</Label>
+              <Label>Kode Ujian</Label>
+
+              <div className="relative">
+                <Input
+                  name="kode_ujian"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Masukan Kode Ujian"
+                  required
+                  className="pr-10"
+                />
+
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"
+                >
+                  {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
+                </button>
               </div>
-              <Input
-                name="kode_ujian"
-                type="password"
-                placeholder="Masukan Kode Ujian"
-                required
-              />
             </div>
             <Button type="submit" className="w-full">
               Login
