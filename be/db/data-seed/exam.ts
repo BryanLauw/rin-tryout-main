@@ -191,8 +191,8 @@ const soalPUDeduktif: ujianSession = {
       answerIndex: [4]
     },
     { //Soal 2
-      txtField: "Jika Dina lulus ujian, ia akan dibelikan sepeda baru. Jika Dina mendapat beasiswa, ia akan melanjutkan studi ke luar negeri. Jika Dina lulus ujian atau mendapat beasiswa, manakah simpulan berikut yang PALING BENAR?",
-      question: "Manakah simpulan yang paling benar?",
+      txtField: "Jika Dina lulus ujian, ia akan dibelikan sepeda baru. Jika Dina mendapat beasiswa, ia akan melanjutkan studi ke luar negeri.",
+      question: "Jika Dina lulus ujian atau mendapat beasiswa, manakah simpulan berikut yang PALING BENAR?",
       options: [
         "Dina akan dibelikan sepeda baru dan melanjutkan studi.",
         "Dina akan dibelikan sepeda baru atau melanjutkan studi.",
@@ -307,24 +307,24 @@ const soalPUKuantitatif: ujianSession = {
   duration: 10 * 60,
   questions: [
     { //Soal 1
-      txtField: "Sebuah aplikasi pengiriman makanan mencatat jumlah pesanan setiap hari. Data pesanan pada hari Selasa hingga Sabtu berturut-turut adalah 120, 117, 122, 119, dan 124. Jika pola perubahan jumlah pesanan bersifat konstan (berulang) sejak hari Senin, maka jumlah pesanan pada hari Senin adalah ....",
-      question: "Berapa jumlah pesanan pada hari Senin?",
+      txtField: "Sebuah aplikasi pengiriman makanan mencatat jumlah pesanan setiap hari. Data pesanan pada hari Selasa hingga Sabtu berturut-turut adalah 120, 117, 122, 119, dan 124.",
+      question: " Jika pola perubahan jumlah pesanan bersifat konstan (berulang) sejak hari Senin, maka jumlah pesanan pada hari Senin adalah ....",
       options: ["115", "117", "118", "119", "121"],
       answerIndex: [0]
     },
     { //Soal 2
-      txtField: "Di sebuah peternakan, perbandingan jumlah sapi, kambing, dan domba adalah 5 : 3 : 2. Jika total jumlah hewan ternak tersebut adalah 150 ekor, maka jumlah kambing dan domba adalah ... ekor.",
-      question: "Berapa jumlah kambing dan domba?",
+      txtField: "Di sebuah peternakan, perbandingan jumlah sapi, kambing, dan domba adalah 5 : 3 : 2.",
+      question: "Jika total jumlah hewan ternak tersebut adalah 150 ekor, maka jumlah kambing dan domba adalah ... ekor.",
       options: ["45", "60", "75", "90", "105"],
       answerIndex: [2]
     },
     { //Soal 3
-      txtField: "Bilangan yang PALING MENDEKATI hasil penjumlahan 2,75 + 45,2% adalah ....",
-      question: "Hasil penjumlahan tersebut mendekati?",
+      txtField: "",
+      question: "Bilangan yang PALING MENDEKATI hasil penjumlahan 2,75 + 45,2% adalah ....",
       options: ["3,02", "3,20", "3,21", "3,22", "3,23"],
       answerIndex: [1]
     },
-    { //Soal 4
+    { //Soal 4 //ERROR
       txtField: "Berikut adalah data penjualan minuman di Kafe Segar dari hari Senin hingga Jumat.\n\nHari: Senin, Selasa, Rabu, Kamis, Jumat\nKopi: 30, 32, 34, 36, 38\nTeh: 25, 24, 23, 22, 21\nJus: 20, 22, 24, 26, 28",
       question: "Berdasarkan data tersebut, manakah pernyataan yang PALING TEPAT untuk menggambarkan kondisi penjualan minuman pada hari Sabtu?",
       options: [
@@ -337,32 +337,32 @@ const soalPUKuantitatif: ujianSession = {
       answerIndex: [1]
     },
     { //Soal 5
-      txtField: "Berdasarkan data pada soal nomor 24, pada hari apakah Kafe Segar memiliki persentase penjualan kopi PALING BESAR?",
-      question: "Hari dengan persentase penjualan kopi terbesar?",
+      txtField: "",
+      question: "Berdasarkan data pada soal nomor 4, pada hari apakah Kafe Segar memiliki persentase penjualan kopi PALING BESAR?",
       options: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"],
       answerIndex: [4]
     },
-    { //Soal 6
+    { //Soal 6 //ERROR
       txtField: "Tabel berikut menunjukkan data jumlah pelamar divisi keuangan di PT Sukses Selalu selama lima tahun.\n\nTahun 1: 40, Tahun 2: 45, Tahun 3: 55, Tahun 4: 60, Tahun 5: 70.\nJika total pelamar selama lima tahun tersebut adalah 270 orang, jumlah pelamar pada tahun-tahun yang tidak melebihi 20% dari total pelamar adalah ... orang.",
       question: "Jumlah pelamar pada tahun-tahun yang tidak melebihi 20% total?",
       options: ["80", "85", "90", "95", "100"],
       answerIndex: [1]
     },
     { //Soal 7
-      txtField: "Sebuah toko roti mencatat stok roti selama 5 hari berturut-turut: 50, 53, 58, 65, 74. Pada periode yang sama, jumlah roti terjual adalah 30, 34, 39, 45, 52. Jika tren perubahan stok dan penjualan bersifat konstan, berapa sisa stok setelah penjualan pada hari ke-6?",
-      question: "Sisa stok hari ke-6?",
+      txtField: "Sebuah toko roti mencatat stok roti selama 5 hari berturut-turut: 50, 53, 58, 65, 74. Pada periode yang sama, jumlah roti terjual adalah 30, 34, 39, 45, 52.",
+      question: "Jika tren perubahan stok dan penjualan bersifat konstan, berapa sisa stok setelah penjualan pada hari ke-6?",
       options: ["23", "24", "25", "26", "27"],
       answerIndex: [2]
     },
     { //Soal 8
-      txtField: "Jumlah pengunjung museum pada hari Minggu 40% lebih tinggi daripada hari Sabtu. Jika pengunjung hari Minggu sebanyak 56 orang, maka pengunjung hari Sabtu adalah ... orang.",
-      question: "Pengunjung hari Sabtu?",
+      txtField: "Jumlah pengunjung museum pada hari Minggu 40% lebih tinggi daripada hari Sabtu.",
+      question: "Jika pengunjung hari Minggu sebanyak 56 orang, maka pengunjung hari Sabtu adalah ... orang.",
       options: ["35", "38", "40", "42", "45"],
       answerIndex: [2]
     },
-    { //Soal 9
-      txtField: "Bacalah dua informasi berikut.\n(1) Rata-rata nilai ujian 15 siswa adalah 80.\n(2) Rata-rata nilai ujian seluruh siswa adalah 75.\nPilihlah informasi yang dapat digunakan untuk menjawab pertanyaan, \"Berapa jumlah nilai seluruh siswa?\"",
-      question: "Informasi mana yang cukup?",
+    { //Soal 9 //ERROR
+      txtField: "Bacalah dua informasi berikut.\n(1) Rata-rata nilai ujian 15 siswa adalah 80.\n(2) Rata-rata nilai ujian seluruh siswa adalah 75.",
+      question: "Pilihlah informasi yang dapat digunakan untuk menjawab pertanyaan, \"Berapa jumlah nilai seluruh siswa?\"",
       options: [
         "Cukup (1) saja.",
         "Cukup (2) saja.",
@@ -372,7 +372,7 @@ const soalPUKuantitatif: ujianSession = {
       ],
       answerIndex: [4]
     },
-    { //Soal 10
+    { //Soal 10 //ERROR
       txtField: "Lima orang pedagang menjual dua jenis buah: mangga dan jeruk. Keuntungan jeruk adalah 1/3 dari keuntungan mangga. Berikut data penjualan masing-masing pedagang:\nPedagang: Ani, Budi, Cici, Dedi, Eka\nMangga (kg): 40, 45, 50, 55, 60\nJeruk (kg): 80, 70, 60, 50, 40\nPedagang manakah yang memperoleh keuntungan TERBESAR KEDUA?",
       question: "Pedagang dengan keuntungan terbesar kedua?",
       options: ["Ani", "Budi", "Cici", "Dedi", "Eka"],
@@ -383,8 +383,8 @@ const soalPUKuantitatif: ujianSession = {
 
 const soalPPU: ujianSession = {
   name: "Pengetahuan dan Pemahaman Umum",
-  description: "Ada 20 soal yang akan dikerjakan dalam 10 menit",
-  duration: 10 * 60,
+  description: "Ada 20 soal yang akan dikerjakan dalam 15 menit",
+  duration: 15 * 60,
   questions: [
     { //Soal 1
       txtField: "(1) Peraturan Presiden Nomor 4 Tahun 2026 tentang Lahan Sawah Dilindungi diteken sebagai bentuk komitmen pemerintah menjaga kedaulatan pangan. (2) Regulasi ini bagaikan pisau bermata dua bagi industri properti. (3) Di satu sisi, kebijakan tersebut melindungi lahan pertanian produktif dari alih fungsi. (4) Di sisi lain, aturan ini berpotensi memperlebar backlog perumahan yang mencapai jutaan unit. (5) Para pengembang menilai pemetaan lahan sawah dilindungi kerap hanya berdasarkan citra satelit, tanpa verifikasi di lapangan. (6) Akibatnya, lahan yang sebenarnya tidak lagi produktif ikut terkunci dan tidak bisa dimanfaatkan untuk pembangunan perumahan rakyat. (7) Kondisi ini memicu perdebatan sengit antara kementerian terkait dan asosiasi pengembang.",
@@ -392,7 +392,7 @@ const soalPPU: ujianSession = {
       options: ["(2)", "(3)", "(4)", "(5)", "(7)"],
       answerIndex: [2]
     },
-    { //Soal 2
+    { //Soal 2 //ERROR
       txtField: "(1) Peraturan Presiden Nomor 4 Tahun 2026 tentang Lahan Sawah Dilindungi diteken sebagai bentuk komitmen pemerintah menjaga kedaulatan pangan. (2) Regulasi ini bagaikan pisau bermata dua bagi industri properti. (3) Di satu sisi, kebijakan tersebut melindungi lahan pertanian produktif dari alih fungsi. (4) Di sisi lain, aturan ini berpotensi memperlebar backlog perumahan yang mencapai jutaan unit. (5) Para pengembang menilai pemetaan lahan sawah dilindungi kerap hanya berdasarkan citra satelit, tanpa verifikasi di lapangan. (6) Akibatnya, lahan yang sebenarnya tidak lagi produktif ikut terkunci dan tidak bisa dimanfaatkan untuk pembangunan perumahan rakyat. (7) Kondisi ini memicu perdebatan sengit antara kementerian terkait dan asosiasi pengembang.",
       question: "Kata yang memiliki makna lebih luas dari kata properti dalam kalimat (2) adalah ….",
       options: ["rumah", "gedung", "real estat", "aset", "bangunan"],
@@ -446,7 +446,7 @@ const soalPPU: ujianSession = {
       options: ["(1)", "(2)", "(3)", "(4)", "(5)"],
       answerIndex: [0]
     },
-    { //Soal 9
+    { //Soal 9 //ERROR
       txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
       question: "Kata dalam bacaan tersebut yang mengacu pada makna yang sebenarnya adalah ….",
       options: [
@@ -458,7 +458,7 @@ const soalPPU: ujianSession = {
       ],
       answerIndex: [3]
     },
-    { //Soal 10
+    { //Soal 10 //ERROR
       txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
       question: "Kata rentan dalam teks sebelumnya memiliki makna yang mirip dengan frasa dalam bacaan ini, yaitu ….",
       options: [
@@ -470,7 +470,7 @@ const soalPPU: ujianSession = {
       ],
       answerIndex: [3]
     },
-    { //Soal 11
+    { //Soal 11 //ERROR
       txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
       question: "Fungsi kata penghubung akibatnya dalam kalimat (7) adalah ....",
       options: [
@@ -482,7 +482,7 @@ const soalPPU: ujianSession = {
       ],
       answerIndex: [4]
     },
-    { //Soal 12
+    { //Soal 12 //ERROR
       txtField: "(1) Lonjakan harga cip memori di pasar global berimbas pada industri ponsel pintar tanah air. (2) Perusahaan riset pasar menaikkan proyeksi harga cip memori menjadi 90-95 persen pada triwulan pertama 2026. (3) Kenaikan ini dipicu oleh permintaan infrastruktur pusat data untuk menjalankan teknologi kecerdasan buatan. (4) Produsen semikonduktor lebih memprioritaskan memasok cip untuk pusat data yang memiliki margin keuntungan lebih tinggi. (5) Konsekuensinya, pasokan cip untuk ponsel pintar kelas bawah terus menurun. (6) Associate market analyst IDC Indonesia menyatakan, situasi ini bakal memburuk pada paruh kedua 2026. (7) Akibatnya, siklus beli ponsel baru di kalangan konsumen Indonesia diperkirakan bakal semakin panjang 1-2 tahun.",
       question: "Pandangan penulis terhadap dampak lonjakan harga cip memori adalah …",
       options: [
@@ -536,7 +536,7 @@ const soalPPU: ujianSession = {
       ],
       answerIndex: [4]
     },
-    { //Soal 17
+    { //Soal 17 //ERROR
       txtField: "(1) Kebun Raya Itera di Lampung menjadi benteng pelestarian flora khas Sumatera. (2) Dua di antaranya adalah gaharu dan kantong semar yang kini langka di habitat aslinya. (3) Sebelum kebun raya hadir, kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal. (4) Kini, gaharu dan kantong semar mulai terawat dan dikembangbiakkan oleh para peneliti. (5) Gaharu hanya bisa tumbuh di dataran rendah, sedangkan kantong semar lebih adaptif di berbagai ketinggian. (6) Tidak jarang, pengunjung kebun raya baru pertama kali melihat langsung bentuk tanaman tersebut. (7) Kondisi ini menunjukkan betapa pentingnya peran kebun raya dalam edukasi konservasi. (8) Beberapa penelitian menunjukkan bahwa manfaat gaharu dan kantong semar tidak hanya sebagai tanaman hias. (9) Keduanya sama-sama berpotensi sebagai bahan obat tradisional. (10) Gaharu mengandung senyawa aromatik yang digunakan dalam industri wewangian dan (11) kantong semar dimanfaatkan sebagai obat mata.",
       question: "Kelompok kata dalam bacaan tersebut yang memiliki pola makna sama dengan tanaman hias adalah ....",
       options: [
@@ -548,7 +548,7 @@ const soalPPU: ujianSession = {
       ],
       answerIndex: [2]
     },
-    { //Soal 18
+    { //Soal 18 //ERROR
       txtField: "(1) Kebun Raya Itera di Lampung menjadi benteng pelestarian flora khas Sumatera. (2) Dua di antaranya adalah gaharu dan kantong semar yang kini langka di habitat aslinya. (3) Sebelum kebun raya hadir, kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal. (4) Kini, gaharu dan kantong semar mulai terawat dan dikembangbiakkan oleh para peneliti. (5) Gaharu hanya bisa tumbuh di dataran rendah, sedangkan kantong semar lebih adaptif di berbagai ketinggian. (6) Tidak jarang, pengunjung kebun raya baru pertama kali melihat langsung bentuk tanaman tersebut. (7) Kondisi ini menunjukkan betapa pentingnya peran kebun raya dalam edukasi konservasi. (8) Beberapa penelitian menunjukkan bahwa manfaat gaharu dan kantong semar tidak hanya sebagai tanaman hias. (9) Keduanya sama-sama berpotensi sebagai bahan obat tradisional. (10) Gaharu mengandung senyawa aromatik yang digunakan dalam industri wewangian dan (11) kantong semar dimanfaatkan sebagai obat mata.",
       question: "Kata yang tepat di awal paragraf dua untuk menghubungkan kedua paragraf pada bacaan adalah ….",
       options: [
@@ -560,7 +560,7 @@ const soalPPU: ujianSession = {
       ],
       answerIndex: [1]
     },
-    { //Soal 19
+    { //Soal 19 //ERROR
       txtField: "(1) Kebun Raya Itera di Lampung menjadi benteng pelestarian flora khas Sumatera. (2) Dua di antaranya adalah gaharu dan kantong semar yang kini langka di habitat aslinya. (3) Sebelum kebun raya hadir, kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal. (4) Kini, gaharu dan kantong semar mulai terawat dan dikembangbiakkan oleh para peneliti. (5) Gaharu hanya bisa tumbuh di dataran rendah, sedangkan kantong semar lebih adaptif di berbagai ketinggian. (6) Tidak jarang, pengunjung kebun raya baru pertama kali melihat langsung bentuk tanaman tersebut. (7) Kondisi ini menunjukkan betapa pentingnya peran kebun raya dalam edukasi konservasi. (8) Beberapa penelitian menunjukkan bahwa manfaat gaharu dan kantong semar tidak hanya sebagai tanaman hias. (9) Keduanya sama-sama berpotensi sebagai bahan obat tradisional. (10) Gaharu mengandung senyawa aromatik yang digunakan dalam industri wewangian dan (11) kantong semar dimanfaatkan sebagai obat mata.",
       question: "Ungkapan kedua tanaman itu banyak diburu untuk diperdagangkan secara ilegal pada kalimat (3) dapat disempurnakan menjadi ….",
       options: [
@@ -572,9 +572,9 @@ const soalPPU: ujianSession = {
       ],
       answerIndex: [4]
     },
-    { //Soal 20
-      txtField: "Nenek memasak nasi \"Sega kukus bumbung\". Kakek menanam jagung \"Jagung tandur cangkul\". Nasi dimasak Kakek \"Sega cangkul kukus\". Bagaimana mengatakan \"Jagung ditanam Nenek\" dengan bahasa tersebut?",
-      question: "Ungkapan yang tepat adalah?",
+    { //Soal 20 //ERROR
+      txtField: "Nenek memasak nasi \"Sega kukus bumbung\". Kakek menanam jagung \"Jagung tandur cangkul\". Nasi dimasak Kakek \"Sega cangkul kukus\".",
+      question: "Bagaimana mengatakan \"Jagung ditanam Nenek\" dengan bahasa tersebut?",
       options: [
         "Jagung bumbung tandur.",
         "Jagung kukus tandur.",
@@ -589,10 +589,10 @@ const soalPPU: ujianSession = {
 
 const soalPBM: ujianSession = {
   name: "Kemampuan Memahami Bacaan dan Menulis",
-  description: "Ada 20 soal yang akan dikerjakan dalam 15 menit",
-  duration: 15 * 60,
+  description: "Ada 20 soal yang akan dikerjakan dalam 25 menit",
+  duration: 25 * 60,
   questions: [
-    { //Soal 1
+    { //Soal 1 //ERROR
       txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
       question: "Perbaikan kalimat (2) yang paling tepat sesuai kaidah penulisan istilah ilmiah dan tanda baca adalah ...",
       options: [
@@ -604,7 +604,7 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 2
+    { //Soal 2 //ERROR
       txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
       question: "Ketidakefektifan kalimat (3) terutama disebabkan oleh …",
       options: [
@@ -615,7 +615,7 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [1]
     },
-    { //Soal 3
+    { //Soal 3 //ERROR
       txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
       question: "Perbaikan paling tepat untuk kalimat (4) agar sesuai kaidah adalah …",
       options: [
@@ -627,7 +627,7 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 4
+    { //Soal 4 //ERROR
       txtField: "(1) Seekor gajah Sumatra ditemukan mati dalam kondisi mengenaskan tanpa kepala di area konsesi hutan tanaman industri di Kabupaten Pelalawan, Provinsi Riau. (2) Bangkai satwa dengan nama Latin Elephas maximus sumatranus itu ditemukan pada 2 Februari 2026 di Distrik Ukui, Desa Lubuk Kembang Bunga, Kecamatan Ukui. (3) Kepala Balai Besar Konservasi Sumber Daya Alam (BBKSDA) Riau Supartono menegaskan bahwa kematian gajah tersebut merupakan peristiwa yang sangat serius. (4) Menurutnya kejahatan terhadap gajah sama dengan kejahatan terhadap negara dan masa depan keanekaragaman hayati Indonesia. (5) Hilangnya bagian kepala menjadi indikasi kuat adanya perburuan liar. (6) Gajah tersebut diduga diburu untuk diambil gadingnya.",
       question: "Penggabungan kalimat (5) dan (6) yang paling tepat dan menunjukkan relasi makna yang logis adalah …",
       options: [
@@ -639,7 +639,7 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [2]
     },
-    { //Soal 5
+    { //Soal 5 //ERROR
       txtField: "(1) Kondisi tersebut menunjukkan bahwa literasi digital tidak cukup hanya diajarkan secara teoretis di sekolah. (2) Dalam beberapa tahun terakhir, penyebaran informasi palsu di media sosial meningkat secara signifikan. (3) Oleh karena itu, diperlukan kemampuan berpikir kritis agar masyarakat mampu memilah informasi sebelum membagikannya. (4) Banyak pengguna internet yang langsung menyebarkan berita tanpa memeriksa kebenarannya terlebih dahulu. (5) Pendidikan literasi digital yang aplikatif dan berkelanjutan menjadi salah satu solusi yang dapat diterapkan.",
       question: "Urutan kalimat yang tepat agar menjadi paragraf yang padu adalah …",
       options: [
@@ -651,13 +651,13 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 6
+    { //Soal 6 //ERROR
       txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
       question: "Penulisan tanda baca yang tidak tepat pada teks tersebut terdapat pada kalimat nomor",
       options: ["1", "2", "3", "4", "5"],
       answerIndex: [3]
     },
-    { //Soal 7
+    { //Soal 7 //ERROR
       txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
       question: "Kalimat manakah yang isinya sama dengan kalimat (1)?",
       options: [
@@ -669,7 +669,7 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 8
+    { //Soal 8 //ERROR
       txtField: "(1) Literasi digital adalah kemampuan seseorang dalam menemukan, mengevaluasi, memanfaatkan, membuat, dan mengomunikasikan konten atau informasi melalui teknologi digital secara efektif dan bertanggung jawab. (2) Kemampuan ini penting karena sekarang banyak informasi tersebar di internet, sehingga setiap individu perlu berpikir kritis untuk membedakan mana yang benar atau tidak. (3) Literasi digital juga mencakup etika digital, seperti berinteraksi dengan sopan dalam ruang maya dan menghormati hak orang lain. (4) Dengan literasi digital, seseorang dapat memanfaatkan teknologi untuk tujuan positif serta mengurangi dampak negatif penyebaran informasi buruk atau hoaks. (5) Literasi digital bertujuan untuk [...]. (6) Maka itu, pendidikan dan pelatihan literasi digital perlu diperlukan ke berbagai kalangan masyarakat agar keterampilan ini tidak hanya dimiliki oleh sebagian orang.",
       question: "Kata maka dalam kalimat (6) seharusnya . . .",
       options: [
@@ -723,19 +723,19 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 13
+    { //Soal 13 //ERROR
       txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
       question: "Penggunaan kata bercetak tebal yang tidak tepat terdapat pada kalimat nomor …",
       options: ["(2)", "(3)", "(6)", "(7)", "(8)"],
       answerIndex: [2]
     },
-    { //Soal 14
+    { //Soal 14 //ERROR
       txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
       question: "Kalimat berikut perlu dimasukkan dalam bacaan tersebut. \"Program ini juga membuka lapangan kerja baru bagi warga sekitar melalui pengelolaan dan pemasaran produk daur ulang.\" Kalimat tersebut paling tepat ditempatkan setelah kalimat nomor …",
       options: ["(2)", "(4)", "(5)", "(6)", "(8)"],
       answerIndex: [3]
     },
-    { //Soal 15
+    { //Soal 15 //ERROR
       txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
       question: "Kalimat manakah yang merupakan kalimat efektif dari kalimat (2)?",
       options: [
@@ -747,7 +747,7 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 16
+    { //Soal 16 //ERROR
       txtField: "(1) Bank sampah tidak hanya berfungsi sebagai tempat pengelolaan limbah, tetapi juga mampu meningkatkan perekonomian warga. (2) Salah satu wilayah yang berhasil mengembangkan program tersebut adalah Kampung Berseri di Surabaya, Jawa Timur. (3) Program ini mendorong masyarakat untuk memilah sampah sejak dari rumah tangga. (4) Sampah anorganik seperti plastik dan kertas dikumpulkan, ditimbang, lalu dicatat sebagai tabungan warga. (5) Selain itu, sampah organik diolah menjadi kompos yang dimanfaatkan untuk pertanian dan penghijauan lingkungan. (6) Kegiatan tersebut tidak hanya berdampak pada kebersihan lingkungan, tetapi juga memperkuat solidaritas Sosial antarwarga. (7) Bahkan, beberapa produk hasil daur ulang berhasil dipasarkan hingga ke luar kota. (8) Keberhasilan ini menunjukkan bahwa pengelolaan sampah berbasis komunitas memiliki peluang besar untuk dikembangkan secara berkelanjutan. (9) Dengan dukungan pemerintah dan partisipasi aktif masyarakat, program bank sampah dapat menjadi solusi atas permasalahan lingkungan di perkotaan.",
       question: "Makna kata berkelanjutan pada kalimat (8) adalah …",
       options: [
@@ -759,13 +759,13 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 17
+    { //Soal 17 //ERROR
       txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
       question: "Penulisan kata bercetak tebal yang salah terdapat pada kalimat nomor …",
       options: ["(2)", "(3)", "(4)", "(5)", "(11)"],
       answerIndex: [3]
     },
-    { //Soal 18
+    { //Soal 18 //ERROR
       txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
       question: "Kata penghubung yang paling tepat untuk melengkapi kalimat (3) adalah ….",
       options: [
@@ -777,13 +777,13 @@ const soalPBM: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 19
+    { //Soal 19 //ERROR
       txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
       question: "Kata yang harus dihilangkan pada kalimat (9) adalah ….",
       options: ["lainnya", "yang", "juga", "adalah", "aspek"],
       answerIndex: [2]
     },
-    { //Soal 20
+    { //Soal 20 //ERROR
       txtField: "(1) Desa wisata menjadi salah satu strategi pemerintah dalam mendorong pemerataan ekonomi di berbagai daerah. (2) Program ini tidak hanya mengandalkan keindahan alam, tetapi juga potensi budaya dan kearifan lokal masyarakat secara menyeluruh. (3) [...], pengelolaan desa wisata harus dilakukan secara profesional agar mampu bersaing di tingkat nasional maupun internasional secara optimal. (4) Pemerintah melalui Kementerian Pariwisata dan Ekonomi Kreatif terus memberikan pendampingan kepada pengelola desa wisata. (5) Pendampingan tersebut meliputi pelatihan manajemen, pemasaran digital, serta peningkatan kualitas sumber daya manusia yang efisien. (6) Dengan pengelolaan yang tepat, desa wisata dapat menjadi sumber pendapatan baru bagi warga sekitar. (7) Namun, keberhasilan program ini sangat bergantung pada partisipasi aktif masyarakat lokal. (8) Masyarakat tidak hanya berperan sebagai objek pembangunan, melainkan juga sebagai subjek yang terlibat dalam perencanaan dan pelaksanaan kegiatan wisata. (9) Hal lainnya yang juga perlu diperhatikan adalah aspek keberlanjutan lingkungan. (10) Dalam pengembangan desa wisata yang berhasil tidak akan terwujud tanpa adanya sinergi antara pemerintah dan masyarakat. (11) Konsistensi pengawasan dan evaluasi secara berkala sangat diperlukan demi menjaga kualitas layanan wisata tersebut.",
       question: "Kalimat (10) perlu disempurnakan dengan cara …..",
       options: [
@@ -803,7 +803,7 @@ const soalPK: ujianSession = {
   description: "Ada 20 soal yang akan dikerjakan dalam 20 menit.",
   duration: 20 * 60,
   questions: [
-    { //Soal 1
+    { //Soal 1 //ERROR
       txtField: "Dari angka-angka 2, 4, 7, dan 9, akan dibentuk dua bilangan puluhan dengan setiap angka tepat dipakai sekali. Pernyataan mana saja yang bernilai benar berdasarkan informasi di atas? (1) Bilangan puluhan terkecil yang mungkin dibentuk merupakan bilangan genap. (2) Bilangan puluhan terbesar yang mungkin dibentuk merupakan bilangan ganjil. (3) Selisih terbesar yang mungkin dari dua bilangan puluhan tersebut adalah 73. (4) Jumlah terbesar yang mungkin dari dua bilangan puluhan tersebut adalah 117.",
       question: "Pernyataan mana saja yang bernilai benar?",
       options: [
@@ -815,25 +815,25 @@ const soalPK: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 2
+    { //Soal 2 //ERROR
       txtField: "Tujuh bilangan bulat positif, yaitu 6, 5, 8, a, 7, 5, dan 7, memiliki rata-rata 6 1/7. Jika modus dari ketujuh bilangan tersebut ditambah rata-ratanya adalah 78b, maka nilai b sama dengan …",
       question: "Nilai b sama dengan …",
       options: ["1/7", "2/7", "3/7", "4/7", "5/7"],
       answerIndex: [0]
     },
     { //Soal 3
-      txtField: "Barisan bilangan x+1, y+3, 4x, 16, … merupakan barisan aritmetika. Suku ke‑10 dari barisan bilangan tersebut adalah ….",
-      question: "Suku ke‑10 dari barisan bilangan tersebut adalah ….",
+      txtField: "Barisan bilangan x+1, y+3, 4x, 16, … merupakan barisan aritmetika.",
+      question: "Suku ke-10 dari barisan bilangan tersebut adalah ….",
       options: ["36", "38", "40", "42", "44"],
       answerIndex: [2]
     },
-    { //Soal 4
+    { //Soal 4 //ERROR
       txtField: "Grafik fungsi f(x) = x^2 - 3x + 2 dan g(x) = 2x^2 - 5x + 2 berpotongan di dua titik, yaitu titik P(p,q) dan Q(r,s). Garis h melalui kedua titik tersebut.",
       question: "Gradien garis h adalah ….",
       options: ["-2", "-1", "0", "1", "2"],
       answerIndex: [1]
     },
-    { //Soal 5
+    { //Soal 5 //ERROR
       txtField: "Grafik fungsi f(x) = x^2 - 3x + 2 dan g(x) = 2x^2 - 5x + 2 berpotongan di dua titik, yaitu titik P(p,q) dan Q(r,s). Garis h melalui kedua titik tersebut.",
       question: "Persamaan garis yang tegak lurus dengan garis h dan melalui titik (6,2) adalah ....",
       options: [
@@ -845,7 +845,7 @@ const soalPK: ujianSession = {
       ],
       answerIndex: [0]
     },
-    { //Soal 6
+    { //Soal 6 //ERROR
       txtField: "Grafik fungsi f(x) = x^2 - 3x + 2 dan g(x) = 2x^2 - 5x + 2 berpotongan di dua titik, yaitu titik P(p,q) dan Q(r,s). Garis h melalui kedua titik tersebut.",
       question: "Jika p < r dan titik P ditranslasi sejauh 3 satuan ke bawah dan 2 satuan ke kiri menjadi titik P', jarak antara titik P' dan Q adalah ....",
       options: ["√5", "√10", "√13", "√17", "√20"],
@@ -857,19 +857,19 @@ const soalPK: ujianSession = {
       options: ["12", "18", "24", "30", "36"],
       answerIndex: [4]
     },
-    { //Soal 8
+    { //Soal 8 //ERROR
       txtField: "Pada segitiga ABC di bawah, besar ∠ABC = 45° dan AC = 6. Titik D terletak pada sisi BC sehingga AD tegak lurus BC dan AD = BD.",
       question: "Besar ∠BAC = …",
       options: ["30°", "45°", "60°", "90°", "105°"],
       answerIndex: [3]
     },
-    { //Soal 9
+    { //Soal 9 //ERROR
       txtField: "Pada segitiga ABC di bawah, besar ∠ABC = 45° dan AC = 6. Titik D terletak pada sisi BC sehingga AD tegak lurus BC dan AD = BD.",
       question: "Panjang AB = …",
       options: ["3√2", "3√3", "6", "6√2", "6√3"],
       answerIndex: [2]
     },
-    { //Soal 10
+    { //Soal 10 //ERROR
       txtField: "Pada segitiga ABC di bawah, besar ∠ABC = 45° dan AC = 6. Titik D terletak pada sisi BC sehingga AD tegak lurus BC dan AD = BD.",
       question: "Luas segitiga ABC adalah …",
       options: ["9", "9√2", "18", "9 + 9√3", "18 + 18√2"],
@@ -911,7 +911,7 @@ $$
       answerIndex: [2]
     },
     { //Soal 12
-      txtField: "Pertidaksamaan |4x - 6| < a dengan a > 0 memiliki himpunan penyelesaian $$\\{x \\mid -1 < x < 4,\\; x \\in \\mathbb{R}\\}$$. Nilai a sama dengan ….",
+      txtField: "Pertidaksamaan |4x - 6| < a dengan a > 0 memiliki himpunan penyelesaian $$\\{x \\mid -1 < x < 4,\\; x \\in \\mathbb{R}\\}$$.",
       question: "Nilai a sama dengan ….",
       options: ["8", "9", "10", "11", "12"],
       answerIndex: [2]
@@ -920,8 +920,6 @@ $$
       txtField: `
 Kurva $y = (x - p)^2 + q$ diperoleh dengan menggeser kurva 
 $y = x^2 - 6x + 10$ sejauh 3 satuan ke kanan dan 1 satuan ke atas.
-
-Berdasarkan informasi yang diberikan, manakah hubungan antara kuantitas P dan Q berikut yang benar?
 
 $$
 \\begin{array}{|c|c|}
@@ -933,7 +931,7 @@ p + q & 4 \\\\
 \\end{array}
 $$
 `,
-      question: "Manakah hubungan antara kuantitas P dan Q berikut yang benar?",
+      question: "Berdasarkan informasi yang diberikan, manakah hubungan antara kuantitas P dan Q berikut yang benar?",
       options: [
         "Kuantitas P lebih dari Q.",
         "Kuantitas P kurang dari Q.",
@@ -942,7 +940,7 @@ $$
       ],
       answerIndex: [0]
     },
-    { //Soal 14
+      { //Soal 14 //ERROR
       txtField: "Diketahui matriks A = [[a,b],[c,d]] dan B = [[10,12],[14,16]] memenuhi persamaan A [[2,3],[1,1]] = B untuk suatu bilangan riil a, b, c, d. Berdasarkan informasi yang diberikan, manakah hubungan antara kuantitas P dan Q berikut yang benar? (P = a+b+c+d, Q = 30)",
       question: "Manakah hubungan antara kuantitas P dan Q berikut yang benar?",
       options: [
@@ -953,7 +951,7 @@ $$
       ],
       answerIndex: [1]
     },
-    { //Soal 15
+    { //Soal 15 //ERROR
       txtField: "Dari himpunan {3, 5, 7, 9} akan diambil dua anggotanya sekaligus secara acak. Pernyataan mana saja yang bernilai benar berdasarkan informasi di atas? (1) Peluang terambilnya dua bilangan dengan hasil kali genap adalah 1/2. (2) Peluang terambilnya dua bilangan dengan jumlah kurang dari 12 adalah 1/3. (3) Peluang terambilnya dua bilangan dengan selisih bilangan prima adalah 1/3. (4) Peluang terambilnya dua bilangan dengan hasil kali ganjil adalah 1.",
       question: "Pernyataan mana saja yang bernilai benar?",
       options: [
@@ -965,7 +963,7 @@ $$
       ],
       answerIndex: [2]
     },
-    { //Soal 16
+    { //Soal 16 //ERROR
       txtField: "Diketahui suatu fungsi m = f(a) = ka^2 + la + 1 dengan k dan l bilangan real. Input a = 2 menghasilkan m = 11 dan input a = 3 menghasilkan m = 19. Pernyataan mana saja yang bernilai benar berdasarkan informasi di atas? (1) Nilai k = 2. (2) Nilai k + l = 4. (3) Input a = 4 menghasilkan m = 31. (4) Input a = 1 menghasilkan m = 5.",
       question: "Pernyataan mana saja yang bernilai benar?",
       options: [
@@ -989,7 +987,7 @@ $$
       ],
       answerIndex: [3]
     },
-    { //Soal 18
+    { //Soal 18 //ERROR
       txtField: "Fungsi f(x) dan g(x) = 2x + 3 memiliki komposisi fungsi (f ∘ g)(a) = 23, dengan a > 0. Berapakah nilai dari f(5)? Putuskan apakah pernyataan (1) dan (2) berikut cukup untuk menjawab pertanyaan tersebut. (1) Nilai g(a) = 7. (2) Fungsi f(x) = ax + 4.",
       question: "Manakah pernyataan yang cukup?",
       options: [
@@ -1001,7 +999,7 @@ $$
       ],
       answerIndex: [2]
     },
-    { //Soal 19
+    { //Soal 19 //ERROR
       txtField: "Pulau A, Pulau B, dan Pulau C digambarkan dalam peta di atas yang terbentuk dari kumpulan persegi kecil. Titik A, B, dan C pada peta berturut-turut menyatakan posisi Kota A, Kota B, dan Kota C. (Koordinat: A(1,2), B(4,6), C(1,6))",
       question: "Jarak terpendek antara Kota A dan Kota B adalah ... satuan.",
       options: ["4", "5", "6", "7", "8"],
@@ -1109,7 +1107,7 @@ const soalLitdo: ujianSession = {
       answerIndex: [1]
     },
     { //Soal 8
-      imageUrl: `https://tan-sandye-90.tiiny.site/LBI-8-10.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/LBI-8-10.svg "Diagram")`,
       txtField: "Sabun memiliki kemampuan untuk menghilangkan kotoran, terutama yang berminyak dan berlemak. Peristiwa ini terletak pada struktur molekulnya yang unik, yaitu terdapat dua ujung yang berbeda. Satu ujung disebut hidrofilik (suka air), yaitu terdiri dari gugus karboksilat bermuatan yang siap berinteraksi dengan air. Ujung lainnya adalah ekor hidrofobik (takut air/suka minyak), yaitu rantai hidrokarbon panjang yang cenderung menempel pada minyak. Ketika sabun dicampur dengan air dan diterapkan pada kotoran berminyak, ekor hidrofobik akan menempel pada kotoran. Selanjutnya, ribuan molekul sabun akan mengelilingi partikel kotoran secara keseluruhan. Mereka membentuk struktur bola kecil yang dikenal sebagai misel. Misel ini memiliki inti kotoran yang terbungkus rapat oleh ekor sabun, dan permukaan luarnya yang semuanya terdiri dari kepala hidrofilik. Karena permukaan misel kini diselimuti oleh bagian yang suka air, kotoran yang tadinya tidak mau larut di dalam air sekarang menjadi teremulsi dan dapat terlarut ke dalam air. Proses ini memungkinkan kotoran berminyak terangkat dan terbawa bersama air bilasan, menjadikan area yang dibersihkan menjadi bersih.",
       question: "Cara yang dilakukan oleh ujung hidrofobik dari molekul sabun berinteraksi saat bertemu dengan kotoran berminyak adalah ....",
       options: [
@@ -1122,7 +1120,7 @@ const soalLitdo: ujianSession = {
       answerIndex: [1]
     },
     { //Soal 9
-      imageUrl: `https://tan-sandye-90.tiiny.site/LBI-8-10.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/LBI-8-10.svg "Diagram")`,
       txtField: "Sabun memiliki kemampuan untuk menghilangkan kotoran, terutama yang berminyak dan berlemak. Peristiwa ini terletak pada struktur molekulnya yang unik, yaitu terdapat dua ujung yang berbeda. Satu ujung disebut hidrofilik (suka air), yaitu terdiri dari gugus karboksilat bermuatan yang siap berinteraksi dengan air. Ujung lainnya adalah ekor hidrofobik (takut air/suka minyak), yaitu rantai hidrokarbon panjang yang cenderung menempel pada minyak. Ketika sabun dicampur dengan air dan diterapkan pada kotoran berminyak, ekor hidrofobik akan menempel pada kotoran. Selanjutnya, ribuan molekul sabun akan mengelilingi partikel kotoran secara keseluruhan. Mereka membentuk struktur bola kecil yang dikenal sebagai misel. Misel ini memiliki inti kotoran yang terbungkus rapat oleh ekor sabun, dan permukaan luarnya yang semuanya terdiri dari kepala hidrofilik. Karena permukaan misel kini diselimuti oleh bagian yang suka air, kotoran yang tadinya tidak mau larut di dalam air sekarang menjadi teremulsi dan dapat terlarut ke dalam air. Proses ini memungkinkan kotoran berminyak terangkat dan terbawa bersama air bilasan, menjadikan area yang dibersihkan menjadi bersih.",
       question: "Berdasarkan Paragraf 2, fungsi utama dari pembentukan struktur misel dalam proses pembersihan adalah ....",
       options: [
@@ -1135,7 +1133,7 @@ const soalLitdo: ujianSession = {
       answerIndex: [2]
     },
     { //Soal 10
-      imageUrl: `https://tan-sandye-90.tiiny.site/LBI-8-10.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/LBI-8-10.svg "Diagram")`,
       txtField: "Sabun memiliki kemampuan untuk menghilangkan kotoran, terutama yang berminyak dan berlemak. Peristiwa ini terletak pada struktur molekulnya yang unik, yaitu terdapat dua ujung yang berbeda. Satu ujung disebut hidrofilik (suka air), yaitu terdiri dari gugus karboksilat bermuatan yang siap berinteraksi dengan air. Ujung lainnya adalah ekor hidrofobik (takut air/suka minyak), yaitu rantai hidrokarbon panjang yang cenderung menempel pada minyak. Ketika sabun dicampur dengan air dan diterapkan pada kotoran berminyak, ekor hidrofobik akan menempel pada kotoran. Selanjutnya, ribuan molekul sabun akan mengelilingi partikel kotoran secara keseluruhan. Mereka membentuk struktur bola kecil yang dikenal sebagai misel. Misel ini memiliki inti kotoran yang terbungkus rapat oleh ekor sabun, dan permukaan luarnya yang semuanya terdiri dari kepala hidrofilik. Karena permukaan misel kini diselimuti oleh bagian yang suka air, kotoran yang tadinya tidak mau larut di dalam air sekarang menjadi teremulsi dan dapat terlarut ke dalam air. Proses ini memungkinkan kotoran berminyak terangkat dan terbawa bersama air bilasan, menjadikan area yang dibersihkan menjadi bersih.",
       question: "Pernyataan berikut yang paling tepat untuk merangkum ide pokok keseluruhan teks adalah ....",
       options: [
@@ -1396,7 +1394,6 @@ const soalLitdo: ujianSession = {
   ],
 }
 
-  // Beres
 const soalLitBing: ujianSession = {
   name: "Literasi Bahasa Inggris",
   description: "Ada 20 soal yang akan dikerjakan dalam 20 menit",
@@ -1559,7 +1556,7 @@ const soalLitBing: ujianSession = {
       answerIndex: [1]
     },
     { //Soal 17
-      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/LBE-17-20.svg "Diagram")`,
       txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
       question: "Which of the following statements is NOT TRUE according to the text?",
       options: [
@@ -1572,7 +1569,7 @@ const soalLitBing: ujianSession = {
       answerIndex: [3]
     },
     { //Soal 18
-      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/LBE-17-20.svg "Diagram")`,
       txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
       question: "What can be inferred about Duke's leadership from the text?",
       options: [
@@ -1585,7 +1582,7 @@ const soalLitBing: ujianSession = {
       answerIndex: [1]
     },
     { //Soal 19
-      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/LBE-17-20.svg "Diagram")`,
       txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
       question: "Suppose Duke decided to make remote work mandatory for all employees. Based on the text, which problem would most likely arise?",
       options: [
@@ -1598,7 +1595,7 @@ const soalLitBing: ujianSession = {
       answerIndex: [2]
     },
     { //Soal 20
-      imageUrl: `https://tan-sandye-90.tiiny.site/LBE-17-20.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/LBE-17-20.svg "Diagram")`,
       txtField: "As the COVID-19 pandemic forced thousands of Duke University employees to work remotely, a survey revealed that a clear majority would prefer continuing to work away from campus even when the health threat subsides. Specifically, of about 2,200 staff and faculty surveyed, 74% indicated they would like to work three to five days per week off-site. Many employees rated the elimination of the daily commute, increased flexibility and perceived higher productivity as the top benefits. However, challenges remain, most notably, establishing effective boundaries between work and personal life.\n\nIn response to these findings, Duke created a 25-member Work-From-Home Committee tasked with shaping post-pandemic work strategy. The committee emphasised that remote-work policies must accommodate the very diverse roles within the institution, some functions cannot be fulfilled from home, such as lab work, front-line healthcare or hands-on instruction. According to leadership, returning exclusively to the office is not the only option; hybrid models are likely, allowing teams to decide at the department level how often employees should be on-site. The university also noted that telecommuting aligns with Duke's climate goals, fewer daily car trips could help reduce carbon emissions and work toward a target of climate neutrality.\n\nAlthough remote work at Duke appears to have entered a new normal, the transition is by no means complete. Departments are encouraged to test pilots, gather data and refine their approach over time. As one administrator put it, \"there is no one-size-fits-all approach here.\" Ultimately, Duke's future work-landscape will balance flexibility, productivity and institutional culture as employees and the university adapt to a changed world of work.",
       question: "Based on the graph, most employees at Duke prefer to...",
       options: [
@@ -1643,7 +1640,7 @@ const soalPM: ujianSession = {
       answerIndex: [3]
     },
     { //Soal 5
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-5-8.svg "Diagram")`,
       txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
       question: "Jika K n menyatakan barisan dari banyak bulir pada kolom A dimulai dari A1 hingga A8, maka K n = ….",
       options: ["n + 8, n = 1, 2, 3,…, 8", "n, n = 1, 2, 3,…, 8", "9n, n = 1, 2, 3,…, 8", "8n – 8, n = 1, 2, 3,…, 8", "4n2 – 3, n = 1, 2, 3,…, 8"],
@@ -1651,7 +1648,7 @@ const soalPM: ujianSession = {
     },
     { //Soal 6
       type: "MULTIPLE_SELECTION",
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-5-8.svg "Diagram")`,
       txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
       question: "Pilihlah pernyataan yang Benar untuk masing-masing pernyataan di bawah ini!*",
       options: [
@@ -1664,49 +1661,49 @@ const soalPM: ujianSession = {
       answerIndex: [0, 3, 4]
     },
     { //Soal 7
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-5-8.svg "Diagram")`,
       txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
       question: "Hasil bagi banyak bulir pada petak B6 dengan banyak bulir pada petak E3 adalah ....",
       options: ["1", "2", "3", "4", "5"],
       answerIndex: [1]
     },
     { //Soal 8
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-5-8.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-5-8.svg "Diagram")`,
       txtField: "Gambar di atas menampilkan tampak atas sebuah papan catur standar. Dimulai dari petak A1, bergerak dari kiri ke kanan, kemudian berlanjut ke baris berikutnya, petak-petak papan catur tersebut akan diisi bulir padi. Petak pertama (yaitu A1) akan diisi bulir 1, petak kedua (yaitu B1) akan diisi bulir 2, petak ketiga (yaitu C1) akan diisi bulir 3, dan seterusnya hingga petak terakhir (yaitu H8).",
       question: "Jika banyak bulir pada tiap petak ditambah sesuai dengan label barisnya (contoh: petak A1 dan E1 masing-masing akan ditambah 1 bulir, sementara petak C2 dan F4 akan ditambah masing-masing 2 dan 4 bulir), maka jumlah penambahan bulir padinya adalah ....",
       options: ["36", "288", "2080", "2368", "4160"],
       answerIndex: [1]
     },
     { //Soal 9
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-9-12.svg "Diagram")`,
       txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
       question: "Jarak Ramon dari tiang lampu adalah ... m.",
       options: ["2,4", "3,36", "4,48", "5,6", "8,0"],
       answerIndex: [3]
     },
     { //Soal 10
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-9-12.svg "Diagram")`,
       txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
       question: "Jika Ramon harus berjalan sejauh 3,36 m sepanjang tepi jalan agar tepat berseberangan dengan lampu jalan, maka lebar jalan raya tersebut adalah ... m.",
       options: ["2,4", "3,36", "4,48", "5,6", "8,0"],
       answerIndex: [2]
     },
     { //Soal 11
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-9-12.svg "Diagram")`,
       txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
       question: "Jika Ramon berjalan sepanjang sisi jalan dengan laju tetap, perbandingan antara bayangan Ramon dan jarak Ramon dengan lampu adalah ....",
       options: ["2 : 5", "3 : 7", "5 : 11", "7 : 13", "tidak konstan"],
       answerIndex: [1]
     },
     { //Soal 12
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-9-12.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-9-12.svg "Diagram")`,
       txtField: "Pada salah satu sisi jalan raya yang lurus, terdapat lampu penerangan jalan umum. Pada sisi yang lain, berdiri Ramon. Tinggi tiang lampu adalah 6 m, sementara tinggi badan Ramon 180 cm. Karena cahaya lampu jalan dari seberang, bayangan Ramon jatuh di titik B dan panjangnya adalah 2,4 m.",
       question: "Ramon meloncat kecil ke atas. Jika bayangan ujung kepala Ramon bergerak sejauh 40 cm, tinggi loncatan Ramon adalah ... cm.",
       options: ["20", "30", "40", "50", "60"],
       answerIndex: [0]
     },
     { //Soal 13
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-13-16.svg "Diagram")`,
       txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
       question: "Berdasarkan diagram di atas, jumlah tamu yang sedang menginap di hotel tersebut tidak berubah pada hari ....",
       options: ["Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"],
@@ -1714,7 +1711,7 @@ const soalPM: ujianSession = {
     },
     { //Soal 14
       type: "MULTIPLE_SELECTION",
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-13-16.svg "Diagram")`,
       txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
       question: "Pilihlah pernyataan yang Benar untuk masing-masing pernyataan di bawah ini!*",
       options: [
@@ -1727,7 +1724,7 @@ const soalPM: ujianSession = {
       answerIndex: [1, 4]
     },
     { //Soal 15
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-13-16.svg "Diagram")`,
       txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
       question: "Jika tiap tamu menghasilkan keuntungan bersih sebesar Rp500.000,00, maka total keuntungan bersih hotel pada satu minggu itu adalah ... juta rupiah.",
       options: ["30", "215", "245", "460", "490"],
@@ -1735,7 +1732,7 @@ const soalPM: ujianSession = {
     },
     { //Soal 16
       type: "MULTIPLE_SELECTION",
-      imageUrl: `https://tan-sandye-90.tiiny.site/PM-13-16.svg`,
+      imageUrl: `![Diagram](https://tan-sandye-90.tiiny.site/PM-13-16.svg "Diagram")`,
       txtField: "Terdapat sebuah hotel yang baru saja dibuka dan pertama kali akan menerima tamu di hari Senin. Jumlah tamu yang masuk di awal hari dan keluar di akhir hari dicatat dan disajikan dalam diagram mingguan berikut.",
       question: "Staf hotel akan merasa kewalahan jika tamu yang masuk melebihi rata-rata mingguan ditambah 1/4 simpangan mutlak. Diasumsikan jumlah tamu yang masuk dan keluar tiap minggu masih memiliki pola yang sama. Pilihlah semua hari staf hotel merasa kewalahan dari pilihan-pilihan berikut!*",
       options: ["Senin", "Selasa", "Rabu", "Kamis", "Jumat"],
