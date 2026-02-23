@@ -35,7 +35,7 @@ export function LoginForm() {
     if (success) router.push(`/exam/${data["kode_ujian"]}`);
     else {
       console.error("Login error:", error);
-      alert("Kode ujian tidak valid atau sudah digunakan.");
+      alert("Terdapat kesalahan saat login. Pastikan data Anda benar.");
       setLoading(false)
     }
   }
