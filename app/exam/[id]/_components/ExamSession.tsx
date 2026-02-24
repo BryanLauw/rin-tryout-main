@@ -30,6 +30,11 @@ export default function ExamSession() {
   const hasEnteredFullscreenRef = useRef(false);
   const lastViolationRef = useRef(0);
 
+  const {
+    activeSessionIndex,
+    activeQuestionIndex
+  } = useExam();
+
   useEffect(() => {
     const firstFullscreen = () => {
       if (!document.fullscreenElement) {
@@ -112,7 +117,7 @@ export default function ExamSession() {
           onClose={() => setIsSidebarOpen(false)}
         />
         <div className="flex-1 flex flex-col md:ms-72">
-          <Question />
+          <Question key={`${activeSessionIndex}-${activeQuestionIndex}`} />
         </div>
       </div>
 
@@ -337,6 +342,7 @@ function Sidebar({
     activeQuestionIndex,
     setActiveQuestionIndex,
     maxQuestionIndex,
+    answerLS
   } = useExam();
   const sessionNames = exam.items.map((session: {name: string}) => session.name);
 
@@ -373,19 +379,34 @@ function Sidebar({
         <hr className="my-4 -mx-4" />
         <h1 className="mb-3">Nomor Soal:</h1>
         <div className="grid grid-cols-10 md:grid-cols-5 gap-1.5 md:gap-2 overflow-y-auto overflow-x-hidden">
-          {Array.from({ length: maxQuestionIndex + 1 }, (_, index) => (
-            <button
-              className={cn(
-                "p-1 md:p-2 rounded bg-gray-100 flex items-center justify-center aspect-square w-full text-sm md:text-base text-gray-600",
-                activeQuestionIndex === index &&
-                  "text-black bg-white border-2 border-primary"
-              )}
-              key={index}
-              onMouseDown={() => setActiveQuestionIndex(index)}
-            >
-              {index + 1}
-            </button>
-          ))}
+          {Array.from({ length: maxQuestionIndex + 1 }, (_, index) => {
+            // Logika pengecekan apakah soal sudah dijawab
+            // Kita cek apakah ada jawaban di session aktif pada index soal ini
+            const currentSessionAnswers = answerLS[activeSessionIndex];
+            const isAnswered = 
+              currentSessionAnswers && 
+              currentSessionAnswers[index] && 
+              currentSessionAnswers[index].length > 0 &&
+              currentSessionAnswers[index][0] !== ""; // Cek jika bukan string kosong (untuk essay)
+
+            return (
+              <button
+                key={index}
+                className={cn(
+                  "p-1 md:p-2 rounded flex items-center justify-center aspect-square w-full text-sm md:text-base transition-colors",
+                  // Warna default (belum dijawab)
+                  "bg-gray-100 text-gray-600",
+                  // Warna jika sudah dijawab (Hijau Muda)
+                  isAnswered && "bg-emerald-100 text-emerald-700 border border-emerald-200",
+                  // Warna jika sedang aktif (biru/primary)
+                  activeQuestionIndex === index && "text-black bg-white border-2 border-primary ring-2 ring-primary/20"
+                )}
+                onMouseDown={() => setActiveQuestionIndex(index)}
+              >
+                {index + 1}
+              </button>
+            );
+          })}
         </div>
         <ButtonFinishTestOrSession btnClassName="w-full mt-4" />
       </div>
