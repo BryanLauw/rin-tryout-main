@@ -13,10 +13,21 @@ export default function RestSession() {
 
   useEffect(() => {
     if (timeLeft <= 0) {
+      enterFullscreen();
       nextSession();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft]);
+
+  const enterFullscreen = async () => {
+    try {
+      if (!document.fullscreenElement) {
+        await document.documentElement.requestFullscreen();
+      }
+    } catch (err) {
+      console.warn("Gagal masuk fullscreen:", err);
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-50 p-8">
@@ -43,7 +54,10 @@ export default function RestSession() {
         </p>
 
         <Button
-          onClick={nextSession}
+          onClick={async () => {
+            await enterFullscreen();
+            nextSession();
+          }}
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200"
         >
           Mulai

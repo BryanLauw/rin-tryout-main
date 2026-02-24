@@ -18,15 +18,94 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { formatTimeLeft } from "@/lib/time";
 
 export default function ExamSession() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [mustReturnFullscreen, setMustReturnFullscreen] = useState(false);
+  const [hasEnteredFullscreen, setHasEnteredFullscreen] = useState(true);
+  const { penalizeTime } = useExam();
+
+  const hasEnteredFullscreenRef = useRef(false);
+  const lastViolationRef = useRef(0);
+
+  useEffect(() => {
+    const firstFullscreen = () => {
+      if (!document.fullscreenElement) {
+        setHasEnteredFullscreen(false);
+      }
+    };
+    firstFullscreen();
+  }, []);
+
+  useEffect(() => {
+    const penalize = (reason: string) => {
+      const now = Date.now();
+      if (now - lastViolationRef.current < 2000) return;
+
+      lastViolationRef.current = now;
+
+      console.log("Violation:", reason);
+      penalizeTime(300);
+      setMustReturnFullscreen(true);
+    };
+
+    const checkFocusLoss = () => {
+      if (
+        hasEnteredFullscreenRef.current &&
+        !document.hasFocus()
+      ) {
+        penalize("Kehilangan fokus (Alt+Tab)");
+      }
+    };
+
+    const handleVisibility = () => {
+      if (
+        document.hidden &&
+        hasEnteredFullscreenRef.current
+      ) {
+        penalize("Tab tidak aktif");
+      }
+    };
+
+    const handleFullscreenChange = () => {
+      if (document.fullscreenElement) {
+        hasEnteredFullscreenRef.current = true;
+        setHasEnteredFullscreen(true);
+        setMustReturnFullscreen(false);
+      } else {
+        if (hasEnteredFullscreenRef.current) {
+          penalize("Keluar fullscreen");
+        } else {
+          setMustReturnFullscreen(true);
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+
+    // 🔥 Ini yang bikin Alt+Tab pasti kena
+    window.addEventListener("blur", checkFocusLoss);
+    window.addEventListener("focus", checkFocusLoss);
+
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+      window.removeEventListener("blur", checkFocusLoss);
+      window.removeEventListener("focus", checkFocusLoss);
+    };
+  }, [penalizeTime]);
 
   return (
     <div className="min-h-screen bg-blue-50/50">
-      <Navbar onToggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <Navbar
+        onToggleSidebar={() =>
+          setIsSidebarOpen(!isSidebarOpen)
+        }
+      />
+
       <div className="flex flex-1 flex-col md:flex-row mt-14 relative">
         <Sidebar
           isOpen={isSidebarOpen}
@@ -36,6 +115,61 @@ export default function ExamSession() {
           <Question />
         </div>
       </div>
+
+      {mustReturnFullscreen && (
+        <div className="fixed inset-0 bg-black/80 z-[999] flex items-center justify-center">
+          <div className="bg-white p-8 rounded-xl text-center max-w-md">
+            <h2 className="text-xl font-bold mb-4">
+              Anda keluar dari mode fullscreen atau berpindah tab.
+            </h2>
+
+            <p className="mb-6 text-gray-600">
+              Waktu telah dikurangi 5 menit.
+              Klik tombol di bawah untuk melanjutkan ujian.
+            </p>
+
+            <Button
+              onClick={async () => {
+                try {
+                  await document.documentElement.requestFullscreen();
+                  setMustReturnFullscreen(false);
+                } catch (err) {
+                  console.error("Fullscreen gagal:", err);
+                }
+              }}
+            >
+              Kembali ke Fullscreen
+            </Button>
+          </div>
+        </div>
+      )}
+      {!hasEnteredFullscreen && (
+        <div className="fixed inset-0 bg-black/80 z-[999] flex items-center justify-center">
+          <div className="bg-white p-8 rounded-xl text-center max-w-md">
+            <h2 className="text-xl font-bold mb-4">
+              Mohon aktifkan mode fullscreen untuk memulai ujian.
+            </h2>
+
+            <p className="mb-6 text-gray-600">
+              Klik tombol di bawah untuk masuk ke mode fullscreen dan memulai ujian.
+            </p>
+
+            <Button
+              onClick={async () => {
+                try {
+                  await document.documentElement.requestFullscreen();
+                  setHasEnteredFullscreen(true);
+                } catch (err) {
+                  alert("Fullscreen harus diaktifkan untuk memulai ujian.");
+                  console.error("Fullscreen gagal:", err);
+                }
+              }}
+            >
+              Aktifkan Fullscreen
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
