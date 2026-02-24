@@ -54,6 +54,7 @@ function useContextValue(exam: ExamType, userId: string) {
    * Timer
    */
   const [now, setNow] = useState(getNow());
+  const [penaltySeconds, setPenaltySeconds] = useState(0);
   useEffect(() => {
     const interval = setInterval(() => {
       setNow(getNow());
@@ -63,8 +64,16 @@ function useContextValue(exam: ExamType, userId: string) {
 
   const [timeLeft, setTimeLeft] = useState(0);
   useEffect(() => {
-    setTimeLeft(dayjs(sessionEndedAt).diff(dayjs(), "seconds").valueOf());
-  }, [now]);
+    const diff = dayjs(sessionEndedAt)
+      .subtract(penaltySeconds, "seconds")
+      .diff(dayjs(), "seconds");
+
+    setTimeLeft(diff > 0 ? diff : 0);
+  }, [now, penaltySeconds, sessionEndedAt]);
+  
+  const penalizeTime = (seconds: number) => {
+    setPenaltySeconds((prev) => prev + seconds);
+  };
 
   /**
    * Session
@@ -113,6 +122,7 @@ function useContextValue(exam: ExamType, userId: string) {
 
   const nextSession = () => {
     saveAnswer();
+    setPenaltySeconds(0);
     if (activeSessionIndex < maxSessionIndex) {
       if (isRestSession) {
         setIsRestSession(false);
@@ -202,6 +212,7 @@ function useContextValue(exam: ExamType, userId: string) {
     answerInput,
     setAnswerInput,
     timeLeft,
+    penalizeTime,
     exam,
     userId,
     startedAt,

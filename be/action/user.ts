@@ -47,16 +47,22 @@ export async function login(
   clientId: string
 ) {
   try {
-    const { isThere } = await isThereClientId(userId);
-    if (isThere) return { success: false, error: "User Has Already Logged In" };
+    const result = await isThereClientId(userId, name, phone);
+
+    if (!result.success) {
+      return { success: false, error: result.error };
+    }
+
+    if (result.isThere) {
+      return { success: false, error: "User Has Already Logged In" };
+    }
+
 
     await prisma.user.update({
       where: {
         id: userId,
       },
       data: {
-        name,
-        phone,
         clientId,
       },
     });
@@ -94,11 +100,13 @@ export async function checkClientId(userId: string, clientId: string) {
   }
 }
 
-export async function isThereClientId(userId: string) {
+export async function isThereClientId(userId: string, name: string, phone: string) {
   try {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.user.findFirst({
       where: {
         id: userId,
+        phone: phone,
+        name: name,
       },
       select: {
         clientId: true,
