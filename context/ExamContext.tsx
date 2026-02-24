@@ -192,19 +192,30 @@ function useContextValue(exam: ExamType, userId: string) {
     return answerLS[activeSessionIndex][activeQuestionIndex] || [""];
   }, [answerLS, activeSessionIndex, activeQuestionIndex]);
 
+  const [isInitialized, setIsInitialized] = useState(false)
+
   useEffect(() => {
+    const initialAnswer = getAnswer();
+    setAnswerInput(initialAnswer);
+    // Beri jeda sedikit agar sistem stabil sebelum mengizinkan auto-save
+    setTimeout(() => setIsInitialized(true), 100);
+  }, []);
+
+  // 3. Modifikasi useEffect untuk ganti soal
+  useEffect(() => {
+    // Matikan dulu initialized saat ganti soal agar tidak terjadi save tabrakan
+    setIsInitialized(false); 
     setAnswerInput(getAnswer());
+    setTimeout(() => setIsInitialized(true), 50);
   }, [activeQuestionIndex]);
 
-  // assign asnwer to LS on debounce
+  // 4. Update useEffect penampung saveAnswer
   useEffect(() => {
-    saveAnswer();
-  }, [answerInput]);
-
-  // assign asnwer from LS on mount
-  useEffect(() => {
-    setAnswerInput(getAnswer());
-  }, []);
+    // HANYA simpan ke LS jika inisialisasi sudah selesai
+    if (isInitialized) {
+      saveAnswer();
+    }
+  }, [answerInput, isInitialized]);
 
   return {
     setAnswerLS,
