@@ -24,7 +24,7 @@ export function LoginForm() {
     setLoading(true);
     e.preventDefault();
     const data = getFormData(e);
-    const clientId = crypto.randomUUID();
+    const clientId = localStorage.getItem(data["kode_ujian"] + "-clientId") || crypto.randomUUID();
     localStorage.setItem(data["kode_ujian"] + "-clientId", clientId);
     const { success, error } = await login(
       data["kode_ujian"],
@@ -34,8 +34,7 @@ export function LoginForm() {
     );
     if (success) router.push(`/exam/${data["kode_ujian"]}`);
     else {
-      console.error("Login error:", error);
-      alert("Terdapat kesalahan saat login. Pastikan data Anda benar.");
+      alert(error === "User Has Already Logged In" ? "Anda sudah login di perangkat lain." : `Pastikan data Anda benar`);
       setLoading(false)
     }
   }
