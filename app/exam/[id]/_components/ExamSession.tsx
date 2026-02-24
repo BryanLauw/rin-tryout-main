@@ -30,6 +30,11 @@ export default function ExamSession() {
   const hasEnteredFullscreenRef = useRef(false);
   const lastViolationRef = useRef(0);
 
+  const {
+    activeSessionIndex,
+    activeQuestionIndex
+  } = useExam();
+
   useEffect(() => {
     const firstFullscreen = () => {
       if (!document.fullscreenElement) {
@@ -112,7 +117,7 @@ export default function ExamSession() {
           onClose={() => setIsSidebarOpen(false)}
         />
         <div className="flex-1 flex flex-col md:ms-72">
-          <Question />
+          <Question key={`${activeSessionIndex}-${activeQuestionIndex}`} />
         </div>
       </div>
 
