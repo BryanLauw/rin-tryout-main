@@ -40,7 +40,7 @@ export default function StartExam() {
               timer akan berjalan dan Anda tidak dapat menghentikan ujian.
             </p>
             <p className="text-red-800">
-              Ujian akan otomatis berhenti apabila laman ditutup. Pastikan koneksi internet Anda stabil selama ujian berlangsung.
+              Pastikan koneksi internet Anda stabil selama ujian berlangsung.
               Apabila terdeteksi melakukan kecurangan, seperti pindah aplikasi, keluar fullscreen, atau split screen, waktu ujian Anda akan dikurangi sebanyak 5 menit.
             </p>
           </div>
