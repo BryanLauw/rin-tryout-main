@@ -28,6 +28,7 @@
     "react-markdown": "^9.0.1",
     "rehype-katex": "^7.0.1",
     "rehype-mathjax": "^6.0.0",
+    "remark-breaks": "^4.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
     "sonner": "^1.7.0",

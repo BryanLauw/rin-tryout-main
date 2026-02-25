@@ -2,6 +2,7 @@ import Markdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+import remarkBreaks from "remark-breaks";
 import "katex/dist/katex.min.css";
 // import rehypeMathjax from "rehype-mathjax";
 
@@ -12,7 +13,7 @@ export default function MD({ text }: { text: string }) {
         components={{
           p: ({ children }) => <p className="text-justify w-full">{children}</p>,
         }}
-        remarkPlugins={[remarkGfm, remarkMath]}
+        remarkPlugins={[remarkGfm, remarkMath, remarkBreaks]}
         rehypePlugins={[rehypeKatex]}
       >
         {text}
