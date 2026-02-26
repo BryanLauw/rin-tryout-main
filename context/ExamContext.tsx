@@ -125,13 +125,15 @@ function useContextValue(exam: ExamType, userId: string) {
     setPenaltySeconds(0);
     if (activeSessionIndex < maxSessionIndex) {
       if (isRestSession) {
+        const nextIndex = activeSessionIndex + 1;
+        const nextSessionData = exam.items[nextIndex];
         setIsRestSession(false);
-        setActiveSessionIndex(activeSessionIndex + 1);
+        setActiveSessionIndex(nextIndex);
         setActiveQuestionIndex(0);
         setSessionEndedAt(
-          dayjs().add(activeSessionData.duration, "seconds").valueOf()
+          dayjs().add(nextSessionData.duration, "seconds").valueOf()
         );
-        setTimeLeft(activeSessionData.duration);
+        setTimeLeft(nextSessionData.duration);
       } else {
         setIsRestSession(true);
         setSessionEndedAt(dayjs().add(REST_DURATION, "seconds").valueOf());
