@@ -213,8 +213,10 @@ function Question() {
 
           <Answer />
         </div>
-
-        <NextButton />
+        <div className="flex flex-row justify-between">
+            <PrevButton />
+            <NextButton />
+        </div>
       </div>
     </div>
   );
@@ -295,6 +297,20 @@ function Essay() {
       value={answerInput[0] || ""}
       onChange={(e) => setAnswerInput([e.target.value])}
     />
+  );
+}
+
+function PrevButton() {
+  const { activeQuestionIndex, prevQuestion } = useExam();
+  
+  return (
+    <div className="flex gap-2 mt-2">
+      {activeQuestionIndex > 0 ? (
+        <Button onClick={prevQuestion}>Soal Sebelumnya</Button>
+      ) : (
+        <Button disabled>Soal Sebelumnya</Button>
+      )}
+    </div>
   );
 }
 
