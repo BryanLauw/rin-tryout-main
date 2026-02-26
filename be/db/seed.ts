@@ -20,6 +20,10 @@ async function main() {
   await prisma.question.deleteMany()
   await prisma.examSession.deleteMany()
   await prisma.exam.deleteMany()
+  
+  await prisma.$executeRawUnsafe(`ALTER SEQUENCE "Question_id_seq" RESTART WITH 1;`)
+  await prisma.$executeRawUnsafe(`ALTER SEQUENCE "ExamSession_id_seq" RESTART WITH 1;`)
+  await prisma.$executeRawUnsafe(`ALTER SEQUENCE "Exam_id_seq" RESTART WITH 1;`)
 
   // seed exams
   for (const ujian of data) {
@@ -48,6 +52,13 @@ async function main() {
     })
     console.log(`Created exam: ${exam.name}`)
   }
+
+  await prisma.user.updateMany({
+    data: {
+      examId: 1,
+      clientId: null
+    }
+  })
 }
 
 main()
