@@ -47,6 +47,18 @@ export async function login(
   clientId: string
 ) {
   try {
+    const sekarang = new Date();
+    const waktuBuka = new Date('2026-02-28T08:00:00+07:00');
+    const waktuTutup = new Date('2026-01-31T23:59:59+07:00');
+
+    if (sekarang < waktuBuka) {
+      return { success: false, error: "Login belum dibuka. Silakan kembali pada Sabtu, 08:00 WIB." };
+    }
+
+    if (sekarang > waktuTutup) {
+      return { success: false, error: "Masa login telah berakhir." };
+    }
+
     const result = await isThereClientId(userId, name, phone);
 
     if (!result.success) {

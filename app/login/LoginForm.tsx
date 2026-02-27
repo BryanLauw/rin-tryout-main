@@ -25,16 +25,24 @@ export function LoginForm() {
     e.preventDefault();
     const data = getFormData(e);
     const clientId = localStorage.getItem(data["kode_ujian"] + "-clientId") || crypto.randomUUID();
-    localStorage.setItem(data["kode_ujian"] + "-clientId", clientId);
     const { success, error } = await login(
       data["kode_ujian"],
       data["name"],
       data["phone"],
       clientId
     );
+    localStorage.setItem(data["kode_ujian"] + "-clientId", clientId);
     if (success) router.push(`/exam/${data["kode_ujian"]}`);
     else {
-      alert(error === "User Has Already Logged In" ? "Anda sudah login di perangkat lain." : `Pastikan data Anda benar`);
+      if (error === "User Has Already Logged In") {
+        alert("Anda sudah login di perangkat lain.");
+      } else if (error === "Masa login telah berakhir.") {
+        alert("Masa login telah berakhir.");
+      } else if (error === "Login belum dibuka. Silakan kembali pada Sabtu, 08:00 WIB.") {
+        alert("Login belum dibuka. Silakan kembali pada Sabtu, 08:00 WIB.");
+      } else {
+        alert(`Pastikan data Anda benar`);
+      }
       setLoading(false)
     }
   }
@@ -46,7 +54,7 @@ export function LoginForm() {
       <CardHeader>
         <CardTitle className="text-2xl">Login</CardTitle>
         <CardDescription>
-          Masukan Code Ujian yang Telah Anda Terima
+          Masukan Kode Ujian yang Telah Anda Terima
         </CardDescription>
       </CardHeader>
       <CardContent>
