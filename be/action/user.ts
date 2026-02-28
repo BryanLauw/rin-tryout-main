@@ -49,7 +49,7 @@ export async function login(
   try {
     const sekarang = new Date();
     const waktuBuka = new Date('2026-02-28T08:00:00+07:00');
-    const waktuTutup = new Date('2026-01-31T23:59:59+07:00');
+    const waktuTutup = new Date('2026-03-01T23:59:59+07:00');
 
     if (sekarang < waktuBuka) {
       return { success: false, error: "Login belum dibuka. Silakan kembali pada Sabtu, 08:00 WIB." };
