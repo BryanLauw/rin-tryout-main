@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "../db/prisma-init";
 
 export const fetchExamByUserId = async (userId: string) => {
