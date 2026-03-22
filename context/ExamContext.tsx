@@ -146,6 +146,26 @@ function useContextValue(exam: ExamType, userId: string) {
     }
   };
 
+  const submitExam = async (): Promise<boolean> => {
+  try {
+    saveAnswer();
+    const finishAnswer = getFinishAnswer(answerLS);
+
+    const result = await postAnswer(userId, finishAnswer);
+
+    if (result.success) {
+      console.log("Ujian berhasil disubmit!");
+      return true;
+    } else {
+      console.error("Gagal submit:", result.error);
+      return false;
+    }
+  } catch (error) {
+    console.error("Fatal error during submission:", error);
+    return false;
+  }
+};
+
   function getFinishAnswer(answer: string[][][]) {
     return answer
       ? answer.map((sessionAnswers: string[][], sessionIndex: number) =>
@@ -248,7 +268,8 @@ function useContextValue(exam: ExamType, userId: string) {
     startExam,
     finishExam,
     getAnswer,
-    getFinishAnswer
+    getFinishAnswer,
+    submitExam
   };
 }
 

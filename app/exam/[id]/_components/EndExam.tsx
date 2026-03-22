@@ -10,16 +10,37 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useExam } from "@/context/ExamContext";
+import { useState, useEffect } from "react";
 import { toast } from "sonner";
+import { AlertCircle, CheckCircle2, RefreshCw } from "lucide-react";
 
 export default function EndExam() {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const { submitExam } = useExam();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
+
+  const handleFinalSubmit = async () => {
+    setStatus('loading');
+    const success = await submitExam();
+    if (success) {
+      setStatus('success');
+      toast.success("Jawaban berhasil diamankan di server.");
+    } else {
+      setStatus('error');
+      toast.error("Gagal mengirim jawaban. Silakan coba lagi.");
+    }
+  };
+
+  // Jalankan submit otomatis saat masuk halaman ini
+  useEffect(() => {
+    handleFinalSubmit();
+  }, []);
+
+  const handleSubmitEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement email update logic here
     toast.success("Email berhasil diperbarui");
     setOpen(false);
   };
@@ -32,34 +53,49 @@ export default function EndExam() {
             Ujian Telah Selesai
           </h1>
           <p className="text-gray-600">
-            Terima kasih telah menyelesaikan ujian. Hasil ujian akan diumumkan
-            setelah semua peserta selesai mengerjakan ujian.
+            {status === 'error' 
+              ? "Ups! Ada kendala saat mengirim jawaban Anda." 
+              : "Terima kasih telah menyelesaikan ujian. Hasil ujian akan diumumkan setelah semua peserta selesai mengerjakan ujian."}
           </p>
         </div>
 
         <div className="flex flex-col items-center gap-6 mb-8">
-          <div className="w-24 h-24 rounded-full bg-green-100 flex items-center justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-12 h-12 text-green-600"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-              />
-            </svg>
+          {/* Ikon Dinamis berdasarkan Status */}
+          <div className={`w-24 h-24 rounded-full flex items-center justify-center transition-colors ${
+            status === 'success' ? "bg-green-100" : status === 'error' ? "bg-red-100" : "bg-blue-100"
+          }`}>
+            {status === 'loading' && <RefreshCw className="w-12 h-12 text-blue-600 animate-spin" />}
+            {status === 'success' && <CheckCircle2 className="w-12 h-12 text-green-600" />}
+            {status === 'error' && <AlertCircle className="w-12 h-12 text-red-600" />}
           </div>
+
+          {/* Tombol Kirim Ulang jika Error */}
+          {status === 'error' && (
+            <div className="flex flex-col gap-3 items-center">
+              <p className="text-sm text-red-500 font-medium">Terdapat masalah ketika submit jawabanmu. Pastikan koneksi internet kamu stabil klik kirim ulang jawaban.</p>
+              <Button 
+                onClick={handleFinalSubmit}
+                variant="destructive"
+                className="flex gap-2 items-center shadow-lg"
+              >
+                <RefreshCw className="w-4 h-4" />
+                Kirim Ulang Jawaban
+              </Button>
+            </div>
+          )}
         </div>
 
         <div className="space-y-4">
           <p className="text-sm text-gray-500">
-            Silakan meninggalkan halaman ini. Hasil ujian akan dikirimkan di grup WhatsApp
+            {status === 'success' 
+              ? "Silakan meninggalkan halaman ini. Hasil ujian akan dikirimkan di grup WhatsApp."
+              : "Mohon jangan tutup halaman ini sampai jawaban berhasil terkirim."}
           </p>
+          
+          {/* Tombol Ganti Email hanya aktif jika sudah sukses atau sebagai opsional */}
+          <Button variant="outline" onClick={() => setOpen(true)} className="mt-4">
+            Ganti Email Notifikasi
+          </Button>
         </div>
 
         <Dialog open={open} onOpenChange={setOpen}>
@@ -70,7 +106,7 @@ export default function EndExam() {
                 Masukkan alamat email baru untuk menerima hasil ujian
               </DialogDescription>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmitEmail} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input

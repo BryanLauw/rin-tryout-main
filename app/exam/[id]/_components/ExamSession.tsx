@@ -52,7 +52,6 @@ export default function ExamSession() {
       lastViolationRef.current = now;
 
       console.log("Violation:", reason);
-      penalizeTime(300);
       setMustReturnFullscreen(true);
     };
 
@@ -129,7 +128,7 @@ export default function ExamSession() {
             </h2>
 
             <p className="mb-6 text-gray-600">
-              Waktu telah dikurangi 5 menit.
+              Waktu akan dikurangi 5 menit.
               Klik tombol di bawah untuk melanjutkan ujian.
             </p>
 
@@ -138,6 +137,7 @@ export default function ExamSession() {
                 try {
                   await document.documentElement.requestFullscreen();
                   setMustReturnFullscreen(false);
+                  penalizeTime(300);
                 } catch (err) {
                   console.error("Fullscreen gagal:", err);
                 }
