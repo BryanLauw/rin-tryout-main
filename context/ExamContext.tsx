@@ -268,7 +268,6 @@ function useContextValue(exam: ExamType, userId: string) {
     startExam,
     finishExam,
     getAnswer,
-    getFinishAnswer,
     submitExam
   };
 }
