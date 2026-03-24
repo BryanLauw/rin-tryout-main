@@ -18,7 +18,13 @@ export default async function Page({
     const exam = await fetchExamByUserId(id);
     const res = await isUserHasAnswer(id);
 
-    if (res.hasAnswer) return <EndExam />;
+    if (res.hasAnswer) {
+      return (
+        <ExamProvider exam={exam} userId={id}>
+          <EndExam />
+        </ExamProvider>
+      );
+    };
 
     return (
       <DomLoaded>

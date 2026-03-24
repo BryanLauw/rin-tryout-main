@@ -18,7 +18,7 @@ import { AlertCircle, CheckCircle2, RefreshCw } from "lucide-react";
 export default function EndExam() {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const { submitExam } = useExam();
+  const { submitExam, endedAt } = useExam();
 
   const [status, setStatus] = useState<'loading' | 'success' | 'error'>('loading');
 
@@ -27,7 +27,7 @@ export default function EndExam() {
     const success = await submitExam();
     if (success) {
       setStatus('success');
-      toast.success("Jawaban berhasil diamankan di server.");
+      toast.success("Jawaban berhasil dikumpulkan.");
     } else {
       setStatus('error');
       toast.error("Gagal mengirim jawaban. Silakan coba lagi.");
@@ -36,7 +36,9 @@ export default function EndExam() {
 
   // Jalankan submit otomatis saat masuk halaman ini
   useEffect(() => {
-    handleFinalSubmit();
+    if (endedAt) {
+      handleFinalSubmit();
+    }
   }, []);
 
   const handleSubmitEmail = (e: React.FormEvent) => {
@@ -91,11 +93,6 @@ export default function EndExam() {
               ? "Silakan meninggalkan halaman ini. Hasil ujian akan dikirimkan di grup WhatsApp."
               : "Mohon jangan tutup halaman ini sampai jawaban berhasil terkirim."}
           </p>
-          
-          {/* Tombol Ganti Email hanya aktif jika sudah sukses atau sebagai opsional */}
-          <Button variant="outline" onClick={() => setOpen(true)} className="mt-4">
-            Ganti Email Notifikasi
-          </Button>
         </div>
 
         <Dialog open={open} onOpenChange={setOpen}>
