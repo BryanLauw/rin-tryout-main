@@ -204,7 +204,7 @@ function Question() {
                 </div>
               </div>
             )}
-            <div className="prose prose-gray max-w-none">
+            <div className="prose prose-gray max-w-none w-full min-w-0 overflow-x-auto break-words">
               <MD text={q.question} />
             </div>
           </div>
